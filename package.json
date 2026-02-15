@@ -1,0 +1,11 @@
+{
+  "name": "my-framework",
+  "version": "1.0.0",
+  "scripts": {
+    "build-css": "sass src/css/main.scss dist/my-framework.css --style=expanded",
+    "minify-css": "sass src/css/main.scss dist/my-framework.min.css --style=compressed"
+  },
+  "devDependencies": {
+    "sass": "^1.70.0"
+  }
+}

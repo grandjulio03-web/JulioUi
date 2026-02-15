@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jforces Form Framework Test</title>
+    <link rel="stylesheet" href="./dist/my-framework.css">
+    <style>
+        body {
+            padding: 2rem;
+            background: #f9fafb;
+            font-family: "Inter", "Poppins", "Montserrat", sans-serif;
+        }
+        .demo-section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .demo-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #041301;
+            border-bottom: 2px solid #72b0d7;
+            padding-bottom: 0.5rem;
+        }
+        .demo-item {
+            margin-bottom: 2rem;
+            padding: 2rem;
+            background: #f9fafb;
+            border-radius: 0.25rem;
+            border-left: 4px solid #72b0d7;
+        }
+        .form-container {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="heading-bold text-center">Jforces Form Framework</h1>
+    <p class="subheading text-center">Unique, modern form inputs that stand out from libraries</p>
+
+    <!-- Basic Form Examples -->
+    <div class="demo-section">
+        <h2 class="demo-title">Basic Form Elements</h2>
+        
+        <div class="demo-item">
+            <h3 class="text-heading">Text Fields</h3>
+            <div class="form-container">
+                <div class="group">
+                    <input type="text" class="field" placeholder=" " id="name">
+                    <label class="label" for="name">Full Name</label>
+                    <span class="hint">Enter your complete name</span>
+                </div>
+                
+                <div class="group">
+                    <input type="email" class="field" placeholder=" " id="email">
+                    <label class="label" for="email">Email Address</label>
+                    <span class="hint">We'll never share your email</span>
+                </div>
+                
+                <div class="group">
+                    <input type="tel" class="field" placeholder=" " id="phone">
+                    <label class="label" for="phone">Phone Number</label>
+                    <span class="alert">Phone number is required</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="demo-item">
+            <h3 class="text-heading">Select and Textarea</h3>
+            <div class="form-container">
+                <div class="group">
+                    <select class="select" id="country">
+                        <option value="">Select a country</option>
+                        <option value="us">United States</option>
+                        <option value="uk">United Kingdom</option>
+                        <option value="ca">Canada</option>
+                        <option value="au">Australia</option>
+                    </select>
+                    <label class="label" for="country">Country</label>
+                </div>
+                
+                <div class="group">
+                    <textarea class="textarea" placeholder=" " id="message"></textarea>
+                    <label class="label" for="message">Your Message</label>
+                    <span class="hint">Tell us more about your needs</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Color Themes -->
+    <div class="demo-section">
+        <h2 class="demo-title">Color Themes</h2>
+        
+        <div class="demo-item">
+            <h3 class="text-heading">Themed Inputs</h3>
+            <div class="form-container">
+                <div class="group">
+                    <input type="text" class="field ace" placeholder=" " id="ace-input">
+                    <label class="label" for="ace-input">Ace Theme (Blue)</label>
+                </div>
+                
+                <div class="group">
+                    <input type="text" class="field beta" placeholder=" " id="beta-input">
+                    <label class="label" for="beta-input">Beta Theme (Pink)</label>
+                </div>
+                
+                <div class="group">
+                    <input type="text" class="field gamma" placeholder=" " id="gamma-input">
+                    <label class="label" for="gamma-input">Gamma Theme (Orange)</label>
+                </div>
+                
+                <div class="group">
+                    <input type="text" class="field delta" placeholder=" " id="delta-input">
+                    <label class="label" for="delta-input">Delta Theme (Green)</label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Special Effects -->
+    <div class="demo-section">
+        <h2 class="demo-title">Special Effects</h2>
+        
+        <div class="demo-item">
+            <h3 class="text-heading">Glass Morphism</h3>
+            <div class="form-container">
+                <div class="group">
+                    <input type="text" class="field glass" placeholder=" " id="glass-input">
+                    <label class="label" for="glass-input">Glass Effect</label>
+                    <span class="hint">Modern glass morphism design</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="demo-item">
+            <h3 class="text-heading">Neon Glow</h3>
+            <div class="form-container">
+                <div class="group">
+                    <input type="text" class="field neon" placeholder=" " id="neon-input">
+                    <label class="label" for="neon-input">Neon Glow</label>
+                    <span class="hint">Futuristic neon effect</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="demo-item">
+            <h3 class="text-heading">Soft Shadows</h3>
+            <div class="form-container">
+                <div class="group">
+                    <input type="text" class="field soft" placeholder=" " id="soft-input">
+                    <label class="label" for="soft-input">Soft Shadow</label>
+                    <span class="hint">Elegant soft shadow design</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="demo-item">
+            <h3 class="text-heading">Flat Design</h3>
+            <div class="form-container">
+                <div class="group">
+                    <input type="text" class="field flat" placeholder=" " id="flat-input">
+                    <label class="label" for="flat-input">Flat Design</label>
+                    <span class="hint">Minimal flat underline style</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="demo-item">
+            <h3 class="text-heading">Minimal Style</h3>
+            <div class="form-container">
+                <div class="group">
+                    <input type="text" class="field minimal" placeholder=" " id="minimal-input">
+                    <label class="label" for="minimal-input">Minimal Style</label>
+                    <span class="hint">Clean minimal aesthetic</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Special Input Types -->
+    <div class="demo-section">
+        <h2 class="demo-title">Special Input Types</h2>
+        
+        <div class="demo-item">
+            <h3 class="text-heading">Search Input</h3>
+            <div class="form-container">
+                <div class="group">
+                    <input type="search" class="search" placeholder="Search..." id="search-input">
+                    <label class="label" for="search-input">Search</label>
+                    <span class="hint">Type to search</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="demo-item">
+            <h3 class="text-heading">File Upload</h3>
+            <div class="form-container">
+                <div class="group">
+                    <input type="file" class="file" id="file-input">
+                    <label class="label" for="file-input">Upload File</label>
+                    <span class="hint">Choose a file to upload</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="demo-item">
+            <h3 class="text-heading">Range Slider</h3>
+            <div class="form-container">
+                <div class="group">
+                    <input type="range" class="" min="0" max="100" value="50" id="range-input">
+                  
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Radio and Checkbox -->
+    <div class="demo-section">
+        <h2 class="demo-title">Radio & Checkbox</h2>
+        
+        <div class="demo-item">
+            <h3 class="text-heading">Radio Buttons</h3>
+            <div class="form-container">
+                <div class="group">
+                    <div class="space-small">
+                        <label class="flex-center space-small">
+                            <input type="radio" name="option" class="radio" checked>
+                            <span>Option 1</span>
+                        </label>
+                        <label class="flex-center space-small">
+                            <input type="radio" name="option" class="radio">
+                            <span>Option 2</span>
+                        </label>
+                        <label class="flex-center space-small">
+                            <input type="radio" name="option" class="radio">
+                            <span>Option 3</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="demo-item">
+            <h3 class="text-heading">Checkboxes</h3>
+            <div class="form-container">
+                <div class="group">
+                    <div class="space-small">
+                        <label class="flex-center space-small">
+                            <input type="checkbox" class="checkbox" checked>
+                            <span>Accept Terms</span>
+                        </label>
+                        <label class="flex-center space-small">
+                            <input type="checkbox" class="checkbox">
+                            <span>Subscribe Newsletter</span>
+                        </label>
+                        <label class="flex-center space-small">
+                            <input type="checkbox" class="checkbox">
+                            <span>Enable Notifications</span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Complete Form Example -->
+    <div class="demo-section">
+        <h2 class="demo-title">Complete Form Example</h2>
+        
+        <div class="demo-item">
+            <h3 class="text-heading">Contact Form</h3>
+            <div class="form-container">
+                <div class="group space-large">
+                    <input type="text" class="field ace" placeholder=" " id="contact-name">
+                    <label class="label" for="contact-name">Your Name</label>
+                </div>
+                
+                <div class="group">
+                    <input type="email" class="field ace" placeholder=" " id="contact-email">
+                    <label class="label" for="contact-email">Email Address</label>
+                </div>
+                
+                <div class="group">
+                    <select class="select ace" id="contact-subject">
+                        <option value="">Select Subject</option>
+                        <option value="general">General Inquiry</option>
+                        <option value="support">Technical Support</option>
+                        <option value="feedback">Feedback</option>
+                    </select>
+                    <label class="label" for="contact-subject">Subject</label>
+                </div>
+                
+                <div class="group">
+                    <textarea class="textarea beta" placeholder=" " id="contact-message"></textarea>
+                    <label class="label" for="contact-message">Message</label>
+                </div>
+                
+                <div class="group">
+                    <label class="flex-start space-small">
+                        <input type="checkbox" class="checkbox" checked>
+                        <span>I agree to the terms and conditions</span>
+                    </label>
+                </div>
+                
+                <div class="flex">
+                    <button class="jf-btn gamma">Send Message</button>
+                    <button class="jf-btn-outline ace">Clear Form</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Range slider value display
+        const rangeInput = document.getElementById('range-input');
+        const rangeValue = document.getElementById('range-value');
+        
+        if (rangeInput && rangeValue) {
+            rangeInput.addEventListener('input', function() {
+                rangeValue.textContent = this.value;
+            });
+        }
+    </script>
+</body>
+</html>

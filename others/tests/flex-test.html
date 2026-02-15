@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jforces Flex Framework Test</title>
+    <link rel="stylesheet" href="./dist/my-framework.css">
+    <style>
+        body {
+            padding: 2rem;
+            background: #f9fafb;
+            font-family: "Inter", "Poppins", "Montserrat", sans-serif;
+        }
+        .demo-section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .demo-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #041301;
+            border-bottom: 2px solid #72b0d7;
+            padding-bottom: 0.5rem;
+        }
+        .demo-item {
+            margin-bottom: 2rem;
+            padding: 2rem;
+            background: #f9fafb;
+            border-radius: 0.25rem;
+            border-left: 4px solid #72b0d7;
+        }
+        .flex-item {
+            padding: 1rem;
+            background: #e5e7eb;
+            border-radius: 0.25rem;
+            text-align: center;
+            font-weight: 500;
+            min-height: 60px;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="heading-bold text-center">Jforces Flex Framework Test</h1>
+    <p class="subheading text-center">Complete flexbox utilities for modern layouts</p>
+
+    <!-- Basic Flex Examples -->
+    <div class="demo-section">
+        <h2 class="demo-title">Basic Flex Layouts</h2>
+        
+        <div class="demo-item">
+            <h3 class="text-heading">Default Flex</h3>
+            <div class="flex">
+                <div class="flex-item bg-ace text-white">Item 1</div>
+                <div class="flex-item bg-beta text-white">Item 2</div>
+                <div class="flex-item bg-gamma text-white">Item 3</div>
+                <div class="flex-item bg-delta text-white">Item 4</div>
+            </div>
+        </div>
+        
+        <div class="demo-item">
+            <h3 class="text-heading">Centered Flex</h3>
+            <div class="flex-center">
+                <div class="flex-item bg-ace text-white">Centered 1</div>
+                <div class="flex-item bg-beta text-white">Centered 2</div>
+                <div class="flex-item bg-gamma text-white">Centered 3</div>
+            </div>
+        </div>
+        
+        <div class="demo-item">
+            <h3 class="text-heading">Space Between Flex</h3>
+            <div class="flex-between">
+                <div class="flex-item bg-ace text-white">Left Item</div>
+                <div class="flex-item bg-beta text-white">Right Item</div>
+            </div>
+        </div>
+        
+        <div class="demo-item">
+            <h3 class="text-heading">Start Aligned Flex</h3>
+            <div class="flex-start">
+                <div class="flex-item bg-ace text-white">Start 1</div>
+                <div class="flex-item bg-beta text-white">Start 2</div>
+                <div class="flex-item bg-gamma text-white">Start 3</div>
+            </div>
+        </div>
+        
+        <div class="demo-item">
+            <h3 class="text-heading">End Aligned Flex</h3>
+             <div class="flex-end">
+                <div class="flex-item width-quarter bg-ace text-white">End 1</div>
+                <div class="flex-item width-quarter bg-beta text-white">End 2</div>
+                <div class="flex-item width-quarter bg-gamma text-white">End 3</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Flex Direction Examples -->
+    <div class="demo-section">
+        <h2 class="demo-title">Flex Direction Control</h2>
+        
+        <div class="demo-item">
+            <h3 class="text-heading">Row Layout (Default)</h3>
+            <div class="flex flex-row">
+                <div class="flex-item bg-ace text-white">Row 1</div>
+                <div class="flex-item bg-beta text-white">Row 2</div>
+                <div class="flex-item bg-gamma text-white">Row 3</div>
+            </div>
+        </div>
+        
+        <div class="demo-item">
+            <h3 class="text-heading">Column Layout</h3>
+            <div class="flex flex-column">
+                <div class="flex-item bg-ace text-white">Column 1</div>
+                <div class="flex-item bg-beta text-white">Column 2</div>
+                <div class="flex-item bg-gamma text-white">Column 3</div>
+            </div>
+        </div>
+        
+        <div class="demo-item">
+            <h3 class="text-heading">Wrapping Flex</h3>
+            <div class="flex flex-wrap">
+                <div class="flex-item bg-ace text-white">Wrap 1</div>
+                <div class="flex-item bg-beta text-white">Wrap 2</div>
+                <div class="flex-item bg-gamma text-white">Wrap 3</div>
+                <div class="flex-item bg-delta text-white">Wrap 4</div>
+                <div class="flex-item bg-ace text-white">Wrap 5</div>
+                <div class="flex-item bg-beta text-white">Wrap 6</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mixed Layout Examples -->
+    <div class="demo-section">
+        <h2 class="demo-title">Mixed Layout Examples</h2>
+        
+        <div class="demo-item">
+            <h3 class="text-heading">Flex + Typography</h3>
+            <div class="flex flex-between">
+                <div class="flex-item bg-ace text-white">
+                    <h4 class="text-bold">Left Section</h4>
+                    <p class="text-small">Left aligned with space between</p>
+                </div>
+                <div class="flex-item bg-beta text-white">
+                    <h4 class="text-bold">Right Section</h4>
+                    <p class="text-small">Right aligned content</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="demo-item">
+            <h3 class="text-heading">Flex + Width Utilities</h3>
+            <div class="flex">
+                <div class="flex-item width-quarter bg-ace text-white">25% Width</div>
+                <div class="flex-item width-half bg-beta text-white">50% Width</div>
+                <div class="flex-item width-quarter bg-gamma text-white">25% Width</div>
+                <div class="flex-item width-half bg-delta text-white">50% Width</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Responsive Examples -->
+    <div class="demo-section">
+        <h2 class="demo-title">Responsive Behavior</h2>
+        <div class="demo-item">
+            <h3 class="text-heading">Desktop: Row → Mobile: Column</h3>
+            <div class="flex flex-row">
+                <div class="flex-item bg-ace text-white">Desktop 1</div>
+                <div class="flex-item bg-beta text-white">Desktop 2</div>
+                <div class="flex-item bg-gamma text-white">Desktop 3</div>
+            </div>
+            <p class="caption text-center space-small">Resize browser to see responsive behavior (row on desktop, column on mobile)</p>
+        </div>
+        
+        <div class="demo-item">
+            <h3 class="text-heading">Flex with Grow</h3>
+            <div class="flex">
+                <div class=" bg-ace text-white">Fixed</div>
+                <div class="flex-item bg-beta text-white grow">Growing Item</div>
+                <div class="flex-item bg-gamma text-white">Fixed</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Advanced Examples -->
+    <div class="demo-section">
+        <h2 class="demo-title">Advanced Combinations</h2>
+        
+        <div class="demo-item">
+            <h3 class="text-heading">Complex Layout</h3>
+            <div class="flex flex-wrap">
+                <div class="flex-item width-quarter bg-ace text-white">Card 1</div>
+                <div class="flex-item width-quarter bg-beta text-white">Card 2</div>
+                <div class="flex-item width-quarter bg-gamma text-white">Card 3</div>
+                <div class="flex-item width-quarter bg-delta text-white">Card 4</div>
+                <div class="flex-item width-full bg-ace text-white">Full Width Card</div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

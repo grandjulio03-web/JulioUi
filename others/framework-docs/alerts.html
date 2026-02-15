@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alerts - JForce Framework</title>
+    <link rel="stylesheet" href="../dist/my-framework.css">
+    <style>
+        body {
+            font-family: "Inter", "Poppins", "Montserrat", sans-serif;
+            padding: 2rem;
+            background: #f9fafb;
+        }
+        .docs-header {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            font-size: 0.875rem;
+        }
+        .breadcrumb a {
+            color: #6b7280;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .breadcrumb a:hover {
+            color: #72b0d7;
+        }
+        .breadcrumb-separator {
+            color: #9ca3af;
+        }
+        .section {
+            margin-bottom: 3rem;
+        }
+        .section-title {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #041301;
+        }
+        .section-desc {
+            color: #6b7280;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        .demo-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .demo-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #041301;
+        }
+        .code-block {
+            background: #1f2937;
+            color: #e2e8f0;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        .usage-section {
+            background: rgba(114, 176, 215, 0.05);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            border-left: 4px solid #72b0d7;
+        }
+        .usage-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #041301;
+        }
+    </style>
+</head>
+<body>
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <a href="../index.html">JForce Framework</a>
+        <span class="breadcrumb-separator">›</span>
+        <a href="#">Alerts</a>
+    </div>
+
+    <!-- Header -->
+    <div class="docs-header">
+        <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem;">🚨 Alerts</h1>
+        <p style="font-size: 1.125rem; color: #6b7280;">Dismissible notification components with theme colors and smooth animations.</p>
+    </div>
+
+    <!-- Overview Section -->
+    <div class="section">
+        <h2 class="section-title">Overview</h2>
+        <p class="section-desc">
+            Alerts are flexible notification components that can display success, error, warning, or informational messages. 
+            They feature dismissible functionality, theme variants, and smooth fade-out animations.
+        </p>
+        
+        <div class="usage-section">
+            <h3 class="usage-title">Basic Usage</h3>
+            <div class="code-block">
+&lt;div class="alert alert-ace"&gt;
+  &lt;span&gt;Your message here&lt;/span&gt;
+  &lt;button class="alert-close"&gt;×&lt;/button&gt;
+&lt;/div&gt;
+            </div>
+        </div>
+    </div>
+
+    <!-- Theme Variants -->
+    <div class="section">
+        <h2 class="section-title">Theme Variants</h2>
+        <p class="section-desc">
+            Alerts support all framework theme colors. Simply change the modifier class to match your design.
+        </p>
+        
+        <div class="demo-grid">
+            <div class="demo-card">
+                <h3 class="demo-title">Alert Ace</h3>
+                <div class="alert alert-ace">
+                    <span>ℹ Information: System update available</span>
+                    <button class="alert-close">×</button>
+                </div>
+                <div class="code-block">alert-ace</div>
+            </div>
+            
+            <div class="demo-card">
+                <h3 class="demo-title">Alert Beta</h3>
+                <div class="alert alert-beta">
+                    <span>✕ Error: Connection failed</span>
+                    <button class="alert-close">×</button>
+                </div>
+                <div class="code-block">alert-beta</div>
+            </div>
+            
+            <div class="demo-card">
+                <h3 class="demo-title">Alert Gamma</h3>
+                <div class="alert alert-gamma">
+                    <span>⚠ Warning: Low disk space</span>
+                    <button class="alert-close">×</button>
+                </div>
+                <div class="code-block">alert-gamma</div>
+            </div>
+            
+            <div class="demo-card">
+                <h3 class="demo-title">Alert Delta</h3>
+                <div class="alert alert-delta">
+                    <span>✓ Success: File uploaded</span>
+                    <button class="alert-close">×</button>
+                </div>
+                <div class="code-block">alert-delta</div>
+            </div>
+            
+            <div class="demo-card">
+                <h3 class="demo-title">Alert Epsilon</h3>
+                <div class="alert alert-epsilon">
+                    <span>ℹ Neutral: Processing request</span>
+                    <button class="alert-close">×</button>
+                </div>
+                <div class="code-block">alert-epsilon</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Structure -->
+    <div class="section">
+        <h2 class="section-title">Component Structure</h2>
+        <p class="section-desc">
+            Alerts use a simple and semantic structure with minimal required classes.
+        </p>
+        
+        <div class="usage-section">
+            <h3 class="usage-title">Required Classes</h3>
+            <ul style="color: #6b7280; line-height: 1.6;">
+                <li><code>.alert</code> - Base container for alert styling</li>
+                <li><code>.alert-{theme}</code> - Theme color (ace, beta, gamma, delta, epsilon)</li>
+                <li><code>.alert-close</code> - Dismissible button functionality</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <div class="section">
+        <h2 class="section-title">JavaScript Behavior</h2>
+        <p class="section-desc">
+            Alerts include automatic dismissible functionality. Click the close button to remove the alert with a smooth fade animation.
+        </p>
+        
+        <div class="usage-section">
+            <h3 class="usage-title">Auto-initialization</h3>
+            <p style="color: #6b7280; margin-bottom: 1rem;">
+                No JavaScript initialization required. All alerts with <code>.alert-close</code> buttons 
+                automatically get dismissible behavior.
+            </p>
+        </div>
+    </div>
+
+    <script src="../dist/my-framework.js"></script>
+</body>
+</html>

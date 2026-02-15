@@ -1,0 +1,379 @@
+﻿document.addEventListener('click', function(e) {
+  const btn = e.target.closest('.accordion-btn');
+  const accordion = e.target.closest('.accordion');
+
+  if (btn && accordion) {
+    e.preventDefault();
+    accordion.classList.toggle('is-open');
+  }
+});
+document.addEventListener('click', function(e) {
+  const closeBtn = e.target.closest('.alert-close');
+  if (closeBtn) {
+    const alert = closeBtn.closest('.alert');
+    if (alert) {
+      alert.remove();
+    }
+  }
+});
+// No JavaScript needed - pure CSS badges
+// All styling handled by CSS classes
+document.addEventListener('click', function(e) {
+  const prevBtn = e.target.closest('.carousel-prev');
+  const nextBtn = e.target.closest('.carousel-next');
+  const dot = e.target.closest('.carousel-dot');
+
+  if (prevBtn || nextBtn || dot) {
+    e.preventDefault();
+    const carousel = e.target.closest('.carousel');
+    if (!carousel) return;
+
+    const track = carousel.querySelector('.carousel-track');
+    const slides = carousel.querySelectorAll('.carousel-slide');
+    const dots = carousel.querySelectorAll('.carousel-dot');
+    
+    if (!track || slides.length === 0) return;
+
+    let currentIndex = Array.from(slides).findIndex(slide => slide.classList.contains('is-active'));
+    if (currentIndex === -1) currentIndex = 0;
+
+    let newIndex = currentIndex;
+
+    if (prevBtn) {
+      newIndex = currentIndex > 0 ? currentIndex - 1 : slides.length - 1;
+    } else if (nextBtn) {
+      newIndex = currentIndex < slides.length - 1 ? currentIndex + 1 : 0;
+    } else if (dot) {
+      newIndex = Array.from(dots).indexOf(dot);
+    }
+
+    // Update track position
+    track.style.transform = `translateX(-${newIndex * 100}%)`;
+
+    // Update active states
+    slides.forEach((slide, i) => {
+      slide.classList.toggle('is-active', i === newIndex);
+    });
+
+    dots.forEach((dot, i) => {
+      dot.classList.toggle('is-active', i === newIndex);
+    });
+  }
+});
+
+// Initialize first slide as active
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelectorAll('.carousel').forEach(carousel => {
+    const firstSlide = carousel.querySelector('.carousel-slide');
+    const firstDot = carousel.querySelector('.carousel-dot');
+    
+    if (firstSlide) firstSlide.classList.add('is-active');
+    if (firstDot) firstDot.classList.add('is-active');
+  });
+});
+document.addEventListener('click', function(e) {
+  const btn = e.target.closest('.dropdown-btn');
+  const dropdown = e.target.closest('.dropdown-menu');
+
+  // Close all dropdowns if clicked outside any dropdown
+  if (!dropdown) {
+    document.querySelectorAll('.dropdown-menu.is-open').forEach(x => x.classList.remove('is-open'));
+    return;
+  }
+
+  // If clicked a button: toggle only this one, close others
+  if (btn) {
+    e.preventDefault();
+    document.querySelectorAll('.dropdown-menu.is-open').forEach(x => { if (x !== dropdown) x.classList.remove('is-open'); });
+    dropdown.classList.toggle('is-open');
+  }
+
+  // Close dropdown when clicking on an item
+  if (e.target.closest('.dropdown-item')) {
+    dropdown.classList.remove('is-open');
+  }
+});
+/* ===================== Jforces Form Framework ===================== */
+
+/**
+ * Auto-adjust form container height based on label transitions
+ * Prevents layout shifts and maintains smooth animations
+ */
+
+class FormLabelManager {
+  constructor() {
+    this.init();
+  }
+
+  init() {
+    // Process all form groups on page load
+    this.processAllFormGroups();
+    
+    // Set up mutation observer for dynamic content
+    this.setupMutationObserver();
+    
+    // Set up resize observer for responsive changes
+    this.setupResizeObserver();
+  }
+
+  processAllFormGroups() {
+    const formGroups = document.querySelectorAll('.group');
+    formGroups.forEach(group => this.processFormGroup(group));
+  }
+
+  processFormGroup(group) {
+    const input = group.querySelector('input, select, textarea');
+    const label = group.querySelector('.label');
+    
+    if (!input || !label) return;
+
+    // Store initial dimensions
+    this.storeInitialDimensions(group, input, label);
+    
+    // Set up event listeners for this specific group
+    this.setupGroupListeners(group, input, label);
+    
+    // Calculate initial height
+    this.calculateGroupHeight(group);
+  }
+
+  storeInitialDimensions(group, input, label) {
+    // Store original height
+    const rect = group.getBoundingClientRect();
+    group.dataset.originalHeight = rect.height;
+    
+    // Store label positions
+    const labelRect = label.getBoundingClientRect();
+    const groupRect = group.getBoundingClientRect();
+    label.dataset.originalTop = labelRect.top - groupRect.top;
+    label.dataset.bottomTop = groupRect.height - labelRect.height + 8; // 8px for margin
+  }
+
+  setupGroupListeners(group, input, label) {
+    // Focus events
+    input.addEventListener('focus', () => this.handleFocus(group, label));
+    input.addEventListener('blur', () => this.handleBlur(group, label));
+    
+    // Input events for placeholder changes
+    input.addEventListener('input', () => this.handleInput(group, label));
+    
+    // Select change events
+    if (input.tagName === 'SELECT') {
+      input.addEventListener('change', () => this.handleInput(group, label));
+    }
+  }
+
+  handleFocus(group, label) {
+    this.transitionLabelToBottom(group, label);
+  }
+
+  handleBlur(group, label) {
+    const input = group.querySelector('input, select, textarea');
+    if (input && !input.value && input.tagName !== 'SELECT') {
+      this.transitionLabelToTop(group, label);
+    } else if (input && input.tagName === 'SELECT' && !input.value) {
+      this.transitionLabelToTop(group, label);
+    }
+  }
+
+  handleInput(group, label) {
+    const input = group.querySelector('input, select, textarea');
+    if (input && (input.value || (input.tagName === 'SELECT' && input.value))) {
+      this.transitionLabelToBottom(group, label);
+    } else {
+      this.transitionLabelToTop(group, label);
+    }
+  }
+
+  transitionLabelToBottom(group, label) {
+    // Calculate target height
+    const inputHeight = parseFloat(getComputedStyle(group.querySelector('input, select, textarea')).height);
+    const labelHeight = parseFloat(getComputedStyle(label).height);
+    const targetHeight = inputHeight + labelHeight + 16; // 16px for margins
+    
+    // Smooth height transition
+    this.animateHeight(group, targetHeight);
+    
+    // Update label position
+    label.style.top = '100%';
+    label.style.marginTop = '0.5rem';
+    label.style.left = '0';
+  }
+
+  transitionLabelToTop(group, label) {
+    // Return to original height
+    const originalHeight = parseFloat(group.dataset.originalHeight);
+    this.animateHeight(group, originalHeight);
+    
+    // Reset label position
+    label.style.top = '0.75rem';
+    label.style.marginTop = '0';
+    label.style.left = '1rem';
+  }
+
+  animateHeight(element, targetHeight) {
+    const startHeight = element.offsetHeight;
+    const duration = 400; // Match CSS transition duration
+    const startTime = performance.now();
+
+    const animate = (currentTime) => {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      
+      // Use easing function matching CSS cubic-bezier(0.4, 0, 0.2, 1)
+      const easeProgress = this.easeOutCubic(progress);
+      
+      const currentHeight = startHeight + (targetHeight - startHeight) * easeProgress;
+      element.style.height = `${currentHeight}px`;
+      element.style.minHeight = `${currentHeight}px`;
+      
+      if (progress < 1) {
+        requestAnimationFrame(animate);
+      } else {
+        // Ensure final height is set correctly
+        element.style.height = `${targetHeight}px`;
+        element.style.minHeight = `${targetHeight}px`;
+      }
+    };
+
+    requestAnimationFrame(animate);
+  }
+
+  easeOutCubic(t) {
+    return 1 - Math.pow(1 - t, 3);
+  }
+
+  calculateGroupHeight(group) {
+    const input = group.querySelector('input, select, textarea');
+    const label = group.querySelector('.label');
+    
+    if (!input || !label) return;
+
+    const inputHeight = parseFloat(getComputedStyle(input).height);
+    const labelHeight = parseFloat(getComputedStyle(label).height);
+    const labelTop = parseFloat(label.style.top) || 0.75;
+    
+    // Check if label is at bottom
+    const isLabelAtBottom = label.style.top === '100%';
+    
+    let targetHeight;
+    if (isLabelAtBottom) {
+      targetHeight = inputHeight + labelHeight + 16; // 16px for margins
+    } else {
+      targetHeight = Math.max(inputHeight, labelTop + labelHeight + 16);
+    }
+    
+    group.style.height = `${targetHeight}px`;
+    group.style.minHeight = `${targetHeight}px`;
+  }
+
+  setupMutationObserver() {
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        if (mutation.type === 'childList') {
+          mutation.addedNodes.forEach((node) => {
+            if (node.nodeType === Node.ELEMENT_NODE) {
+              if (node.classList && node.classList.contains('group')) {
+                this.processFormGroup(node);
+              } else {
+                // Check for form groups within added nodes
+                const formGroups = node.querySelectorAll && node.querySelectorAll('.group');
+                if (formGroups) {
+                  formGroups.forEach(group => this.processFormGroup(group));
+                }
+              }
+            }
+          });
+        }
+      });
+    });
+
+    observer.observe(document.body, {
+      childList: true,
+      subtree: true
+    });
+  }
+
+  setupResizeObserver() {
+    const resizeObserver = new ResizeObserver(() => {
+      this.processAllFormGroups();
+    });
+
+    // Observe all form groups
+    document.querySelectorAll('.group').forEach(group => {
+      resizeObserver.observe(group);
+    });
+  }
+}
+
+// Auto-initialize when DOM is ready
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', () => {
+    new FormLabelManager();
+  });
+} else {
+  new FormLabelManager();
+}
+
+// Export for manual initialization if needed
+window.FormLabelManager = FormLabelManager;
+document.addEventListener('click', function(e) {
+  const openBtn = e.target.closest('[data-modal-open]');
+  const closeBtn = e.target.closest('.modal-close');
+  const modal = e.target.closest('.modal');
+
+  if (openBtn) {
+    e.preventDefault();
+    const modalId = openBtn.getAttribute('data-modal-open');
+    const modalEl = document.getElementById(modalId);
+    if (modalEl) {
+      modalEl.classList.add('is-open');
+    }
+  }
+
+  if (closeBtn || (modal && e.target === modal)) {
+    modal.classList.remove('is-open');
+  }
+});
+document.addEventListener('click', function(e) {
+  const btn = e.target.closest('.pagination-btn');
+  if (btn && !btn.disabled) {
+    const pagination = btn.closest('.pagination');
+    if (!pagination) return;
+
+    const currentPage = parseInt(btn.getAttribute('data-page')) || 1;
+    const allBtns = pagination.querySelectorAll('.pagination-btn');
+    
+    allBtns.forEach(b => b.classList.remove('is-active'));
+    btn.classList.add('is-active');
+    
+    // Custom event for page change
+    const event = new CustomEvent('pagechange', {
+      detail: { page: currentPage, button: btn }
+    });
+    pagination.dispatchEvent(event);
+  }
+});
+document.addEventListener('click', function(e) {
+  const tabBtn = e.target.closest('.tab-btn');
+  if (tabBtn) {
+    e.preventDefault();
+    const tabs = tabBtn.closest('.tabs');
+    if (!tabs) return;
+
+    const tabId = tabBtn.getAttribute('data-tab');
+    const allBtns = tabs.querySelectorAll('.tab-btn');
+    const allContents = tabs.querySelectorAll('.tab-content');
+
+    allBtns.forEach(btn => btn.classList.remove('is-active'));
+    allContents.forEach(content => content.classList.remove('is-active'));
+
+    tabBtn.classList.add('is-active');
+    const targetContent = tabs.querySelector(`#${tabId}`);
+    if (targetContent) {
+      targetContent.classList.add('is-active');
+    }
+  }
+});
+// No JavaScript needed - pure CSS tooltips
+// All functionality handled by CSS hover states

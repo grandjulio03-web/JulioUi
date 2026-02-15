@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jforces Card Image Framework Test</title>
+    <link rel="stylesheet" href="./dist/my-framework.css">
+    <style>
+        body {
+            padding: 2rem;
+            background: #f9fafb;
+            font-family: "Inter", "Poppins", "Montserrat", sans-serif;
+        }
+        .demo-section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .demo-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #041301;
+            border-bottom: 2px solid #72b0d7;
+            padding-bottom: 0.5rem;
+        }
+        .demo-item {
+            margin-bottom: 2rem;
+            padding: 2rem;
+            background: #f9fafb;
+            border-radius: 0.25rem;
+            border-left: 4px solid #72b0d7;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="heading-bold text-center">Jforces Card Image Framework</h1>
+    <p class="subheading text-center">Modern cards with images and overlays</p>
+
+    <!-- Basic Image Cards -->
+    <div class="demo-section">
+        <h2 class="demo-title">Basic Image Cards</h2>
+        
+        <div class="demo-item">
+            <h3 class="text-heading">Card with Top Image</h3>
+            <div class="grid grid-3">
+                <div class="card">
+                    <div class="card-img-container">
+                        <img src="https://picsum.photos/seed/card1/400/200.jpg" alt="Mountain landscape">
+                    </div>
+                    <div class="card-header">Mountain View</div>
+                    <div class="card-body">
+                        <p class="text-small">Beautiful mountain landscape with clear blue sky and green valleys.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-img-container">
+                        <img src="https://picsum.photos/seed/card2/400/200.jpg" alt="Ocean view">
+                    </div>
+                    <div class="card-header">Ocean Paradise</div>
+                    <div class="card-body">
+                        <p class="text-small">Crystal clear ocean waters with sandy beaches and palm trees.</p>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-img-container">
+                        <img src="https://picsum.photos/seed/card3/400/200.jpg" alt="Forest scene">
+                    </div>
+                    <div class="card-header">Forest Adventure</div>
+                    <div class="card-body">
+                        <p class="text-small">Dense forest with tall trees and natural hiking trails.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Overlay Cards -->
+    <div class="demo-section">
+        <h2 class="demo-title">Card Overlays</h2>
+        
+        <div class="demo-item">
+            <h3 class="text-heading">Centered Overlay</h3>
+            <div class="grid grid-3">
+                <div class="card-img">
+                    <img src="https://picsum.photos/seed/overlay1/400/300.jpg" alt="City skyline">
+                    <div class="card-overlay card-overlay-center">
+                        <h4 class="text-bold">City Life</h4>
+                        <p class="text-small">Urban exploration</p>
+                    </div>
+                </div>
+                
+                <div class="card-img">
+                    <img src="https://picsum.photos/seed/overlay2/400/300.jpg" alt="Desert landscape">
+                    <div class="card-overlay card-overlay-center">
+                        <h4 class="text-bold">Desert Dreams</h4>
+                        <p class="text-small">Golden sand dunes</p>
+                    </div>
+                </div>
+                
+                <div class="card-img">
+                    <img src="https://picsum.photos/seed/overlay3/400/300.jpg" alt="Snow mountains">
+                    <div class="card-overlay card-overlay-center">
+                        <h4 class="text-bold">Winter Wonderland</h4>
+                        <p class="text-small">Snowy peaks</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="demo-item">
+            <h3 class="text-heading">Bottom Overlay</h3>
+            <div class="grid grid-2">
+                <div class="card-img">
+                    <img src="https://picsum.photos/seed/bottom1/600/400.jpg" alt="Beach sunset">
+                    <div class="card-overlay card-overlay-bottom">
+                        <h4 class="text-bold">Sunset Beach</h4>
+                        <p class="text-small">Golden hour by the ocean</p>
+                    </div>
+                </div>
+                
+                <div class="card-img">
+                    <img src="https://picsum.photos/seed/bottom2/600/400.jpg" alt="Mountain lake">
+                    <div class="card-overlay card-overlay-bottom">
+                        <h4 class="text-bold">Alpine Lake</h4>
+                        <p class="text-small">Crystal clear mountain waters</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="demo-item">
+            <h3 class="text-heading">Top Overlay</h3>
+            <div class="grid grid-2">
+                <div class="card-img">
+                    <img src="https://picsum.photos/seed/top1/600/400.jpg" alt="Forest path">
+                    <div class="card-overlay card-overlay-top">
+                        <h4 class="text-bold">Forest Path</h4>
+                        <p class="text-small">Nature's trail</p>
+                    </div>
+                </div>
+                
+                <div class="card-img">
+                    <img src="https://picsum.photos/seed/top2/600/400.jpg" alt="River valley">
+                    <div class="card-overlay card-overlay-top">
+                        <h4 class="text-bold">River Valley</h4>
+                        <p class="text-small">Flowing waters</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mixed Layout Examples -->
+    <div class="demo-section">
+        <h2 class="demo-title">Mixed Layout Examples</h2>
+        
+        <div class="demo-item">
+            <h3 class="text-heading">Card with Image + Color</h3>
+            <div class="grid grid-2">
+                <div class="card card-ace">
+                    <div class="card-img-container">
+                        <img src="https://picsum.photos/seed/mixed1/400/200.jpg" alt="Adventure">
+                    </div>
+                    <div class="card-header">Adventure Card</div>
+                    <div class="card-body">
+                        <p class="text-small">Blue themed card with image and content</p>
+                    </div>
+                </div>
+                
+                <div class="card card-beta">
+                    <div class="card-img-container">
+                        <img src="https://picsum.photos/seed/mixed2/400/200.jpg" alt="Exploration">
+                    </div>
+                    <div class="card-header">Exploration Card</div>
+                    <div class="card-body">
+                        <p class="text-small">Pink themed card with image and content</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="demo-item">
+            <h3 class="text-heading">Gradient Cards with Images</h3>
+            <div class="grid grid-2">
+                <div class="card card-grad-ace-beta">
+                    <div class="card-img-container">
+                        <img src="https://picsum.photos/seed/grad1/400/200.jpg" alt="Gradient image">
+                    </div>
+                    <div class="card-header">Gradient Adventure</div>
+                    <div class="card-body">
+                        <p class="text-small">Blue to pink gradient with image</p>
+                    </div>
+                </div>
+                
+                <div class="card card-grad-gamma-delta">
+                    <div class="card-img-container">
+                        <img src="https://picsum.photos/seed/grad2/400/200.jpg" alt="Gradient image">
+                    </div>
+                    <div class="card-header">Gradient Journey</div>
+                    <div class="card-body">
+                        <p class="text-small">Orange to green gradient with image</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Standalone Images -->
+    <div class="demo-section">
+        <h2 class="demo-title">Standalone Images</h2>
+        
+        <div class="demo-item">
+            <h3 class="text-heading">Simple Image Cards</h3>
+            <div class="grid grid-4">
+                <div class="card-img">
+                    <img src="https://picsum.photos/seed/stand1/300/300.jpg" alt="Nature">
+                </div>
+                <div class="card-img">
+                    <img src="https://picsum.photos/seed/stand2/300/300.jpg" alt="Landscape">
+                </div>
+                <div class="card-img">
+                    <img src="https://picsum.photos/seed/stand3/300/300.jpg" alt="Scenery">
+                </div>
+                <div class="card-img">
+                    <img src="https://picsum.photos/seed/stand4/300/300.jpg" alt="View">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interactive Examples -->
+    <div class="demo-section">
+        <h2 class="demo-title">Interactive Examples</h2>
+        
+        <div class="demo-item">
+            <h3 class="text-heading">Card with Buttons and Overlay</h3>
+            <div class="grid grid-2">
+                <div class="card">
+                    <div class="card-img-container">
+                        <img src="https://picsum.photos/seed/interactive1/400/200.jpg" alt="Interactive card">
+                        <div class="card-overlay card-overlay-bottom">
+                            <h4 class="text-bold">Interactive Design</h4>
+                            <p class="text-small space-small">Modern card with overlay and buttons</p>
+                            <div class="flex-center space-small">
+                                <button class="jf-btn gamma">Learn More</button>
+                                <button class="jf-btn-outline ace">View Details</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="card">
+                    <div class="card-img-container">
+                        <img src="https://picsum.photos/seed/interactive2/400/200.jpg" alt="Interactive card">
+                    </div>
+                    <div class="card-header">Action Card</div>
+                    <div class="card-body">
+                        <p class="text-small space-small">Card with image and action buttons below</p>
+                        <div class="flex-between">
+                            <button class="jf-btn beta">Primary Action</button>
+                            <button class="jf-btn-outline delta">Secondary</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

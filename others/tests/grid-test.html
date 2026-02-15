@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jforces Grid Test</title>
+    <link rel="stylesheet" href="./dist/my-framework.css">
+    <style>
+        body {
+            padding: 2rem;
+            background: #f9fafb;
+            font-family: "Inter", "Poppins", "Montserrat", sans-serif;
+        }
+        .demo-section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .demo-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #041301;
+            border-bottom: 2px solid #72b0d7;
+            padding-bottom: 0.5rem;
+        }
+        .demo-item {
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: #f9fafb;
+            border-radius: 0.25rem;
+            border-left: 4px solid #72b0d7;
+        }
+        .grid-item {
+            padding: 1rem;
+            background: #e5e7eb;
+            border-radius: 0.25rem;
+            text-align: center;
+            font-weight: 500;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="heading-bold text-center">Jforces Grid Framework Test</h1>
+    <p class="subheading text-center">Simple, responsive grid utilities for modern layouts</p>
+
+    <!-- Basic Grid Examples -->
+    <div class="demo-section">
+        <h2 class="demo-title">Basic Grid Layouts</h2>
+        
+        <div class="demo-item">
+            <h3 class="text-heading">2 Column Grid</h3>
+            <div class="grid grid-2">
+                <div class="grid-item bg-ace text-white">
+                    <p class="text-left text-large">Column 1</p>
+                    <div class="flex-center">
+                        <button class="jf-btn jf-btn-glow">btn 1</button>
+                        <button class="jf-btn jf-btn-glow delta">btn 2</button>
+                    </div>
+                </div>
+                <div class="grid-item bg-beta text-white">
+                    <p class="text-right">Column 2</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="demo-item">
+            <h3 class="text-heading">3 Column Grid</h3>
+            <div class="grid grid-3">
+                <div class="grid-item bg-gamma text-white">Column 1</div>
+                <div class="grid-item bg-delta text-white">Column 2</div>
+                <div class="grid-item bg-ace text-white">Column 3</div>
+            </div>
+        </div>
+        
+        <div class="demo-item">
+            <h3 class="text-heading">4 Column Grid</h3>
+            <div class="grid grid-4">
+                <div class="grid-item bg-beta text-white">Col 1</div>
+                <div class="grid-item bg-gamma text-white">Col 2</div>
+                <div class="grid-item bg-delta text-white">Col 3</div>
+                <div class="grid-item bg-ace text-white">Col 4</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Display Utilities -->
+    <div class="demo-section">
+        <h2 class="demo-title">Display Utilities</h2>
+        
+        <div class="demo-item">
+            <h3 class="text-heading">Display States</h3>
+            <div class="space-medium">
+                <div class="display-block bg-ace text-white space-small">Block Element</div>
+                <div class="display-inline-block bg-beta text-white space-small">Inline Block Element</div>
+                <div class="display-inline bg-gamma text-white space-small">Inline Element</div>
+                <div class="display-none">Hidden Element (not visible)</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mixed Grid Examples -->
+    <div class="demo-section">
+        <h2 class="demo-title">Mixed Layout Examples</h2>
+        
+        <div class="demo-item">
+            <h3 class="text-heading">Grid + Typography</h3>
+            <div class="grid grid-3">
+                <div class="grid-item">
+                    <h4 class="text-bold text-ace">Feature 1</h4>
+                    <p class="text-small">Responsive grid layout</p>
+                </div>
+                <div class="grid-item">
+                    <h4 class="text-bold text-beta">Feature 2</h4>
+                    <p class="text-small">Automatic mobile stacking</p>
+                </div>
+                <div class="grid-item">
+                    <h4 class="text-bold text-gamma">Feature 3</h4>
+                    <p class="text-small">Simple class names</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="demo-item">
+            <h3 class="text-heading">Card Grid Layout</h3>
+            <div class="grid grid-3">
+                <div class="jf-card grid-item bg-ace">
+                    <div class="jf-card-header">Card 1</div>
+                    <div class="jf-card-body">
+                        <p class="body-text">Grid-based card layout with responsive behavior.</p>
+                    </div>
+                </div>
+                <div class="jf-card grid-item bg-beta">
+                    <div class="jf-card-header">Card 2</div>
+                    <div class="jf-card-body">
+                        <p class="body-text">Automatically stacks on mobile devices.</p>
+                    </div>
+                </div>
+                <div class="jf-card grid-item bg-gamma">
+                    <div class="jf-card-header">Card 3</div>
+                    <div class="jf-card-body">
+                        <p class="body-text">Third card with different color.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Responsive Testing -->
+    <div class="demo-section">
+        <h2 class="demo-title">Responsive Behavior</h2>
+        
+        <div class="demo-item">
+            <h3 class="text-heading">Desktop: 4 Columns → Mobile: 1 Column</h3>
+            <div class="grid grid-4">
+                <div class="grid-item bg-ace text-white">1</div>
+                <div class="grid-item bg-beta text-white">2</div>
+                <div class="grid-item bg-gamma text-white">3</div>
+                <div class="grid-item bg-delta text-white">4</div>
+            </div>
+            <p class="caption text-center space-small">Resize browser window to see responsive behavior</p>
+        </div>
+        
+        <div class="demo-item">
+            <h3 class="text-heading">Desktop: 3 Columns → Mobile: 1 Column</h3>
+            <div class="grid grid-3">
+                <div class="grid-item bg-beta text-white">A</div>
+                <div class="grid-item bg-gamma text-white">B</div>
+                <div class="grid-item bg-delta text-white">C</div>
+            </div>
+            <p class="caption text-center space-small">All grids become single column on mobile (≤768px)</p>
+        </div>
+    </div>
+
+    <!-- Grid + Flex Combination -->
+    <div class="demo-section">
+        <h2 class="demo-title">Grid + Flex Combinations</h2>
+        
+        <div class="demo-item">
+            <h3 class="text-heading">Grid Layout with Flex Content</h3>
+            <div class="grid grid-2">
+              <div class="grid-item space-large">
+  <h4 class="text-bold text-center">Forced left</h4>  <!-- Explicit left -->
+  <div class="flex">
+    <button class="jf-btn jf-btn-glow delta">Centered content</button>
+  </div>
+</div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

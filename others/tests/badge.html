@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Badge Test - JForce Framework</title>
+    <link rel="stylesheet" href="../dist/my-framework.css">
+    <style>
+        body {
+            font-family: "Inter", "Poppins", "Montserrat", sans-serif;
+            padding: 2rem;
+            background: #f9fafb;
+        }
+        .demo-section {
+            margin-bottom: 2rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .demo-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #041301;
+        }
+        .demo-desc {
+            color: #6b7280;
+            margin-bottom: 1.5rem;
+        }
+        .user-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .user-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            padding: 1rem;
+            border: 1px solid #e5e7eb;
+            border-radius: 0.5rem;
+        }
+        .status-group {
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+        }
+    </style>
+</head>
+<body>
+    <h1>Badge Component Test</h1>
+
+    <div class="demo-section">
+        <div class="demo-title">Theme Badges</div>
+        <div class="demo-desc">Artistic gradient badges with framework colors</div>
+        
+        <div class="status-group">
+            <span class="badge badge-ace">New</span>
+            <span class="badge badge-beta">Alert</span>
+            <span class="badge badge-gamma">Pending</span>
+            <span class="badge badge-delta">Active</span>
+            <span class="badge badge-epsilon">Archived</span>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <div class="demo-title">Badge Sizes</div>
+        <div class="demo-desc">Small, default, and large badge variants</div>
+        
+        <div class="status-group">
+            <span class="badge badge-sm badge-ace">Tiny</span>
+            <span class="badge badge-beta">Default</span>
+            <span class="badge badge-lg badge-delta">Large</span>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <div class="demo-title">Badge with Dots</div>
+        <div class="demo-desc">Badges with status dot indicators</div>
+        
+        <div class="status-group">
+            <span class="badge badge-dot badge-ace">Online</span>
+            <span class="badge badge-dot badge-gamma">Away</span>
+            <span class="badge badge-dot badge-beta">Busy</span>
+            <span class="badge badge-dot badge-epsilon">Offline</span>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <div class="demo-title">Real-world Usage</div>
+        <div class="demo-desc">Badges in user interface context</div>
+        
+        <div class="user-list">
+            <div class="user-item">
+                <div>
+                    <div style="font-weight: 600;">John Doe</div>
+                    <div style="color: #6b7280; font-size: 0.875rem;">john@example.com</div>
+                </div>
+                <span class="badge badge-delta">Active</span>
+            </div>
+            
+            <div class="user-item">
+                <div>
+                    <div style="font-weight: 600;">Jane Smith</div>
+                    <div style="color: #6b7280; font-size: 0.875rem;">jane@example.com</div>
+                </div>
+                <span class="badge badge-gamma">Pending</span>
+            </div>
+            
+            <div class="user-item">
+                <div>
+                    <div style="font-weight: 600;">Bob Wilson</div>
+                    <div style="color: #6b7280; font-size: 0.875rem;">bob@example.com</div>
+                </div>
+                <span class="badge badge-epsilon">Inactive</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <div class="demo-title">Minimal Structure</div>
+        <div class="demo-desc">Simple HTML structure for badges</div>
+        
+        <pre style="background: #f5f5f5; padding: 1rem; border-radius: 0.25rem; overflow-x: auto;">
+&lt;!-- Basic badge --&gt;
+&lt;span class="badge badge-ace"&gt;New&lt;/span&gt;
+
+&lt;!-- With size --&gt;
+&lt;span class="badge badge-sm badge-beta"&gt;Tiny&lt;/span&gt;
+
+&lt;!-- With dot --&gt;
+&lt;span class="badge badge-dot badge-delta"&gt;Online&lt;/span&gt;</pre>
+    </div>
+
+    <script src="../dist/my-framework.js"></script>
+</body>
+</html>

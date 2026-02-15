@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spacing Test - Jforces Framework</title>
+    <link rel="stylesheet" href="./dist/my-framework.css">
+    <style>
+        body {
+            font-family: "Inter", "Poppins", "Montserrat", sans-serif;
+            background: #f8f9fa;
+            padding: 2rem;
+        }
+        .test-box {
+            background: #72b0d7;
+            color: white;
+            border-radius: 0.5rem;
+            font-weight: 600;
+            text-align: center;
+            min-width: 120px;
+            margin-bottom: 0.5rem;
+        }
+        .demo-section {
+            background: white;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .demo-item {
+            background: #f8f9fa;
+            padding: 1rem;
+            border-radius: 0.25rem;
+            border: 2px solid #e5e7eb;
+        }
+        .demo-item code {
+            background: #e5e7eb;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-size: 0.875rem;
+            color: #d94f8b;
+        }
+        .spacing-info {
+            background: #f0f9ff;
+            border: 2px solid #72b0d7;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            margin-bottom: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-heading mb-2">🎯 Spacing Utilities Test</h1>
+        
+        <div class="spacing-info">
+            <h3 class="text-normal mb-1">⚠️ CSS Class Name Limitation</h3>
+            <p><strong>Issue:</strong> CSS doesn't allow dots (.) in class names like <code>pt-1.2</code></p>
+            <p><strong>Solution:</strong> Using underscores instead: <code>pt-1_2</code></p>
+            <p><strong>Available:</strong> 0.5, 0.75, 1, 1.25, 1.5, 1.75, 2, 2.25, 2.5</p>
+        </div>
+
+        <!-- Margin Tests -->
+        <div class="demo-section">
+            <h2 class="text-heading mb-1">📏 Margin Tests</h2>
+            <div class="demo-grid">
+                <div class="demo-item">
+                    <h4>Top Margin</h4>
+                    <div class="test-box mt-0_5">mt-0_5 (8px)</div>
+                    <div class="test-box mt-1">mt-1 (16px)</div>
+                    <div class="test-box mt-1_5">mt-1_5 (24px)</div>
+                    <div class="test-box mt-2">mt-2 (32px)</div>
+                    <div class="test-box mt-2_5">mt-2_5 (40px)</div>
+                </div>
+                
+                <div class="demo-item">
+                    <h4>Bottom Margin</h4>
+                    <div class="test-box mb-0_5">mb-0_5 (8px)</div>
+                    <div class="test-box mb-1">mb-1 (16px)</div>
+                    <div class="test-box mb-1_5">mb-1_5 (24px)</div>
+                    <div class="test-box mb-2">mb-2 (32px)</div>
+                    <div class="test-box mb-2_5">mb-2_5 (40px)</div>
+                </div>
+                
+                <div class="demo-item">
+                    <h4>Left/Right Margin</h4>
+                    <div class="test-box mx-0_5">mx-0_5 (8px)</div>
+                    <div class="test-box mx-1">mx-1 (16px)</div>
+                    <div class="test-box mx-1_5">mx-1_5 (24px)</div>
+                    <div class="test-box mx-2">mx-2 (32px)</div>
+                    <div class="test-box mx-2_5">mx-2_5 (40px)</div>
+                </div>
+                
+                <div class="demo-item">
+                    <h4>Top/Bottom Margin</h4>
+                    <div class="test-box my-0_5">my-0_5 (8px)</div>
+                    <div class="test-box my-1">my-1 (16px)</div>
+                    <div class="test-box my-1_5">my-1_5 (24px)</div>
+                    <div class="test-box my-2">my-2 (32px)</div>
+                    <div class="test-box my-2_5">my-2_5 (40px)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Padding Tests -->
+        <div class="demo-section">
+            <h2 class="text-heading mb-1">🎨 Padding Tests</h2>
+            <div class="demo-grid">
+                <div class="demo-item">
+                    <h4>Top Padding</h4>
+                    <div class="test-box pt-0_5">pt-0_5 (8px)</div>
+                    <div class="test-box pt-1">pt-1 (16px)</div>
+                    <div class="test-box pt-1_5">pt-1_5 (24px)</div>
+                    <div class="test-box pt-2">pt-2 (32px)</div>
+                    <div class="test-box pt-2_5">pt-2_5 (40px)</div>
+                </div>
+                
+                <div class="demo-item">
+                    <h4>Bottom Padding</h4>
+                    <div class="test-box pb-0_5">pb-0_5 (8px)</div>
+                    <div class="test-box pb-1">pb-1 (16px)</div>
+                    <div class="test-box pb-1_5">pb-1_5 (24px)</div>
+                    <div class="test-box pb-2">pb-2 (32px)</div>
+                    <div class="test-box pb-2_5">pb-2_5 (40px)</div>
+                </div>
+                
+                <div class="demo-item">
+                    <h4>Left/Right Padding</h4>
+                    <div class="test-box px-0_5">px-0_5 (8px)</div>
+                    <div class="test-box px-1">px-1 (16px)</div>
+                    <div class="test-box px-1_5">px-1_5 (24px)</div>
+                    <div class="test-box px-2">px-2 (32px)</div>
+                    <div class="test-box px-2_5">px-2_5 (40px)</div>
+                </div>
+                
+                <div class="demo-item">
+                    <h4>Top/Bottom Padding</h4>
+                    <div class="test-box py-0_5">py-0_5 (8px)</div>
+                    <div class="test-box py-1">py-1 (16px)</div>
+                    <div class="test-box py-1_5">py-1_5 (24px)</div>
+                    <div class="test-box py-2">py-2 (32px)</div>
+                    <div class="test-box py-2_5">py-2_5 (40px)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Combined Tests -->
+        <div class="demo-section">
+            <h2 class="text-heading mb-1">🔧 Combined Spacing</h2>
+            <div class="demo-grid">
+                <div class="demo-item">
+                    <h4>Mixed Spacing</h4>
+                    <div class="test-box mt-1 mb-2">mt-1 mb-2</div>
+                    <div class="test-box ml-1 mr-2">ml-1 mr-2</div>
+                    <div class="test-box pt-0_5 pb-1">pt-0_5 pb-1</div>
+                    <div class="test-box pl-1 pr-1_5">pl-1 pr-1_5</div>
+                </div>
+                
+                <div class="demo-item">
+                    <h4>Precision Spacing</h4>
+                    <div class="test-box mt-0_75">mt-0_75 (12px)</div>
+                    <div class="test-box mb-1_25">mb-1_25 (20px)</div>
+                    <div class="test-box px-1_75">px-1_75 (28px)</div>
+                    <div class="test-box py-2_25">py-2_25 (36px)</div>
+                </div>
+                
+                <div class="demo-item">
+                    <h4>Complex Combinations</h4>
+                    <div class="test-box mt-1_5 mb-1 px-2">Complex</div>
+                    <div class="test-box my-1 mx-1_5">my-1 mx-1_5</div>
+                    <div class="test-box pt-1 pb-0_5">pt-1 pb-0_5</div>
+                    <div class="test-box pl-0_75 pr-1_25">pl-0_75 pr-1_25</div>
+                </div>
+                
+                <div class="demo-item">
+                    <h4>Responsive Test</h4>
+                    <div class="test-box mt-2_5">mt-2_5 (responsive)</div>
+                    <div class="test-box px-2_5">px-2_5 (responsive)</div>
+                    <div class="test-box my-2_5">my-2_5 (responsive)</div>
+                    <div class="test-box py-2_5">py-2_5 (responsive)</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Instructions -->
+        <div class="demo-section">
+            <h2 class="text-heading mb-1">📖 How to Use</h2>
+            <div class="demo-grid">
+                <div class="demo-item">
+                    <h4>Basic Usage</h4>
+                    <code>&lt;div class="mt-1"&gt;Top margin 16px&lt;/div&gt;</code><br>
+                    <code>&lt;div class="px-2_5"&gt;Horizontal padding 40px&lt;/div&gt;</code>
+                </div>
+                
+                <div class="demo-item">
+                    <h4>Available Values</h4>
+                    <p><strong>Decimal:</strong> 0_5, 0_75, 1_25, 1_5, 1_75, 2_25, 2_5</p>
+                    <p><strong>Whole:</strong> 1, 2</p>
+                    <p><strong>Range:</strong> 0.5rem to 2.5rem (8px to 40px)</p>
+                </div>
+                
+                <div class="demo-item">
+                    <h4>Directions</h4>
+                    <p><strong>Margin:</strong> mt, mr, mb, ml, mx, my</p>
+                    <p><strong>Padding:</strong> pt, pr, pb, pl, px, py</p>
+                </div>
+                
+                <div class="demo-item">
+                    <h4>Responsive</h4>
+                    <p><strong>Tablet:</strong> Scale down 25%</p>
+                    <p><strong>Mobile:</strong> Scale down 50%</p>
+                    <p><strong>Auto:</strong> No extra classes needed</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Add resize indicator for responsive testing
+        function updateSizeIndicator() {
+            const width = window.innerWidth;
+            let device = 'Desktop';
+            if (width <= 480) device = 'Mobile';
+            else if (width <= 768) device = 'Tablet';
+            
+            if (!document.getElementById('size-indicator')) {
+                const indicator = document.createElement('div');
+                indicator.id = 'size-indicator';
+                indicator.style.cssText = `
+                    position: fixed;
+                    top: 10px;
+                    right: 10px;
+                    background: #72b0d7;
+                    color: white;
+                    padding: 0.5rem 1rem;
+                    border-radius: 0.25rem;
+                    font-weight: 600;
+                    z-index: 1000;
+                `;
+                document.body.appendChild(indicator);
+            }
+            
+            document.getElementById('size-indicator').textContent = `${device} (${width}px)`;
+        }
+        
+        updateSizeIndicator();
+        window.addEventListener('resize', updateSizeIndicator);
+    </script>
+</body>
+</html>

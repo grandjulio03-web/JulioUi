@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Padding Debug</title>
+    <link rel="stylesheet" href="./dist/my-framework.css">
+    <style>
+        .test-box {
+            border: 2px solid red;
+            background: yellow;
+            min-height: 60px;
+            margin-bottom: 20px;
+            display: flex;
+            justify-content: center;
+        }
+        .inline-padding {
+            padding-top: 20px !important;
+        }
+    </style>
+</head>
+<body>
+    <h1>Padding Debug Test</h1>
+    
+    <h3>Box 1: No padding (baseline)</h3>
+    <div class="test-box no-padding">No padding - text at top</div>
+    
+    <h3>Box 2: Inline padding-top: 20px</h3>
+    <div class="test-box inline-padding">Inline padding - text should be 20px from top</div>
+    
+    <h3>Box 3: pt-1 class (should be 10px)</h3>
+    <div class="test-box pt-1">pt-1 class - text should be 10px from top</div>
+    
+    <h3>Box 4: pt-2 class (should be 18px)</h3>
+    <div class="test-box pt-2">pt-2 class - text should be 18px from top</div>
+    
+    <h3>Box 5: pt-3 class (should be 28px)</h3>
+    <div class="test-box pt-3">pt-3 class - text should be 28px from top</div>
+    
+    <h3>Box 6: py-2 class (should be 18px top/bottom)</h3>
+    <div class="test-box py-2">py-2 class - text should be 18px from top and bottom</div>
+    
+    <script>
+        console.log('=== PADDING DEBUG ===');
+        
+        const boxes = document.querySelectorAll('.test-box');
+        boxes.forEach((box, index) => {
+            const styles = window.getComputedStyle(box);
+            console.log(`Box ${index + 1} (${box.className}):`, {
+                paddingTop: styles.paddingTop,
+                paddingBottom: styles.paddingBottom,
+                paddingLeft: styles.paddingLeft,
+                paddingRight: styles.paddingRight
+            });
+        });
+        
+        // Check if CSS file has padding classes
+        fetch('./dist/my-framework.css')
+            .then(response => response.text())
+            .then(css => {
+                console.log('CSS has .pt-1:', css.includes('.pt-1 {'));
+                console.log('CSS has .pt-2:', css.includes('.pt-2 {'));
+                console.log('CSS has .pt-3:', css.includes('.pt-3 {'));
+            });
+    </script>
+</body>
+</html>

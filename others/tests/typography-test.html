@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jforces Typography Test</title>
+    <link rel="stylesheet" href="./dist/my-framework.css">
+    <style>
+        body {
+            padding: 2rem;
+            background: #f9fafb;
+            font-family: "Inter", "Poppins", "Montserrat", sans-serif;
+        }
+        .demo-section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .demo-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #041301;
+            border-bottom: 2px solid #72b0d7;
+            padding-bottom: 0.5rem;
+        }
+        .demo-item {
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: #f9fafb;
+            border-radius: 0.25rem;
+            border-left: 4px solid #72b0d7;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="heading-bold">Jforces Typography Framework Test</h1>
+    <p class="text-center subheading">Simple, clean typography patterns for modern web design</p>
+
+    <!-- Font Sizes Section -->
+    <div class="demo-section">
+        <h2 class="demo-title">Font Sizes</h2>
+        
+        <div class="demo-item">
+            <p class="text-small">This is text-small (0.875rem) - Perfect for captions and meta information</p>
+        </div>
+        
+        <div class="demo-item">
+            <p class="text-normal">This is text-normal (1rem) - Standard body text size</p>
+        </div>
+        
+        <div class="demo-item">
+            <p class="text-large">This is text-large (1.25rem) - Great for subheadings and emphasis</p>
+        </div>
+        
+        <div class="demo-item">
+            <p class="text-heading">This is text-heading (1.5rem, 700 weight) - Perfect for section headings</p>
+        </div>
+    </div>
+
+    <!-- Font Weights Section -->
+    <div class="demo-section">
+        <h2 class="demo-title">Font Weights</h2>
+        
+        <div class="demo-item">
+            <p class="text-light">This is text-light (300 weight) - Elegant and subtle</p>
+        </div>
+        
+        <div class="demo-item">
+            <p class="text-regular">This is text-regular (400 weight) - Standard readability</p>
+        </div>
+        
+        <div class="demo-item">
+            <p class="text-bold">This is text-bold (700 weight) - Strong emphasis</p>
+        </div>
+    </div>
+
+    <!-- Text Alignment Section -->
+    <div class="demo-section">
+        <h2 class="demo-title">Text Alignment</h2>
+        
+        <div class="demo-item">
+            <p class="text-left">This is default left-aligned text - The natural reading flow</p>
+        </div>
+        
+        <div class="demo-item">
+            <p class="text-center">This is center-aligned text - Perfect for quotes and callouts</p>
+        </div>
+        
+        <div class="demo-item">
+            <p class="text-right">This is right-aligned text - Good for timestamps and metadata</p>
+        </div>
+    </div>
+
+    <!-- Combined Typography Classes -->
+    <div class="demo-section">
+        <h2 class="demo-title">Combined Typography Classes</h2>
+        
+        <div class="demo-item">
+            <h3 class="heading-light text-center">Light Heading (1.5rem, 300 weight, centered)</h3>
+            <p class="body-text">This is body-text (1rem, 400 weight, 1.5 line-height) - Perfect for paragraphs and longer content. Provides excellent readability with comfortable spacing.</p>
+        </div>
+        
+        <div class="demo-item">
+            <h3 class="heading-bold">Bold Heading (2rem, 700 weight, centered)</h3>
+            <p class="subheading">This is subheading (1.125rem, 500 weight, gray color) - Great for section introductions</p>
+            <p class="caption">This is caption (0.75rem, 400 weight, gray color) - Ideal for image captions, footnotes, and metadata</p>
+        </div>
+    </div>
+
+    <!-- Color Integration Section -->
+    <div class="demo-section">
+        <h2 class="demo-title">Typography with Color Classes</h2>
+        
+        <div class="demo-item">
+            <h3 class="text-heading text-ace">Ace Color Heading</h3>
+            <p class="text-normal text-beta">Beta color text for secondary content</p>
+            <p class="text-small text-delta">Delta color small text for accents</p>
+        </div>
+        
+        <div class="demo-item">
+            <h3 class="text-heading text-gamma">Gamma Color Heading</h3>
+            <p class="text-normal text-epsilon">Epsilon color text for dark content</p>
+        </div>
+    </div>
+
+    <!-- Real-world Examples -->
+    <div class="demo-section">
+        <h2 class="demo-title">Real-world Examples</h2>
+        
+        <div class="demo-item">
+            <h3 class="heading-bold">Article Title</h3>
+            <p class="subheading">A compelling subtitle that draws readers in</p>
+            <p class="body-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. This demonstrates how body-text provides excellent readability for longer content.</p>
+            <p class="caption">Published on January 15, 2024 • 5 min read</p>
+        </div>
+        
+        <div class="demo-item">
+            <h3 class="heading-light text-center">Quote Example</h3>
+            <p class="text-large text-center text-ace" style="font-style: italic;">"Simplicity is the ultimate sophistication." - Leonardo da Vinci</p>
+            <p class="caption text-center">A perfect example of centered typography with color emphasis</p>
+        </div>
+    </div>
+
+    <!-- Button Integration -->
+    <div class="demo-section">
+        <h2 class="demo-title">Typography with Buttons</h2>
+        
+        <div class="demo-item text-center">
+            <h3 class="text-heading">Call-to-Action Section</h3>
+            <p class="body-text" style="max-width: 600px; margin: 1rem auto;">Clean typography combined with our button system creates compelling user interfaces.</p>
+            <button class="jf-btn ace">Primary Action</button>
+            <button class="jf-btn-outline beta">Secondary Action</button>
+        </div>
+    </div>
+
+    <!-- Simple Utilities Section -->
+    <div class="demo-section">
+        <h2 class="demo-title">Simple Utilities in Action</h2>
+        
+        <div class="demo-item">
+            <h3 class="text-heading">Spacing Utilities</h3>
+            <div class="space-small">
+                <p class="text-small">This content has space-small margin (0.5rem)</p>
+            </div>
+            <div class="space-medium">
+                <p class="text-normal">This content has space-medium margin (1rem)</p>
+            </div>
+            <div class="space-large">
+                <p class="text-large">This content has space-large margin (2rem)</p>
+            </div>
+        </div>
+        
+        <div class="demo-item">
+            <h3 class="text-heading">Flex Utilities</h3>
+            <div class="flex-center bg-ace" style="padding: 1rem; border-radius: 0.25rem; margin-bottom: 1rem;">
+                <p class="text-normal text-white">This is flex-center - perfectly centered content</p>
+            </div>
+            <div class="flex-between bg-beta" style="padding: 1rem; border-radius: 0.25rem;">
+                <p class="text-normal text-white">Left item</p>
+                <p class="text-normal text-white">center item</p>
+                <p class="text-normal text-white">Right item</p>
+            </div>
+        </div>
+        
+        <div class="demo-item">
+            <h3 class="text-heading">Width Utilities</h3>
+            <div class="width-full bg-gamma" style="padding: 1rem; border-radius: 0.25rem; margin-bottom: 1rem;">
+                <p class="text-normal text-white">This is width-full (100% width)</p>
+            </div>
+            <div class="flex">
+                <div class="width-quarter bg-ace"><p class="text-normal">hello</p></div>
+                <div class="width-half bg-beta"><p class="text-normal">hello</p></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Combined Examples -->
+    <div class="demo-section">
+        <h2 class="demo-title">Combined Typography + Utilities</h2>
+        
+        <div class="demo-item">
+            <div class="flex-center space-large">
+                <div class="width-half">
+                    <h3 class="heading-bold text-ace">Card Layout Example</h3>
+                    <p class="body-text space-small">Using flex-center for alignment, width-half for sizing, and space-small for internal spacing.</p>
+                    <div class="flex space-medium">
+                        <button class="jf-btn gamma">Accept</button>
+                        <button class="jf-btn-outline delta">Decline</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="demo-item">
+            <div class="flex space-large">
+                <div class="width-half">
+                    <h3 class="heading-light text-beta">Two Column Layout</h3>
+                    <p class="subheading">Left column content with proper spacing</p>
+                </div>
+                <div class="width-half">
+                    <h3 class="heading-light text-gamma">Right Column</h3>
+                    <p class="subheading">Right column with matching spacing</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

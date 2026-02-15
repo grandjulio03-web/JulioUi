@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rib Navbar - Fold</title>
+  <link rel="stylesheet" href="../dist/my-framework.css" />
+  <script src="../dist/my-framework.js" defer></script>
+</head>
+<body class="rib-demo">
+  <div class="rib-demo-page">
+    <h1 style="margin: 0 0 8px 0;">Rib Navbar: Fold</h1>
+    <div class="rib-demo-hint">Resize below 768px and use the toggle. Press Esc to close.</div>
+
+    <div class="rib-demo-box">
+      <nav class="rib rib-fold" data-open="false">
+        <div class="rib-bar">
+          <a class="rib-brand" href="#">
+            <span class="rib-mark"></span>
+            <span>Jforce</span>
+          </a>
+
+          <div class="rib-rail">
+            <a class="rib-link" href="#">Home</a>
+            <a class="rib-link" href="#">Docs</a>
+            <a class="rib-link" href="#">Play</a>
+            <a class="rib-link" href="#">Pricing</a>
+          </div>
+
+          <div class="rib-act">
+            <button class="jf-btn jf-btn-glow ace" type="button">Login</button>
+            <button class="jf-btn jf-btn-glow ace rib-cta" type="button">Start</button>
+          </div>
+
+          <button class="rib-tog" type="button" aria-controls="ribFoldPanel" aria-expanded="false"></button>
+        </div>
+
+        <div class="rib-panel" id="ribFoldPanel">
+          <div class="rib-stack">
+            <a class="rib-link" href="#">Home</a>
+            <a class="rib-link" href="#">Docs</a>
+            <a class="rib-link" href="#">Play</a>
+            <a class="rib-link" href="#">Pricing</a>
+            <button class="rib-btn" type="button">Login</button>
+            <button class="rib-btn rib-cta" type="button">Start</button>
+          </div>
+        </div>
+      </nav>
+
+      <!-- Fold: classic top bar. On mobile it folds into a clean stacked panel under the bar. -->
+      <div class="rib-demo-pad">
+        <div class="rib-demo-hint"><b>Fold</b> keeps everything familiar: top bar on desktop, simple fold-down stack on mobile.</div>
+        <div class="rib-demo-fake"></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

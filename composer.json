@@ -1,0 +1,8 @@
+{
+  "name": "yourname/my-framework",
+  "description": "Custom front-end framework starter kit",
+  "type": "library",
+  "autoload": {
+    "files": ["dist/my-framework.min.css"]
+  }
+}

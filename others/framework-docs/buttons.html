@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buttons - JForce Framework</title>
+    <link rel="stylesheet" href="../dist/my-framework.css">
+    <style>
+        body {
+            font-family: "Inter", "Poppins", "Montserrat", sans-serif;
+            padding: 2rem;
+            background: #f9fafb;
+        }
+        .docs-header {
+            background: white;
+            padding: 2rem;
+            border-radius: 1rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            font-size: 0.875rem;
+        }
+        .breadcrumb a {
+            color: #6b7280;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        .breadcrumb a:hover {
+            color: #72b0d7;
+        }
+        .breadcrumb-separator {
+            color: #9ca3af;
+        }
+        .section {
+            margin-bottom: 3rem;
+        }
+        .section-title {
+            font-size: 2rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #041301;
+        }
+        .section-desc {
+            color: #6b7280;
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+        .demo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+        .demo-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .demo-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: #041301;
+        }
+        .code-block {
+            background: #1f2937;
+            color: #e2e8f0;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            font-family: 'Courier New', monospace;
+            overflow-x: auto;
+            margin: 1rem 0;
+        }
+        .usage-section {
+            background: rgba(255, 143, 75, 0.05);
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            border-left: 4px solid #FF8F4B;
+        }
+        .usage-title {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: #041301;
+        }
+        .btn-group {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <!-- Breadcrumb -->
+    <div class="breadcrumb">
+        <a href="../index.html">JForce Framework</a>
+        <span class="breadcrumb-separator">›</span>
+        <a href="#">Buttons</a>
+    </div>
+
+    <!-- Header -->
+    <div class="docs-header">
+        <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem;">🔘 Buttons</h1>
+        <p style="font-size: 1.125rem; color: #6b7280;">Styled button components with theme colors and hover effects.</p>
+    </div>
+
+    <!-- Overview Section -->
+    <div class="section">
+        <h2 class="section-title">Overview</h2>
+        <p class="section-desc">
+            Buttons are interactive elements with smooth hover transitions, theme color support, and multiple size options. 
+            Perfect for forms, navigation, and action triggers.
+        </p>
+        
+        <div class="usage-section">
+            <h3 class="usage-title">Basic Usage</h3>
+            <div class="code-block">
+&lt;button class="btn"&gt;Default Button&lt;/button&gt;
+&lt;button class="btn btn-primary"&gt;Primary Button&lt;/button&gt;
+&lt;button class="btn btn-ace"&gt;Themed Button&lt;/button&gt;
+            </div>
+        </div>
+    </div>
+
+    <!-- Button Variants -->
+    <div class="section">
+        <h2 class="section-title">Button Variants</h2>
+        <p class="section-desc">
+            Multiple button styles for different use cases and visual hierarchy.
+        </p>
+        
+        <div class="demo-grid">
+            <div class="demo-card">
+                <h3 class="demo-title">Default Button</h3>
+                <div class="btn-group">
+                    <button class="btn">Default</button>
+                    <button class="btn">Cancel</button>
+                    <button class="btn">Close</button>
+                </div>
+                <div class="code-block">btn</div>
+            </div>
+            
+            <div class="demo-card">
+                <h3 class="demo-title">Primary Button</h3>
+                <div class="btn-group">
+                    <button class="btn btn-primary">Submit</button>
+                    <button class="btn btn-primary">Save</button>
+                    <button class="btn btn-primary">Continue</button>
+                </div>
+                <div class="code-block">btn-primary</div>
+            </div>
+            
+            <div class="demo-card">
+                <h3 class="demo-title">Themed Buttons</h3>
+                <div class="btn-group">
+                    <button class="btn btn-ace">Ace Theme</button>
+                    <button class="btn btn-beta">Beta Theme</button>
+                    <button class="btn btn-gamma">Gamma Theme</button>
+                    <button class="btn btn-delta">Delta Theme</button>
+                </div>
+                <div class="code-block">btn-{theme}</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Button Sizes -->
+    <div class="section">
+        <h2 class="section-title">Button Sizes</h2>
+        <p class="section-desc">
+            Different button sizes for various UI contexts and importance levels.
+        </p>
+        
+        <div class="demo-grid">
+            <div class="demo-card">
+                <h3 class="demo-title">Small Buttons</h3>
+                <div class="btn-group">
+                    <button class="btn btn-sm">Small</button>
+                    <button class="btn btn-primary btn-sm">Primary Small</button>
+                    <button class="btn btn-ace btn-sm">Ace Small</button>
+                </div>
+                <div class="code-block">btn-sm</div>
+            </div>
+            
+            <div class="demo-card">
+                <h3 class="demo-title">Default Size</h3>
+                <div class="btn-group">
+                    <button class="btn">Default</button>
+                    <button class="btn btn-primary">Primary</button>
+                    <button class="btn btn-ace">Ace</button>
+                </div>
+                <div class="code-block">btn (default size)</div>
+            </div>
+            
+            <div class="demo-card">
+                <h3 class="demo-title">Large Buttons</h3>
+                <div class="btn-group">
+                    <button class="btn btn-lg">Large</button>
+                    <button class="btn btn-primary btn-lg">Primary Large</button>
+                    <button class="btn btn-ace btn-lg">Ace Large</button>
+                </div>
+                <div class="code-block">btn-lg</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Special Effects -->
+    <div class="section">
+        <h2 class="section-title">Special Effects</h2>
+        <p class="section-desc">
+            Buttons with special visual effects for enhanced user experience.
+        </p>
+        
+        <div class="demo-grid">
+            <div class="demo-card">
+                <h3 class="demo-title">Glass Effect</h3>
+                <div class="btn-group">
+                    <button class="btn btn-glass">Glass Button</button>
+                    <button class="btn btn-primary btn-glass">Glass Primary</button>
+                </div>
+                <div class="code-block">btn-glass</div>
+            </div>
+            
+            <div class="demo-card">
+                <h3 class="demo-title">Neon Effect</h3>
+                <div class="btn-group">
+                    <button class="btn btn-neon">Neon Button</button>
+                    <button class="btn btn-primary btn-neon">Neon Primary</button>
+                </div>
+                <div class="code-block">btn-neon</div>
+            </div>
+            
+            <div class="demo-card">
+                <h3 class="demo-title">Soft Effect</h3>
+                <div class="btn-group">
+                    <button class="btn btn-soft">Soft Button</button>
+                    <button class="btn btn-primary btn-soft">Soft Primary</button>
+                </div>
+                <div class="code-block">btn-soft</div>
+            </div>
+            
+            <div class="demo-card">
+                <h3 class="demo-title">Flat Effect</h3>
+                <div class="btn-group">
+                    <button class="btn btn-flat">Flat Button</button>
+                    <button class="btn btn-primary btn-flat">Flat Primary</button>
+                </div>
+                <div class="code-block">btn-flat</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Button States -->
+    <div class="section">
+        <h2 class="section-title">Button States</h2>
+        <p class="section-desc">
+            Different button states for various interaction scenarios.
+        </p>
+        
+        <div class="demo-grid">
+            <div class="demo-card">
+                <h3 class="demo-title">Disabled State</h3>
+                <div class="btn-group">
+                    <button class="btn" disabled>Disabled</button>
+                    <button class="btn btn-primary" disabled>Disabled Primary</button>
+                    <button class="btn btn-ace" disabled>Disabled Ace</button>
+                </div>
+                <div class="code-block">disabled attribute</div>
+            </div>
+            
+            <div class="demo-card">
+                <h3 class="demo-title">Loading State</h3>
+                <div class="btn-group">
+                    <button class="btn" disabled>Loading...</button>
+                    <button class="btn btn-primary" disabled>Processing...</button>
+                </div>
+                <div class="code-block">disabled + loading text</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../dist/my-framework.js"></script>
+</body>
+</html>

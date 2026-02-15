@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Debug Padding</title>
+    <link rel="stylesheet" href="./dist/my-framework.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 20px;
+        }
+        .debug-box {
+            background: red;
+            color: white;
+            width: 200px;
+            height: 50px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .with-padding {
+            padding-top: 2rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>Debug Padding Test</h1>
+    
+    <h3>Box 1: No padding (baseline)</h3>
+    <div class="debug-box no-padding">No padding</div>
+    
+    <h3>Box 2: Direct CSS padding-top: 2rem</h3>
+    <div class="debug-box with-padding">Direct CSS</div>
+    
+    <h3>Box 3: Using pt-2_5 utility class</h3>
+    <div class="debug-box pt-2_5">pt-2_5 class</div>
+    
+    <h3>Box 4: Using pt-1 utility class</h3>
+    <div class="debug-box pt-1">pt-1 class</div>
+    
+    <h3>Box 5: Using px-2 utility class</h3>
+    <div class="debug-box px-2">px-2 class</div>
+    
+    <script>
+        // Check if CSS is loaded
+        console.log('CSS loaded');
+        
+        // Test computed styles
+        const boxes = document.querySelectorAll('.debug-box');
+        boxes.forEach((box, index) => {
+            const styles = window.getComputedStyle(box);
+            console.log(`Box ${index + 1}:`, {
+                paddingTop: styles.paddingTop,
+                paddingLeft: styles.paddingLeft,
+                paddingRight: styles.paddingRight,
+                paddingBottom: styles.paddingBottom
+            });
+        });
+    </script>
+</body>
+</html>

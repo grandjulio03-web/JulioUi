@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dropdown Test - JForce Framework</title>
+    <link rel="stylesheet" href="dist/my-framework.css">
+    <style>
+        body {
+            font-family: "Inter", "Poppins", "Montserrat", sans-serif;
+            padding: 2rem;
+            background: #f9fafb;
+        }
+        .demo-section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .demo-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #041301;
+        }
+        .demo-desc {
+            color: #6b7280;
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>Dropdown Components Test</h1>
+
+    <div class="demo-section">
+        <div class="demo-title">Dropdown Menu</div>
+        <div class="demo-desc">Standard dropdown with button style and dropdown icon</div>
+        
+        <div class="dropdown-menu">
+            <button class="dropdown-btn" type="button">Menu</button>
+            <div class="dropdown-content">
+                <a class="dropdown-item" href="#">Profile</a>
+                <a class="dropdown-item" href="#">Settings</a>
+                <a class="dropdown-item" href="#">Logout</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <div class="demo-title">Dropdown Link</div>
+        <div class="demo-desc">Link-style dropdown with underline and dropdown icon</div>
+        
+        <div class="dropdown-menu dropdown-link">
+            <button class="dropdown-btn" type="button">Options</button>
+            <div class="dropdown-content">
+                <a class="dropdown-item" href="#">Edit</a>
+                <a class="dropdown-item" href="#">Delete</a>
+                <a class="dropdown-item" href="#">Share</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <div class="demo-title">Multiple Dropdowns</div>
+        <div class="demo-desc">Test that only one dropdown opens at a time</div>
+        
+        <div class="dropdown-menu" style="margin-right: 1rem;">
+            <button class="dropdown-btn" type="button">First Menu</button>
+            <div class="dropdown-content">
+                <a class="dropdown-item" href="#">Item 1</a>
+                <a class="dropdown-item" href="#">Item 2</a>
+            </div>
+        </div>
+
+        <div class="dropdown-menu">
+            <button class="dropdown-btn" type="button">Second Menu</button>
+            <div class="dropdown-content">
+                <a class="dropdown-item" href="#">Option A</a>
+                <a class="dropdown-item" href="#">Option B</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="dist/my-framework.js"></script>
+</body>
+</html>

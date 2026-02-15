@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jforces Simple Card Framework Test</title>
+    <link rel="stylesheet" href="./dist/my-framework.css">
+    <style>
+        body {
+            padding: 2rem;
+            background: #f9fafb;
+            font-family: "Inter", "Poppins", "Montserrat", sans-serif;
+        }
+        .demo-section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        .demo-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: #041301;
+            border-bottom: 2px solid #72b0d7;
+            padding-bottom: 0.5rem;
+        }
+        .demo-item {
+            margin-bottom: 2rem;
+            padding: 2rem;
+            background: #f9fafb;
+            border-radius: 0.25rem;
+            border-left: 4px solid #72b0d7;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="heading-bold text-center">Jforces Simple Card Framework</h1>
+    <p class="subheading text-center">Clean, modern cards with hover effects and gradients</p>
+
+    <!-- Basic Card Examples -->
+    <div class="demo-section">
+        <h2 class="demo-title">Basic Card Layouts</h2>
+        
+        <div class="demo-item">
+            <h3 class="text-heading">Simple Card</h3>
+            <div class="card">
+                <div class="card-header">Basic Card</div>
+                <div class="card-body">
+                    <p class="body-text">Clean white card with subtle shadow and hover effect.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="demo-item">
+            <h3 class="text-heading">Card with Typography</h3>
+            <div class="card">
+                <div class="card-header">Typography Card</div>
+                <div class="card-body">
+                    <h4 class="text-bold text-ace">Feature Title</h4>
+                    <p class="text-normal">Using typography classes within cards for clean hierarchy.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Color Variants -->
+    <div class="demo-section">
+        <h2 class="demo-title">Color Variants</h2>
+        
+        <div class="demo-item">
+            <h3 class="text-heading">Solid Color Cards</h3>
+            <div class="grid grid-4">
+                <div class="card card-ace">
+                    <div class="card-header">Ace Card</div>
+                    <div class="card-body">
+                        <p class="text-small">Sunrise blue background</p>
+                    </div>
+                </div>
+                <div class="card card-beta">
+                    <div class="card-header">Beta Card</div>
+                    <div class="card-body">
+                        <p class="text-small">Coralwood pink background</p>
+                    </div>
+                </div>
+                <div class="card card-gamma">
+                    <div class="card-header">Gamma Card</div>
+                    <div class="card-body">
+                        <p class="text-small">Clementine orange background</p>
+                    </div>
+                </div>
+                <div class="card card-delta">
+                    <div class="card-header">Delta Card</div>
+                    <div class="card-body">
+                        <p class="text-small">Meadowmist green background</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="demo-item">
+            <h3 class="text-heading">Gradient Cards</h3>
+            <div class="grid grid-2">
+                <div class="card card-grad-ace-beta">
+                    <div class="card-header">Ace→Beta</div>
+                    <div class="card-body">
+                        <p class="text-small">Blue to pink gradient</p>
+                    </div>
+                </div>
+                <div class="card card-grad-gamma-delta">
+                    <div class="card-header">Gamma→Delta</div>
+                    <div class="card-body">
+                        <p class="text-small">Orange to green gradient</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Interactive Cards -->
+    <div class="demo-section">
+        <h2 class="demo-title">Interactive Cards</h2>
+        
+        <div class="demo-item">
+            <h3 class="text-heading">Card with Buttons</h3>
+            <div class="card">
+                <div class="card-header">Action Card</div>
+                <div class="card-body">
+                    <p class="body-text space-small">Cards work perfectly with button utilities.</p>
+                    <div class="flex-between space-medium">
+                        <button class="jf-btn gamma">Primary</button>
+                        <button class="jf-btn-outline delta">Secondary</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="demo-item">
+            <h3 class="text-heading">Card Grid Layout</h3>
+            <div class="grid grid-3">
+                <div class="card card-ace">
+                    <div class="card-header">
+                        <p class="text-epsilon">Card One</p>
+                    </div>
+                    <div class="card-body">
+                        <p class="text-small text-right">Responsive grid of cards</p>
+                    </div>
+                </div>
+                <div class="card card-beta flex-grow">
+                    <div class="card-header">Card Two</div>
+                    <div class="card-body">
+                        <p class="text-small">Automatic mobile stacking</p>
+                    </div>
+                </div>
+                <div class="card card-gamma flex-grow">
+                    <div class="card-header">Card Three</div>
+                    <div class="card-body">
+                        <p class="text-small">Clean hover effects</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Mixed Layout Examples -->
+    <div class="demo-section">
+        <h2 class="demo-title">Mixed Layout Examples</h2>
+        
+        <div class="demo-item">
+            <h3 class="text-heading">Card Layout with Flex</h3>
+            <div class="card">
+                <div class="card-header">Flex Controlled Card</div>
+                <div class="card-body">
+                    <div class="flex-end space-small">
+                        <div class="width-half">
+                            <h4 class="text-bold text-ace">Left Section</h4>
+                            <p class="text-small">Left aligned content</p>
+                        </div>
+                        <div class="flex-end">
+                            <button class="jf-btn gamma">Right Aligned</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="demo-item">
+            <h3 class="text-heading">Responsive Card Gallery</h3>
+            <div class="flex flex-wrap">
+                <div class="card card-ace flex-grow">
+                    <div class="card-header">Desktop</div>
+                    <div class="card-body">
+                        <p class="text-small">2 columns on desktop</p>
+                    </div>
+                </div>
+                <div class="card card-beta flex-grow">
+                    <div class="card-header">Tablet</div>
+                    <div class="card-body">
+                        <p class="text-small">2 columns on tablet</p>
+                    </div>
+                </div>
+            </div>
+            <p class="caption text-center space-large">Resize browser to see responsive behavior</p>
+        </div>
+    </div>
+
+    <!-- Hover Effects Demo -->
+    <div class="demo-section">
+        <h2 class="demo-title">Hover Effects</h2>
+        <div class="demo-item">
+            <p class="body-text">Hover over any card to see the smooth lift effect and enhanced shadow. All cards have consistent 0.3s ease transitions.</p>
+            <div class="grid grid-3">
+                <div class="card card-ace">
+                    <div class="card-header">Hover Me</div>
+                    <div class="card-body">
+                        <p class="text-small">Smooth lift animation</p>
+                    </div>
+                </div>
+                <div class="card card-beta">
+                    <div class="card-header">And Me</div>
+                    <div class="card-body">
+                        <p class="text-small">Enhanced shadow effect</p>
+                    </div>
+                </div>
+                <div class="card flex-end">
+                    <div class="card-header">Try Me Too</div>
+                    <div class="card-body">
+                        <p class="text-small ">All cards interactive</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>

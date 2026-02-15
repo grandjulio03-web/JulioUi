@@ -1,0 +1,367 @@
+/* ===================== Jforces Buttons ===================== */
+.jf-btn,
+.jf-btn-outline,
+.jf-btn-flat,
+.jf-btn-glow {
+  border-radius: 0.25rem;
+  padding: 0.5rem 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  border: none;
+  font-family: "Inter", "Poppins", "Montserrat", sans-serif;
+}
+
+/* Solid Buttons */
+.jf-btn.ace { background-color: #72b0d7; color: #fff; }
+.jf-btn.beta { background-color: #d94f8b; color: #fff; }
+.jf-btn.gamma { background-color: #FF8F4B; color: #fff; }
+.jf-btn.delta { background-color: #6DC9A7; color: #fff; }
+.jf-btn.epsilon { background-color: #041301; color: #fff; }
+
+/* Outline Buttons */
+.jf-btn-outline.ace { background: transparent; border: 2px solid #72b0d7; color: #72b0d7; }
+.jf-btn-outline.beta { background: transparent; border: 2px solid #d94f8b; color: #d94f8b; }
+.jf-btn-outline.gamma { background: transparent; border: 2px solid #FF8F4B; color: #FF8F4B; }
+.jf-btn-outline.delta { background: transparent; border: 2px solid #6DC9A7; color: #6DC9A7; }
+.jf-btn-outline.epsilon { background: transparent; border: 2px solid #041301; color: #041301; }
+
+/* Flat Buttons */
+.jf-btn-flat.ace { background: #72b0d7; color: #fff; box-shadow: none; }
+.jf-btn-flat.beta { background: #d94f8b; color: #fff; box-shadow: none; }
+.jf-btn-flat.gamma { background: #FF8F4B; color: #fff; box-shadow: none; }
+.jf-btn-flat.delta { background: #6DC9A7; color: #fff; box-shadow: none; }
+.jf-btn-flat.epsilon { background: #041301; color: #fff; box-shadow: none; }
+
+/* Glow Buttons */
+.jf-btn-glow.ace { background: #72b0d7; color: #fff; box-shadow: 0 0 8px rgba(114,176,215,0.6); }
+.jf-btn-glow.beta { background: #d94f8b; color: #fff; box-shadow: 0 0 8px rgba(217,79,139,0.6); }
+.jf-btn-glow.gamma { background: #FF8F4B; color: #fff; box-shadow: 0 0 8px rgba(255,143,75,0.6); }
+.jf-btn-glow.delta { background: #6DC9A7; color: #fff; box-shadow: 0 0 8px rgba(109,201,167,0.6); }
+.jf-btn-glow.epsilon { background: #041301; color: #fff; box-shadow: 0 0 8px rgba(4,19,1,0.6); }
+
+/* Hover effect for all buttons */
+.jf-btn:hover,
+.jf-btn-outline:hover,
+.jf-btn-flat:hover,
+.jf-btn-glow:hover {
+  transform: scale(1.02);
+  opacity: 0.9;
+}
+
+/* ===================== Jforces Text ===================== */
+body {
+  font-family: "Inter", "Poppins", "Montserrat", sans-serif;
+  color: #041301;
+}
+.jf-heading { font-family: "Merriweather", serif; }
+
+/* Text color utilities */
+.text-ace { color: #72b0d7; }
+.text-beta { color: #d94f8b; }
+.text-gamma { color: #FF8F4B; }
+.text-delta { color: #6DC9A7; }
+.text-epsilon { color: #041301; }
+.text-dark { color: #222; }
+.text-light { color: #f5f5f5; }
+.text-muted { color: #888; }
+
+/* Links */
+.text-link {
+  position: relative;
+  color: #72b0d7;
+  text-decoration: none;
+  transition: color 0.35s ease;
+}
+.text-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -2px;
+  width: 0%;
+  height: 2px;
+  background-color: currentColor;
+  transition: width 0.35s ease;
+}
+.text-link:hover { color: #d94f8b; }
+.text-link:hover::after { width: 100%; }
+
+/* ===================== Jforces Wrapper (fluid) ===================== */
+.jf-wrapper {
+  position: relative;
+  width: 40%;
+  max-width: 50%;
+  transition: all 0.4s ease;
+  margin-bottom: 1.5rem;
+  
+}
+
+/* ===================== Inputs ===================== */
+.jf-field,
+.jf-select,
+.jf-range,
+.jf-file,
+.jf-radio,
+.jf-search {
+  width: 100%;
+  font-size: 1rem;
+  padding: 0.6rem 1rem;
+  border-radius: 0.35rem;
+  transition: all 0.5s ease;
+  position: relative;
+  color: #041301;
+  background: #fff;
+}
+
+/* Floating labels */
+.jf-wrapper .jf-label {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  font-size: 1rem;
+  color: #888;
+  pointer-events: none;
+  background-color: #fff;
+  padding: 0 0.25rem;
+  transition: all 0.3s ease;
+}
+.jf-wrapper .jf-field:focus + .jf-label,
+.jf-wrapper .jf-field:not(:placeholder-shown) + .jf-label,
+.jf-wrapper .jf-select:focus + .jf-label,
+.jf-wrapper .jf-select:not([value=""]) + .jf-label {
+  top: -0.6rem;
+  font-size: 0.8rem;
+  color: var(--ace);
+}
+
+/* ===================== Cards ===================== */
+.jf-card {
+  position: relative;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.06);
+  transition: transform 0.4s ease, box-shadow 0.4s ease, background 0.4s ease;
+  width: 300px;
+  margin: 1rem auto;
+  color: inherit;
+}
+.jf-card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12), 0 4px 12px rgba(114,176,215,0.35);
+}
+
+/* ===================== Badges ===================== */
+.jf-badge {
+  position: absolute;
+  top: 0.5rem;
+  left: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.5rem;
+  z-index: 3;
+  pointer-events: none;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  transition: all 0.4s ease;
+  color: inherit;
+}
+/* ===================== Jforces Sections ===================== */
+
+/* Normal Section - no shadow */
+.jf-section {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;   /* optional max width */
+  margin: 2rem auto;   
+  padding: 2rem 1rem;  
+  background-color: #fff;
+  border-radius: 0.75rem;
+  transition: all 0.4s ease;
+  color: #041301;
+}
+
+/* Section with shadow variant */
+.jf-section-shadow {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;   
+  margin: 2rem auto;   
+  padding: 2rem 1rem;  
+  background-color: #fff;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08), 0 2px 6px rgba(0,0,0,0.06);
+  transition: all .5s ease;
+}
+
+/* Hover shadow for .jf-section-shadow */
+.jf-section-shadow:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.12), 0 4px 12px rgba(114,176,215,0.2);
+}
+
+/* Section header */
+.jf-section-header {
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: inherit;
+  font-family: "Merriweather", serif;
+}
+
+/* Section subheader */
+.jf-section-subheader {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  color: #555;
+}
+
+/* Section content wrapper */
+.jf-section-content {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+
+ .bg-grad-ace-beta-1 { background: linear-gradient(135deg, rgba(114,176,215,0.1), rgba(217,79,139,0.1)); } 
+ .bg-grad-ace-beta-2 { background: linear-gradient(135deg, rgba(114,176,215,0.2), rgba(217,79,139,0.2)); } 
+ .bg-grad-ace-beta-3 { background: linear-gradient(135deg, rgba(114,176,215,0.3), rgba(217,79,139,0.3)); }
+ .bg-grad-ace-beta-4 { background: linear-gradient(135deg, rgba(114,176,215,0.4), rgba(217,79,139,0.4)); }
+ .bg-grad-ace-beta-5 { background: linear-gradient(135deg, rgba(114,176,215,0.5), rgba(217,79,139,0.5)); } 
+ .bg-grad-ace-beta-6 { background: linear-gradient(135deg, rgba(114,176,215,0.6), rgba(217,79,139,0.6)); }
+ .bg-grad-ace-beta-7 { background: linear-gradient(135deg, rgba(114,176,215,0.7), rgba(217,79,139,0.7)); }
+ .bg-grad-ace-beta-8 { background: linear-gradient(135deg, rgba(114,176,215,0.8), rgba(217,79,139,0.8)); } 
+ .bg-grad-ace-beta-9 { background: linear-gradient(135deg, rgba(114,176,215,0.9), rgba(217,79,139,0.9)); } 
+ .bg-grad-ace-beta-10 { background: linear-gradient(135deg, rgba(114,176,215,1), rgba(217,79,139,1)); }
+  /* Beta → Gamma */
+   .bg-grad-beta-gamma-1 { background: linear-gradient(135deg, rgba(217,79,139,0.1), rgba(255,143,75,0.1)); } .bg-grad-beta-gamma-2 { background: linear-gradient(135deg, rgba(217,79,139,0.2), rgba(255,143,75,0.2)); } .bg-grad-beta-gamma-3 { background: linear-gradient(135deg, rgba(217,79,139,0.3), rgba(255,143,75,0.3)); } .bg-grad-beta-gamma-4 { background: linear-gradient(135deg, rgba(217,79,139,0.4), rgba(255,143,75,0.4)); } .bg-grad-beta-gamma-5 { background: linear-gradient(135deg, rgba(217,79,139,0.5), rgba(255,143,75,0.5)); } .bg-grad-beta-gamma-6 { background: linear-gradient(135deg, rgba(217,79,139,0.6), rgba(255,143,75,0.6)); } .bg-grad-beta-gamma-7 { background: linear-gradient(135deg, rgba(217,79,139,0.7), rgba(255,143,75,0.7)); } .bg-grad-beta-gamma-8 { background: linear-gradient(135deg, rgba(217,79,139,0.8), rgba(255,143,75,0.8)); } .bg-grad-beta-gamma-9 { background: linear-gradient(135deg, rgba(217,79,139,0.9), rgba(255,143,75,0.9)); } .bg-grad-beta-gamma-10 { background: linear-gradient(135deg, rgba(217,79,139,1), rgba(255,143,75,1)); } /* Gamma → Delta */ .bg-grad-gamma-delta-1 { background: linear-gradient(135deg, rgba(255,143,75,0.1), rgba(109,201,167,0.1)); } .bg-grad-gamma-delta-2 { background: linear-gradient(135deg, rgba(255,143,75,0.2), rgba(109,201,167,0.2)); } .bg-grad-gamma-delta-3 { background: linear-gradient(135deg, rgba(255,143,75,0.3), rgba(109,201,167,0.3)); } .bg-grad-gamma-delta-4 { background: linear-gradient(135deg, rgba(255,143,75,0.4), rgba(109,201,167,0.4)); } .bg-grad-gamma-delta-5 { background: linear-gradient(135deg, rgba(255,143,75,0.5), rgba(109,201,167,0.5)); } .bg-grad-gamma-delta-6 { background: linear-gradient(135deg, rgba(255,143,75,0.6), rgba(109,201,167,0.6)); } .bg-grad-gamma-delta-7 { background: linear-gradient(135deg, rgba(255,143,75,0.7), rgba(109,201,167,0.7)); } .bg-grad-gamma-delta-8 { background: linear-gradient(135deg, rgba(255,143,75,0.8), rgba(109,201,167,0.8)); } .bg-grad-gamma-delta-9 { background: linear-gradient(135deg, rgba(255,143,75,0.9), rgba(109,201,167,0.9)); } .bg-grad-gamma-delta-10 { background: linear-gradient(135deg, rgba(255,143,75,1), rgba(109,201,167,1)); } /* Delta → Epsilon */ .bg-grad-delta-epsilon-1 { background: linear-gradient(135deg, rgba(109,201,167,0.1), rgba(4,19,1,0.1)); } .bg-grad-delta-epsilon-2 { background: linear-gradient(135deg, rgba(109,201,167,0.2), rgba(4,19,1,0.2)); } .bg-grad-delta-epsilon-3 { background: linear-gradient(135deg, rgba(109,201,167,0.3), rgba(4,19,1,0.3)); } .bg-grad-delta-epsilon-4 { background: linear-gradient(135deg, rgba(109,201,167,0.4), rgba(4,19,1,0.4)); } .bg-grad-delta-epsilon-5 { background: linear-gradient(135deg, rgba(109,201,167,0.5), rgba(4,19,1,0.5)); } .bg-grad-delta-epsilon-6 { background: linear-gradient(135deg, rgba(109,201,167,0.6), rgba(4,19,1,0.6)); } .bg-grad-delta-epsilon-7 { background: linear-gradient(135deg, rgba(109,201,167,0.7), rgba(4,19,1,0.7)); } .bg-grad-delta-epsilon-8 { background: linear-gradient(135deg, rgba(109,201,167,0.8), rgba(4,19,1,0.8)); } .bg-grad-delta-epsilon-9 { background: linear-gradient(135deg, rgba(109,201,167,0.9), rgba(4,19,1,0.9)); } .bg-grad-delta-epsilon-10 { background: linear-gradient(135deg, rgba(109,201,167,1), rgba(4,19,1,1)); } /* Epsilon → Ace */ .bg-grad-epsilon-ace-1 { background: linear-gradient(135deg, rgba(4,19,1,0.1), rgba(114,176,215,0.1)); } .bg-grad-epsilon-ace-2 { background: linear-gradient(135deg, rgba(4,19,1,0.2), rgba(114,176,215,0.2)); } .bg-grad-epsilon-ace-3 { background: linear-gradient(135deg, rgba(4,19,1,0.3), rgba(114,176,215,0.3)); } .bg-grad-epsilon-ace-4 { background: linear-gradient(135deg, rgba(4,19,1,0.4), rgba(114,176,215,0.4)); } .bg-grad-epsilon-ace-5 { background: linear-gradient(135deg, rgba(4,19,1,0.5), rgba(114,176,215,0.5)); } .bg-grad-epsilon-ace-6 { background: linear-gradient(135deg, rgba(4,19,1,0.6), rgba(114,176,215,0.6)); } .bg-grad-epsilon-ace-7 { background: linear-gradient(135deg, rgba(4,19,1,0.7), rgba(114,176,215,0.7)); } .bg-grad-epsilon-ace-8 { background: linear-gradient(135deg, rgba(4,19,1,0.8), rgba(114,176,215,0.8)); } .bg-grad-epsilon-ace-9 { background: linear-gradient(135deg, rgba(4,19,1,0.9), rgba(114,176,215,0.9)); } .bg-grad-epsilon-ace-10 { background: linear-gradient(135deg, rgba(4,19,1,1), rgba(114,176,215,1)); }
+
+
+ .bg-ace { background-color: #72b0d7; color: white; transition: background 0.6s ease; transition: all 0.4s ease;} 
+ .bg-beta { background-color: #d94f8b; color: white; transition: background 0.6s ease; transition: all 0.4s ease;} 
+ .bg-gamma { background-color: #FF8F4B; color: white; transition: background 0.6s ease; transition: all 0.4s ease;} 
+ .bg-delta { background-color: #6DC9A7; color: white; transition: background 0.6s ease; transition: all 0.4s ease;} 
+ .bg-epsilon { background-color: #041301; color: white; transition: background 0.6s ease;transition: all 0.4s ease; }
+
+/* ===================== JF Textarea ===================== */
+.jf-textarea {
+  width: 100%;
+  min-height: 120px;
+  padding: 1rem;                 /* top padding for floating label */
+  border: 2px solid #434141;        /* default border black */
+  border-radius: 0.35rem;
+  font-family: "Inter", "Poppins", "Montserrat", sans-serif;
+  font-size: 1rem;
+  color: #041301;
+  background: #fff;
+  resize: vertical;
+  outline: none;                 /* remove native outline */
+  transition: all 0.35s ease;
+}
+
+/* -------------------- Floating label -------------------- */
+.jf-wrapper .jf-textarea + .jf-label {
+  position: absolute;
+  left: 1rem;
+  top: 1rem;
+  font-size: 1rem;
+  color: #888;
+  pointer-events: none;
+  background-color: #fff;
+  padding: 0 0.25rem;
+  transition: all 0.3s ease;
+}
+
+.jf-textarea:focus + .jf-label,
+.jf-textarea:not(:placeholder-shown) + .jf-label {
+  top: -0.6rem;
+  font-size: 0.8rem;
+  color: var(--ace); /* default focus color */
+}
+
+/* -------------------- Focus variants -------------------- */
+.jf-textarea.focus-ace:focus {
+  border-color: var(--ace);
+  box-shadow: 0 0 6px rgba(114,176,215,0.6);
+}
+
+.jf-textarea.focus-beta:focus {
+  border-color: var(--beta);
+  box-shadow: 0 0 6px rgba(217,79,139,0.6);
+}
+
+.jf-textarea.focus-gamma:focus {
+  border-color: var(--gamma);
+  box-shadow: 0 0 6px rgba(255,143,75,0.6);
+}
+
+.jf-textarea.focus-delta:focus {
+  border-color: var(--delta);
+  box-shadow: 0 0 6px rgba(109,201,167,0.6);
+}
+
+.jf-textarea.focus-epsilon:focus {
+  border-color: var(--epsilon);
+  box-shadow: 0 0 6px rgba(4,19,1,0.6);
+}
+
+/* -------------------- Disabled -------------------- */
+.jf-textarea:disabled {
+  background-color: #f5f5f5;
+  color: #888;
+  cursor: not-allowed;
+}
+
+/* -------------------- Error -------------------- */
+.jf-textarea.error {
+  border-color: #e74c3c;
+  box-shadow: 0 0 6px rgba(231,76,60,0.5);
+}
+
+
+
+
+
+
+
+
+
+ /* ===================== Form Input Focus Colors ===================== */
+/* Applies to all jf-field, jf-select, jf-textarea inputs */
+.jf-field.focus-ace:focus,
+.jf-select.focus-ace:focus,
+.jf-textarea.focus-ace:focus {
+  border-color: #72b0d7;
+  box-shadow: 0 0 6px rgba(114,176,215,0.6);
+}
+
+.jf-field.focus-beta:focus,
+.jf-select.focus-beta:focus,
+.jf-textarea.focus-beta:focus {
+  border-color: #d94f8b;
+  box-shadow: 0 0 6px rgba(217,79,139,0.6);
+}
+
+.jf-field.focus-gamma:focus,
+.jf-select.focus-gamma:focus,
+.jf-textarea.focus-gamma:focus {
+  border-color: #FF8F4B;
+  box-shadow: 0 0 6px rgba(255,143,75,0.6);
+}
+
+.jf-field.focus-delta:focus,
+.jf-select.focus-delta:focus,
+.jf-textarea.focus-delta:focus {
+  border-color: #6DC9A7;
+  box-shadow: 0 0 6px rgba(109,201,167,0.6);
+}
+
+.jf-field.focus-epsilon:focus,
+.jf-select.focus-epsilon:focus,
+.jf-textarea.focus-epsilon:focus {
+  border-color: #041301;
+  box-shadow: 0 0 6px rgba(4,19,1,0.6);
+}

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Test</title>
+    <link rel="stylesheet" href="./dist/my-framework.css">
+    <style>
+        .test-red {
+            background: red !important;
+            color: white !important;
+            padding: 20px !important;
+            margin: 10px !important;
+        }
+        .test-blue {
+            background: blue !important;
+            color: white !important;
+            padding: 20px !important;
+            margin: 10px !important;
+        }
+    </style>
+</head>
+<body>
+    <h1>Basic CSS Test</h1>
+    
+    <h2>Testing Basic Framework Classes</h2>
+    <div class="test-red text-small">text-small (should be small)</div>
+    <div class="test-red text-normal">text-normal (should be normal)</div>
+    <div class="test-red text-large">text-large (should be large)</div>
+    <div class="test-red text-heading">text-heading (should be large + bold)</div>
+    
+    <h2>Testing Basic Spacing</h2>
+    <div class="test-blue mt-1">mt-1 (should have margin-top)</div>
+    <div class="test-blue mb-1">mb-1 (should have margin-bottom)</div>
+    <div class="test-blue pt-1">pt-1 (should have padding-top)</div>
+    <div class="test-blue pb-1">pb-1 (should have padding-bottom)</div>
+    
+    <h2>Testing Custom Decimal Spacing</h2>
+    <div class="test-red mt-1_5">mt-1_5 (should have 24px margin-top)</div>
+    <div class="test-red pt-2_1">pt-2_1 (should have 33.6px padding-top)</div>
+    
+    <script>
+        console.log('Page loaded');
+        
+        // Test if CSS classes exist
+        const testElements = document.querySelectorAll('[class*="text-"], [class*="mt-"], [class*="pt-"]');
+        console.log('Found elements with framework classes:', testElements.length);
+        
+        // Test computed styles
+        testElements.forEach((el, index) => {
+            const styles = window.getComputedStyle(el);
+            console.log(`Element ${index + 1} (${el.className}):`, {
+                fontSize: styles.fontSize,
+                fontWeight: styles.fontWeight,
+                marginTop: styles.marginTop,
+                paddingTop: styles.paddingTop
+            });
+        });
+        
+        // Check if CSS file loaded
+        const link = document.querySelector('link[href*="my-framework.css"]');
+        if (link) {
+            console.log('CSS link found:', link.href);
+            fetch(link.href)
+                .then(response => {
+                    if (response.ok) {
+                        console.log('CSS file loads successfully');
+                        return response.text();
+                    }
+                    throw new Error('CSS file failed to load');
+                })
+                .then(css => {
+                    console.log('CSS file length:', css.length);
+                    console.log('Contains pt-1:', css.includes('.pt-1'));
+                    console.log('Contains mt-1_5:', css.includes('.mt-1_5'));
+                })
+                .catch(error => console.error('CSS loading error:', error));
+        }
+    </script>
+</body>
+</html>

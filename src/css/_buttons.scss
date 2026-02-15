@@ -1,0 +1,55 @@
+/* -------------------- Solid Buttons -------------------- */
+.jf-btn-ace { background-color: $ace; color: white; border: none; border-radius: 0.25rem; padding: 0.5rem 1rem; font-weight: 600; cursor: pointer; transition: 0.3s all; }
+.jf-btn-beta { background-color: $beta; color: white; border: none; border-radius: 0.25rem; padding: 0.5rem 1rem; font-weight: 600; cursor: pointer; transition: 0.3s all; }
+.jf-btn-gamma { background-color: $gamma; color: white; border: none; border-radius: 0.25rem; padding: 0.5rem 1rem; font-weight: 600; cursor: pointer; transition: 0.3s all; }
+.jf-btn-delta { background-color: $delta; color: white; border: none; border-radius: 0.25rem; padding: 0.5rem 1rem; font-weight: 600; cursor: pointer; transition: 0.3s all; }
+.jf-btn-epsilon { background-color: $epsilon; color: white; border: none; border-radius: 0.25rem; padding: 0.5rem 1rem; font-weight: 600; cursor: pointer; transition: 0.3s all; }
+
+/* Hover effect */
+.jf-btn-ace:hover,
+.jf-btn-beta:hover,
+.jf-btn-gamma:hover,
+.jf-btn-delta:hover,
+.jf-btn-epsilon:hover {
+  opacity: 0.85;
+}
+
+/* -------------------- Outline Buttons -------------------- */
+.jf-btn-outline-ace { background: transparent; border: 2px solid $ace; color: $ace; border-radius: 0.25rem; padding: 0.5rem 1rem; font-weight: 600; cursor: pointer; transition: 0.3s all; }
+.jf-btn-outline-beta { background: transparent; border: 2px solid $beta; color: $beta; border-radius: 0.25rem; padding: 0.5rem 1rem; font-weight: 600; cursor: pointer; transition: 0.3s all; }
+.jf-btn-outline-gamma { background: transparent; border: 2px solid $gamma; color: $gamma; border-radius: 0.25rem; padding: 0.5rem 1rem; font-weight: 600; cursor: pointer; transition: 0.3s all; }
+.jf-btn-outline-delta { background: transparent; border: 2px solid $delta; color: $delta; border-radius: 0.25rem; padding: 0.5rem 1rem; font-weight: 600; cursor: pointer; transition: 0.3s all; }
+.jf-btn-outline-epsilon { background: transparent; border: 2px solid $epsilon; color: $epsilon; border-radius: 0.25rem; padding: 0.5rem 1rem; font-weight: 600; cursor: pointer; transition: 0.3s all; }
+
+/* -------------------- Flat Buttons -------------------- */
+.jf-btn-flat-ace { background: $ace; color: white; border-radius: 0.25rem; padding: 0.5rem 1rem; font-weight: 600; cursor: pointer; box-shadow: none; transition: 0.3s all; }
+.jf-btn-flat-beta { background: $beta; color: white; border-radius: 0.25rem; padding: 0.5rem 1rem; font-weight: 600; cursor: pointer; box-shadow: none; transition: 0.3s all; }
+.jf-btn-flat-gamma { background: $gamma; color: white; border-radius: 0.25rem; padding: 0.5rem 1rem; font-weight: 600; cursor: pointer; box-shadow: none; transition: 0.3s all; }
+.jf-btn-flat-delta { background: $delta; color: white; border-radius: 0.25rem; padding: 0.5rem 1rem; font-weight: 600; cursor: pointer; box-shadow: none; transition: 0.3s all; }
+.jf-btn-flat-epsilon { background: $epsilon; color: white; border-radius: 0.25rem; padding: 0.5rem 1rem; font-weight: 600; cursor: pointer; box-shadow: none; transition: 0.3s all; }
+
+/* -------------------- Glow Buttons -------------------- */
+.jf-btn-glow-ace { background: $ace; color: white; box-shadow: 0 0 8px rgba($ace, 0.6); border-radius: 0.25rem; padding: 0.5rem 1rem; font-weight: 600; cursor: pointer; transition: 0.3s all; }
+.jf-btn-glow-beta { background: $beta; color: white; box-shadow: 0 0 8px rgba($beta, 0.6); border-radius: 0.25rem; padding: 0.5rem 1rem; font-weight: 600; cursor: pointer; transition: 0.3s all; }
+.jf-btn-glow-gamma { background: $gamma; color: white; box-shadow: 0 0 8px rgba($gamma, 0.6); border-radius: 0.25rem; padding: 0.5rem 1rem; font-weight: 600; cursor: pointer; transition: 0.3s all; }
+.jf-btn-glow-delta { background: $delta; color: white; box-shadow: 0 0 8px rgba($delta, 0.6); border-radius: 0.25rem; padding: 0.5rem 1rem; font-weight: 600; cursor: pointer; transition: 0.3s all; }
+.jf-btn-glow-epsilon { background: $epsilon; color: white; box-shadow: 0 0 8px rgba($epsilon, 0.6); border-radius: 0.25rem; padding: 0.5rem 1rem; font-weight: 600; cursor: pointer; transition: 0.3s all; }
+
+/* -------------------- Hover Effects -------------------- */
+.jf-btn-outline-ace:hover,
+.jf-btn-outline-beta:hover,
+.jf-btn-outline-gamma:hover,
+.jf-btn-outline-delta:hover,
+.jf-btn-outline-epsilon:hover,
+.jf-btn-flat-ace:hover,
+.jf-btn-flat-beta:hover,
+.jf-btn-flat-gamma:hover,
+.jf-btn-flat-delta:hover,
+.jf-btn-flat-epsilon:hover,
+.jf-btn-glow-ace:hover,
+.jf-btn-glow-beta:hover,
+.jf-btn-glow-gamma:hover,
+.jf-btn-glow-delta:hover,
+.jf-btn-glow-epsilon:hover {
+  opacity: 0.85;
+}

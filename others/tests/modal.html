@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal Test - JForce Framework</title>
+    <link rel="stylesheet" href="../dist/my-framework.css">
+    <style>
+        body {
+            font-family: "Inter", "Poppins", "Montserrat", sans-serif;
+            padding: 2rem;
+            background: #f9fafb;
+        }
+        .demo-section {
+            margin-bottom: 2rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .demo-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #041301;
+        }
+        .demo-desc {
+            color: #6b7280;
+            margin-bottom: 1.5rem;
+        }
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid #72b0d7;
+            background: transparent;
+            color: #72b0d7;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        .btn:hover {
+            background: #72b0d7;
+            color: white;
+        }
+        .btn-primary {
+            background: #72b0d7;
+            color: white;
+        }
+        .btn-primary:hover {
+            background: #5a9bc7;
+        }
+    </style>
+</head>
+<body>
+    <h1>Modal Component Test</h1>
+
+    <div class="demo-section">
+        <div class="demo-title">Basic Modal</div>
+        <div class="demo-desc">Click button to open modal dialog</div>
+        
+        <button data-modal-open="myModal" class="btn">Open Modal</button>
+    </div>
+
+    <div class="demo-section">
+        <div class="demo-title">Modal with Form</div>
+        <div class="demo-desc">Modal containing a simple form</div>
+        
+        <button data-modal-open="formModal" class="btn">Open Form Modal</button>
+    </div>
+
+    <div class="demo-section">
+        <div class="demo-title">Minimal Structure</div>
+        <div class="demo-desc">Simple HTML structure for modals</div>
+        
+        <pre style="background: #f5f5f5; padding: 1rem; border-radius: 0.25rem; overflow-x: auto;">
+&lt;!-- Trigger button --&gt;
+&lt;button data-modal-open="modalId"&gt;Open Modal&lt;/button&gt;
+
+&lt;!-- Modal --&gt;
+&lt;div id="modalId" class="modal"&gt;
+  &lt;div class="modal-content"&gt;
+    &lt;button class="modal-close"&gt;×&lt;/button&gt;
+    &lt;div class="modal-header"&gt;
+      &lt;h2 class="modal-title"&gt;Title&lt;/h2&gt;
+    &lt;/div&gt;
+    &lt;div class="modal-body"&gt;
+      Content here
+    &lt;/div&gt;
+    &lt;div class="modal-footer"&gt;
+      &lt;button class="btn"&gt;Cancel&lt;/button&gt;
+      &lt;button class="btn btn-primary"&gt;Save&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</pre>
+    </div>
+
+    <!-- Basic Modal -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close">×</button>
+            <div class="modal-header">
+                <h2 class="modal-title">Simple Modal</h2>
+            </div>
+            <div class="modal-body">
+                This is a basic modal dialog. You can put any content here like text, images, or forms.
+            </div>
+            <div class="modal-footer">
+                <button class="btn">Cancel</button>
+                <button class="btn btn-primary">Confirm</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Form Modal -->
+    <div id="formModal" class="modal">
+        <div class="modal-content">
+            <button class="modal-close">×</button>
+            <div class="modal-header">
+                <h2 class="modal-title">Contact Form</h2>
+            </div>
+            <div class="modal-body">
+                <div style="margin-bottom: 1rem;">
+                    <label style="display: block; margin-bottom: 0.5rem; color: #041301;">Name</label>
+                    <input type="text" class="field" placeholder="Enter your name" style="width: 100%;">
+                </div>
+                <div style="margin-bottom: 1rem;">
+                    <label style="display: block; margin-bottom: 0.5rem; color: #041301;">Email</label>
+                    <input type="email" class="field" placeholder="Enter your email" style="width: 100%;">
+                </div>
+                <div style="margin-bottom: 1rem;">
+                    <label style="display: block; margin-bottom: 0.5rem; color: #041301;">Message</label>
+                    <textarea class="textarea" placeholder="Enter your message" style="width: 100%; min-height: 100px;"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn">Cancel</button>
+                <button class="btn btn-primary">Send</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="../dist/my-framework.js"></script>
+</body>
+</html>

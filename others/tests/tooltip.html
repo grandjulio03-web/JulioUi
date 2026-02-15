@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tooltip Test - JForce Framework</title>
+    <link rel="stylesheet" href="../dist/my-framework.css">
+    <style>
+        body {
+            font-family: "Inter", "Poppins", "Montserrat", sans-serif;
+            padding: 2rem;
+            background: #f9fafb;
+        }
+        .demo-section {
+            margin-bottom: 2rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .demo-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #041301;
+        }
+        .demo-desc {
+            color: #6b7280;
+            margin-bottom: 1.5rem;
+        }
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: 2px solid #72b0d7;
+            background: transparent;
+            color: #72b0d7;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            margin: 0.5rem;
+        }
+        .btn:hover {
+            background: #72b0d7;
+            color: white;
+        }
+        .icon-btn {
+            padding: 0.5rem;
+            border: none;
+            background: transparent;
+            color: #6b7280;
+            cursor: pointer;
+            font-size: 1.2rem;
+            border-radius: 0.25rem;
+            transition: all 0.3s ease;
+        }
+        .icon-btn:hover {
+            background: rgba(114, 176, 215, 0.1);
+            color: #72b0d7;
+        }
+    </style>
+</head>
+<body>
+    <h1>Tooltip Component Test</h1>
+
+    <div class="demo-section">
+        <div class="demo-title">Basic Tooltips</div>
+        <div class="demo-desc">Hover over elements to see tooltips</div>
+        
+        <div class="tooltip">
+            <button class="btn">Hover me</button>
+            <div class="tooltip-content">This is a tooltip</div>
+        </div>
+        
+        <div class="tooltip tooltip-ace">
+            <button class="btn">Ace Theme</button>
+            <div class="tooltip-content">Blue themed tooltip</div>
+        </div>
+        
+        <div class="tooltip tooltip-beta">
+            <button class="btn">Beta Theme</button>
+            <div class="tooltip-content">Pink themed tooltip</div>
+        </div>
+        
+        <div class="tooltip tooltip-gamma">
+            <button class="btn">Gamma Theme</button>
+            <div class="tooltip-content">Orange themed tooltip</div>
+        </div>
+        
+        <div class="tooltip tooltip-delta">
+            <button class="btn">Delta Theme</button>
+            <div class="tooltip-content">Green themed tooltip</div>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <div class="demo-title">Icon Tooltips</div>
+        <div class="demo-desc">Tooltips on icon buttons</div>
+        
+        <div class="tooltip">
+            <button class="icon-btn">⚙</button>
+            <div class="tooltip-content">Settings</div>
+        </div>
+        
+        <div class="tooltip tooltip-ace">
+            <button class="icon-btn">📝</button>
+            <div class="tooltip-content">Edit</div>
+        </div>
+        
+        <div class="tooltip tooltip-beta">
+            <button class="icon-btn">🗑</button>
+            <div class="tooltip-content">Delete</div>
+        </div>
+        
+        <div class="tooltip tooltip-gamma">
+            <button class="icon-btn">💾</button>
+            <div class="tooltip-content">Save</div>
+        </div>
+        
+        <div class="tooltip tooltip-delta">
+            <button class="icon-btn">📤</button>
+            <div class="tooltip-content">Export</div>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <div class="demo-title">Link Tooltips</div>
+        <div class="demo-desc">Tooltips on text links</div>
+        
+        <div class="tooltip">
+            <a href="#" style="color: #72b0d7; text-decoration: none;">Help documentation</a>
+            <div class="tooltip-content">Click to view help docs</div>
+        </div>
+        
+        <div class="tooltip tooltip-beta">
+            <a href="#" style="color: #d94f8b; text-decoration: none;">Delete account</a>
+            <div class="tooltip-content">Permanently remove account</div>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <div class="demo-title">Minimal Structure</div>
+        <div class="demo-desc">Simple HTML structure for tooltips</div>
+        
+        <pre style="background: #f5f5f5; padding: 1rem; border-radius: 0.25rem; overflow-x: auto;">
+&lt;div class="tooltip"&gt;
+  &lt;button&gt;Element&lt;/button&gt;
+  &lt;div class="tooltip-content"&gt;Tooltip text&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- With theme --&gt;
+&lt;div class="tooltip tooltip-ace"&gt;
+  &lt;button&gt;Element&lt;/button&gt;
+  &lt;div class="tooltip-content"&gt;Blue tooltip&lt;/div&gt;
+&lt;/div&gt;</pre>
+    </div>
+
+    <script src="../dist/my-framework.js"></script>
+</body>
+</html>

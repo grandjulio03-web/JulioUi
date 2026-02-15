@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rib Navbar Test</title>
+  <link rel="stylesheet" href="./dist/my-framework.css" />
+  <script src="./dist/my-framework.js" defer></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f6f7f9;
+      margin: 0;
+      color: #111827;
+    }
+
+    .page {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 18px;
+    }
+
+    .demo {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 14px;
+      overflow: hidden;
+      margin: 18px 0;
+    }
+
+    .pad {
+      padding: 16px;
+    }
+
+    .hint {
+      font-size: 12px;
+      color: #6b7280;
+      line-height: 1.4;
+    }
+
+    .line {
+      height: 1px;
+      background: #e5e7eb;
+    }
+
+    .fake {
+      height: 420px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(114,176,215,0.12), rgba(109,201,167,0.12));
+      border: 1px dashed rgba(0,0,0,0.12);
+    }
+
+    .chip {
+      display: inline-flex;
+      align-items: center;
+      padding: 6px 10px;
+      border: 1px solid #e5e7eb;
+      border-radius: 999px;
+      background: #f9fafb;
+      font-size: 12px;
+      color: #374151;
+      margin-right: 8px;
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <h1 style="margin: 0 0 8px 0;">Rib Navbars</h1>
+    <div class="hint">
+      Mobile behavior: the menu becomes a toggle. The toggle sets <code>data-open</code> on <code>.rib</code>.
+      Press <code>Esc</code> to close.
+    </div>
+
+    <div class="demo">
+      <nav class="rib rib-fold" data-open="false">
+        <div class="rib-bar">
+          <a class="rib-brand" href="#">
+            <span class="rib-mark"></span>
+            <span>Jforce</span>
+          </a>
+
+          <div class="rib-rail">
+            <a class="rib-link" href="#">Home</a>
+            <a class="rib-link" href="#">Docs</a>
+            <a class="rib-link" href="#">Play</a>
+            <a class="rib-link" href="#">Pricing</a>
+          </div>
+
+          <div class="rib-act">
+            <button class="rib-btn" type="button">Login</button>
+            <button class="rib-btn rib-cta" type="button">Start</button>
+          </div>
+
+          <button class="rib-tog" type="button" aria-controls="ribFoldPanel" aria-expanded="false"></button>
+        </div>
+
+        <div class="rib-panel" id="ribFoldPanel">
+          <div class="rib-stack">
+            <a class="rib-link" href="#">Home</a>
+            <a class="rib-link" href="#">Docs</a>
+            <a class="rib-link" href="#">Play</a>
+            <a class="rib-link" href="#">Pricing</a>
+            <div class="line"></div>
+            <button class="rib-btn" type="button">Login</button>
+            <button class="rib-btn rib-cta" type="button">Start</button>
+          </div>
+        </div>
+      </nav>
+
+      <div class="pad">
+        <span class="chip">Variant: fold</span>
+        <span class="chip">Class: <code>.rib rib-fold</code></span>
+        <div class="hint">Simple top bar. On mobile it folds into a clean stack panel.</div>
+      </div>
+    </div>
+
+    <div class="demo">
+      <nav class="rib rib-notch" data-open="false">
+        <div class="rib-bar">
+          <div class="rib-rail">
+            <a class="rib-link" href="#">Work</a>
+            <a class="rib-link" href="#">Lab</a>
+          </div>
+
+          <a class="rib-brand" href="#">
+            <span class="rib-mark"></span>
+            <span>Notch</span>
+          </a>
+
+          <div class="rib-act">
+            <button class="rib-btn" type="button">Join</button>
+          </div>
+
+          <button class="rib-tog" type="button" aria-controls="ribNotchPanel" aria-expanded="false"></button>
+        </div>
+
+        <div class="rib-panel" id="ribNotchPanel">
+          <div class="rib-stack">
+            <a class="rib-link" href="#">Work</a>
+            <a class="rib-link" href="#">Lab</a>
+            <a class="rib-link" href="#">Join</a>
+          </div>
+        </div>
+      </nav>
+
+      <div class="pad">
+        <span class="chip">Variant: notch</span>
+        <span class="chip">Class: <code>.rib rib-notch</code></span>
+        <div class="hint">Brand stays centered. Left links and right actions orbit around it (desktop), stack on mobile.</div>
+      </div>
+    </div>
+
+    <div class="demo">
+      <nav class="rib rib-peek" data-open="false">
+        <div class="rib-bar">
+          <a class="rib-brand" href="#">
+            <span class="rib-mark"></span>
+            <span>Peek</span>
+          </a>
+
+          <div class="rib-rail">
+            <a class="rib-link" href="#">Now</a>
+            <a class="rib-link" href="#">Next</a>
+            <a class="rib-link" href="#">Later</a>
+          </div>
+
+          <div class="rib-act">
+            <button class="rib-btn rib-cta" type="button">Action</button>
+          </div>
+
+          <button class="rib-tog" type="button" aria-controls="ribPeekPanel" aria-expanded="false"></button>
+        </div>
+
+        <div class="rib-panel" id="ribPeekPanel">
+          <div class="rib-stack">
+            <a class="rib-link" href="#">Now</a>
+            <a class="rib-link" href="#">Next</a>
+            <a class="rib-link" href="#">Later</a>
+            <div class="line"></div>
+            <button class="rib-btn rib-cta" type="button">Action</button>
+          </div>
+        </div>
+      </nav>
+
+      <div class="pad">
+        <span class="chip">Variant: peek</span>
+        <span class="chip">Class: <code>.rib rib-peek</code></span>
+        <div class="hint">A lighter look with a subtle glass panel on mobile.</div>
+      </div>
+    </div>
+
+    <div class="demo">
+      <nav class="rib rib-split" data-open="false">
+        <div class="rib-bar">
+          <a class="rib-brand" href="#">
+            <span class="rib-mark"></span>
+            <span>Split</span>
+          </a>
+
+          <div class="rib-rail">
+            <a class="rib-link" href="#">Alpha</a>
+            <a class="rib-link" href="#">Beta</a>
+            <a class="rib-link" href="#">Gamma</a>
+          </div>
+
+          <div class="rib-act">
+            <button class="rib-btn" type="button">Sign</button>
+            <button class="rib-btn rib-cta" type="button">Go</button>
+          </div>
+
+          <button class="rib-tog" type="button" aria-controls="ribSplitPanel" aria-expanded="false"></button>
+        </div>
+
+        <div class="rib-panel" id="ribSplitPanel">
+          <div class="rib-stack">
+            <a class="rib-link" href="#">Alpha</a>
+            <a class="rib-link" href="#">Beta</a>
+            <a class="rib-link" href="#">Gamma</a>
+            <div class="line"></div>
+            <button class="rib-btn" type="button">Sign</button>
+            <button class="rib-btn rib-cta" type="button">Go</button>
+          </div>
+        </div>
+      </nav>
+
+      <div class="pad">
+        <span class="chip">Variant: split</span>
+        <span class="chip">Class: <code>.rib rib-split</code></span>
+        <div class="hint">Slightly tighter rail spacing for dense navs.</div>
+      </div>
+    </div>
+
+    <div class="demo" style="margin-bottom: 90px;">
+      <nav class="rib rib-dock" data-open="false">
+        <div class="rib-bar">
+          <a class="rib-brand" href="#">
+            <span class="rib-mark"></span>
+            <span>Dock</span>
+          </a>
+
+          <div class="rib-rail">
+            <a class="rib-link" href="#">Feed</a>
+            <a class="rib-link" href="#">Search</a>
+            <a class="rib-link" href="#">Cart</a>
+          </div>
+
+          <div class="rib-act">
+            <button class="rib-btn rib-cta" type="button">Buy</button>
+          </div>
+
+          <button class="rib-tog" type="button" aria-controls="ribDockPanel" aria-expanded="false"></button>
+        </div>
+
+        <div class="rib-panel" id="ribDockPanel">
+          <div class="rib-stack">
+            <a class="rib-link" href="#">Feed</a>
+            <a class="rib-link" href="#">Search</a>
+            <a class="rib-link" href="#">Cart</a>
+            <div class="line"></div>
+            <button class="rib-btn rib-cta" type="button">Buy</button>
+          </div>
+        </div>
+      </nav>
+
+      <div class="pad">
+        <span class="chip">Variant: dock</span>
+        <span class="chip">Class: <code>.rib rib-dock</code></span>
+        <div class="hint">On mobile this becomes a bottom dock bar. Toggle still works for a full panel.</div>
+      </div>
+    </div>
+
+    <div class="fake"></div>
+  </div>
+</body>
+</html>

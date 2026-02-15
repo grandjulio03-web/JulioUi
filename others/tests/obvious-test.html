@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obvious Test</title>
+    <link rel="stylesheet" href="./dist/my-framework.css">
+    <style>
+        .container {
+            border: 3px solid black;
+            background: #f0f0f0;
+            margin: 20px;
+            padding: 20px;
+        }
+        .test-item {
+            border: 2px solid red;
+            background: yellow;
+            margin: 5px 0;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .big-margin {
+            background: lightgreen !important;
+        }
+        .big-padding {
+            background: lightblue !important;
+        }
+    </style>
+</head>
+<body>
+    <h1>OBVIOUS VISUAL TEST</h1>
+    
+    <div class="container">
+        <h2>Margin Test (SPACE BETWEEN BOXES)</h2>
+        <div class="test-item no-spacing">NO margin - should touch next box</div>
+        <div class="test-item no-spacing">NO margin - should touch previous box</div>
+        
+        <div class="test-item big-margin mt-5">BIG margin-top (80px) - should have HUGE gap above</div>
+        <div class="test-item big-margin mt-5">BIG margin-top (80px) - should have HUGE gap above</div>
+    </div>
+    
+    <div class="container">
+        <h2>Padding Test (SPACE INSIDE BOX)</h2>
+        <div class="test-item no-spacing">NO padding - text touches edges</div>
+        <div class="test-item no-spacing">NO padding - text touches edges</div>
+        
+        <div class="test-item big-padding pt-5 pb-5">BIG padding (80px top/bottom) - text should be FAR from edges</div>
+        <div class="test-item big-padding pt-5 pb-5">BIG padding (80px top/bottom) - text should be FAR from edges</div>
+    </div>
+    
+    <div class="container">
+        <h2>Decimal Spacing Test</h2>
+        <div class="test-item mt-2_5">mt-2_5 = 40px margin-top</div>
+        <div class="test-item mt-3_5">mt-3_5 = 56px margin-top (custom decimal)</div>
+        <div class="test-box pt-2_1">pt-2_1 = 33.6px padding-top (your custom!)</div>
+    </div>
+    
+    <script>
+        console.log('=== OBVIOUS TEST ===');
+        
+        // Test the big spacing
+        const bigMargin = document.querySelector('.mt-5');
+        if (bigMargin) {
+            const styles = window.getComputedStyle(bigMargin);
+            console.log('mt-5 margin-top:', styles.marginTop);
+        }
+        
+        const bigPadding = document.querySelector('.pt-5');
+        if (bigPadding) {
+            const styles = window.getComputedStyle(bigPadding);
+            console.log('pt-5 padding-top:', styles.paddingTop);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Minimal Test</title>
+    <link rel="stylesheet" href="./dist/my-framework.css">
+</head>
+<body>
+    <h1>Minimal CSS Test</h1>
+    
+    <div style="background: red; color: white; margin: 10px;">
+        Test 1: Basic text-small class
+        <div class="text-small">This should be smaller text</div>
+    </div>
+    
+    <div style="background: blue; color: white; margin: 10px;">
+        Test 2: Basic mt-1 class  
+        <div class="mt-1" style="background: green; color: white;">This should have margin-top</div>
+    </div>
+    
+    <div style="background: red; color: white; margin: 10px;">
+        Test 3: Basic pt-1 class
+        <div class="pt-1" style="background: green; color: white;">This should have padding-top</div>
+    </div>
+    
+    <script>
+        // Simple test
+        console.log('=== MINIMAL TEST ===');
+        
+        // Check if CSS file path is correct
+        const cssLink = document.querySelector('link[href*="my-framework.css"]');
+        console.log('CSS link:', cssLink ? cssLink.href : 'NOT FOUND');
+        
+        // Test basic classes
+        const textSmall = document.querySelector('.text-small');
+        if (textSmall) {
+            const styles = window.getComputedStyle(textSmall);
+            console.log('text-small font-size:', styles.fontSize);
+        }
+        
+        const mt1 = document.querySelector('.mt-1');
+        if (mt1) {
+            const styles = window.getComputedStyle(mt1);
+            console.log('mt-1 margin-top:', styles.marginTop);
+        }
+        
+        const pt1 = document.querySelector('.pt-1');
+        if (pt1) {
+            const styles = window.getComputedStyle(pt1);
+            console.log('pt-1 padding-top:', styles.paddingTop);
+        }
+        
+        // Check if CSS is actually loaded
+        fetch('./dist/my-framework.css')
+            .then(response => {
+                console.log('CSS response status:', response.status);
+                return response.text();
+            })
+            .then(css => {
+                console.log('CSS loaded, length:', css.length);
+                console.log('Has .text-small:', css.includes('.text-small'));
+                console.log('Has .mt-1:', css.includes('.mt-1'));
+                console.log('Has .pt-1:', css.includes('.pt-1'));
+            })
+            .catch(error => console.error('CSS load error:', error));
+    </script>
+</body>
+</html>

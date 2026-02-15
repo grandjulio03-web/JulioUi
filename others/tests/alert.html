@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alert Test - JForce Framework</title>
+    <link rel="stylesheet" href="../dist/my-framework.css">
+    <style>
+        body {
+            font-family: "Inter", "Poppins", "Montserrat", sans-serif;
+            padding: 2rem;
+            background: #f9fafb;
+        }
+        .demo-section {
+            margin-bottom: 2rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .demo-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #041301;
+        }
+        .demo-desc {
+            color: #6b7280;
+            margin-bottom: 1.5rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>Alert Component Test</h1>
+
+    <div class="demo-section">
+        <div class="demo-title">Ace Alert</div>
+        <div class="demo-desc">Blue alert for ace theme</div>
+        
+        <div class="alert alert-ace">
+            <span>ℹ Info: Your changes have been saved.</span>
+            <button class="alert-close" type="button">×</button>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <div class="demo-title">Beta Alert</div>
+        <div class="demo-desc">Pink alert for beta theme</div>
+        
+        <div class="alert alert-beta">
+            <span>✕ Error: Something went wrong.</span>
+            <button class="alert-close" type="button">×</button>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <div class="demo-title">Gamma Alert</div>
+        <div class="demo-desc">Orange alert for gamma theme</div>
+        
+        <div class="alert alert-gamma">
+            <span>⚠ Warning: Please review your input.</span>
+            <button class="alert-close" type="button">×</button>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <div class="demo-title">Delta Alert</div>
+        <div class="demo-desc">Green alert for delta theme</div>
+        
+        <div class="alert alert-epsilon">
+            <span>✓ Success: Operation completed.</span>
+            <button class="alert-close" type="button">×</button>
+        </div>
+    </div>
+
+    <div class="demo-section">
+        <div class="demo-title">Minimal Structure</div>
+        <div class="demo-desc">Simple HTML structure for alerts</div>
+        
+        <pre style="background: #f5f5f5; padding: 1rem; border-radius: 0.25rem; overflow-x: auto;">
+&lt;div class="alert alert-ace"&gt;
+  &lt;span&gt;Message&lt;/span&gt;
+  &lt;button class="alert-close"&gt;×&lt;/button&gt;
+&lt;/div&gt;</pre>
+    </div>
+
+    <script src="../dist/my-framework.js"></script>
+</body>
+</html>

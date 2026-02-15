@@ -1,0 +1,105 @@
+/* ===================== Jforces Simple Cards ===================== */
+
+/* -------------------- Base Card -------------------- */
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  background: white;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+}
+
+/* -------------------- Card Sections -------------------- */
+.card-header {
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.card-body {
+  margin-bottom: 1rem;
+}
+
+/* -------------------- Solid Background Colors -------------------- */
+.card-ace { background: #72b0d7; color: white; }
+.card-beta { background: #d94f8b; color: white; }
+.card-gamma { background: #FF8F4B; color: white; }
+.card-delta { background: #6DC9A7; color: white; }
+.card-epsilon { background: #041301; color: white; }
+
+/* -------------------- Gradient Backgrounds -------------------- */
+.card-grad-ace-beta { background: linear-gradient(135deg, #72b0d7, #d94f8b); color: white; }
+.card-grad-beta-gamma { background: linear-gradient(135deg, #d94f8b, #FF8F4B); color: white; }
+.card-grad-gamma-delta { background: linear-gradient(135deg, #FF8F4B, #6DC9A7); color: white; }
+.card-grad-delta-ace { background: linear-gradient(135deg, #6DC9A7, #72b0d7); color: white; }
+
+/* -------------------- Card Images -------------------- */
+.card-img {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.5rem;
+}
+
+.card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.card-img-top {
+  border-radius: 0.5rem 0.5rem 0 0;
+  height: 200px;
+}
+
+/* -------------------- Card Overlays -------------------- */
+.card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+  color: white;
+}
+
+.card-overlay-top {
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.card-overlay-bottom {
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+.card-overlay-center {
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+/* -------------------- Card with Image -------------------- */
+.card-img-container {
+  position: relative;
+  overflow: hidden;
+  border-radius: 0.5rem 0.5rem 0 0;
+}
+
+.card-img-container img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
