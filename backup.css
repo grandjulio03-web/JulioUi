@@ -1,60 +1,10 @@
-/* ===================== Jforces Buttons ===================== */
-.jf-btn,
-.jf-btn-outline,
-.jf-btn-flat,
-.jf-btn-glow {
-  border-radius: 0.25rem;
-  padding: 0.5rem 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.4s ease;
-  border: none;
-  font-family: "Inter", "Poppins", "Montserrat", sans-serif;
-}
-
-/* Solid Buttons */
-.jf-btn.ace { background-color: #72b0d7; color: #fff; }
-.jf-btn.beta { background-color: #d94f8b; color: #fff; }
-.jf-btn.gamma { background-color: #FF8F4B; color: #fff; }
-.jf-btn.delta { background-color: #6DC9A7; color: #fff; }
-.jf-btn.epsilon { background-color: #041301; color: #fff; }
-
-/* Outline Buttons */
-.jf-btn-outline.ace { background: transparent; border: 2px solid #72b0d7; color: #72b0d7; }
-.jf-btn-outline.beta { background: transparent; border: 2px solid #d94f8b; color: #d94f8b; }
-.jf-btn-outline.gamma { background: transparent; border: 2px solid #FF8F4B; color: #FF8F4B; }
-.jf-btn-outline.delta { background: transparent; border: 2px solid #6DC9A7; color: #6DC9A7; }
-.jf-btn-outline.epsilon { background: transparent; border: 2px solid #041301; color: #041301; }
-
-/* Flat Buttons */
-.jf-btn-flat.ace { background: #72b0d7; color: #fff; box-shadow: none; }
-.jf-btn-flat.beta { background: #d94f8b; color: #fff; box-shadow: none; }
-.jf-btn-flat.gamma { background: #FF8F4B; color: #fff; box-shadow: none; }
-.jf-btn-flat.delta { background: #6DC9A7; color: #fff; box-shadow: none; }
-.jf-btn-flat.epsilon { background: #041301; color: #fff; box-shadow: none; }
-
-/* Glow Buttons */
-.jf-btn-glow.ace { background: #72b0d7; color: #fff; box-shadow: 0 0 8px rgba(114,176,215,0.6); }
-.jf-btn-glow.beta { background: #d94f8b; color: #fff; box-shadow: 0 0 8px rgba(217,79,139,0.6); }
-.jf-btn-glow.gamma { background: #FF8F4B; color: #fff; box-shadow: 0 0 8px rgba(255,143,75,0.6); }
-.jf-btn-glow.delta { background: #6DC9A7; color: #fff; box-shadow: 0 0 8px rgba(109,201,167,0.6); }
-.jf-btn-glow.epsilon { background: #041301; color: #fff; box-shadow: 0 0 8px rgba(4,19,1,0.6); }
-
-/* Hover effect for all buttons */
-.jf-btn:hover,
-.jf-btn-outline:hover,
-.jf-btn-flat:hover,
-.jf-btn-glow:hover {
-  transform: scale(1.02);
-  opacity: 0.9;
-}
 
 /* ===================== Jforces Text ===================== */
 body {
   font-family: "Inter", "Poppins", "Montserrat", sans-serif;
   color: #041301;
 }
-.jf-heading { font-family: "Merriweather", serif; }
+.jf-heading { font-family: "Merriweather", sans-serif; }
 
 /* Text color utilities */
 .text-ace { color: #72b0d7; }

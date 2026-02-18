@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JulioUI Test - All Components</title>
+    <link rel="stylesheet" href="dist/JulioUI.min.css">
+    <style>
+        body {
+            font-family: "Inter", "Poppins", "Montserrat", sans-serif;
+            padding: 2rem;
+            background: #f9fafb;
+        }
+        .test-section {
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        .test-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #041301;
+        }
+        .test-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <h1>JulioUI Framework Test</h1>
+
+    <!-- Buttons Test -->
+    <div class="test-section">
+        <h2 class="test-title">Buttons</h2>
+        <div class="test-grid">
+            <div>
+                <h3>Solid Buttons</h3>
+                <button class="jf-btn-ace">Ace Button</button>
+                <button class="jf-btn-beta">Beta Button</button>
+                <button class="jf-btn-gamma">Gamma Button</button>
+                <button class="jf-btn-delta">Delta Button</button>
+            </div>
+            <div>
+                <h3>Outline Buttons</h3>
+                <button class="jf-btn-outline-ace">Ace Outline</button>
+                <button class="jf-btn-outline-beta">Beta Outline</button>
+                <button class="jf-btn-outline-gamma">Gamma Outline</button>
+                <button class="jf-btn-outline-delta">Delta Outline</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Alerts Test -->
+    <div class="test-section">
+        <h2 class="test-title">Alerts</h2>
+        <div class="alert alert-ace">
+            <span>ℹ Info: Your changes have been saved.</span>
+            <button class="alert-close" type="button">×</button>
+        </div>
+        <div class="alert alert-beta">
+            <span>✕ Error: Something went wrong.</span>
+            <button class="alert-close" type="button">×</button>
+        </div>
+        <div class="alert alert-gamma">
+            <span>⚠ Warning: Please review your input.</span>
+            <button class="alert-close" type="button">×</button>
+        </div>
+        <div class="alert alert-delta">
+            <span>✓ Success: Operation completed.</span>
+            <button class="alert-close" type="button">×</button>
+        </div>
+    </div>
+
+    <!-- Badges Test -->
+    <div class="test-section">
+        <h2 class="test-title">Badges</h2>
+        <div style="display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap;">
+            <span class="badge badge-ace">New</span>
+            <span class="badge badge-beta">Alert</span>
+            <span class="badge badge-gamma">Pending</span>
+            <span class="badge badge-delta">Active</span>
+            <span class="badge badge-epsilon">Archived</span>
+        </div>
+    </div>
+
+    <!-- Forms Test -->
+    <div class="test-section">
+        <h2 class="test-title">Forms</h2>
+        <div class="group">
+            <input type="text" class="field" placeholder="Enter your name">
+            <label class="label">Name</label>
+        </div>
+        <div class="group">
+            <input type="email" class="field" placeholder="Enter your email">
+            <label class="label">Email</label>
+        </div>
+        <div class="group">
+            <textarea class="textarea" placeholder="Enter your message"></textarea>
+            <label class="label">Message</label>
+        </div>
+    </div>
+
+    <!-- Cards Test -->
+    <div class="test-section">
+        <h2 class="test-title">Cards</h2>
+        <div class="card">
+            <div class="card-header">
+                <h3>Card Title</h3>
+            </div>
+            <div class="card-body">
+                <p>This is a card body with some content.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Dropdown Test -->
+    <div class="test-section">
+        <h2 class="test-title">Dropdown</h2>
+        <div class="dropdown-menu">
+            <button class="dropdown-btn">Dropdown ▼</button>
+            <div class="dropdown-content">
+                <a class="dropdown-item" href="#">Option 1</a>
+                <a class="dropdown-item" href="#">Option 2</a>
+                <a class="dropdown-item" href="#">Option 3</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Accordion Test -->
+    <div class="test-section">
+        <h2 class="test-title">Accordion</h2>
+        <div class="accordion">
+            <button class="accordion-btn">Section 1</button>
+            <div class="accordion-panel">
+                <div class="accordion-content">
+                    <p>Content for section 1 goes here.</p>
+                </div>
+            </div>
+        </div>
+        <div class="accordion">
+            <button class="accordion-btn">Section 2</button>
+            <div class="accordion-panel">
+                <div class="accordion-content">
+                    <p>Content for section 2 goes here.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Carousel Test -->
+    <div class="test-section">
+        <h2 class="test-title">Carousel</h2>
+        <div class="carousel">
+            <div class="carousel-viewport">
+                <div class="carousel-track">
+                    <div class="carousel-slide">
+                        <img src="https://picsum.photos/400/200?random=1" alt="Slide 1">
+                        <span>Slide 1</span>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="https://picsum.photos/400/200?random=2" alt="Slide 2">
+                        <span>Slide 2</span>
+                    </div>
+                    <div class="carousel-slide">
+                        <img src="https://picsum.photos/400/200?random=3" alt="Slide 3">
+                        <span>Slide 3</span>
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-btn carousel-prev">‹</button>
+            <button class="carousel-btn carousel-next">›</button>
+            <div class="carousel-dots">
+                <button class="carousel-dot"></button>
+                <button class="carousel-dot"></button>
+                <button class="carousel-dot"></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal Test -->
+    <div class="test-section">
+        <h2 class="test-title">Modal</h2>
+        <button class="jf-btn-ace" onclick="document.getElementById('testModal').classList.add('is-open')">Open Modal</button>
+        
+        <div class="modal" id="testModal">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-title">Test Modal</h3>
+                    <button class="modal-close">×</button>
+                </div>
+                <div class="modal-body">
+                    <p>This is a modal dialog content.</p>
+                </div>
+                <div class="modal-footer">
+                    <button class="jf-btn-ace">Save</button>
+                    <button class="jf-btn-outline-ace">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tabs Test -->
+    <div class="test-section">
+        <h2 class="test-title">Tabs</h2>
+        <div class="tabs">
+            <div class="tab-list">
+                <button class="tab-btn is-active" data-tab="tab1">Tab 1</button>
+                <button class="tab-btn" data-tab="tab2">Tab 2</button>
+                <button class="tab-btn" data-tab="tab3">Tab 3</button>
+            </div>
+            <div id="tab1" class="tab-content is-active">
+                <p>Content for tab 1</p>
+            </div>
+            <div id="tab2" class="tab-content">
+                <p>Content for tab 2</p>
+            </div>
+            <div id="tab3" class="tab-content">
+                <p>Content for tab 3</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Tooltips Test -->
+    <div class="test-section">
+        <h2 class="test-title">Tooltips</h2>
+        <div class="tooltip">
+            <button class="jf-btn-ace">Hover me</button>
+            <div class="tooltip-content">This is a tooltip</div>
+        </div>
+        <div class="tooltip tooltip-ace">
+            <button class="jf-btn-beta">Ace Theme</button>
+            <div class="tooltip-content">Blue themed tooltip</div>
+        </div>
+    </div>
+
+    <!-- Pagination Test -->
+    <div class="test-section">
+        <h2 class="test-title">Pagination</h2>
+        <div class="pagination">
+            <button class="pagination-btn" disabled>‹</button>
+            <button class="pagination-btn is-active" data-page="1">1</button>
+            <button class="pagination-btn" data-page="2">2</button>
+            <button class="pagination-btn" data-page="3">3</button>
+            <button class="pagination-btn">›</button>
+        </div>
+    </div>
+
+    <script src="dist/JulioUI.min.js"></script>
+</body>
+</html>
