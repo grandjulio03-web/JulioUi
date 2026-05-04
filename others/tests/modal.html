@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Modal Test - JForce Framework</title>
-    <link rel="stylesheet" href="../dist/my-framework.css">
+    <title>My Framework - Modal Showcase</title>
+    <link rel="stylesheet" href="../../dist/my-framework.css">
     <style>
         body {
             font-family: "Inter", "Poppins", "Montserrat", sans-serif;
             padding: 2rem;
-            background: #f9fafb;
+            background: linear-gradient(145deg, #f8fbff, #eef4ff);
         }
         .demo-section {
             margin-bottom: 2rem;
@@ -52,20 +52,21 @@
     </style>
 </head>
 <body>
-    <h1>Modal Component Test</h1>
+    <h1 style="margin-bottom: 0.5rem;">My Framework Modal Showcase</h1>
+    <p style="margin-top: 0; margin-bottom: 2rem; color: #556070;">Pure, minimal, and expressive modal patterns for modern interfaces.</p>
 
     <div class="demo-section">
-        <div class="demo-title">Basic Modal</div>
-        <div class="demo-desc">Click button to open modal dialog</div>
+        <div class="demo-title">Core Modal</div>
+        <div class="demo-desc">A clean, focused dialog with simple actions.</div>
         
-        <button data-modal-open="myModal" class="btn">Open Modal</button>
+        <button data-modal-open="myModal" class="btn">Launch Core Modal</button>
     </div>
 
     <div class="demo-section">
-        <div class="demo-title">Modal with Form</div>
-        <div class="demo-desc">Modal containing a simple form</div>
+        <div class="demo-title">Contact Flow Modal</div>
+        <div class="demo-desc">Collect input in a compact, elegant form layout.</div>
         
-        <button data-modal-open="formModal" class="btn">Open Form Modal</button>
+        <button data-modal-open="formModal" class="btn">Open Contact Modal</button>
     </div>
 
     <div class="demo-section">
@@ -99,14 +100,14 @@
         <div class="modal-content">
             <button class="modal-close">×</button>
             <div class="modal-header">
-                <h2 class="modal-title">Simple Modal</h2>
+                <h2 class="modal-title">Elegant Confirmation</h2>
             </div>
             <div class="modal-body">
-                This is a basic modal dialog. You can put any content here like text, images, or forms.
+                My Framework keeps this modal minimal and expressive so your message stays clear and memorable.
             </div>
             <div class="modal-footer">
-                <button class="btn">Cancel</button>
-                <button class="btn btn-primary">Confirm</button>
+                <button class="btn">Dismiss</button>
+                <button class="btn btn-primary">Continue</button>
             </div>
         </div>
     </div>
@@ -116,7 +117,7 @@
         <div class="modal-content">
             <button class="modal-close">×</button>
             <div class="modal-header">
-                <h2 class="modal-title">Contact Form</h2>
+                <h2 class="modal-title">Creative Contact</h2>
             </div>
             <div class="modal-body">
                 <div style="margin-bottom: 1rem;">
@@ -139,6 +140,6 @@
         </div>
     </div>
 
-    <script src="../dist/my-framework.js"></script>
+    <script src="../../dist/my-framework.js"></script>
 </body>
 </html>

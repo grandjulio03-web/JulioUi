@@ -3,30 +3,53 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tooltip Test - JForce Framework</title>
-    <link rel="stylesheet" href="../dist/my-framework.css">
+    <title>My Framework - Tooltip Showcase</title>
+    <link rel="stylesheet" href="../../dist/my-framework.css">
     <style>
         body {
             font-family: "Inter", "Poppins", "Montserrat", sans-serif;
-            padding: 2rem;
-            background: #f9fafb;
+            padding: 1rem;
+            margin: 0;
+            background: radial-gradient(circle at top right, #f9fdff, #edf4ff 44%, #f6fbff);
+        }
+        .page {
+            max-width: 1120px;
+            margin: 0 auto;
+        }
+        .hero {
+            border-radius: 1rem;
+            padding: 1.8rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(130deg, #041301, #1f3858 52%, #72b0d7);
+            color: #fff;
+            box-shadow: 0 15px 34px rgba(4, 19, 1, 0.28);
+        }
+        .hero h1 {
+            margin: 0 0 .45rem;
+            font-size: clamp(1.5rem, 3vw, 2.3rem);
+        }
+        .hero p {
+            margin: 0;
+            color: rgba(255,255,255,.9);
+            max-width: 700px;
         }
         .demo-section {
-            margin-bottom: 2rem;
-            padding: 2rem;
-            background: white;
-            border-radius: 0.5rem;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 1rem;
+            padding: 1.2rem;
+            background: rgba(255,255,255,.9);
+            border: 1px solid #dce6f4;
+            border-radius: 0.9rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.06);
         }
         .demo-title {
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: .4rem;
             color: #041301;
         }
         .demo-desc {
             color: #6b7280;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
         .btn {
             padding: 0.75rem 1.5rem;
@@ -37,7 +60,7 @@
             cursor: pointer;
             font-size: 1rem;
             transition: all 0.3s ease;
-            margin: 0.5rem;
+            margin: 0.35rem;
         }
         .btn:hover {
             background: #72b0d7;
@@ -57,44 +80,64 @@
             background: rgba(114, 176, 215, 0.1);
             color: #72b0d7;
         }
+        .tooltip-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: .85rem;
+        }
+        .tooltip-panel {
+            border: 1px solid #e2ebf7;
+            border-radius: .75rem;
+            padding: .8rem;
+            background: #fff;
+        }
+        @media (max-width: 720px) {
+            body { padding: .65rem; }
+            .hero { padding: 1.1rem; }
+        }
     </style>
 </head>
 <body>
-    <h1>Tooltip Component Test</h1>
+    <div class="page">
+    <section class="hero">
+        <h1>My Framework Tooltip Showcase</h1>
+        <p>Micro-details become macro-magic: deeply crafted hover intelligence wrapped in dead-simple markup.</p>
+    </section>
 
     <div class="demo-section">
-        <div class="demo-title">Basic Tooltips</div>
-        <div class="demo-desc">Hover over elements to see tooltips</div>
-        
-        <div class="tooltip">
-            <button class="btn">Hover me</button>
-            <div class="tooltip-content">This is a tooltip</div>
-        </div>
-        
-        <div class="tooltip tooltip-ace">
-            <button class="btn">Ace Theme</button>
-            <div class="tooltip-content">Blue themed tooltip</div>
-        </div>
-        
-        <div class="tooltip tooltip-beta">
-            <button class="btn">Beta Theme</button>
-            <div class="tooltip-content">Pink themed tooltip</div>
-        </div>
-        
-        <div class="tooltip tooltip-gamma">
-            <button class="btn">Gamma Theme</button>
-            <div class="tooltip-content">Orange themed tooltip</div>
-        </div>
-        
-        <div class="tooltip tooltip-delta">
-            <button class="btn">Delta Theme</button>
-            <div class="tooltip-content">Green themed tooltip</div>
+        <div class="demo-title">Interactive Theme Matrix</div>
+        <div class="demo-desc">Explore colors and feel how each tooltip personality responds.</div>
+        <div class="tooltip-grid">
+            <div class="tooltip-panel">
+                <div class="tooltip">
+                    <button class="btn">Default tone</button>
+                    <div class="tooltip-content">Neutral precision for everyday hints</div>
+                </div>
+            </div>
+            <div class="tooltip-panel">
+                <div class="tooltip tooltip-ace">
+                    <button class="btn">Ace tone</button>
+                    <div class="tooltip-content">Calm blue clarity for safe guidance</div>
+                </div>
+            </div>
+            <div class="tooltip-panel">
+                <div class="tooltip tooltip-beta">
+                    <button class="btn">Beta tone</button>
+                    <div class="tooltip-content">Bold pink accents for critical moments</div>
+                </div>
+            </div>
+            <div class="tooltip-panel">
+                <div class="tooltip tooltip-gamma">
+                    <button class="btn">Gamma tone</button>
+                    <div class="tooltip-content">Warm momentum for active status</div>
+                </div>
+            </div>
         </div>
     </div>
 
     <div class="demo-section">
-        <div class="demo-title">Icon Tooltips</div>
-        <div class="demo-desc">Tooltips on icon buttons</div>
+        <div class="demo-title">Command Icons</div>
+        <div class="demo-desc">Tooltips tuned for compact action bars and touch-friendly spacing.</div>
         
         <div class="tooltip">
             <button class="icon-btn">⚙</button>
@@ -123,8 +166,8 @@
     </div>
 
     <div class="demo-section">
-        <div class="demo-title">Link Tooltips</div>
-        <div class="demo-desc">Tooltips on text links</div>
+        <div class="demo-title">Narrative Links</div>
+        <div class="demo-desc">Give users clarity before click, without cluttering the canvas.</div>
         
         <div class="tooltip">
             <a href="#" style="color: #72b0d7; text-decoration: none;">Help documentation</a>
@@ -137,23 +180,8 @@
         </div>
     </div>
 
-    <div class="demo-section">
-        <div class="demo-title">Minimal Structure</div>
-        <div class="demo-desc">Simple HTML structure for tooltips</div>
-        
-        <pre style="background: #f5f5f5; padding: 1rem; border-radius: 0.25rem; overflow-x: auto;">
-&lt;div class="tooltip"&gt;
-  &lt;button&gt;Element&lt;/button&gt;
-  &lt;div class="tooltip-content"&gt;Tooltip text&lt;/div&gt;
-&lt;/div&gt;
-
-&lt;!-- With theme --&gt;
-&lt;div class="tooltip tooltip-ace"&gt;
-  &lt;button&gt;Element&lt;/button&gt;
-  &lt;div class="tooltip-content"&gt;Blue tooltip&lt;/div&gt;
-&lt;/div&gt;</pre>
     </div>
 
-    <script src="../dist/my-framework.js"></script>
+    <script src="../../dist/my-framework.js"></script>
 </body>
 </html>

@@ -1,0 +1,404 @@
+/* ===================== My Framework: Magic Spinners ===================== */
+/* Public API: .spin + variant + size + tone + speed */
+
+.spin {
+  --spin-size: 2.5rem;
+  --spin-color: #{$ace};
+  --spin-color-2: #{$beta};
+  --spin-color-3: #{$gamma};
+  --spin-duration: 0.95s;
+  --spin-stroke: max(2px, calc(var(--spin-size) * 0.11));
+  width: var(--spin-size);
+  height: var(--spin-size);
+  display: inline-grid;
+  place-items: center;
+  color: var(--spin-color);
+  position: relative;
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
+/* Sizes */
+.spin-xs { --spin-size: 1rem; }
+.spin-sm { --spin-size: 1.6rem; }
+.spin-md { --spin-size: 2.5rem; }
+.spin-lg { --spin-size: 3.5rem; }
+.spin-xl { --spin-size: 4.5rem; }
+
+/* Speed */
+.spin-slow { --spin-duration: 1.45s; }
+.spin-fast { --spin-duration: 0.65s; }
+
+/* Tones */
+.spin-ace {
+  --spin-color: #{$ace};
+  --spin-color-2: #{$beta};
+  --spin-color-3: #{$delta};
+}
+
+.spin-beta {
+  --spin-color: #{$beta};
+  --spin-color-2: #{$gamma};
+  --spin-color-3: #{$ace};
+}
+
+.spin-gamma {
+  --spin-color: #{$gamma};
+  --spin-color-2: #{$ace};
+  --spin-color-3: #{$delta};
+}
+
+.spin-delta {
+  --spin-color: #{$delta};
+  --spin-color-2: #{$ace};
+  --spin-color-3: #{$beta};
+}
+
+.spin-epsilon {
+  --spin-color: #{$epsilon};
+  --spin-color-2: #{$ace};
+  --spin-color-3: #{$gamma};
+}
+
+/* Variant: ring */
+.spin-ring {
+  border: var(--spin-stroke) solid rgba(0, 0, 0, 0.12);
+  border-top-color: var(--spin-color);
+  border-right-color: var(--spin-color-2);
+  border-radius: 50%;
+  animation: spin-rotate var(--spin-duration) linear infinite;
+}
+
+/* Variant: dual counter-rotation */
+.spin-dual::before,
+.spin-dual::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  border-style: solid;
+  border-color: transparent;
+}
+
+.spin-dual::before {
+  inset: 0;
+  border-width: var(--spin-stroke);
+  border-top-color: var(--spin-color);
+  border-left-color: var(--spin-color-2);
+  animation: spin-rotate var(--spin-duration) linear infinite;
+}
+
+.spin-dual::after {
+  inset: 22%;
+  border-width: calc(var(--spin-stroke) * 0.85);
+  border-bottom-color: var(--spin-color-3);
+  border-right-color: var(--spin-color);
+  animation: spin-rotate calc(var(--spin-duration) * 1.2) linear infinite reverse;
+}
+
+/* Variant: pulse */
+.spin-pulse::before,
+.spin-pulse::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+}
+
+.spin-pulse::before {
+  background: radial-gradient(circle, var(--spin-color) 0%, transparent 70%);
+  opacity: 0.75;
+  animation: spin-pulse-core calc(var(--spin-duration) * 1.8) ease-in-out infinite;
+}
+
+.spin-pulse::after {
+  border: var(--spin-stroke) solid var(--spin-color-2);
+  animation: spin-pulse-ring calc(var(--spin-duration) * 1.8) ease-out infinite;
+}
+
+/* Variant: orbit */
+.spin-orbit::before,
+.spin-orbit::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+}
+
+.spin-orbit::before {
+  inset: 28%;
+  background: var(--spin-color-2);
+  box-shadow: 0 0 0 calc(var(--spin-stroke) * 0.5) color-mix(in srgb, var(--spin-color-2), transparent 65%);
+}
+
+.spin-orbit::after {
+  top: calc(50% - var(--spin-stroke));
+  left: calc(50% - var(--spin-stroke));
+  width: calc(var(--spin-stroke) * 2);
+  height: calc(var(--spin-stroke) * 2);
+  background: var(--spin-color);
+  transform-origin: calc(var(--spin-size) * 0.35) center;
+  animation: spin-orbit var(--spin-duration) linear infinite;
+}
+
+/* Variant: dot (3 children) */
+.spin-dot {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: calc(var(--spin-size) * 0.12);
+}
+
+.spin-dot span {
+  width: calc(var(--spin-size) * 0.18);
+  height: calc(var(--spin-size) * 0.18);
+  border-radius: 50%;
+  background: var(--spin-color);
+  animation: spin-dot calc(var(--spin-duration) * 1.8) ease-in-out infinite;
+}
+
+.spin-dot span:nth-child(2) {
+  background: var(--spin-color-2);
+  animation-delay: 0.15s;
+}
+
+.spin-dot span:nth-child(3) {
+  background: var(--spin-color-3);
+  animation-delay: 0.3s;
+}
+
+/* Variant: wave (4 children) */
+.spin-wave {
+  display: inline-flex;
+  align-items: flex-end;
+  justify-content: center;
+  gap: calc(var(--spin-size) * 0.09);
+}
+
+.spin-wave span {
+  width: calc(var(--spin-size) * 0.12);
+  height: calc(var(--spin-size) * 0.58);
+  border-radius: 999px;
+  background: linear-gradient(180deg, var(--spin-color), var(--spin-color-2));
+  transform-origin: bottom center;
+  animation: spin-wave calc(var(--spin-duration) * 1.6) ease-in-out infinite;
+}
+
+.spin-wave span:nth-child(2) { animation-delay: 0.12s; }
+.spin-wave span:nth-child(3) { animation-delay: 0.24s; }
+.spin-wave span:nth-child(4) { animation-delay: 0.36s; }
+
+/* Variant: grid (9 children) */
+.spin-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: calc(var(--spin-size) * 0.08);
+  padding: calc(var(--spin-size) * 0.08);
+}
+
+.spin-grid span {
+  width: 100%;
+  height: 100%;
+  border-radius: 0.3rem;
+  background: var(--spin-color);
+  animation: spin-grid calc(var(--spin-duration) * 2) ease-in-out infinite;
+}
+
+.spin-grid span:nth-child(2),
+.spin-grid span:nth-child(5),
+.spin-grid span:nth-child(8) {
+  background: var(--spin-color-2);
+}
+
+.spin-grid span:nth-child(3),
+.spin-grid span:nth-child(6),
+.spin-grid span:nth-child(9) {
+  background: var(--spin-color-3);
+}
+
+.spin-grid span:nth-child(2) { animation-delay: 0.08s; }
+.spin-grid span:nth-child(3) { animation-delay: 0.16s; }
+.spin-grid span:nth-child(4) { animation-delay: 0.24s; }
+.spin-grid span:nth-child(5) { animation-delay: 0.32s; }
+.spin-grid span:nth-child(6) { animation-delay: 0.40s; }
+.spin-grid span:nth-child(7) { animation-delay: 0.48s; }
+.spin-grid span:nth-child(8) { animation-delay: 0.56s; }
+.spin-grid span:nth-child(9) { animation-delay: 0.64s; }
+
+/* Variant: flux */
+.spin-flux {
+  border-radius: 50%;
+  background: conic-gradient(
+    var(--spin-color),
+    var(--spin-color-2),
+    var(--spin-color-3),
+    var(--spin-color)
+  );
+  -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - var(--spin-stroke)), #fff calc(100% - (var(--spin-stroke) - 1px)));
+  mask: radial-gradient(farthest-side, transparent calc(100% - var(--spin-stroke)), #fff calc(100% - (var(--spin-stroke) - 1px)));
+  animation: spin-rotate calc(var(--spin-duration) * 1.05) linear infinite;
+}
+
+/* Optional wrappers */
+.spin-stack {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+.spin-label {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #6b7280;
+}
+
+/* Compatibility aliases for old demos */
+.air-spinner { @extend .spin; }
+.air-spinner--sm { @extend .spin-sm; }
+.air-spinner--md { @extend .spin-md; }
+.air-spinner--lg { @extend .spin-lg; }
+.air-spinner--dual { @extend .spin-dual; }
+.air-spinner--breath { @extend .spin-pulse; }
+.air-spinner--orbit-dots { @extend .spin-orbit; }
+.air-spinner--wave { @extend .spin-wave; }
+.air-spinner--chroma { @extend .spin-flux; }
+
+/* ===================== Full-page loader ===================== */
+.air-page-loader {
+  position: fixed;
+  inset: 0;
+  z-index: 10050;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  font-family: "Inter", "Poppins", "Montserrat", sans-serif;
+  transition: opacity 0.45s ease, visibility 0.45s ease;
+}
+
+.air-page-loader--dark {
+  background: rgba(4, 19, 1, 0.88);
+  color: #e5e7eb;
+}
+
+.air-page-loader__label {
+  margin: 0;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  color: #6b7280;
+}
+
+.air-page-loader--dark .air-page-loader__label {
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.air-page-loader.is-hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+/* Inline row: label + spinner */
+.air-loader-row {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.air-loader-row__text {
+  font-size: 0.85rem;
+  color: #6b7280;
+  font-weight: 500;
+}
+
+/* Overlay loader on buttons/cards */
+.spin-overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.25s ease, visibility 0.25s ease;
+  background: color-mix(in srgb, white, transparent 32%);
+  border-radius: inherit;
+}
+
+.loader {
+  position: relative;
+  display: inline-block;
+}
+
+.loader.loading .spin-overlay {
+  opacity: 1;
+  visibility: visible;
+}
+
+.loader.loading > button {
+  color: transparent !important;
+}
+
+/* Skeleton loaders */
+.spin-skeleton {
+  border-radius: 0.55rem;
+  background: linear-gradient(90deg, #e5e7eb 0%, #f3f4f6 50%, #e5e7eb 100%);
+  background-size: 220% 100%;
+  animation: spin-skeleton 1.25s ease infinite;
+}
+
+.skeleton-sm { height: 0.65rem; }
+.skeleton-md { height: 0.95rem; }
+.skeleton-lg { height: 1.4rem; }
+
+@keyframes spin-rotate {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes spin-orbit {
+  to { transform: rotate(360deg) translateX(calc(var(--spin-size) * 0.35)); }
+}
+
+@keyframes spin-dot {
+  0%, 80%, 100% { transform: translateY(0); opacity: 0.45; }
+  40% { transform: translateY(calc(var(--spin-size) * -0.12)); opacity: 1; }
+}
+
+@keyframes spin-wave {
+  0%, 100% { transform: scaleY(0.35); opacity: 0.6; }
+  45% { transform: scaleY(1); opacity: 1; }
+}
+
+@keyframes spin-grid {
+  0%, 100% { transform: scale(0.7); opacity: 0.45; }
+  50% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes spin-pulse-core {
+  0%, 100% { transform: scale(0.65); opacity: 0.55; }
+  50% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes spin-pulse-ring {
+  0% { transform: scale(0.45); opacity: 0.8; }
+  100% { transform: scale(1.25); opacity: 0; }
+}
+
+@keyframes spin-skeleton {
+  0% { background-position: 100% 0; }
+  100% { background-position: -100% 0; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spin,
+  .spin::before,
+  .spin::after,
+  .spin span,
+  .spin-skeleton {
+    animation-duration: 2.8s !important;
+  }
+}

@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../dist/my-framework.css">
+  <title>Air Form</title>
+  <style>
+    body {
+      background: radial-gradient(circle at top right, rgba(114, 176, 215, 0.3), transparent 45%),
+        #f5f5f5;
+      min-height: 100vh;
+      margin: 0;
+      padding: 2rem;
+      font-family: "Inter", "Poppins", "Montserrat", sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+    }
+
+    @media (max-width: 768px) {
+      body {
+        padding: 1rem;
+      }
+    }
+
+    .air-form-shell {
+      width: min(960px, 100%);
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .air-form-shell__hero {
+      background: #fff;
+      border-radius: 1.25rem;
+      padding: 1.75rem;
+      box-shadow: 0 25px 60px rgba(4, 19, 1, 0.15);
+    }
+
+    .air-form-shell__hero h1 {
+      margin: 0;
+      font-size: 1.5rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .air-form-shell__hero p {
+      margin: 0.5rem 0 0;
+      color: #6b7280;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <div class="air-form-shell">
+    <div class="air-form-shell__hero">
+      <h1>Air Form</h1>
+      <p>Simple markup, premium spacing, and support for every fundamental input type.</p>
+    </div>
+
+    <form class="air-form" novalidate>
+      <div class="air-form__head">
+        <h2>Tell us about the launch</h2>
+        <p>The `.air-form` wrapper keeps transitions smooth, focus glows soft, and layout grid-based.</p>
+      </div>
+
+      <div class="air-form__grid">
+        <div class="air-form__field">
+          <label for="full-name">Full name</label>
+          <input id="full-name" class="air-input" type="text" placeholder="River J. Force">
+        </div>
+        <div class="air-form__field">
+          <label for="email">Email</label>
+          <input id="email" class="air-input" type="email" placeholder="you@example.com">
+          <span class="air-form__helper">We will keep the updates on the bright side.</span>
+        </div>
+        <div class="air-form__field">
+          <label for="search">Search</label>
+          <input id="search" class="air-input" type="search" placeholder="Search for a plan">
+        </div>
+        <div class="air-form__field">
+          <label for="budget">Budget</label>
+          <input id="budget" class="air-input" type="number" min="0" placeholder="5000">
+        </div>
+      </div>
+
+      <div class="air-form__grid">
+        <div class="air-form__field">
+          <label>Plan tier</label>
+          <div class="air-form__actions">
+            <label class="air-toggle">
+              <input class="air-radio-input" type="radio" name="tier" checked>
+              <span class="air-radio-visual"></span>
+              <span>Ace</span>
+            </label>
+            <label class="air-toggle">
+              <input class="air-radio-input" type="radio" name="tier">
+              <span class="air-radio-visual"></span>
+              <span>Beta</span>
+            </label>
+            <label class="air-toggle">
+              <input class="air-radio-input" type="radio" name="tier">
+              <span class="air-radio-visual"></span>
+              <span>Gamma</span>
+            </label>
+          </div>
+        </div>
+        <div class="air-form__field">
+          <label for="scope">Scope</label>
+          <select id="scope" class="air-select">
+            <option value="studio">Studio build</option>
+            <option value="launch">Launch campaign</option>
+            <option value="suite">Suite upgrade</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="air-form__field">
+        <label>Extras</label>
+        <div class="air-form__actions">
+          <label class="air-toggle">
+            <input class="air-checkbox-input" type="checkbox" checked>
+            <span class="air-checkbox-visual"></span>
+            <span>Insights</span>
+          </label>
+          <label class="air-toggle">
+            <input class="air-checkbox-input" type="checkbox">
+            <span class="air-checkbox-visual"></span>
+            <span>Design review</span>
+          </label>
+          <label class="air-toggle">
+            <input class="air-checkbox-input" type="checkbox">
+            <span class="air-checkbox-visual"></span>
+            <span>Priority support</span>
+          </label>
+        </div>
+      </div>
+
+      <div class="air-form__field">
+        <label for="files">Upload assets</label>
+        <input id="files" class="file" type="file">
+        <span class="air-form__helper">Accepts JPG/PNG/PDF. Drag-and-drop support is native.</span>
+      </div>
+
+      <div class="air-form__field">
+        <label for="notes">Project notes</label>
+        <textarea id="notes" class="air-textarea" rows="4" placeholder="Share the big idea."></textarea>
+      </div>
+
+      <div class="air-form__field">
+        <label for="clarity">Clarity slider</label>
+        <input id="clarity" class="range" type="range" min="0" max="100" value="70">
+      </div>
+
+      <div class="air-form__actions">
+        <button class="jf-btn ace" type="submit">Submit request</button>
+        <button class="jf-btn-outline-beta" type="button">Save draft</button>
+        <small>Swap `.jf-btn` variants to change the accent instantly.</small>
+      </div>
+
+      <div class="air-form__status">
+        <span class="badge badge-ace badge-dot">Live support</span>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

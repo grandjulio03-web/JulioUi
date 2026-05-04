@@ -1,0 +1,334 @@
+// ============================================================
+// Air Framework — Backgrounds
+// The feature Bootstrap and Tailwind don't have.
+//
+// Usage: air-bg [style] [tone?]
+// Styles: mesh  aurora  glow  noise  dots  grid  beam  dark  void
+// Tones:  ace  beta  gamma  delta  (for glow and beam)
+//
+// Example:
+//   <div class="air-bg mesh">...</div>
+//   <div class="air-bg glow ace">...</div>
+//   <div class="air-bg aurora">...</div>
+// ============================================================
+
+// ── Base wrapper ──────────────────────────────────────────────
+.air-bg {
+  position: relative;
+  overflow: hidden;
+
+  // So children sit above pseudo-element layers
+  > * { position: relative; z-index: 1; }
+}
+
+// ── Keyframes ─────────────────────────────────────────────────
+@keyframes air-mesh-drift {
+  0%   { background-position: 0% 50%; }
+  50%  { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes air-aurora-flow {
+  0%   { transform: rotate(0deg) scale(1.15); opacity: 0.45; }
+  33%  { transform: rotate(120deg) scale(1.3); opacity: 0.55; }
+  66%  { transform: rotate(240deg) scale(1.2); opacity: 0.4; }
+  100% { transform: rotate(360deg) scale(1.15); opacity: 0.45; }
+}
+
+@keyframes air-beam-sweep {
+  0%   { transform: translateX(-120%) skewX(-12deg); }
+  100% { transform: translateX(220%) skewX(-12deg); }
+}
+
+@keyframes air-pulse-glow {
+  0%, 100% { opacity: 0.55; transform: scale(1); }
+  50%       { opacity: 0.8;  transform: scale(1.12); }
+}
+
+@keyframes air-noise-drift {
+  0%   { transform: translate(0, 0); }
+  100% { transform: translate(80px, 80px); }
+}
+
+// ── Mesh — animated color gradient blob ───────────────────────
+// Stunning in hero sections. Pure CSS, no JS.
+.air-bg.mesh {
+  background:
+    radial-gradient(ellipse 75% 55% at 18% 28%,  rgba($ace,   0.45) 0%, transparent 65%),
+    radial-gradient(ellipse 60% 65% at 82% 72%,  rgba($beta,  0.38) 0%, transparent 65%),
+    radial-gradient(ellipse 70% 55% at 50% 95%,  rgba($delta, 0.35) 0%, transparent 65%),
+    radial-gradient(ellipse 50% 70% at 85% 15%,  rgba($gamma, 0.3)  0%, transparent 65%),
+    var(--air-50);
+  background-size: 200% 200%;
+  animation: air-mesh-drift 18s ease-in-out infinite;
+}
+
+// ── Aurora — northern lights ──────────────────────────────────
+// Best on dark sections or hero backgrounds.
+.air-bg.aurora {
+  background: linear-gradient(180deg, #020d18 0%, #030f1a 60%, #041108 100%);
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -60% -30%;
+    background:
+      conic-gradient(
+        from 180deg at 45% 55%,
+        #{$ace}   0deg,
+        #{$delta} 70deg,
+        transparent 130deg,
+        #{$beta}  200deg,
+        transparent 270deg,
+        #{$gamma} 330deg,
+        #{$ace}   360deg
+      );
+    filter: blur(72px);
+    opacity: 0.5;
+    animation: air-aurora-flow 22s linear infinite;
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: -40% -20%;
+    background:
+      conic-gradient(
+        from 0deg at 60% 35%,
+        #{$delta} 0deg,
+        transparent 80deg,
+        #{$ace}   160deg,
+        transparent 240deg,
+        #{$beta}  310deg,
+        #{$delta} 360deg
+      );
+    filter: blur(90px);
+    opacity: 0.3;
+    animation: air-aurora-flow 30s linear infinite reverse;
+    pointer-events: none;
+    z-index: 0;
+  }
+}
+
+// ── Glow — centered radial color glow ─────────────────────────
+// Perfect for hero CTAs and feature sections.
+.air-bg.glow {
+  --_glow-rgb: var(--air-ace-rgb);
+  background:
+    radial-gradient(
+      ellipse 65% 55% at 50% 45%,
+      rgb(var(--_glow-rgb) / 0.22) 0%,
+      rgb(var(--_glow-rgb) / 0.08) 45%,
+      transparent 75%
+    ),
+    var(--air-50);
+
+  &::before {
+    content: '';
+    position: absolute;
+    width: 60%;
+    height: 55%;
+    top: 22%;
+    left: 20%;
+    background: rgb(var(--_glow-rgb) / 0.12);
+    filter: blur(60px);
+    border-radius: 50%;
+    animation: air-pulse-glow 6s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+  }
+}
+
+.air-bg.glow.ace    { --_glow-rgb: var(--air-ace-rgb); }
+.air-bg.glow.beta   { --_glow-rgb: var(--air-beta-rgb); }
+.air-bg.glow.gamma  { --_glow-rgb: var(--air-gamma-rgb); }
+.air-bg.glow.delta  { --_glow-rgb: var(--air-delta-rgb); }
+
+// ── Noise — film grain texture ────────────────────────────────
+// Subtle. Adds depth to flat backgrounds. Layer over any bg.
+.air-bg.noise {
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -50%;
+    width: 200%;
+    height: 200%;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='0.045'/%3E%3C/svg%3E");
+    background-size: 300px 300px;
+    opacity: 0.55;
+    pointer-events: none;
+    z-index: 0;
+    animation: air-noise-drift 8s steps(1) infinite;
+  }
+}
+
+// ── Dots — polka dot grid pattern ─────────────────────────────
+.air-bg.dots {
+  background-color: var(--air-white);
+  background-image: radial-gradient(circle, var(--air-300) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+
+.air-bg.dots.dark,
+.air-bg.dots.void {
+  background-color: #060f05;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.12) 1px, transparent 1px);
+}
+
+.air-bg.dots.sm { background-size: 16px 16px; }
+.air-bg.dots.lg { background-size: 36px 36px; }
+
+// ── Grid — line grid ──────────────────────────────────────────
+.air-bg.grid {
+  background-color: var(--air-white);
+  background-image:
+    linear-gradient(var(--air-200) 1px, transparent 1px),
+    linear-gradient(90deg, var(--air-200) 1px, transparent 1px);
+  background-size: 32px 32px;
+}
+
+.air-bg.grid.dark,
+.air-bg.grid.void {
+  background-color: #060f05;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.07) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.07) 1px, transparent 1px);
+}
+
+.air-bg.grid.sm { background-size: 20px 20px; }
+.air-bg.grid.lg { background-size: 48px 48px; }
+
+// ── Beam — sweeping light beam across section ─────────────────
+// Runs once on hover. Loop with .beam-loop modifier.
+.air-bg.beam {
+  --_beam-rgb: var(--air-ace-rgb);
+  background: var(--air-50);
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: -10%;
+    left: -25%;
+    width: 28%;
+    height: 120%;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgb(var(--_beam-rgb) / 0.15) 40%,
+      rgb(var(--_beam-rgb) / 0.22) 50%,
+      rgb(var(--_beam-rgb) / 0.15) 60%,
+      transparent 100%
+    );
+    transform: skewX(-12deg) translateX(-100%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+  &:hover::after {
+    animation: air-beam-sweep 0.95s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  }
+
+  &.beam-loop::after {
+    animation: air-beam-sweep 2.8s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  }
+}
+
+.air-bg.beam.ace    { --_beam-rgb: var(--air-ace-rgb); }
+.air-bg.beam.beta   { --_beam-rgb: var(--air-beta-rgb); }
+.air-bg.beam.gamma  { --_beam-rgb: var(--air-gamma-rgb); }
+.air-bg.beam.delta  { --_beam-rgb: var(--air-delta-rgb); }
+
+// ── Dark — rich dark background ───────────────────────────────
+.air-bg.dark {
+  background: linear-gradient(160deg, #0d1a0b 0%, #{$epsilon} 60%, #0a140a 100%);
+  color: var(--air-100);
+}
+
+// ── Void — deep space dark ────────────────────────────────────
+.air-bg.void {
+  background: linear-gradient(145deg, #020608 0%, #030908 40%, #010403 100%);
+  color: var(--air-200);
+}
+
+// ── Surface — clean light card background ─────────────────────
+.air-bg.surface {
+  background: linear-gradient(180deg, var(--air-white) 0%, var(--air-50) 100%);
+}
+
+// ── Frost — blurred frosted panel ─────────────────────────────
+.air-bg.frost {
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+// Dark frost
+.air-bg.frost.dark {
+  background: rgba(4, 10, 3, 0.65);
+  border-color: rgba(255, 255, 255, 0.08);
+  color: var(--air-100);
+}
+
+// ── Stripe — subtle diagonal stripe ──────────────────────────
+.air-bg.stripe {
+  background-color: var(--air-50);
+  background-image: repeating-linear-gradient(
+    -45deg,
+    transparent,
+    transparent 8px,
+    var(--air-200) 8px,
+    var(--air-200) 9px
+  );
+}
+
+// ── Gradient presets ──────────────────────────────────────────
+// Rich editorial gradients — one class, stunning output
+.air-bg.grad-sky {
+  background: linear-gradient(135deg, #{$ace} 0%, #a8d8f0 50%, #e8f4fb 100%);
+  color: var(--air-900);
+}
+
+.air-bg.grad-rose {
+  background: linear-gradient(135deg, #{$beta} 0%, #f093bb 50%, #fce4ef 100%);
+  color: var(--air-900);
+}
+
+.air-bg.grad-ember {
+  background: linear-gradient(135deg, #{$gamma} 0%, #ffb380 50%, #fff0e6 100%);
+  color: var(--air-900);
+}
+
+.air-bg.grad-sage {
+  background: linear-gradient(135deg, #{$delta} 0%, #9ee4c8 50%, #e8f8f2 100%);
+  color: var(--air-900);
+}
+
+// Multi-tone editorial gradients
+.air-bg.grad-sunset {
+  background: linear-gradient(135deg, #{$beta} 0%, #{$gamma} 50%, #ffd580 100%);
+  color: #fff;
+}
+
+.air-bg.grad-ocean {
+  background: linear-gradient(135deg, #1a4a6e 0%, #{$ace} 50%, #{$delta} 100%);
+  color: #fff;
+}
+
+.air-bg.grad-neon {
+  background: linear-gradient(135deg, #0a0f1a 0%, #0d1b2a 50%, #0a1508 100%);
+  color: var(--air-100);
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 20% 50%, rgba($ace,  0.25) 0%, transparent 55%),
+      radial-gradient(ellipse 50% 55% at 80% 40%, rgba($beta, 0.2)  0%, transparent 55%);
+    pointer-events: none;
+    z-index: 0;
+  }
+}

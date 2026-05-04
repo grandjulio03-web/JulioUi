@@ -1,55 +1,403 @@
-/* -------------------- Solid Buttons -------------------- */
-.jf-btn-ace { background-color: $ace; color: white; border: none; border-radius: 0.25rem; padding: 0.5rem 1rem; font-weight: 600; cursor: pointer; transition: 0.3s all; }
-.jf-btn-beta { background-color: $beta; color: white; border: none; border-radius: 0.25rem; padding: 0.5rem 1rem; font-weight: 600; cursor: pointer; transition: 0.3s all; }
-.jf-btn-gamma { background-color: $gamma; color: white; border: none; border-radius: 0.25rem; padding: 0.5rem 1rem; font-weight: 600; cursor: pointer; transition: 0.3s all; }
-.jf-btn-delta { background-color: $delta; color: white; border: none; border-radius: 0.25rem; padding: 0.5rem 1rem; font-weight: 600; cursor: pointer; transition: 0.3s all; }
-.jf-btn-epsilon { background-color: $epsilon; color: white; border: none; border-radius: 0.25rem; padding: 0.5rem 1rem; font-weight: 600; cursor: pointer; transition: 0.3s all; }
+// ============================================================
+// Air Framework â€” Buttons
+// Usage: air-btn [tone] [variant] [size] [shape]
+// Tones:    ace  beta  gamma  delta  epsilon
+// Variants: ghost  glow  glass  soft  gradient
+// Sizes:    xs  sm  (default)  lg  xl
+// Shapes:   pill  square  icon
+// ============================================================
 
-/* Hover effect */
-.jf-btn-ace:hover,
-.jf-btn-beta:hover,
-.jf-btn-gamma:hover,
-.jf-btn-delta:hover,
-.jf-btn-epsilon:hover {
-  opacity: 0.85;
+// â”€â”€ Tone map â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// Each entry: (base color, dark color, r g b for alpha ops)
+$btn-tones: (
+  ace:     (#{$ace},     #{$ace-dk},     "114 176 215"),
+  beta:    (#{$beta},    #{$beta-dk},    "217 79 139"),
+  gamma:   (#{$gamma},   #{$gamma-dk},   "255 143 75"),
+  delta:   (#{$delta},   #{$delta-dk},   "109 201 167"),
+  epsilon: (#{$epsilon}, #{$epsilon-lt}, "4 19 1"),
+);
+
+// â”€â”€ Base button â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+.air-btn {
+  // Internal theme tokens â€” override per tone class
+  --_c:     #{$ace};
+  --_c-dk:  #{$ace-dk};
+  --_c-rgb: 114 176 215;
+
+  // Layout
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5em;
+  padding: 0.625em 1.375em;
+  min-height: 2.5rem;
+
+  // Typography
+  font-family: var(--air-font);
+  font-size: 0.9375rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  text-decoration: none;
+
+  // Shape
+  border: 2px solid transparent;
+  border-radius: var(--air-r-lg);
+
+  // Interaction
+  cursor: pointer;
+  user-select: none;
+  -webkit-user-select: none;
+
+  // Default style: solid + ace tone
+  background: var(--_c);
+  color: #fff;
+  border-color: var(--_c);
+
+  // Chromatic shadow â€” the key differentiator
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.22),
+    0 2px 4px  rgb(var(--_c-rgb) / 0.28),
+    0 6px 20px rgb(var(--_c-rgb) / 0.22);
+
+  transition:
+    transform       var(--air-t-fast),
+    box-shadow      var(--air-t-base),
+    background      var(--air-t-base),
+    border-color    var(--air-t-base),
+    color           var(--air-t-base),
+    opacity         var(--air-t-fast);
+
+  &:hover {
+    background:   var(--_c-dk);
+    border-color: var(--_c-dk);
+    transform: translateY(-1px);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.22),
+      0 4px 8px  rgb(var(--_c-rgb) / 0.32),
+      0 12px 32px rgb(var(--_c-rgb) / 0.26);
+  }
+
+  &:active {
+    transform: translateY(0) scale(0.97);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.15),
+      0 1px 3px rgb(var(--_c-rgb) / 0.2);
+    transition-duration: var(--air-t-snap);
+  }
+
+  &:disabled,
+  &[disabled],
+  &.is-disabled {
+    opacity: 0.45;
+    cursor: not-allowed;
+    pointer-events: none;
+    transform: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--_c);
+    outline-offset: 3px;
+  }
+
+  // Icon slot
+  svg {
+    width: 1.1em;
+    height: 1.1em;
+    flex-shrink: 0;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
 }
 
-/* -------------------- Outline Buttons -------------------- */
-.jf-btn-outline-ace { background: transparent; border: 2px solid $ace; color: $ace; border-radius: 0.25rem; padding: 0.5rem 1rem; font-weight: 600; cursor: pointer; transition: 0.3s all; }
-.jf-btn-outline-beta { background: transparent; border: 2px solid $beta; color: $beta; border-radius: 0.25rem; padding: 0.5rem 1rem; font-weight: 600; cursor: pointer; transition: 0.3s all; }
-.jf-btn-outline-gamma { background: transparent; border: 2px solid $gamma; color: $gamma; border-radius: 0.25rem; padding: 0.5rem 1rem; font-weight: 600; cursor: pointer; transition: 0.3s all; }
-.jf-btn-outline-delta { background: transparent; border: 2px solid $delta; color: $delta; border-radius: 0.25rem; padding: 0.5rem 1rem; font-weight: 600; cursor: pointer; transition: 0.3s all; }
-.jf-btn-outline-epsilon { background: transparent; border: 2px solid $epsilon; color: $epsilon; border-radius: 0.25rem; padding: 0.5rem 1rem; font-weight: 600; cursor: pointer; transition: 0.3s all; }
+// â”€â”€ Tone classes â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+@each $name, $vals in $btn-tones {
+  $base: nth($vals, 1);
+  $dark: nth($vals, 2);
+  $rgb:  nth($vals, 3);
 
-/* -------------------- Flat Buttons -------------------- */
-.jf-btn-flat-ace { background: $ace; color: white; border-radius: 0.25rem; padding: 0.5rem 1rem; font-weight: 600; cursor: pointer; box-shadow: none; transition: 0.3s all; }
-.jf-btn-flat-beta { background: $beta; color: white; border-radius: 0.25rem; padding: 0.5rem 1rem; font-weight: 600; cursor: pointer; box-shadow: none; transition: 0.3s all; }
-.jf-btn-flat-gamma { background: $gamma; color: white; border-radius: 0.25rem; padding: 0.5rem 1rem; font-weight: 600; cursor: pointer; box-shadow: none; transition: 0.3s all; }
-.jf-btn-flat-delta { background: $delta; color: white; border-radius: 0.25rem; padding: 0.5rem 1rem; font-weight: 600; cursor: pointer; box-shadow: none; transition: 0.3s all; }
-.jf-btn-flat-epsilon { background: $epsilon; color: white; border-radius: 0.25rem; padding: 0.5rem 1rem; font-weight: 600; cursor: pointer; box-shadow: none; transition: 0.3s all; }
+  .air-btn.#{$name} {
+    --_c:     #{$base};
+    --_c-dk:  #{$dark};
+    --_c-rgb: #{$rgb};
+  }
+}
 
-/* -------------------- Glow Buttons -------------------- */
-.jf-btn-glow-ace { background: $ace; color: white; box-shadow: 0 0 8px rgba($ace, 0.6); border-radius: 0.25rem; padding: 0.5rem 1rem; font-weight: 600; cursor: pointer; transition: 0.3s all; }
-.jf-btn-glow-beta { background: $beta; color: white; box-shadow: 0 0 8px rgba($beta, 0.6); border-radius: 0.25rem; padding: 0.5rem 1rem; font-weight: 600; cursor: pointer; transition: 0.3s all; }
-.jf-btn-glow-gamma { background: $gamma; color: white; box-shadow: 0 0 8px rgba($gamma, 0.6); border-radius: 0.25rem; padding: 0.5rem 1rem; font-weight: 600; cursor: pointer; transition: 0.3s all; }
-.jf-btn-glow-delta { background: $delta; color: white; box-shadow: 0 0 8px rgba($delta, 0.6); border-radius: 0.25rem; padding: 0.5rem 1rem; font-weight: 600; cursor: pointer; transition: 0.3s all; }
-.jf-btn-glow-epsilon { background: $epsilon; color: white; box-shadow: 0 0 8px rgba($epsilon, 0.6); border-radius: 0.25rem; padding: 0.5rem 1rem; font-weight: 600; cursor: pointer; transition: 0.3s all; }
+// â”€â”€ Variants â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
-/* -------------------- Hover Effects -------------------- */
-.jf-btn-outline-ace:hover,
-.jf-btn-outline-beta:hover,
-.jf-btn-outline-gamma:hover,
-.jf-btn-outline-delta:hover,
-.jf-btn-outline-epsilon:hover,
-.jf-btn-flat-ace:hover,
-.jf-btn-flat-beta:hover,
-.jf-btn-flat-gamma:hover,
-.jf-btn-flat-delta:hover,
-.jf-btn-flat-epsilon:hover,
-.jf-btn-glow-ace:hover,
-.jf-btn-glow-beta:hover,
-.jf-btn-glow-gamma:hover,
-.jf-btn-glow-delta:hover,
-.jf-btn-glow-epsilon:hover {
-  opacity: 0.85;
+// Ghost â€” outline only, fill on hover
+.air-btn.ghost {
+  background: transparent;
+  color: var(--_c);
+  border-color: var(--_c);
+  box-shadow: none;
+
+  &:hover {
+    background: var(--_c);
+    color: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgb(var(--_c-rgb) / 0.28);
+  }
+
+  &:active {
+    transform: scale(0.97);
+    box-shadow: none;
+  }
+}
+
+// Soft â€” tinted fill, no border
+.air-btn.soft {
+  background: rgb(var(--_c-rgb) / 0.12);
+  color: var(--_c-dk);
+  border-color: transparent;
+  box-shadow: none;
+
+  &:hover {
+    background: rgb(var(--_c-rgb) / 0.2);
+    color: var(--_c-dk);
+    transform: translateY(-1px);
+    box-shadow: none;
+  }
+
+  &:active {
+    transform: scale(0.97);
+    background: rgb(var(--_c-rgb) / 0.16);
+  }
+}
+
+// Glow â€” solid + radiant glow on hover
+.air-btn.glow {
+  background: var(--_c);
+  color: #fff;
+  border-color: var(--_c);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.22),
+    0 0 0   2px rgb(var(--_c-rgb) / 0),
+    0 0 16px 0px rgb(var(--_c-rgb) / 0.4),
+    0 4px 12px rgb(var(--_c-rgb) / 0.3);
+
+  &:hover {
+    background: var(--_c-dk);
+    border-color: var(--_c-dk);
+    transform: translateY(-1px);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.22),
+      0 0 0   4px rgb(var(--_c-rgb) / 0.25),
+      0 0 30px 0px rgb(var(--_c-rgb) / 0.55),
+      0 8px 24px rgb(var(--_c-rgb) / 0.35);
+  }
+
+  &:active { transform: scale(0.97); }
+}
+
+// Glass â€” frosted, light-on-dark usage
+.air-btn.glass {
+  background: rgb(var(--_c-rgb) / 0.14);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  color: var(--_c);
+  border-color: rgb(var(--_c-rgb) / 0.28);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.35),
+    0 2px 10px rgb(var(--_c-rgb) / 0.1);
+
+  &:hover {
+    background: rgb(var(--_c-rgb) / 0.22);
+    border-color: rgb(var(--_c-rgb) / 0.45);
+    transform: translateY(-1px);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.4),
+      0 6px 20px rgb(var(--_c-rgb) / 0.2);
+  }
+
+  &:active { transform: scale(0.97); }
+}
+
+// Gradient â€” animated flowing gradient
+.air-btn.gradient {
+  background: linear-gradient(
+    135deg,
+    var(--_c) 0%,
+    var(--_c-dk) 40%,
+    var(--_c) 100%
+  );
+  background-size: 200% 100%;
+  background-position: 100% 0;
+  color: #fff;
+  border-color: transparent;
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.22),
+    0 4px 14px rgb(var(--_c-rgb) / 0.3);
+
+  &:hover {
+    background-position: 0% 0;
+    transform: translateY(-1px);
+    box-shadow:
+      inset 0 1px 0 rgba(255,255,255,0.22),
+      0 8px 24px rgb(var(--_c-rgb) / 0.38);
+    transition:
+      background-position 0.45s ease,
+      transform var(--air-t-fast),
+      box-shadow var(--air-t-base);
+  }
+
+  &:active { transform: scale(0.97); }
+}
+
+// Link â€” text-only, underline on hover
+.air-btn.link {
+  background: transparent;
+  color: var(--_c);
+  border-color: transparent;
+  box-shadow: none;
+  padding-left: 0;
+  padding-right: 0;
+  min-height: auto;
+
+  &::after {
+    content: '';
+    display: block;
+    height: 1.5px;
+    background: var(--_c);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--air-t-base);
+    margin-top: -1px;
+  }
+
+  &:hover {
+    transform: none;
+    box-shadow: none;
+    &::after { transform: scaleX(1); }
+  }
+
+  &:active { transform: none; }
+}
+
+// â”€â”€ Sizes â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+.air-btn.xs {
+  font-size: 0.75rem;
+  padding: 0.4em 0.85em;
+  min-height: 1.75rem;
+  border-radius: var(--air-r-md);
+}
+
+.air-btn.sm {
+  font-size: 0.8125rem;
+  padding: 0.5em 1em;
+  min-height: 2.125rem;
+}
+
+.air-btn.lg {
+  font-size: 1.0625rem;
+  padding: 0.7em 1.65em;
+  min-height: 3rem;
+}
+
+.air-btn.xl {
+  font-size: 1.1875rem;
+  padding: 0.8em 2em;
+  min-height: 3.5rem;
+  border-radius: var(--air-r-xl);
+}
+
+// â”€â”€ Shapes â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+.air-btn.pill {
+  border-radius: var(--air-r-pill);
+}
+
+.air-btn.square {
+  border-radius: var(--air-r-sm);
+}
+
+// Icon-only â€” perfectly square
+.air-btn.icon {
+  padding: 0;
+  width: 2.5rem;
+  min-height: 2.5rem;
+  border-radius: var(--air-r-lg);
+
+  &.xs { width: 1.75rem; min-height: 1.75rem; border-radius: var(--air-r-md); }
+  &.sm { width: 2.125rem; min-height: 2.125rem; }
+  &.lg { width: 3rem; min-height: 3rem; }
+  &.xl { width: 3.5rem; min-height: 3.5rem; border-radius: var(--air-r-xl); }
+  &.pill, &.circle { border-radius: var(--air-r-pill); }
+}
+
+// Full-width
+.air-btn.block {
+  width: 100%;
+}
+
+// â”€â”€ Button Group â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+.air-btn-group {
+  display: inline-flex;
+  align-items: center;
+
+  .air-btn {
+    border-radius: 0;
+    box-shadow: none;
+    border-right-width: 1px;
+
+    &:first-child {
+      border-radius: var(--air-r-lg) 0 0 var(--air-r-lg);
+    }
+    &:last-child {
+      border-radius: 0 var(--air-r-lg) var(--air-r-lg) 0;
+      border-right-width: 2px;
+    }
+    &:hover { z-index: 1; position: relative; }
+    &:focus-visible { z-index: 2; position: relative; }
+  }
+
+  &.pill .air-btn {
+    &:first-child { border-radius: var(--air-r-pill) 0 0 var(--air-r-pill); }
+    &:last-child  { border-radius: 0 var(--air-r-pill) var(--air-r-pill) 0; }
+  }
+}
+
+// â”€â”€ Loading state â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+.air-btn.is-loading {
+  cursor: wait;
+  pointer-events: none;
+  position: relative;
+
+  .air-btn-label {
+    visibility: hidden;
+    opacity: 0;
+  }
+
+  .air-btn-spinner {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+// Inject structure if absent (used by JS)
+.air-btn-label { display: contents; }
+.air-btn-spinner { display: none; }
+
+// â”€â”€ Dark surface override â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// On dark backgrounds, soft/ghost buttons get lighter treatment
+.air-bg.dark .air-btn.ghost,
+.air-bg.void .air-btn.ghost,
+[data-theme="dark"] .air-btn.ghost {
+  color: rgba(255,255,255,0.85);
+  border-color: rgba(255,255,255,0.3);
+
+  &:hover {
+    background: rgba(255,255,255,0.12);
+    color: #fff;
+    border-color: rgba(255,255,255,0.5);
+    box-shadow: none;
+  }
 }

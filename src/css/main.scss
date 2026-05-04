@@ -1,6 +1,22 @@
-@import 'variables';
-@import 'typography';
-@import 'utilities';
-@import 'cards';
-@import 'forms';
-@import 'buttons';
+// ============================================================
+// Air Framework — Main Entry Point
+// ============================================================
+
+// Foundation
+@import 'variables';   // Design tokens (must be first)
+@import 'reset';       // Modern CSS reset + base
+@import 'typography';  // Type scale, prose, utilities
+
+// Components
+@import 'backgrounds'; // Mesh, aurora, glow, noise, grid, beam
+@import 'buttons';     // Solid, ghost, glow, glass, soft, gradient
+@import 'cards';       // Surface, media, stat, bento, glass, dark
+@import 'badges';      // Badge, chip, chip-group
+@import 'alerts';      // Alert, toast, banner
+@import 'forms';       // Input, select, textarea, toggle, check, radio, range, file
+@import 'navigation';  // Air-bar, neo-nav, aside
+@import 'tables';      // Air-table with tone variants
+@import 'loaders';     // Spinners, skeletons, page loaders
+
+// Utilities (last — override layer)
+@import 'utilities';   // Spacing, flex, grid, display, responsive

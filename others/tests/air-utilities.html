@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Air — Utilities</title>
+  <link rel="stylesheet" href="../../dist/my-framework.css">
+  <style>
+    body { padding: 2.5rem; background: var(--air-50); font-family: var(--air-font); }
+    .demo-section { margin-bottom: 3.5rem; }
+    .demo-title {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--air-400);
+      margin-bottom: 1.25rem; padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--air-200);
+    }
+    .demo-box {
+      background: var(--air-200); border-radius: 0.5rem;
+      min-height: 3rem; display: flex; align-items: center;
+      justify-content: center; font-size: 0.8rem;
+      font-weight: 600; color: var(--air-600);
+    }
+    .demo-box.colored { background: rgba(114,176,215,0.2); color: #4a8fc0; }
+    .shadow-demo {
+      background: #fff; border-radius: 0.75rem;
+      padding: 1rem 1.5rem; font-size: 0.8rem;
+      font-weight: 600; color: var(--air-600);
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div style="margin-bottom: 3rem;">
+    <span class="air-kicker dotted">Air Framework</span>
+    <h1 class="air-display" style="margin-top: 0.4rem;">Utilities</h1>
+    <p class="air-lead">
+      8-point spacing system. Flex + grid helpers. Display, position, z-index, overflow, borders, shadows.
+      Clean. No bloat. Everything you actually need.
+    </p>
+  </div>
+
+  <!-- Spacing -->
+  <div class="demo-section">
+    <div class="demo-title">Spacing scale — mt, mb, ml, mr, mx, my + p variants</div>
+    <p class="air-body" style="margin-bottom: 1rem;">Scale: 0, 1 (4px), 2 (8px), 3 (12px), 4 (16px), 5 (20px), 6 (24px), 8 (32px), 10 (40px), 12 (48px), 16 (64px), 20 (80px), 24 (96px)</p>
+    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+      <div class="flex-start gap-4 flex-wrap">
+        <div class="demo-box" style="width: 60px;">.m-0</div>
+        <div class="demo-box m-1" style="width: 60px;">.m-1</div>
+        <div class="demo-box m-2" style="width: 60px;">.m-2</div>
+        <div class="demo-box m-3" style="width: 60px;">.m-3</div>
+        <div class="demo-box m-4" style="width: 60px;">.m-4</div>
+        <div class="demo-box m-6" style="width: 60px;">.m-6</div>
+        <div class="demo-box m-8" style="width: 60px;">.m-8</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Flex -->
+  <div class="demo-section">
+    <div class="demo-title">Flex utilities</div>
+    <p class="air-caption" style="margin-bottom: 0.75rem;">.flex-center</p>
+    <div class="flex-center gap-4" style="background: var(--air-100); padding: 1.5rem; border-radius: 0.75rem; min-height: 6rem;">
+      <div class="demo-box colored" style="width: 80px;">A</div>
+      <div class="demo-box colored" style="width: 80px;">B</div>
+      <div class="demo-box colored" style="width: 80px;">C</div>
+    </div>
+
+    <p class="air-caption" style="margin-top: 1rem; margin-bottom: 0.75rem;">.flex-between</p>
+    <div class="flex-between gap-4" style="background: var(--air-100); padding: 1.5rem; border-radius: 0.75rem;">
+      <div class="demo-box colored" style="width: 80px;">Left</div>
+      <div class="demo-box colored" style="width: 80px;">Right</div>
+    </div>
+
+    <p class="air-caption" style="margin-top: 1rem; margin-bottom: 0.75rem;">.flex + gap-4 + .flex-wrap</p>
+    <div class="flex flex-wrap gap-4" style="background: var(--air-100); padding: 1.5rem; border-radius: 0.75rem;">
+      <div class="demo-box colored" style="width: 100px;">Item</div>
+      <div class="demo-box colored" style="width: 100px;">Item</div>
+      <div class="demo-box colored" style="width: 100px;">Item</div>
+      <div class="demo-box colored" style="width: 100px;">Item</div>
+      <div class="demo-box colored" style="width: 100px;">Item</div>
+    </div>
+  </div>
+
+  <!-- Grid -->
+  <div class="demo-section">
+    <div class="demo-title">Grid utilities</div>
+    <p class="air-caption" style="margin-bottom: 0.75rem;">.grid.grid-3.gap-4</p>
+    <div class="grid grid-3 gap-4">
+      <div class="demo-box">1</div>
+      <div class="demo-box">2</div>
+      <div class="demo-box">3</div>
+      <div class="demo-box">4</div>
+      <div class="demo-box">5</div>
+      <div class="demo-box">6</div>
+    </div>
+
+    <p class="air-caption" style="margin-top: 1.5rem; margin-bottom: 0.75rem;">.grid.grid-auto (auto-fit minmax 240px)</p>
+    <div class="grid grid-auto gap-4">
+      <div class="demo-box">Auto</div>
+      <div class="demo-box">Auto</div>
+      <div class="demo-box">Auto</div>
+      <div class="demo-box">Auto</div>
+      <div class="demo-box">Auto</div>
+    </div>
+
+    <p class="air-caption" style="margin-top: 1.5rem; margin-bottom: 0.75rem;">.grid.grid-4.gap-4 — becomes 2 cols at 1023px</p>
+    <div class="grid grid-4 gap-4">
+      <div class="demo-box">1</div>
+      <div class="demo-box">2</div>
+      <div class="demo-box">3</div>
+      <div class="demo-box">4</div>
+    </div>
+  </div>
+
+  <!-- Border radius -->
+  <div class="demo-section">
+    <div class="demo-title">Border radius</div>
+    <div class="flex flex-wrap gap-4">
+      <div class="demo-box rounded-none" style="width: 70px; height: 70px;">none</div>
+      <div class="demo-box rounded-xs"   style="width: 70px; height: 70px;">xs</div>
+      <div class="demo-box rounded-sm"   style="width: 70px; height: 70px;">sm</div>
+      <div class="demo-box rounded"      style="width: 70px; height: 70px;">md</div>
+      <div class="demo-box rounded-lg"   style="width: 70px; height: 70px;">lg</div>
+      <div class="demo-box rounded-xl"   style="width: 70px; height: 70px;">xl</div>
+      <div class="demo-box rounded-2xl"  style="width: 70px; height: 70px;">2xl</div>
+      <div class="demo-box rounded-3xl"  style="width: 70px; height: 70px;">3xl</div>
+      <div class="demo-box rounded-full" style="width: 70px; height: 70px;">full</div>
+    </div>
+  </div>
+
+  <!-- Shadows -->
+  <div class="demo-section">
+    <div class="demo-title">Shadows</div>
+    <div class="flex flex-wrap gap-6 py-8">
+      <div class="shadow-demo shadow-xs" style="min-width: 80px;">xs</div>
+      <div class="shadow-demo shadow-sm" style="min-width: 80px;">sm</div>
+      <div class="shadow-demo shadow"    style="min-width: 80px;">md</div>
+      <div class="shadow-demo shadow-lg" style="min-width: 80px;">lg</div>
+      <div class="shadow-demo shadow-xl" style="min-width: 80px;">xl</div>
+      <div class="shadow-demo shadow-2xl" style="min-width: 80px;">2xl</div>
+    </div>
+  </div>
+
+  <!-- Color utilities -->
+  <div class="demo-section">
+    <div class="demo-title">Background colors</div>
+    <div class="flex flex-wrap gap-4">
+      <div style="width: 100px; height: 60px; border-radius: 0.5rem;" class="bg-ace flex-center"><span style="font-size:0.7rem; font-weight: 700;">bg-ace</span></div>
+      <div style="width: 100px; height: 60px; border-radius: 0.5rem;" class="bg-beta flex-center"><span style="font-size:0.7rem; font-weight: 700;">bg-beta</span></div>
+      <div style="width: 100px; height: 60px; border-radius: 0.5rem;" class="bg-gamma flex-center"><span style="font-size:0.7rem; font-weight: 700;">bg-gamma</span></div>
+      <div style="width: 100px; height: 60px; border-radius: 0.5rem;" class="bg-delta flex-center"><span style="font-size:0.7rem; font-weight: 700;">bg-delta</span></div>
+      <div style="width: 100px; height: 60px; border-radius: 0.5rem;" class="bg-ace-soft flex-center"><span style="font-size:0.7rem; font-weight: 700; color: #4a8fc0;">bg-ace-soft</span></div>
+      <div style="width: 100px; height: 60px; border-radius: 0.5rem;" class="bg-beta-soft flex-center"><span style="font-size:0.7rem; font-weight: 700; color: #b83a72;">bg-beta-soft</span></div>
+      <div style="width: 100px; height: 60px; border-radius: 0.5rem;" class="bg-gamma-soft flex-center"><span style="font-size:0.7rem; font-weight: 700; color: #d96e2a;">bg-gamma-soft</span></div>
+      <div style="width: 100px; height: 60px; border-radius: 0.5rem;" class="bg-delta-soft flex-center"><span style="font-size:0.7rem; font-weight: 700; color: #44a880;">bg-delta-soft</span></div>
+    </div>
+  </div>
+
+  <!-- Container + Section -->
+  <div class="demo-section">
+    <div class="demo-title">Container + Section</div>
+    <div style="border: 2px dashed var(--air-300); border-radius: 0.75rem; overflow: hidden;">
+      <div class="section sm" style="background: var(--air-100);">
+        <div class="container md">
+          <div style="background: rgba(114,176,215,0.2); border: 2px dashed #72b0d7; border-radius: 0.75rem; padding: 1rem; text-align: center; font-size: 0.875rem; color: #4a8fc0; font-weight: 600;">
+            .section.sm > .container.md (max-width: 1024px, centered, padding)
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Animations -->
+  <div class="demo-section">
+    <div class="demo-title">Animation utilities</div>
+    <div class="flex gap-6 flex-wrap">
+      <div class="demo-box fade-in" style="width: 120px; height: 60px; animation-duration: 1.5s;">fade-in</div>
+      <div class="demo-box slide-up" style="width: 120px; height: 60px; animation-duration: 0.8s;">slide-up</div>
+    </div>
+    <p class="air-caption" style="margin-top: 0.75rem;">Refresh page to replay. Use .fade-in and .slide-up on elements entering the viewport.</p>
+  </div>
+
+  <!-- Divider -->
+  <div class="demo-section">
+    <div class="demo-title">Dividers</div>
+    <p class="air-body">Content above</p>
+    <hr class="divider my-6">
+    <p class="air-body">Content below — use .my-6 for spacing</p>
+    <div style="margin-top: 1rem; display: flex; align-items: center; gap: 0.5rem;">
+      <p class="air-body">Inline left</p>
+      <span class="divider vertical"></span>
+      <p class="air-body">Inline right</p>
+    </div>
+  </div>
+
+</body>
+</html>

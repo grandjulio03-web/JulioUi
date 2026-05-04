@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Air — Backgrounds</title>
+  <link rel="stylesheet" href="../../dist/my-framework.css">
+  <style>
+    body { padding: 2.5rem; background: var(--air-100); font-family: var(--air-font); }
+    .demo-section { margin-bottom: 2rem; }
+    .demo-title {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--air-400);
+      margin-bottom: 1rem; padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--air-200);
+    }
+    .bg-demo {
+      border-radius: 1.25rem;
+      padding: 3rem 2.5rem;
+      min-height: 14rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      position: relative;
+      overflow: hidden;
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+    .bg-label {
+      font-family: monospace;
+      font-size: 0.78rem;
+      padding: 0.3rem 0.65rem;
+      background: rgba(0,0,0,0.35);
+      color: rgba(255,255,255,0.9);
+      border-radius: 0.35rem;
+      display: inline-block;
+      backdrop-filter: blur(6px);
+      position: relative;
+      z-index: 10;
+    }
+    .demo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(340px, 1fr));
+      gap: 1.25rem;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div style="margin-bottom: 3rem;">
+    <span class="air-kicker dotted">Air Framework</span>
+    <h1 class="air-display" style="margin-top: 0.4rem;">Backgrounds</h1>
+    <p class="air-lead">
+      The feature Bootstrap and Tailwind don't ship. One class. Stunning output.
+      Mesh, aurora, glow, noise, dots, grid, beam — pure CSS.
+    </p>
+  </div>
+
+  <!-- Mesh -->
+  <div class="demo-section">
+    <div class="demo-title">Mesh — animated blob gradients</div>
+    <div class="demo-grid">
+      <div class="bg-demo air-bg mesh">
+        <div style="margin-bottom: 1rem; position: relative; z-index: 2;">
+          <p class="air-display" style="font-size: 2rem; color: #1f2937;">Color mesh</p>
+          <p class="air-lead" style="font-size: 0.95rem;">Animated gradient blobs using radial-gradient layers. Smooth drift animation on loop.</p>
+        </div>
+        <span class="bg-label">air-bg mesh</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Aurora -->
+  <div class="demo-section">
+    <div class="demo-title">Aurora — northern lights</div>
+    <div class="demo-grid">
+      <div class="bg-demo air-bg aurora" style="min-height: 18rem;">
+        <div style="margin-bottom: 1rem; position: relative; z-index: 2;">
+          <p style="font-size: 2rem; font-weight: 800; color: #fff; letter-spacing: -0.03em;">Northern Lights</p>
+          <p style="color: rgba(255,255,255,0.7); font-size: 0.95rem; line-height: 1.6;">Layered conic gradients with blur, rotating continuously. Best for dark hero sections.</p>
+        </div>
+        <span class="bg-label">air-bg aurora</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Glow -->
+  <div class="demo-section">
+    <div class="demo-title">Glow — centered radial color pulse</div>
+    <div class="demo-grid">
+      <div class="bg-demo air-bg glow ace">
+        <span class="bg-label" style="background: rgba(74,143,192,0.6);">air-bg glow ace</span>
+      </div>
+      <div class="bg-demo air-bg glow beta">
+        <span class="bg-label" style="background: rgba(184,58,114,0.6);">air-bg glow beta</span>
+      </div>
+      <div class="bg-demo air-bg glow gamma">
+        <span class="bg-label" style="background: rgba(217,110,42,0.6);">air-bg glow gamma</span>
+      </div>
+      <div class="bg-demo air-bg glow delta">
+        <span class="bg-label" style="background: rgba(68,168,128,0.6);">air-bg glow delta</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Noise -->
+  <div class="demo-section">
+    <div class="demo-title">Noise — film grain texture overlay</div>
+    <div class="demo-grid">
+      <div class="bg-demo air-bg noise" style="background: linear-gradient(135deg, #72b0d7, #6DC9A7);">
+        <div style="position: relative; z-index: 2; margin-bottom: 1rem;">
+          <p style="color: #fff; font-weight: 700; font-size: 1.2rem;">Grain Texture</p>
+          <p style="color: rgba(255,255,255,0.85); font-size: 0.9rem;">Subtle SVG noise overlay. Adds depth and warmth to flat backgrounds. Layer over anything.</p>
+        </div>
+        <span class="bg-label">air-bg noise</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dots -->
+  <div class="demo-section">
+    <div class="demo-title">Dots — polka dot grid pattern</div>
+    <div class="demo-grid">
+      <div class="bg-demo air-bg dots">
+        <span class="bg-label">air-bg dots</span>
+      </div>
+      <div class="bg-demo air-bg dots sm">
+        <span class="bg-label">air-bg dots sm</span>
+      </div>
+      <div class="bg-demo air-bg dots lg">
+        <span class="bg-label">air-bg dots lg</span>
+      </div>
+      <div class="bg-demo air-bg dots dark">
+        <span class="bg-label">air-bg dots dark</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Grid -->
+  <div class="demo-section">
+    <div class="demo-title">Grid — line grid</div>
+    <div class="demo-grid">
+      <div class="bg-demo air-bg grid">
+        <span class="bg-label">air-bg grid</span>
+      </div>
+      <div class="bg-demo air-bg grid sm">
+        <span class="bg-label">air-bg grid sm</span>
+      </div>
+      <div class="bg-demo air-bg grid lg">
+        <span class="bg-label">air-bg grid lg</span>
+      </div>
+      <div class="bg-demo air-bg grid dark">
+        <span class="bg-label">air-bg grid dark</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Beam -->
+  <div class="demo-section">
+    <div class="demo-title">Beam — sweeping light beam (hover to trigger)</div>
+    <div class="demo-grid">
+      <div class="bg-demo air-bg beam ace" style="cursor: pointer;">
+        <div style="position: relative; z-index: 2; margin-bottom: 1rem;">
+          <p style="font-size: 1.1rem; font-weight: 700; color: #1f2937;">Hover me</p>
+          <p style="color: var(--air-500); font-size: 0.9rem;">Light beam sweeps across on hover. Add .beam-loop for continuous animation.</p>
+        </div>
+        <span class="bg-label" style="background: rgba(74,143,192,0.5);">air-bg beam ace</span>
+      </div>
+      <div class="bg-demo air-bg beam beta" style="cursor: pointer;">
+        <div style="position: relative; z-index: 2; margin-bottom: 1rem;">
+          <p style="font-size: 1.1rem; font-weight: 700; color: #1f2937;">Hover me</p>
+        </div>
+        <span class="bg-label" style="background: rgba(184,58,114,0.5);">air-bg beam beta</span>
+      </div>
+      <div class="bg-demo air-bg beam gamma beam-loop" style="background: #fdf4ef;">
+        <div style="position: relative; z-index: 2; margin-bottom: 1rem;">
+          <p style="font-size: 1.1rem; font-weight: 700; color: #1f2937;">Loop</p>
+          <p style="color: var(--air-500); font-size: 0.9rem;">Add .beam-loop for continuous sweep.</p>
+        </div>
+        <span class="bg-label" style="background: rgba(217,110,42,0.5);">air-bg beam gamma beam-loop</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dark / Void -->
+  <div class="demo-section">
+    <div class="demo-title">Dark & Void — rich dark backgrounds</div>
+    <div class="demo-grid">
+      <div class="bg-demo air-bg dark" style="justify-content: space-between;">
+        <div>
+          <p style="font-size: 1.5rem; font-weight: 800; color: #fff; letter-spacing: -0.02em;">Dark</p>
+          <p style="color: rgba(255,255,255,0.55); font-size: 0.9rem; margin-top: 0.35rem;">Rich dark green-black. Deep and grounded.</p>
+        </div>
+        <span class="bg-label">air-bg dark</span>
+      </div>
+      <div class="bg-demo air-bg void" style="justify-content: space-between;">
+        <div>
+          <p style="font-size: 1.5rem; font-weight: 800; color: #fff; letter-spacing: -0.02em;">Void</p>
+          <p style="color: rgba(255,255,255,0.45); font-size: 0.9rem; margin-top: 0.35rem;">Deep space darkness. Near-absolute black.</p>
+        </div>
+        <span class="bg-label">air-bg void</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Frost -->
+  <div class="demo-section">
+    <div class="demo-title">Frost — frosted glass panel</div>
+    <div style="background: linear-gradient(135deg, #72b0d7 0%, #d94f8b 50%, #FF8F4B 100%); padding: 2rem; border-radius: 1.25rem;">
+      <div class="bg-demo air-bg frost" style="min-height: 8rem; justify-content: center; align-items: flex-start;">
+        <div style="position: relative; z-index: 2;">
+          <p style="font-weight: 700; font-size: 1.1rem;">Frosted Glass</p>
+          <p style="color: var(--air-500); font-size: 0.9rem;">blur(20px) + saturate(180%) backdrop. Works on any colorful background.</p>
+        </div>
+      </div>
+      <div style="height: 1rem;"></div>
+      <div class="bg-demo air-bg frost dark" style="min-height: 8rem; justify-content: center; align-items: flex-start;">
+        <div style="position: relative; z-index: 2;">
+          <p style="font-weight: 700; font-size: 1.1rem; color: #fff;">Dark Frost</p>
+          <p style="color: rgba(255,255,255,0.55); font-size: 0.9rem;">Same effect, dark variant.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Gradients -->
+  <div class="demo-section">
+    <div class="demo-title">Gradient presets — editorial grade</div>
+    <div class="demo-grid">
+      <div class="bg-demo air-bg grad-sky"><span class="bg-label">grad-sky</span></div>
+      <div class="bg-demo air-bg grad-rose"><span class="bg-label">grad-rose</span></div>
+      <div class="bg-demo air-bg grad-ember"><span class="bg-label">grad-ember</span></div>
+      <div class="bg-demo air-bg grad-sage"><span class="bg-label">grad-sage</span></div>
+      <div class="bg-demo air-bg grad-sunset"><span class="bg-label">grad-sunset</span></div>
+      <div class="bg-demo air-bg grad-ocean"><span class="bg-label">grad-ocean</span></div>
+      <div class="bg-demo air-bg grad-neon"><span class="bg-label">grad-neon</span></div>
+    </div>
+  </div>
+
+  <!-- Surface + Stripe -->
+  <div class="demo-section">
+    <div class="demo-title">Surface & Stripe</div>
+    <div class="demo-grid">
+      <div class="bg-demo air-bg surface" style="min-height: 8rem;">
+        <span class="bg-label">air-bg surface</span>
+      </div>
+      <div class="bg-demo air-bg stripe" style="min-height: 8rem;">
+        <span class="bg-label">air-bg stripe</span>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

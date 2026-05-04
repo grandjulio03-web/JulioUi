@@ -1,70 +1,347 @@
-/* ===================== Jforces Typography ===================== */
+// ============================================================
+// Air Framework — Typography
+// Usage: air-text [role] [tone?] [modifier?]
+// Roles: display  title  heading  subheading  lead  body  caption  kicker  mono
+// Modifiers: gradient  muted  balance  truncate
+// ============================================================
 
-/* -------------------- Essential Font Sizes -------------------- */
-.text-small {
-  font-size: 0.875rem;
+// ── Prose base ────────────────────────────────────────────────
+.air-prose {
+  font-family: var(--air-font);
+  font-size: var(--air-text-base);
+  color: var(--air-700);
+  line-height: 1.7;
+  max-width: 68ch;
+
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--air-900);
+    font-weight: 700;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin-top: 1.75em;
+    margin-bottom: 0.6em;
+
+    &:first-child { margin-top: 0; }
+  }
+
+  h1 { font-size: var(--air-text-4xl); }
+  h2 { font-size: var(--air-text-3xl); }
+  h3 { font-size: var(--air-text-2xl); }
+  h4 { font-size: var(--air-text-xl); }
+  h5 { font-size: var(--air-text-lg); }
+  h6 { font-size: var(--air-text-base); text-transform: uppercase; letter-spacing: 0.08em; color: var(--air-500); }
+
+  p { margin-bottom: 1.25em; }
+
+  a {
+    color: var(--air-ace);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    transition: color var(--air-t-fast);
+    &:hover { color: var(--air-ace-dk); }
+  }
+
+  strong { font-weight: 700; color: var(--air-900); }
+  em { font-style: italic; }
+
+  code {
+    font-family: var(--air-font-mono);
+    font-size: 0.875em;
+    background: var(--air-100);
+    color: #{$beta};
+    padding: 0.15em 0.45em;
+    border-radius: var(--air-r-xs);
+    border: 1px solid var(--air-200);
+  }
+
+  pre {
+    background: var(--air-900);
+    color: var(--air-100);
+    padding: 1.25rem 1.5rem;
+    border-radius: var(--air-r-xl);
+    overflow-x: auto;
+    margin: 1.5em 0;
+    font-family: var(--air-font-mono);
+    font-size: 0.875em;
+    line-height: 1.65;
+
+    code { background: none; color: inherit; padding: 0; border: none; font-size: 1em; }
+  }
+
+  blockquote {
+    border-left: 3px solid #{$ace};
+    margin: 1.5em 0;
+    padding: 0.75em 1.25em;
+    background: rgb(var(--air-ace-rgb) / 0.06);
+    border-radius: 0 var(--air-r-md) var(--air-r-md) 0;
+    color: var(--air-600);
+    font-style: italic;
+  }
+
+  ul, ol {
+    padding-left: 1.5em;
+    margin-bottom: 1.25em;
+    li { margin-bottom: 0.4em; }
+  }
+  ul { list-style: disc; }
+  ol { list-style: decimal; }
+
+  hr {
+    border-top: 1px solid var(--air-200);
+    margin: 2em 0;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.9375em;
+    margin: 1.5em 0;
+
+    th {
+      text-align: left;
+      font-weight: 600;
+      color: var(--air-800);
+      padding: 0.6em 1em;
+      border-bottom: 2px solid var(--air-200);
+    }
+
+    td {
+      padding: 0.6em 1em;
+      border-bottom: 1px solid var(--air-100);
+      color: var(--air-600);
+    }
+
+    tr:last-child td { border-bottom: none; }
+  }
 }
 
-.text-normal {
-  font-size: 1rem;
+// ── Standalone text utilities ─────────────────────────────────
+
+// Display — hero/landing page big text
+.air-display {
+  font-family: var(--air-font);
+  font-size: clamp(2.5rem, 6vw + 1rem, 5rem);
+  font-weight: 800;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
+  color: var(--air-900);
+  text-wrap: balance;
 }
 
-.text-large {
-  font-size: 1.25rem;
-}
-
-.text-heading {
-  font-size: 1.5rem;
+.air-display.serif {
+  font-family: var(--air-font-display);
   font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
-/* -------------------- Essential Font Weights -------------------- */
-.text-light {
-  font-weight: 300;
-}
-
-.text-regular {
-  font-weight: 400;
-}
-
-.text-bold {
+// Title — section heading
+.air-title {
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem);
   font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.025em;
+  color: var(--air-900);
+  text-wrap: balance;
 }
 
-/* -------------------- Essential Text Alignment -------------------- */
-.text-center {
-  text-align: center;
-}
-
-.text-right {
-  text-align: right;
-}
-
-/* -------------------- Combined Typography Classes -------------------- */
-.heading-light {
-  font-size: 1.5rem;
-  font-weight: 300;
-}
-
-.heading-bold {
-  font-size: 2rem;
+// Heading — subsection
+.air-heading {
+  font-size: clamp(1.25rem, 2.5vw, 1.875rem);
   font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
+  color: var(--air-800);
 }
 
-.subheading {
-  font-size: 1.125rem;
+// Subheading
+.air-subheading {
+  font-size: var(--air-text-xl);
   font-weight: 500;
-  color: var(--jf-gray, #6b7280);
+  line-height: 1.4;
+  color: var(--air-500);
 }
 
-.body-text {
-  font-size: 1rem;
+// Lead — intro paragraph
+.air-lead {
+  font-size: clamp(1rem, 1.5vw, 1.1875rem);
   font-weight: 400;
+  line-height: 1.75;
+  color: var(--air-600);
+  max-width: 64ch;
+  text-wrap: pretty;
+}
+
+// Body
+.air-body {
+  font-size: var(--air-text-base);
+  line-height: 1.7;
+  color: var(--air-700);
+}
+
+// Caption
+.air-caption {
+  font-size: var(--air-text-sm);
+  color: var(--air-400);
   line-height: 1.5;
 }
 
-.caption {
-  font-size: 0.75rem;
-  font-weight: 400;
-  color: var(--jf-gray, #6b7280);
+// Kicker — label above title
+.air-kicker {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: #{$ace};
+  line-height: 1;
+}
+
+.air-kicker.beta   { color: #{$beta}; }
+.air-kicker.gamma  { color: #{$gamma}; }
+.air-kicker.delta  { color: #{$delta}; }
+
+// Kicker with dot decoration
+.air-kicker.dotted::before {
+  content: '';
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: currentColor;
+  margin-right: 0.55em;
+  vertical-align: 0.06em;
+}
+
+// Mono
+.air-mono {
+  font-family: var(--air-font-mono);
+  font-size: 0.9em;
+  letter-spacing: -0.01em;
+}
+
+// ── Text modifiers ────────────────────────────────────────────
+
+// Gradient text — one of the most used premium effects
+.air-gradient-text,
+.gradient-text {
+  background: linear-gradient(
+    125deg,
+    #{$ace} 0%,
+    #{$beta} 40%,
+    #{$gamma} 80%
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+}
+
+.air-gradient-text.ace-delta {
+  background: linear-gradient(125deg, #{$ace} 0%, #{$delta} 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.air-gradient-text.beta-gamma {
+  background: linear-gradient(125deg, #{$beta} 0%, #{$gamma} 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.air-gradient-text.void {
+  background: linear-gradient(125deg, #{$epsilon} 0%, var(--air-600) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+// Highlighted text — colored underline highlight
+.air-highlight {
+  position: relative;
+  display: inline;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: -0.05em;
+    right: -0.05em;
+    bottom: 0.05em;
+    height: 0.28em;
+    background: rgb(var(--air-ace-rgb) / 0.28);
+    border-radius: 2px;
+    z-index: -1;
+    transition: height var(--air-t-base), background var(--air-t-base);
+  }
+
+  &.beta::after  { background: rgb(var(--air-beta-rgb) / 0.28); }
+  &.gamma::after { background: rgb(var(--air-gamma-rgb) / 0.28); }
+  &.delta::after { background: rgb(var(--air-delta-rgb) / 0.28); }
+}
+
+// Muted
+.air-muted { color: var(--air-400); }
+
+// Balance — prevents orphan words
+.air-balance { text-wrap: balance; }
+.air-pretty  { text-wrap: pretty; }
+
+// Truncation
+.air-truncate { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.air-clamp-2  { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
+.air-clamp-3  { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; }
+
+// ── Size scale ────────────────────────────────────────────────
+.text-xs   { font-size: var(--air-text-xs); }
+.text-sm   { font-size: var(--air-text-sm); }
+.text-base { font-size: var(--air-text-base); }
+.text-lg   { font-size: var(--air-text-lg); }
+.text-xl   { font-size: var(--air-text-xl); }
+.text-2xl  { font-size: var(--air-text-2xl); }
+.text-3xl  { font-size: var(--air-text-3xl); }
+.text-4xl  { font-size: var(--air-text-4xl); }
+.text-5xl  { font-size: var(--air-text-5xl); }
+.text-6xl  { font-size: var(--air-text-6xl); }
+.text-7xl  { font-size: var(--air-text-7xl); }
+
+// ── Weight ────────────────────────────────────────────────────
+.font-light    { font-weight: 300; }
+.font-normal   { font-weight: 400; }
+.font-medium   { font-weight: 500; }
+.font-semibold { font-weight: 600; }
+.font-bold     { font-weight: 700; }
+.font-black    { font-weight: 900; }
+
+// ── Alignment ────────────────────────────────────────────────
+.text-left    { text-align: left; }
+.text-center  { text-align: center; }
+.text-right   { text-align: right; }
+.text-justify { text-align: justify; }
+
+// ── Color ─────────────────────────────────────────────────────
+.text-ace      { color: #{$ace}; }
+.text-beta     { color: #{$beta}; }
+.text-gamma    { color: #{$gamma}; }
+.text-delta    { color: #{$delta}; }
+.text-muted    { color: var(--air-500); }
+.text-subtle   { color: var(--air-400); }
+.text-white    { color: #fff; }
+.text-dark     { color: var(--air-900); }
+
+// ── Note / callout block ──────────────────────────────────────
+.air-note {
+  display: flex;
+  gap: 0.75rem;
+  padding: 0.9rem 1.1rem;
+  border-radius: var(--air-r-lg);
+  background: rgb(var(--air-ace-rgb) / 0.07);
+  border-left: 3px solid #{$ace};
+  color: var(--air-700);
+  font-size: var(--air-text-sm);
+  line-height: 1.6;
+
+  &.beta   { background: rgb(var(--air-beta-rgb)  / 0.07); border-left-color: #{$beta}; }
+  &.gamma  { background: rgb(var(--air-gamma-rgb) / 0.07); border-left-color: #{$gamma}; }
+  &.delta  { background: rgb(var(--air-delta-rgb) / 0.07); border-left-color: #{$delta}; }
 }

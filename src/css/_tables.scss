@@ -1,0 +1,249 @@
+/* ===================== Air Tables ===================== */
+/* Simple HTML: wrap <table> in .air-table + optional modifiers. */
+
+.air-table {
+  --air-t-border: rgba(4, 19, 1, 0.1);
+  --air-t-head: linear-gradient(180deg, #f8fafc 0%, #eef2f7 100%);
+  --air-t-stripe: rgba(114, 176, 215, 0.06);
+  --air-t-hover: rgba(114, 176, 215, 0.12);
+  --air-t-accent: #{$ace};
+  --air-t-accent-soft: rgba(114, 176, 215, 0.18);
+  width: 100%;
+  border-radius: 1rem;
+  border: 1px solid var(--air-t-border);
+  background: #fff;
+  box-shadow: 0 18px 40px rgba(4, 19, 1, 0.08);
+  overflow: hidden;
+  font-family: "Inter", "Poppins", "Montserrat", sans-serif;
+}
+
+/* Explicit ace (same as default — use when you want tone visible in markup) */
+.air-table--ace {
+  --air-t-stripe: rgba(114, 176, 215, 0.06);
+  --air-t-hover: rgba(114, 176, 215, 0.12);
+  --air-t-accent: #{$ace};
+  --air-t-accent-soft: rgba(114, 176, 215, 0.18);
+}
+
+.air-table--beta {
+  --air-t-stripe: rgba(217, 79, 139, 0.07);
+  --air-t-hover: rgba(217, 79, 139, 0.12);
+  --air-t-accent: #{$beta};
+  --air-t-accent-soft: rgba(217, 79, 139, 0.18);
+}
+
+.air-table--gamma {
+  --air-t-stripe: rgba(255, 143, 75, 0.08);
+  --air-t-hover: rgba(255, 143, 75, 0.12);
+  --air-t-accent: #{$gamma};
+  --air-t-accent-soft: rgba(255, 143, 75, 0.18);
+}
+
+.air-table--delta {
+  --air-t-stripe: rgba(109, 201, 167, 0.1);
+  --air-t-hover: rgba(109, 201, 167, 0.14);
+  --air-t-accent: #{$delta};
+  --air-t-accent-soft: rgba(109, 201, 167, 0.2);
+}
+
+/* Epsilon: framework neutral / deep tone — header rule, rail, stripes */
+.air-table--epsilon {
+  --air-t-head: linear-gradient(180deg, #f3f4f1 0%, #e8ebe6 100%);
+  --air-t-stripe: rgba(4, 19, 1, 0.045);
+  --air-t-hover: rgba(4, 19, 1, 0.09);
+  --air-t-accent: #{$epsilon};
+  --air-t-accent-soft: rgba(4, 19, 1, 0.22);
+}
+
+.air-table__caption {
+  caption-side: top;
+  text-align: left;
+  padding: 1rem 1.25rem 0.5rem;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: #6b7280;
+}
+
+.air-table__scroll {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.air-table table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  font-size: 0.95rem;
+  color: #041301;
+}
+
+.air-table thead th {
+  background: var(--air-t-head);
+  color: #374151;
+  font-weight: 600;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-align: left;
+  padding: 0.85rem 1.15rem;
+  border-bottom: 2px solid var(--air-t-accent-soft);
+  white-space: nowrap;
+}
+
+.air-table thead th:first-child {
+  border-top-left-radius: 0;
+}
+
+.air-table tbody td {
+  padding: 0.85rem 1.15rem;
+  vertical-align: middle;
+  border-bottom: 1px solid var(--air-t-border);
+}
+
+.air-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Striped (like .table-striped) */
+.air-table--striped tbody tr:nth-child(even) td {
+  background: var(--air-t-stripe);
+}
+
+/* Hover rows (like .table-hover) */
+.air-table--hover tbody tr {
+  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.air-table--hover tbody tr:hover td {
+  background: var(--air-t-hover);
+}
+
+.air-table--striped.air-table--hover tbody tr:nth-child(even):hover td {
+  background: var(--air-t-hover);
+}
+
+/* Bordered cells (like .table-bordered) */
+.air-table--bordered thead th {
+  border-right: 1px solid var(--air-t-border);
+  border-bottom: 2px solid var(--air-t-accent-soft);
+}
+
+.air-table--bordered thead th:last-child {
+  border-right: none;
+}
+
+.air-table--bordered tbody td {
+  border-right: 1px solid var(--air-t-border);
+  border-bottom: 1px solid var(--air-t-border);
+}
+
+.air-table--bordered tbody td:last-child {
+  border-right: none;
+}
+
+.air-table--bordered tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* Compact (like .table-sm) */
+.air-table--sm thead th,
+.air-table--sm tbody td {
+  padding: 0.5rem 0.75rem;
+  font-size: 0.875rem;
+}
+
+.air-table--sm thead th {
+  font-size: 0.65rem;
+}
+
+/* Accent rail — unique Air signature */
+.air-table--rail tbody td:first-child {
+  border-left: 3px solid transparent;
+  padding-left: calc(1.15rem - 3px);
+}
+
+.air-table--rail tbody tr:hover td:first-child {
+  border-left-color: var(--air-t-accent);
+}
+
+.air-table--rail.air-table--striped tbody tr:nth-child(even) td:first-child {
+  border-left-color: transparent;
+}
+
+.air-table--rail.air-table--striped tbody tr:nth-child(even):hover td:first-child {
+  border-left-color: var(--air-t-accent);
+}
+
+/* Dark / inverse panel */
+.air-table--dark {
+  --air-t-border: rgba(255, 255, 255, 0.12);
+  --air-t-head: linear-gradient(180deg, #0f1a0d 0%, #041301 100%);
+  background: #041301;
+  border-color: rgba(255, 255, 255, 0.15);
+  box-shadow: 0 24px 50px rgba(0, 0, 0, 0.35);
+}
+
+.air-table--dark table {
+  color: #e5e7eb;
+}
+
+.air-table--dark thead th {
+  color: rgba(255, 255, 255, 0.85);
+  border-bottom-color: var(--air-t-accent-soft);
+}
+
+.air-table--dark tbody td {
+  border-bottom-color: var(--air-t-border);
+}
+
+.air-table--dark.air-table--striped tbody tr:nth-child(even) td {
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.air-table--dark.air-table--hover tbody tr:hover td {
+  background: rgba(114, 176, 215, 0.15);
+}
+
+/* Sticky header for long tables */
+.air-table--sticky .air-table__scroll {
+  max-height: min(70vh, 520px);
+  overflow-y: auto;
+}
+
+.air-table--sticky thead th {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  box-shadow: 0 1px 0 var(--air-t-accent-soft);
+}
+
+/* Status cell helpers */
+.air-table .air-td-muted {
+  color: #6b7280;
+  font-size: 0.875rem;
+}
+
+.air-table .air-td-strong {
+  font-weight: 600;
+}
+
+.air-table .air-badge-cell {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.2rem 0.55rem;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  background: var(--air-t-accent-soft);
+  color: var(--air-t-accent);
+}
+
+.air-table--dark .air-badge-cell {
+  background: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}

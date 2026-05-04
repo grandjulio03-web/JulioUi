@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JForceX Form Test</title>
+  <link rel="stylesheet" href="../dist/my-framework.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 2rem;
+      background: #f7fafc;
+      font-family: "Inter", "Poppins", "Montserrat", sans-serif;
+      color: #041301;
+    }
+
+    .shell {
+      max-width: 920px;
+      margin: 0 auto;
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    .card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 1rem;
+      padding: 1.25rem;
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <section class="card">
+      <h1>JForceX Form Regression Test</h1>
+      <p>Use this page to validate basic form controls and Air Form controls after updates.</p>
+    </section>
+
+    <section class="card">
+      <h2>Air Form</h2>
+      <form class="air-form" novalidate>
+        <div class="air-form__head">
+          <h3>Launch Intake</h3>
+          <p>Testing only Air Form classes and their interactions.</p>
+        </div>
+
+        <div class="air-form__grid">
+          <div class="air-form__field">
+            <label for="full-name">Full name</label>
+            <input id="full-name" class="air-input" type="text" placeholder="River J. Force">
+            <span class="air-form__helper">Use your legal display name.</span>
+          </div>
+          <div class="air-form__field">
+            <label for="email">Email</label>
+            <input id="email" class="air-input" type="email" placeholder="you@example.com">
+            <span class="air-form__helper">We only send project updates.</span>
+          </div>
+          <div class="air-form__field">
+            <label for="scope">Scope</label>
+            <select id="scope" class="air-select">
+              <option>Studio build</option>
+              <option>Launch campaign</option>
+              <option>Suite upgrade</option>
+            </select>
+          </div>
+          <div class="air-form__field">
+            <label for="notes">Project notes</label>
+            <textarea id="notes" class="air-textarea" rows="4" placeholder="Share the idea and goals."></textarea>
+          </div>
+        </div>
+
+        <div class="air-form__field">
+          <label>Plan tier</label>
+          <div class="air-form__actions">
+            <label class="air-toggle">
+              <input type="radio" name="tier" checked>
+              <span class="air-radio-visual"></span>
+              <span>Ace</span>
+            </label>
+            <label class="air-toggle">
+              <input type="radio" name="tier">
+              <span class="air-radio-visual"></span>
+              <span>Beta</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="air-form__field">
+          <label>Extras</label>
+          <div class="air-form__actions">
+            <label class="air-toggle">
+              <input type="checkbox" checked>
+              <span class="air-checkbox-visual"></span>
+              <span>Insights</span>
+            </label>
+            <label class="air-toggle">
+              <input type="checkbox">
+              <span class="air-checkbox-visual"></span>
+              <span>Priority support</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="air-form__actions">
+          <button class="jf-btn-ace" type="submit">Submit request</button>
+          <button class="jf-btn-outline-beta" type="button">Save draft</button>
+        </div>
+
+        <div class="air-form__status">Form status: ready</div>
+      </form>
+    </section>
+  </div>
+</body>
+</html>

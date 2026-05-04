@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Air Theme Variants</title>
+  <link rel="stylesheet" href="../dist/my-framework.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 2rem;
+      background: #f7fafc;
+      font-family: "Inter", "Poppins", "Montserrat", sans-serif;
+      color: #041301;
+    }
+    .wrap {
+      max-width: 980px;
+      margin: 0 auto;
+      display: grid;
+      gap: 1rem;
+    }
+    .card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 1rem;
+      padding: 1rem;
+    }
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      align-items: center;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <h1>Air Theme Variants Test</h1>
+      <p>Use `air-theme-*` to switch Air control accent colors.</p>
+    </div>
+
+    <div class="card air-form air-theme-ace">
+      <h3>Ace</h3>
+      <div class="row">
+        <label class="air-toggle"><input type="radio" name="ace-r" checked><span class="air-radio-visual"></span><span>Radio</span></label>
+        <label class="air-toggle"><input type="checkbox" checked><span class="air-checkbox-visual"></span><span>Checkbox</span></label>
+      </div>
+      <div class="air-pagination air-theme-ace" style="margin-top:0.75rem;">
+        <button disabled>‹ Prev</button>
+        <button class="page-btn active">1</button>
+        <button class="page-btn">2</button>
+        <button>Next ›</button>
+      </div>
+    </div>
+
+    <div class="card air-form air-theme-beta">
+      <h3>Beta</h3>
+      <div class="row">
+        <label class="air-toggle"><input type="radio" name="beta-r" checked><span class="air-radio-visual"></span><span>Radio</span></label>
+        <label class="air-toggle"><input type="checkbox" checked><span class="air-checkbox-visual"></span><span>Checkbox</span></label>
+      </div>
+      <div class="air-pagination air-theme-beta" style="margin-top:0.75rem;">
+        <button disabled>‹ Prev</button>
+        <button class="page-btn active">1</button>
+        <button class="page-btn">2</button>
+        <button>Next ›</button>
+      </div>
+    </div>
+
+    <div class="card air-form air-theme-gamma">
+      <h3>Gamma</h3>
+      <div class="row">
+        <label class="air-toggle"><input type="radio" name="gamma-r" checked><span class="air-radio-visual"></span><span>Radio</span></label>
+        <label class="air-toggle"><input type="checkbox" checked><span class="air-checkbox-visual"></span><span>Checkbox</span></label>
+      </div>
+      <div class="air-pagination air-theme-gamma" style="margin-top:0.75rem;">
+        <button disabled>‹ Prev</button>
+        <button class="page-btn active">1</button>
+        <button class="page-btn">2</button>
+        <button>Next ›</button>
+      </div>
+    </div>
+
+    <div class="card air-form air-theme-delta">
+      <h3>Delta</h3>
+      <div class="row">
+        <label class="air-toggle"><input type="radio" name="delta-r" checked><span class="air-radio-visual"></span><span>Radio</span></label>
+        <label class="air-toggle"><input type="checkbox" checked><span class="air-checkbox-visual"></span><span>Checkbox</span></label>
+      </div>
+      <div class="air-pagination air-theme-delta" style="margin-top:0.75rem;">
+        <button disabled>‹ Prev</button>
+        <button class="page-btn active">1</button>
+        <button class="page-btn">2</button>
+        <button>Next ›</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

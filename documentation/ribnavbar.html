@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../dist/my-framework.css">
+    <title>Rib Navbar</title>
+</head>
+<body>
+    <nav class="air-bar air-bar--glass" aria-label="Primary navigation">
+      <div class="air-bar__brand-wrap">
+        <!-- Option A: use icon -->
+        <span class="air-bar__logo-icon" aria-hidden="true">JF</span>
+        <!-- Option B: replace icon with image
+        <img class="air-bar__logo" src="https://your-logo.png" alt="JForceX logo">
+        -->
+        <div class="air-bar__brand">JForceX Air</div>
+      </div>
+
+      <div class="air-bar__links" id="airbar-panel" data-airbar-panel>
+        <a class="air-bar__link" href="#">Home</a>
+        <a class="air-bar__link" href="#">Products</a>
+        <a class="air-bar__link" href="#">Docs</a>
+        <a class="air-bar__link" href="#">Studio</a>
+        <button class="jf-btn-ace air-bar__cta">Connect</button>
+      </div>
+
+      <button type="button"
+        class="air-bar__toggle"
+        aria-label="Toggle navigation"
+        aria-expanded="false"
+        data-airbar-toggle="#airbar-panel">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </nav>
+
+    <script src="../dist/my-framework.js"></script>
+
+</body>
+</html>

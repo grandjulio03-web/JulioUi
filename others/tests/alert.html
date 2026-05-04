@@ -3,20 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Alert Test - JForce Framework</title>
-    <link rel="stylesheet" href="../dist/my-framework.css">
+    <title>My Framework - Alert Command Center</title>
+    <link rel="stylesheet" href="../../dist/my-framework.css">
     <style>
         body {
             font-family: "Inter", "Poppins", "Montserrat", sans-serif;
-            padding: 2rem;
-            background: #f9fafb;
+            padding: 1rem;
+            margin: 0;
+            background: radial-gradient(circle at top, #f8fcff, #edf4ff 45%, #f8fcff);
         }
+        .page { max-width: 1020px; margin: 0 auto; }
+        .hero { background: linear-gradient(130deg, #041301, #203955 55%, #72b0d7); color: #fff; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1rem; }
         .demo-section {
-            margin-bottom: 2rem;
-            padding: 2rem;
-            background: white;
-            border-radius: 0.5rem;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: rgba(255,255,255,.9);
+            border-radius: 0.85rem;
+            border: 1px solid #dce6f4;
+            box-shadow: 0 8px 18px rgba(0,0,0,.06);
         }
         .demo-title {
             font-size: 1.5rem;
@@ -31,7 +35,11 @@
     </style>
 </head>
 <body>
-    <h1>Alert Component Test</h1>
+    <div class="page">
+    <section class="hero">
+        <h1 style="margin:0 0 .35rem;">My Framework Alert Command Center</h1>
+        <p style="margin:0; color:rgba(255,255,255,.9);">Deluxe feedback states with clean emphasis and removable controls.</p>
+    </section>
 
     <div class="demo-section">
         <div class="demo-title">Ace Alert</div>
@@ -64,8 +72,8 @@
     </div>
 
     <div class="demo-section">
-        <div class="demo-title">Delta Alert</div>
-        <div class="demo-desc">Green alert for delta theme</div>
+        <div class="demo-title">Epsilon Alert</div>
+        <div class="demo-desc">Dark premium alert for high-importance notices</div>
         
         <div class="alert alert-epsilon">
             <span>✓ Success: Operation completed.</span>
@@ -73,17 +81,7 @@
         </div>
     </div>
 
-    <div class="demo-section">
-        <div class="demo-title">Minimal Structure</div>
-        <div class="demo-desc">Simple HTML structure for alerts</div>
-        
-        <pre style="background: #f5f5f5; padding: 1rem; border-radius: 0.25rem; overflow-x: auto;">
-&lt;div class="alert alert-ace"&gt;
-  &lt;span&gt;Message&lt;/span&gt;
-  &lt;button class="alert-close"&gt;×&lt;/button&gt;
-&lt;/div&gt;</pre>
     </div>
-
-    <script src="../dist/my-framework.js"></script>
+    <script src="../../dist/my-framework.js"></script>
 </body>
 </html>

@@ -3,32 +3,33 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Spinner Test</title>
-  <link rel="stylesheet" href="./dist/my-framework.css" />
+  <title>My Framework - Magic Spinners</title>
+  <link rel="stylesheet" href="../../dist/my-framework.css" />
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: #f6f7f9;
+      font-family: "Inter", "Poppins", "Montserrat", sans-serif;
+      background: linear-gradient(145deg, #f7fbff, #edf3ff);
       padding: 24px;
-      color: #111827;
+      color: #041301;
     }
 
     .wrap {
-      max-width: 1100px;
+      max-width: 1200px;
       margin: 0 auto;
     }
 
     .section {
-      background: #fff;
-      border: 1px solid #e5e7eb;
-      border-radius: 12px;
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid #dde6f3;
+      border-radius: 14px;
       padding: 18px;
       margin-bottom: 18px;
+      box-shadow: 0 12px 28px rgba(17, 24, 39, 0.06);
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
       gap: 16px;
     }
 
@@ -50,7 +51,7 @@
       display: flex;
       align-items: center;
       gap: 14px;
-      min-height: 70px;
+      min-height: 78px;
     }
 
     .label {
@@ -64,8 +65,8 @@
       font-size: 12px;
       padding: 6px 10px;
       border-radius: 999px;
-      border: 1px solid #e5e7eb;
-      background: #f9fafb;
+      border: 1px solid #d8dfeb;
+      background: #f8fbff;
       cursor: pointer;
       user-select: none;
     }
@@ -78,8 +79,8 @@
     }
 
     button {
-      border: 1px solid #d1d5db;
-      background: #111827;
+      border: 1px solid #041301;
+      background: #041301;
       color: #fff;
       padding: 10px 14px;
       border-radius: 10px;
@@ -88,176 +89,148 @@
 
     button.secondary {
       background: #fff;
-      color: #111827;
+      color: #041301;
     }
 
     .loader button {
-      min-width: 200px;
-    }
-
-    .spin-overlay {
-      pointer-events: none;
+      min-width: 210px;
     }
   </style>
 </head>
 <body>
   <div class="wrap">
-    <h1 style="margin:0 0 16px 0;">Spinner Test</h1>
+    <h1 style="margin:0 0 8px 0;">My Framework Magic Spinners</h1>
+    <p style="margin:0 0 16px 0; color:#5f6b7a;">Simple naming for every dev. Unique motion DNA under the hood.</p>
 
     <div class="section">
       <div class="row" style="justify-content: space-between;">
         <div>
-          <div style="font-weight:700;">Colors</div>
-          <div style="font-size:12px; color:#6b7280;">Click to apply to all spinners (uses <code>--spin</code> via <code>.spin-*</code> helpers)</div>
+          <div style="font-weight:700;">Color tone</div>
+          <div style="font-size:12px; color:#6b7280;">Apply one tone to every spinner in this page.</div>
         </div>
-        <div class="row" id="colorRow">
-          <span class="pill" data-color="spin-ace">ace</span>
-          <span class="pill" data-color="spin-beta">beta</span>
-          <span class="pill" data-color="spin-gamma">gamma</span>
-          <span class="pill" data-color="spin-delta">delta</span>
-          <span class="pill" data-color="spin-epsilon">epsilon</span>
-        </div>
-      </div>
-    </div>
-
-    <div class="section">
-      <div style="font-weight:700; margin-bottom:10px;">Sizes</div>
-      <div class="row" id="sizeRow">
-        <span class="pill" data-size="spin-sm">sm</span>
-        <span class="pill" data-size="spin-md">md</span>
-        <span class="pill" data-size="spin-lg">lg</span>
-      </div>
-    </div>
-
-    <div class="section">
-      <div style="font-weight:700; margin-bottom:10px;">5 spinners</div>
-      <div class="grid" id="grid">
-        <div class="card">
-          <div class="title">Dot (<code>.spin-dot</code>)</div>
-          <div class="demo">
-            <div class="spin-dot demo-spin">
-              <div></div><div></div><div></div>
-            </div>
-            <div class="label">3 dots pulsing</div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="title">Orbit (<code>.spin-orbit</code>)</div>
-          <div class="demo">
-            <div class="spin-orbit"></div>
-            <div class="label">dual ring orbit</div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="title">Eclipse (<code>.spin-eclipse</code>)</div>
-          <div class="demo">
-            <div class="spin-eclipse">
-              <span></span><span></span>
-            </div>
-            <div class="label">overlapping arcs</div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="title">Ring (<code>.spin-ring</code>)</div>
-          <div class="demo">
-            <div class="spin-ring"></div>
-            <div class="label">single ring rotate</div>
-          </div>
-        </div>
-
-        <div class="card">
-          <div class="title">Bars (<code>.spin-bars</code>)</div>
-          <div class="demo">
-            <div class="spin-bars">
-              <span></span><span></span><span></span><span></span><span></span>
-            </div>
-            <div class="label">5 bars wave</div>
-          </div>
+        <div class="row">
+          <span class="pill" data-jf-spin-tone="ace">ace</span>
+          <span class="pill" data-jf-spin-tone="beta">beta</span>
+          <span class="pill" data-jf-spin-tone="gamma">gamma</span>
+          <span class="pill" data-jf-spin-tone="delta">delta</span>
+          <span class="pill" data-jf-spin-tone="epsilon">epsilon</span>
         </div>
       </div>
     </div>
 
     <div class="section">
-      <div style="font-weight:700; margin-bottom:10px;">Button loader overlay</div>
+      <div style="font-weight:700; margin-bottom:10px;">Size</div>
+      <div class="row">
+        <span class="pill" data-jf-spin-size="sm">sm</span>
+        <span class="pill" data-jf-spin-size="md">md</span>
+        <span class="pill" data-jf-spin-size="lg">lg</span>
+        <span class="pill" data-jf-spin-speed="slow">slow</span>
+        <span class="pill" data-jf-spin-speed="fast">fast</span>
+      </div>
+    </div>
+
+    <div class="section">
+      <div style="font-weight:700; margin-bottom:10px;">Core variants</div>
+      <div class="grid">
+        <div class="card">
+          <div class="title">Ring (<code>.spin spin-ring</code>)</div>
+          <div class="demo">
+            <div class="spin demo-spin" data-jf-spin-demo data-jf-spin="ring" data-jf-spin-size="md" data-jf-spin-tone="ace"></div>
+            <div class="label">Classic ring with dual-color edge.</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="title">Dual (<code>.spin spin-dual</code>)</div>
+          <div class="demo">
+            <div class="spin demo-spin" data-jf-spin-demo data-jf-spin="dual" data-jf-spin-size="md" data-jf-spin-tone="ace"></div>
+            <div class="label">Counter-rotating rings for premium motion.</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="title">Orbit (<code>.spin spin-orbit</code>)</div>
+          <div class="demo">
+            <div class="spin demo-spin" data-jf-spin-demo data-jf-spin="orbit" data-jf-spin-size="md" data-jf-spin-tone="ace"></div>
+            <div class="label">A focused core with rotating satellite.</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="title">Pulse (<code>.spin spin-pulse</code>)</div>
+          <div class="demo">
+            <div class="spin demo-spin" data-jf-spin-demo data-jf-spin="pulse" data-jf-spin-size="md" data-jf-spin-tone="ace"></div>
+            <div class="label">Breathing glow with soft expanding ring.</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="title">Flux (<code>.spin spin-flux</code>)</div>
+          <div class="demo">
+            <div class="spin demo-spin" data-jf-spin-demo data-jf-spin="flux" data-jf-spin-size="md" data-jf-spin-tone="ace" data-jf-spin-speed="fast"></div>
+            <div class="label">Conic chroma ring with smooth rotation.</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="title">Dot (<code>.spin spin-dot</code>)</div>
+          <div class="demo">
+            <div class="spin demo-spin" data-jf-spin-demo data-jf-spin="dot" data-jf-spin-size="md" data-jf-spin-tone="ace"></div>
+            <div class="label">Three dots with staggered rhythm.</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="title">Wave (<code>.spin spin-wave</code>)</div>
+          <div class="demo">
+            <div class="spin demo-spin" data-jf-spin-demo data-jf-spin="wave" data-jf-spin-size="md" data-jf-spin-tone="ace"></div>
+            <div class="label">Audio-like bars for live processing feel.</div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="title">Grid (<code>.spin spin-grid</code>)</div>
+          <div class="demo">
+            <div class="spin demo-spin" data-jf-spin-demo data-jf-spin="grid" data-jf-spin-size="md" data-jf-spin-tone="ace"></div>
+            <div class="label">Nine cells pulsing in sequence.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <div style="font-weight:700; margin-bottom:10px;">Button overlay loader</div>
       <div class="row" style="gap:16px;">
         <div class="loader" id="loaderA">
-          <button type="button">Submit</button>
-          <span class="spin-overlay">
-            <span class="spin-ring spin-sm"></span>
+          <button type="button">Checkout</button>
+            <span class="spin-overlay">
+              <span class="spin" data-jf-spin="ring" data-jf-spin-size="sm" data-jf-spin-tone="ace" data-jf-spin-speed="fast"></span>
           </span>
         </div>
 
         <div class="loader" id="loaderB">
-          <button type="button" class="secondary">Save</button>
-          <span class="spin-overlay">
-            <span class="spin-dot spin-sm"><div></div><div></div><div></div></span>
+          <button type="button" class="secondary">Publish</button>
+            <span class="spin-overlay">
+              <span class="spin" data-jf-spin="dot" data-jf-spin-size="sm" data-jf-spin-tone="ace"></span>
           </span>
         </div>
 
-        <button type="button" id="toggle">Toggle loading</button>
+        <button type="button" data-jf-loader-toggle="#loaderA, #loaderB">Toggle loading</button>
       </div>
-      <div style="font-size:12px; color:#6b7280; margin-top:10px;">This uses <code>.loader.loading .spin-overlay</code> to show overlay.</div>
+      <div style="font-size:12px; color:#6b7280; margin-top:10px;">Uses <code>.loader.loading .spin-overlay</code>.</div>
     </div>
 
     <div class="section">
-      <div style="font-weight:700; margin-bottom:10px;">Skeleton</div>
-      <div class="card" style="max-width:520px;">
-        <div class="spin-skeleton skeleton-lg" style="width: 80%; margin-bottom: 10px;"></div>
-        <div class="spin-skeleton skeleton-md" style="width: 60%; margin-bottom: 10px;"></div>
-        <div class="spin-skeleton skeleton-md" style="width: 90%; margin-bottom: 10px;"></div>
-        <div class="spin-skeleton skeleton-sm" style="width: 40%;"></div>
+      <div style="font-weight:700; margin-bottom:10px;">Skeleton utility</div>
+      <div class="card" style="max-width:560px;">
+        <div class="spin-skeleton skeleton-lg" style="width: 82%; margin-bottom: 10px;"></div>
+        <div class="spin-skeleton skeleton-md" style="width: 68%; margin-bottom: 10px;"></div>
+        <div class="spin-skeleton skeleton-md" style="width: 92%; margin-bottom: 10px;"></div>
+        <div class="spin-skeleton skeleton-sm" style="width: 44%;"></div>
       </div>
     </div>
   </div>
 
-  <script>
-    const grid = document.getElementById('grid');
-    const colorRow = document.getElementById('colorRow');
-    const sizeRow = document.getElementById('sizeRow');
-
-    let currentColor = 'spin-ace';
-    let currentSize = 'spin-md';
-
-    function apply() {
-      const spins = document.querySelectorAll('.demo-spin');
-      spins.forEach(el => {
-        el.classList.remove('spin-ace','spin-beta','spin-gamma','spin-delta','spin-epsilon');
-        el.classList.remove('spin-sm','spin-md','spin-lg');
-        el.classList.add(currentColor);
-        el.classList.add(currentSize);
-      });
-
-      const overlays = document.querySelectorAll('.spin-overlay > *');
-      overlays.forEach(el => {
-        el.classList.remove('spin-ace','spin-beta','spin-gamma','spin-delta','spin-epsilon');
-        el.classList.add(currentColor);
-      });
-    }
-
-    colorRow.addEventListener('click', (e) => {
-      const t = e.target;
-      if (!t.dataset.color) return;
-      currentColor = t.dataset.color;
-      apply();
-    });
-
-    sizeRow.addEventListener('click', (e) => {
-      const t = e.target;
-      if (!t.dataset.size) return;
-      currentSize = t.dataset.size;
-      apply();
-    });
-
-    const toggle = document.getElementById('toggle');
-    toggle.addEventListener('click', () => {
-      document.getElementById('loaderA').classList.toggle('loading');
-      document.getElementById('loaderB').classList.toggle('loading');
-    });
-
-    apply();
-  </script>
+  <script src="../../dist/my-framework.js"></script>
 </body>
 </html>

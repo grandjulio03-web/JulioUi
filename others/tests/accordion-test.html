@@ -3,49 +3,85 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Accordion Test - JForce Framework</title>
-  <link rel="stylesheet" href="dist/JulioUI.min.css">
+    <title>My Framework - Accordion Studio</title>
+  <link rel="stylesheet" href="../../dist/my-framework.css">
     <style>
         body {
             font-family: "Inter", "Poppins", "Montserrat", sans-serif;
-            padding: 2rem;
-            background: #f9fafb;
+            padding: 1rem;
+            margin: 0;
+            background: radial-gradient(circle at top, #f8fcff, #edf4ff 42%, #f7fbff);
         }
-        .demo-section {
-            margin-bottom: 2rem;
-            padding: 2rem;
-            background: white;
-            border-radius: 0.5rem;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-        }
-        .demo-title {
-            font-size: 1.5rem;
-            font-weight: bold;
+        .page { max-width: 960px; margin: 0 auto; }
+        .hero {
+            background: linear-gradient(130deg, #041301, #1f3654 55%, #72b0d7);
+            color: #fff;
+            border-radius: 1rem;
+            padding: 1.5rem;
             margin-bottom: 1rem;
-            color: #041301;
+            box-shadow: 0 15px 32px rgba(4, 19, 1, 0.28);
         }
-        .demo-desc {
-            color: #6b7280;
-            margin-bottom: 1.5rem;
+        .hero h1 { margin: 0 0 .35rem; }
+        .hero p { margin: 0; color: rgba(255,255,255,.9); }
+        .demo-section {
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: rgba(255,255,255,.9);
+            border-radius: 0.85rem;
+            border: 1px solid #dce6f4;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.06);
+        }
+        .accordion {
+            border: 1px solid #e0e8f5;
+            border-radius: .8rem;
+            overflow: hidden;
+            background: #fff;
+            margin-bottom: .8rem;
+        }
+        .accordion-btn {
+            width: 100%;
+            text-align: left;
+            padding: .95rem 1rem;
+            background: linear-gradient(180deg, #ffffff, #f7fbff);
+            border: 0;
+            font-weight: 700;
+            color: #203349;
+        }
+        .accordion-content {
+            padding: .85rem 1rem;
+            color: #5f6c7a;
+            line-height: 1.55;
         }
     </style>
 </head>
 <body>
-    <h1>Accordion Component Test</h1>
-
-
+    <div class="page">
+    <section class="hero">
+        <h1>My Framework Accordion Studio</h1>
+        <p>Simple write, deep interaction craft. Expandable content with premium rhythm and responsiveness.</p>
+    </section>
+    <div class="demo-section">
+        <h2 style="margin-top:0;">Narrative Accordions</h2>
+        <p style="color:#627181;">Layer documentation, FAQs, and workflows in clean collapsible blocks.</p>
         <div class="accordion">
-            <button class="accordion-btn" type="button">Long Content Section</button>
+            <button class="accordion-btn" type="button">Design language and motion philosophy</button>
             <div class="accordion-panel">
                 <div class="accordion-content">
-                    <p>This accordion contains much more content to test the smooth animation and scrolling behavior.</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.</p>
-                    <p>The accordion should smoothly expand and collapse regardless of content length, providing a clean and responsive user experience.</p>
+                    <p>Build sections that reveal insight progressively, not all at once. Users stay focused while depth remains one click away.</p>
+                    <p>My Framework accordion patterns are tuned for smooth transitions and stable reading flow.</p>
                 </div>
             </div>
         </div>
-
-
-    <script src="dist/my-framework.js"></script>
+        <div class="accordion">
+            <button class="accordion-btn" type="button">Delivery checklist and launch notes</button>
+            <div class="accordion-panel">
+                <div class="accordion-content">
+                    <p>Pair this structure with forms, cards, and badges for a complete premium dashboard experience.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <script src="../../dist/my-framework.js"></script>
 </body>
 </html>

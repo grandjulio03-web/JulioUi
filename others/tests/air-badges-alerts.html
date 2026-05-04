@@ -1,0 +1,349 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Air â€” Badges & Alerts</title>
+  <link rel="stylesheet" href="../../dist/my-framework.css">
+  <style>
+    body { padding: 2.5rem; background: var(--air-50); font-family: var(--air-font); }
+    .demo-section { margin-bottom: 3.5rem; }
+    .demo-title {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--air-400);
+      margin-bottom: 1rem; padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--air-200);
+    }
+    .demo-row {
+      display: flex; flex-wrap: wrap; align-items: center; gap: 0.65rem;
+      margin-bottom: 0.75rem;
+    }
+    .demo-row-label {
+      font-size: 0.75rem; color: var(--air-400); font-weight: 600;
+      min-width: 90px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div style="margin-bottom: 3rem;">
+    <span class="air-kicker dotted">Air Framework</span>
+    <h1 class="air-display" style="margin-top: 0.4rem;">Badges & Alerts</h1>
+    <p class="air-lead">Solid, soft, outline, glow badges. Live pulse badges. Chips. Inline alerts, toasts, banners.</p>
+  </div>
+
+  <!-- =================== BADGES =================== -->
+  <div class="demo-section">
+    <div class="demo-title">Solid badges â€” default</div>
+    <div class="demo-row">
+      <span class="air-badge ace">Ace</span>
+      <span class="air-badge beta">Beta</span>
+      <span class="air-badge gamma">Gamma</span>
+      <span class="air-badge delta">Delta</span>
+      <span class="air-badge epsilon">Epsilon</span>
+      <span class="air-badge neutral">Neutral</span>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <div class="demo-title">Soft badges</div>
+    <div class="demo-row">
+      <span class="air-badge ace soft">Ace</span>
+      <span class="air-badge beta soft">Beta</span>
+      <span class="air-badge gamma soft">Gamma</span>
+      <span class="air-badge delta soft">Delta</span>
+      <span class="air-badge epsilon soft">Epsilon</span>
+      <span class="air-badge neutral soft">Neutral</span>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <div class="demo-title">Outline badges</div>
+    <div class="demo-row">
+      <span class="air-badge ace outline">Ace</span>
+      <span class="air-badge beta outline">Beta</span>
+      <span class="air-badge gamma outline">Gamma</span>
+      <span class="air-badge delta outline">Delta</span>
+      <span class="air-badge epsilon outline">Epsilon</span>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <div class="demo-title">Glow badges</div>
+    <div class="demo-row">
+      <span class="air-badge ace glow">Ace</span>
+      <span class="air-badge beta glow">Beta</span>
+      <span class="air-badge gamma glow">Gamma</span>
+      <span class="air-badge delta glow">Delta</span>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <div class="demo-title">Sizes</div>
+    <div class="demo-row" style="align-items: center;">
+      <span class="air-badge ace sm">Small</span>
+      <span class="air-badge ace">Default</span>
+      <span class="air-badge ace lg">Large</span>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <div class="demo-title">Dot indicator</div>
+    <div class="demo-row">
+      <span class="air-badge ace soft dot">Online</span>
+      <span class="air-badge beta soft dot">Away</span>
+      <span class="air-badge gamma soft dot">Busy</span>
+      <span class="air-badge neutral soft dot">Offline</span>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <div class="demo-title">Live pulse badge</div>
+    <div class="demo-row">
+      <span class="air-badge beta live">Live</span>
+      <span class="air-badge delta live">Active</span>
+      <span class="air-badge gamma live">Recording</span>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <div class="demo-title">Square & Bubble variants</div>
+    <div class="demo-row">
+      <span class="air-badge ace square">v2.0</span>
+      <span class="air-badge beta square soft">PRO</span>
+      <span class="air-badge gamma square outline">BETA</span>
+    </div>
+    <div class="demo-row">
+      <span class="air-badge ace bubble">3</span>
+      <span class="air-badge beta bubble">12</span>
+      <span class="air-badge gamma bubble">99+</span>
+    </div>
+  </div>
+
+  <!-- In-context usage -->
+  <div class="demo-section">
+    <div class="demo-title">In-context usage</div>
+    <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+      <div style="display: flex; align-items: center; gap: 0.65rem;">
+        <span style="font-weight: 600; color: var(--air-800);">Dashboard</span>
+        <span class="air-badge ace soft">New</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 0.65rem;">
+        <span style="font-weight: 600; color: var(--air-800);">Premium Features</span>
+        <span class="air-badge gamma glow">Pro</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 0.65rem;">
+        <span style="font-weight: 600; color: var(--air-800);">Server Status</span>
+        <span class="air-badge delta live">Online</span>
+      </div>
+      <div style="display: flex; align-items: center; gap: 0.65rem;">
+        <span style="font-weight: 600; color: var(--air-800);">Messages</span>
+        <span class="air-badge beta bubble">8</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- =================== CHIPS =================== -->
+  <div class="demo-section">
+    <div class="demo-title">Chips â€” default (neutral)</div>
+    <div class="demo-row">
+      <span class="air-chip">Design</span>
+      <span class="air-chip">Development</span>
+      <span class="air-chip">Marketing</span>
+      <span class="air-chip">Analytics</span>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <div class="demo-title">Colored chips</div>
+    <div class="demo-row">
+      <span class="air-chip ace">Sky</span>
+      <span class="air-chip beta">Rose</span>
+      <span class="air-chip gamma">Ember</span>
+      <span class="air-chip delta">Sage</span>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <div class="demo-title">Removable chips</div>
+    <div class="demo-row">
+      <span class="air-chip ace">
+        Sky
+        <button class="air-chip-remove" aria-label="Remove Sky">âœ•</button>
+      </span>
+      <span class="air-chip beta">
+        Rose
+        <button class="air-chip-remove" aria-label="Remove Rose">âœ•</button>
+      </span>
+      <span class="air-chip gamma">
+        Ember
+        <button class="air-chip-remove" aria-label="Remove Ember">âœ•</button>
+      </span>
+      <span class="air-chip delta">
+        Sage
+        <button class="air-chip-remove" aria-label="Remove Sage">âœ•</button>
+      </span>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <div class="demo-title">Selectable chips</div>
+    <div class="demo-row">
+      <span class="air-chip ace selectable selected" role="checkbox" aria-selected="true" tabindex="0">Selected</span>
+      <span class="air-chip ace selectable" role="checkbox" tabindex="0">Option A</span>
+      <span class="air-chip ace selectable" role="checkbox" tabindex="0">Option B</span>
+      <span class="air-chip beta selectable selected" role="checkbox" aria-selected="true" tabindex="0">Selected</span>
+      <span class="air-chip beta selectable" role="checkbox" tabindex="0">Option C</span>
+    </div>
+  </div>
+
+  <!-- =================== ALERTS =================== -->
+  <div class="demo-section">
+    <div class="demo-title">Alerts â€” soft (default)</div>
+    <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+      <div class="air-alert ace">
+        <div class="air-alert-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <div class="air-alert-body">
+          <p class="air-alert-title">Information</p>
+          <p class="air-alert-text">This is an ace info alert. Clear, calm, informative. Use for tips and guidance.</p>
+        </div>
+        <button class="air-alert-close" aria-label="Dismiss">âœ•</button>
+      </div>
+      <div class="air-alert delta">
+        <div class="air-alert-icon">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div class="air-alert-body">
+          <p class="air-alert-title">Success</p>
+          <p class="air-alert-text">Your changes have been saved successfully.</p>
+        </div>
+      </div>
+      <div class="air-alert gamma">
+        <div class="air-alert-icon">
+          <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <div class="air-alert-body">
+          <p class="air-alert-title">Warning</p>
+          <p class="air-alert-text">Your account storage is 85% full. Consider upgrading your plan.</p>
+        </div>
+      </div>
+      <div class="air-alert beta">
+        <div class="air-alert-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+        </div>
+        <div class="air-alert-body">
+          <p class="air-alert-title">Error</p>
+          <p class="air-alert-text">Failed to process payment. Please check your card details and try again.</p>
+        </div>
+        <button class="air-alert-close" aria-label="Dismiss">âœ•</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <div class="demo-title">Alerts â€” solid variant</div>
+    <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+      <div class="air-alert ace solid">
+        <div class="air-alert-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <div class="air-alert-body">
+          <p class="air-alert-title">Solid Ace Alert</p>
+          <p class="air-alert-text">Full background color for stronger emphasis.</p>
+        </div>
+        <button class="air-alert-close" aria-label="Dismiss">âœ•</button>
+      </div>
+      <div class="air-alert delta solid">
+        <div class="air-alert-body">
+          <p class="air-alert-title">Solid Delta Success</p>
+          <p class="air-alert-text">Your changes have been published to production.</p>
+        </div>
+      </div>
+      <div class="air-alert beta solid">
+        <div class="air-alert-body">
+          <p class="air-alert-title">Solid Beta Error</p>
+          <p class="air-alert-text">A critical error occurred. Please contact support.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="demo-section">
+    <div class="demo-title">Alerts â€” outline variant</div>
+    <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+      <div class="air-alert ace outline">
+        <div class="air-alert-body">
+          <p class="air-alert-title">Outline Alert â€” Ace</p>
+          <p class="air-alert-text">Border-only style. Light, minimal presence.</p>
+        </div>
+      </div>
+      <div class="air-alert gamma outline">
+        <div class="air-alert-body">
+          <p class="air-alert-title">Outline Alert â€” Gamma</p>
+          <p class="air-alert-text">Perfect for secondary notices in content-heavy interfaces.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast preview -->
+  <div class="demo-section">
+    <div class="demo-title">Toast cards â€” floating notification style</div>
+    <div style="display: flex; flex-direction: column; gap: 0.75rem; max-width: 400px;">
+      <div class="air-toast ace" style="position: relative;">
+        <div class="air-toast-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+        </div>
+        <div class="air-toast-body">
+          <p class="air-toast-title">Update Available</p>
+          <p class="air-toast-text">Version 2.0 is ready to install.</p>
+        </div>
+        <button class="air-toast-close" aria-label="Dismiss">âœ•</button>
+        <div class="air-toast-progress" style="--air-toast-duration: 8s;"></div>
+      </div>
+      <div class="air-toast delta" style="position: relative;">
+        <div class="air-toast-icon">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <div class="air-toast-body">
+          <p class="air-toast-title">Changes Saved</p>
+          <p class="air-toast-text">Your profile has been updated successfully.</p>
+        </div>
+        <button class="air-toast-close" aria-label="Dismiss">âœ•</button>
+        <div class="air-toast-progress" style="--air-toast-duration: 6s;"></div>
+      </div>
+      <div class="air-toast beta" style="position: relative;">
+        <div class="air-toast-icon">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="15" y1="9" x2="9" y2="15"/><line x1="9" y1="9" x2="15" y2="15"/></svg>
+        </div>
+        <div class="air-toast-body">
+          <p class="air-toast-title">Payment Failed</p>
+          <p class="air-toast-text">Card ending in 4242 was declined.</p>
+        </div>
+        <button class="air-toast-close" aria-label="Dismiss">âœ•</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Banner -->
+  <div class="demo-section">
+    <div class="demo-title">Banner alerts â€” full width</div>
+    <div style="display: flex; flex-direction: column; gap: 0.5rem;">
+      <div class="air-banner ace">
+        âœ¦ New feature available â€” <strong>Air Backgrounds</strong> are now in beta.
+        <a href="#" style="color: var(--air-ace); font-weight: 700; margin-left: 0.5rem;">Learn more â†’</a>
+      </div>
+      <div class="air-banner beta">
+        âš  Scheduled maintenance on May 6, 2026 from 02:00â€“04:00 UTC.
+      </div>
+      <div class="air-banner delta solid">
+        âœ“ Your account has been verified. You now have full access.
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

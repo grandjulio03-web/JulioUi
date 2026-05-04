@@ -1,0 +1,342 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Air â€” Cards</title>
+  <link rel="stylesheet" href="../../dist/my-framework.css">
+  <style>
+    body { padding: 2.5rem; background: var(--air-100); font-family: var(--air-font); }
+    .demo-section { margin-bottom: 3.5rem; }
+    .demo-title {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--air-400);
+      margin-bottom: 1.25rem; padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--air-200);
+    }
+    .demo-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 1.25rem;
+    }
+    .demo-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+    @media (max-width: 768px) {
+      .demo-grid-3 { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div style="margin-bottom: 3rem;">
+    <span class="air-kicker dotted">Air Framework</span>
+    <h1 class="air-display" style="margin-top: 0.4rem;">Cards</h1>
+    <p class="air-lead">Surface, media, stat, bento, glass, dark. Hover effects: lift, tilt, shine, orbit, reveal, pulse, zoom.</p>
+  </div>
+
+  <!-- Base cards with tones -->
+  <div class="demo-section">
+    <div class="demo-title">Base + tone accent</div>
+    <div class="demo-grid">
+      <div class="air-card ace bar">
+        <div class="air-card-body">
+          <span class="air-card-kicker">Ace</span>
+          <h3 class="air-card-title">Sky tone</h3>
+          <p class="air-card-content">Clean white card with a top accent bar in the ace color. Perfect for dashboards.</p>
+          <div class="air-card-actions">
+            <button class="air-btn ace sm">Action</button>
+            <button class="air-btn ace ghost sm">Learn</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="air-card beta bar">
+        <div class="air-card-body">
+          <span class="air-card-kicker">Beta</span>
+          <h3 class="air-card-title">Rose tone</h3>
+          <p class="air-card-content">Same structure, different tone. The <code>bar</code> modifier adds the top accent line.</p>
+          <div class="air-card-actions">
+            <button class="air-btn beta sm">Action</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="air-card gamma bar">
+        <div class="air-card-body">
+          <span class="air-card-kicker">Gamma</span>
+          <h3 class="air-card-title">Ember tone</h3>
+          <p class="air-card-content">Warm, energetic. Great for pricing cards, feature highlights, promotions.</p>
+          <div class="air-card-actions">
+            <button class="air-btn gamma sm">Action</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="air-card delta bar">
+        <div class="air-card-body">
+          <span class="air-card-kicker">Delta</span>
+          <h3 class="air-card-title">Sage tone</h3>
+          <p class="air-card-content">Fresh and calm. Ideal for success states, confirmation screens.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Media cards -->
+  <div class="demo-section">
+    <div class="demo-title">Media cards â€” hover to test effects</div>
+    <div class="demo-grid">
+
+      <!-- Lift + zoom -->
+      <div class="air-card ace lift zoom">
+        <div class="air-card-badge">New</div>
+        <div class="air-card-media r-16-9">
+          <img class="air-card-img" src="https://picsum.photos/seed/air1/600/338" alt="">
+        </div>
+        <div class="air-card-body">
+          <span class="air-card-kicker">Lift + Zoom</span>
+          <h3 class="air-card-title">Card rises and image zooms on hover</h3>
+          <p class="air-card-meta">May 4, 2026 Â· 5 min read</p>
+        </div>
+      </div>
+
+      <!-- Shine -->
+      <div class="air-card beta shine">
+        <div class="air-card-media r-16-9">
+          <img class="air-card-img" src="https://picsum.photos/seed/air2/600/338" alt="">
+        </div>
+        <div class="air-card-body">
+          <span class="air-card-kicker">Shine</span>
+          <h3 class="air-card-title">Light sweeps across on hover</h3>
+          <p class="air-card-content">A subtle gloss effect. Nothing else does this.</p>
+        </div>
+      </div>
+
+      <!-- Reveal -->
+      <div class="air-card gamma reveal" style="min-height: 280px;">
+        <div class="air-card-media r-4-3">
+          <img class="air-card-img" src="https://picsum.photos/seed/air3/600/450" alt="">
+          <div class="air-card-overlay grad-b">
+            <h3 class="air-card-title" style="color: #fff; font-size: 1.3rem;">Hover to reveal</h3>
+            <p class="air-card-meta" style="color: rgba(255,255,255,0.7);">Overlay fades in, title slides up</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Hover effects grid -->
+  <div class="demo-section">
+    <div class="demo-title">All hover effects â€” hover each card</div>
+    <div class="demo-grid">
+      <div class="air-card ace lift">
+        <div class="air-card-body">
+          <h3 class="air-card-title">Lift</h3>
+          <p class="air-card-content">Rises with chromatic shadow. Shadow color matches the tone.</p>
+        </div>
+      </div>
+      <div class="air-card beta tilt">
+        <div class="air-card-body">
+          <h3 class="air-card-title">Tilt</h3>
+          <p class="air-card-content">Subtle 3D perspective rotation. Zero JS required.</p>
+        </div>
+      </div>
+      <div class="air-card gamma orbit">
+        <div class="air-card-body">
+          <h3 class="air-card-title">Orbit</h3>
+          <p class="air-card-content">Rotating chromatic gradient border appears on hover.</p>
+        </div>
+      </div>
+      <div class="air-card delta pulse">
+        <div class="air-card-body">
+          <h3 class="air-card-title">Pulse</h3>
+          <p class="air-card-content">Subtle expanding ring shadow pulses while hovered.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Glass card -->
+  <div class="demo-section">
+    <div class="demo-title">Glass cards â€” frosted backdrop</div>
+    <div style="background: linear-gradient(135deg, #72b0d7 0%, #d94f8b 60%, #FF8F4B 100%); padding: 2rem; border-radius: 1.25rem;">
+      <div class="demo-grid">
+        <div class="air-card glass ace lift">
+          <div class="air-card-body">
+            <span class="air-card-kicker">Glass</span>
+            <h3 class="air-card-title">Frosted glass card</h3>
+            <p class="air-card-content">backdrop-filter: blur(18px). Best on colorful backgrounds.</p>
+            <div class="air-card-actions">
+              <button class="air-btn ace sm">Open</button>
+            </div>
+          </div>
+        </div>
+        <div class="air-card glass beta lift">
+          <div class="air-card-body">
+            <span class="air-card-kicker">Glass</span>
+            <h3 class="air-card-title">Same card, beta tone</h3>
+            <p class="air-card-content">The kicker color changes. Everything else is the same clean glass.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dark card -->
+  <div class="demo-section">
+    <div class="demo-title">Dark cards</div>
+    <div class="demo-grid">
+      <div class="air-card dark ace">
+        <div class="air-card-body">
+          <span class="air-card-kicker">Dark Â· Ace</span>
+          <h3 class="air-card-title">Deep dark card</h3>
+          <p class="air-card-content">Rich dark gradient background. Kicker and accents use the tone color.</p>
+          <div class="air-card-actions">
+            <button class="air-btn ace glow sm">Explore</button>
+          </div>
+        </div>
+      </div>
+      <div class="air-card dark beta orbit">
+        <div class="air-card-body">
+          <span class="air-card-kicker">Dark Â· Orbit</span>
+          <h3 class="air-card-title">Hover for orbit effect</h3>
+          <p class="air-card-content">The orbit effect looks stunning on dark cards.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Stat cards -->
+  <div class="demo-section">
+    <div class="demo-title">Stat cards â€” for dashboards</div>
+    <div class="demo-grid">
+      <div class="air-card ace lift">
+        <div class="air-card-stat">
+          <span class="air-card-stat-label">Monthly Revenue</span>
+          <span class="air-card-stat-value">$48,291</span>
+          <span class="air-card-stat-delta">12.4% vs last month</span>
+          <span class="air-card-stat-sub">Updated 5 minutes ago</span>
+        </div>
+      </div>
+      <div class="air-card beta lift">
+        <div class="air-card-stat">
+          <span class="air-card-stat-label">Active Users</span>
+          <span class="air-card-stat-value">3,847</span>
+          <span class="air-card-stat-delta negative">2.1% this week</span>
+        </div>
+      </div>
+      <div class="air-card delta lift">
+        <div class="air-card-stat">
+          <span class="air-card-stat-label">Conversion Rate</span>
+          <span class="air-card-stat-value">6.8%</span>
+          <span class="air-card-stat-delta">0.9% this week</span>
+        </div>
+      </div>
+      <div class="air-card gamma lift">
+        <div class="air-card-stat">
+          <span class="air-card-stat-label">Pending Orders</span>
+          <span class="air-card-stat-value">247</span>
+          <span class="air-card-stat-sub">Across 12 regions</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bento grid -->
+  <div class="demo-section">
+    <div class="demo-title">Bento grid â€” span modifiers</div>
+    <div class="air-bento">
+      <div class="air-card bento ace span-2 lift">
+        <div class="air-card-icon">âœ¦</div>
+        <h3 class="air-card-title">Featured Feature</h3>
+        <p class="air-card-content">This card spans 2 columns. Use .span-2 .span-3 .row-2 inside .air-bento.</p>
+      </div>
+      <div class="air-card bento beta row-2 lift">
+        <div class="air-card-icon">â–²</div>
+        <h3 class="air-card-title">Tall Card</h3>
+        <p class="air-card-content">row-2 spans 2 rows. Great for featured items.</p>
+      </div>
+      <div class="air-card bento gamma lift">
+        <div class="air-card-icon">â—†</div>
+        <h3 class="air-card-title">Small</h3>
+        <p class="air-card-content">Regular 1Ã—1 cell.</p>
+      </div>
+      <div class="air-card bento delta lift">
+        <div class="air-card-icon">â—</div>
+        <h3 class="air-card-title">Small</h3>
+        <p class="air-card-content">Another 1Ã—1 cell.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Split layout -->
+  <div class="demo-section">
+    <div class="demo-title">Split layout â€” image side by side</div>
+    <div class="air-card ace lift split">
+      <div class="air-card-media r-4-3">
+        <img class="air-card-img" src="https://picsum.photos/seed/split1/500/400" alt="">
+      </div>
+      <div class="air-card-body">
+        <span class="air-card-kicker">Split Layout</span>
+        <h3 class="air-card-title">Image on the left, content on the right</h3>
+        <p class="air-card-content">Responsive â€” stacks vertically below 640px. Add .reverse to flip the order.</p>
+        <div class="air-card-actions">
+          <button class="air-btn ace">Read More</button>
+          <button class="air-btn ace ghost">Share</button>
+        </div>
+      </div>
+    </div>
+    <div style="height: 1rem;"></div>
+    <div class="air-card beta lift split reverse">
+      <div class="air-card-media r-4-3">
+        <img class="air-card-img" src="https://picsum.photos/seed/split2/500/400" alt="">
+      </div>
+      <div class="air-card-body">
+        <span class="air-card-kicker">Reversed</span>
+        <h3 class="air-card-title">Image on the right with .reverse</h3>
+        <p class="air-card-content">Alternate direction for visual rhythm in lists of content.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Overlay cards -->
+  <div class="demo-section">
+    <div class="demo-title">Overlay variants â€” inside .air-card-media</div>
+    <div class="demo-grid">
+      <div class="air-card ace">
+        <div class="air-card-media r-4-3">
+          <img class="air-card-img" src="https://picsum.photos/seed/ov1/500/400" alt="">
+          <div class="air-card-overlay grad-b">
+            <h3 class="air-card-title" style="color: #fff;">grad-b</h3>
+            <p style="color: rgba(255,255,255,0.75); font-size: 0.85rem; margin: 0;">Bottom gradient fade</p>
+          </div>
+        </div>
+      </div>
+      <div class="air-card beta">
+        <div class="air-card-media r-4-3">
+          <img class="air-card-img" src="https://picsum.photos/seed/ov2/500/400" alt="">
+          <div class="air-card-overlay glass center">
+            <h3 class="air-card-title" style="color: #fff;">glass</h3>
+            <p style="color: rgba(255,255,255,0.8); font-size: 0.85rem; margin: 0;">Frosted glass overlay</p>
+          </div>
+        </div>
+      </div>
+      <div class="air-card gamma">
+        <div class="air-card-media r-4-3">
+          <img class="air-card-img" src="https://picsum.photos/seed/ov3/500/400" alt="">
+          <div class="air-card-overlay vignette"></div>
+          <div class="air-card-overlay center">
+            <h3 class="air-card-title" style="color: #fff; font-size: 1.4rem;">vignette</h3>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

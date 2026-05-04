@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Air Loaders & Spinners — JForceX</title>
+  <link rel="stylesheet" href="../dist/my-framework.css">
+  <style>
+    body { margin: 0; padding: 2rem; background: #f0f4f8; font-family: "Inter", "Poppins", "Montserrat", sans-serif; color: #041301; }
+    .page { max-width: 960px; margin: 0 auto; }
+    h1 { margin: 0 0 0.5rem; letter-spacing: -0.02em; }
+    .lead { margin: 0 0 2rem; color: #6b7280; line-height: 1.6; max-width: 65ch; }
+    section { margin-bottom: 2.5rem; }
+    section h2 { font-size: 0.72rem; letter-spacing: 0.24em; text-transform: uppercase; color: #6b7280; margin: 0 0 1rem; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 1.5rem;
+      align-items: center;
+    }
+    .cell {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 1rem;
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      min-height: 120px;
+    }
+    .cell code { font-size: 0.7rem; color: #6b7280; text-align: center; word-break: break-all; }
+    .demo-btn { margin-top: 1rem; }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <h1>Air Loaders & Spinners</h1>
+    <p class="lead">
+      One element for most spinners (or three <code>&lt;span&gt;</code>s for wave / orbit-dots).
+      Include <code>my-framework.js</code> once — page loader toggle and save-button loading need no inline scripts.
+    </p>
+
+    <section>
+      <h2>Single-element spinners</h2>
+      <div class="grid">
+        <div class="cell">
+          <span class="air-spinner air-spinner--dual air-spinner--md" aria-hidden="true"></span>
+          <code>air-spinner air-spinner--dual air-spinner--md</code>
+        </div>
+        <div class="cell">
+          <span class="air-spinner air-spinner--chroma air-spinner--md" aria-hidden="true"></span>
+          <code>air-spinner--chroma</code>
+        </div>
+        <div class="cell">
+          <span class="air-spinner air-spinner--breath air-spinner--md" aria-hidden="true"></span>
+          <code>air-spinner--breath</code>
+        </div>
+        <div class="cell">
+          <span class="air-spinner air-spinner--capsule air-spinner--md" aria-hidden="true"></span>
+          <code>air-spinner--capsule</code>
+        </div>
+        <div class="cell">
+          <span class="air-spinner air-spinner--dual air-spinner--sm" aria-hidden="true"></span>
+          <code>--sm</code>
+        </div>
+        <div class="cell">
+          <span class="air-spinner air-spinner--dual air-spinner--lg" aria-hidden="true"></span>
+          <code>--lg</code>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Three spans (wave + orbit dots)</h2>
+      <div class="grid">
+        <div class="cell">
+          <span class="air-spinner air-spinner--wave air-spinner--md" aria-hidden="true"><span></span><span></span><span></span></span>
+          <code>air-spinner--wave + 3× span</code>
+        </div>
+        <div class="cell">
+          <span class="air-spinner air-spinner--orbit-dots air-spinner--md" aria-hidden="true"><span></span><span></span><span></span></span>
+          <code>air-spinner--orbit-dots + 3× span</code>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Inline row (text + spinner)</h2>
+      <div class="cell" style="min-height: auto; flex-direction: row; justify-content: flex-start;">
+        <div class="air-loader-row">
+          <span class="air-spinner air-spinner--dual air-spinner--sm" aria-hidden="true"></span>
+          <span class="air-loader-row__text">Saving…</span>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <h2>Full-page loader</h2>
+      <p class="lead" style="margin-bottom: 1rem;">Toggle uses <code>data-jf-page-loader-toggle</code> — handled by framework JS.</p>
+      <button type="button" class="jf-btn-outline-beta demo-btn" data-jf-page-loader-toggle="#pageLoader">Show / hide page loader</button>
+    </section>
+
+    <section>
+      <h2>Submit → Saving + spinner</h2>
+      <p class="lead" style="margin-bottom: 1rem;">
+        Form: <code>data-jf-form-demo</code> (demo only — prevents real submit). Button: <code>data-jf-loading</code>,
+        optional <code>data-jf-loading-label="Saving…"</code> and <code>data-jf-loading-ms="1600"</code>.
+        Real apps: omit <code>data-jf-form-demo</code>, add <code>data-jf-loading-manual</code>, call <code>JForceX.setButtonLoading(btn, false)</code> when your request finishes.
+      </p>
+      <div class="cell" style="min-height: auto; align-items: stretch;">
+        <form class="air-form air-theme-ace" style="max-width: 420px; margin: 0 auto;" data-jf-form-demo data-jf-loading-ms="1800">
+          <div class="air-form__field">
+            <label for="demo-note">Note</label>
+            <input id="demo-note" class="air-input" type="text" placeholder="Try save…" />
+          </div>
+          <div class="air-form__actions">
+            <button type="submit" class="jf-btn-ace" data-jf-loading data-jf-loading-label="Saving…">Save</button>
+          </div>
+        </form>
+      </div>
+    </section>
+  </div>
+
+  <div class="air-page-loader is-hidden" id="pageLoader" role="alert" aria-live="polite" aria-busy="true">
+    <span class="air-spinner air-spinner--dual air-spinner--lg" aria-hidden="true"></span>
+    <p class="air-page-loader__label">Loading</p>
+    <span class="air-spinner air-spinner--capsule air-spinner--lg" style="max-width: 200px;" aria-hidden="true"></span>
+  </div>
+
+  <script src="../dist/my-framework.js"></script>
+</body>
+</html>

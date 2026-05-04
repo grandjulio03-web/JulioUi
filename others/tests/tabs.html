@@ -3,126 +3,185 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tabs Test - JForce Framework</title>
-    <link rel="stylesheet" href="../dist/my-framework.css">
+    <title>My Framework - Crafted Tabs Experience</title>
+    <link rel="stylesheet" href="../../dist/my-framework.css">
     <style>
         body {
             font-family: "Inter", "Poppins", "Montserrat", sans-serif;
+            padding: 1.25rem;
+            margin: 0;
+            background: radial-gradient(circle at top left, #f9fcff, #edf4ff 40%, #f6fbff 100%);
+        }
+        .page {
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+        .hero {
             padding: 2rem;
-            background: #f9fafb;
+            border-radius: 1rem;
+            background: linear-gradient(135deg, #041301, #1b3151 55%, #72b0d7);
+            color: #fff;
+            box-shadow: 0 14px 35px rgba(4, 19, 1, 0.28);
+            margin-bottom: 1.25rem;
+        }
+        .hero h1 {
+            margin: 0 0 0.45rem;
+            font-size: clamp(1.6rem, 3vw, 2.4rem);
+        }
+        .hero p {
+            margin: 0;
+            max-width: 700px;
+            color: rgba(255, 255, 255, 0.9);
         }
         .demo-section {
-            margin-bottom: 2rem;
-            padding: 2rem;
-            background: white;
-            border-radius: 0.5rem;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 1rem;
+            padding: 1.25rem;
+            background: rgba(255, 255, 255, 0.88);
+            border-radius: 1rem;
+            border: 1px solid #dfe7f4;
+            box-shadow: 0 10px 22px rgba(17, 24, 39, 0.07);
         }
         .demo-title {
-            font-size: 1.5rem;
-            font-weight: bold;
-            margin-bottom: 1rem;
+            font-size: 1.15rem;
+            font-weight: 700;
+            margin-bottom: 0.4rem;
             color: #041301;
         }
         .demo-desc {
             color: #6b7280;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .tabs {
+            border: 1px solid #e5edf8;
+            border-radius: 0.85rem;
+            padding: 0.8rem;
+            background: #fff;
+        }
+        .tab-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 0.9rem;
+        }
+        .tab-btn {
+            border-radius: 999px;
+            border: 1px solid #d7e3f4;
+            background: #f8fbff;
+            color: #2a3a4f;
+            padding: 0.6rem 0.95rem;
+            transition: 0.25s ease;
+        }
+        .tab-btn:hover {
+            transform: translateY(-1px);
+            border-color: #72b0d7;
+            color: #041301;
+        }
+        .tab-btn.is-active {
+            background: linear-gradient(135deg, #72b0d7, #4f8eb8);
+            color: #fff;
+            border-color: #72b0d7;
+        }
+        .tab-content {
+            border-radius: 0.7rem;
+            border: 1px solid #e8eef9;
+            padding: 1rem;
+            background: linear-gradient(180deg, #ffffff, #f8fbff);
+        }
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 0.75rem;
+            margin-top: 0.7rem;
+        }
+        .feature-grid > div {
+            padding: 0.8rem;
+            border-radius: 0.6rem;
+            border: 1px solid #e4ebf7;
+            background: #fff;
+        }
+        @media (max-width: 760px) {
+            .feature-grid {
+                grid-template-columns: 1fr;
+            }
+            body {
+                padding: 0.8rem;
+            }
         }
     </style>
 </head>
 <body>
-    <h1>Tabs Component Test</h1>
+    <div class="page">
+        <section class="hero">
+            <h1>My Framework Tabs</h1>
+            <p>Simple to write, deeply crafted underneath: smooth state transitions, responsive flow, and premium visual rhythm.</p>
+        </section>
 
-    <div class="demo-section">
-        <div class="demo-title">Basic Tabs</div>
-        <div class="demo-desc">Simple tab navigation with content switching</div>
-        
-        <div class="tabs">
-            <div class="tab-list">
-                <button class="tab-btn is-active" data-tab="tab1">Home</button>
-                <button class="tab-btn" data-tab="tab2">Profile</button>
-                <button class="tab-btn" data-tab="tab3">Settings</button>
+        <div class="demo-section">
+            <div class="demo-title">Creative Workspace Tabs</div>
+            <div class="demo-desc">Switch between modules with a polished, animated control surface.</div>
+            
+            <div class="tabs">
+                <div class="tab-list">
+                    <button class="tab-btn is-active" data-tab="tab1">Overview</button>
+                    <button class="tab-btn" data-tab="tab2">Design</button>
+                    <button class="tab-btn" data-tab="tab3">Launch</button>
+                </div>
+                <div id="tab1" class="tab-content is-active">
+                    <h3 style="margin-top:0;">Project Insight</h3>
+                    <p>Capture momentum with focused stats, clean hierarchy, and crystal-clear decisions.</p>
+                    <div class="feature-grid">
+                        <div><strong>92%</strong><br>UI consistency score</div>
+                        <div><strong>8.4s</strong><br>avg delivery speed</div>
+                    </div>
+                </div>
+                <div id="tab2" class="tab-content">
+                    <h3 style="margin-top:0;">Design Lab</h3>
+                    <p>Build components with balanced spacing, expressive color, and interaction depth.</p>
+                    <div class="feature-grid">
+                        <div>Palette engine: ace, beta, gamma, delta</div>
+                        <div>Motion profile: calm, normal, fast</div>
+                    </div>
+                </div>
+                <div id="tab3" class="tab-content">
+                    <h3 style="margin-top:0;">Launch Center</h3>
+                    <p>Ship with confidence through tracked readiness and one-click release actions.</p>
+                    <div class="feature-grid">
+                        <div>QA checklist complete</div>
+                        <div>Pipeline synced with auto deploy</div>
+                    </div>
+                </div>
             </div>
-            <div id="tab1" class="tab-content is-active">
-                <h3>Home Content</h3>
-                <p>This is the home tab content. You can put any HTML content here including text, images, forms, or other components.</p>
-            </div>
-            <div id="tab2" class="tab-content">
-                <h3>Profile Content</h3>
-                <p>This is the profile tab. User profile information and settings would go here.</p>
-            </div>
-            <div id="tab3" class="tab-content">
-                <h3>Settings Content</h3>
-                <p>This is the settings tab. Application settings and preferences would be displayed here.</p>
+        </div>
+
+        <div class="demo-section">
+            <div class="demo-title">Responsive Form Flow</div>
+            <div class="demo-desc">A multi-step profile editor that feels fluid on desktop and mobile.</div>
+            
+            <div class="tabs">
+                <div class="tab-list">
+                    <button class="tab-btn is-active" data-tab="form1">Identity</button>
+                    <button class="tab-btn" data-tab="form2">Contact</button>
+                    <button class="tab-btn" data-tab="form3">Security</button>
+                </div>
+                <div id="form1" class="tab-content is-active">
+                    <h3 style="margin-top:0;">Identity</h3>
+                    <input type="text" class="field" placeholder="Full name" style="width: 100%; margin-bottom: .65rem;">
+                    <input type="text" class="field" placeholder="Creative role" style="width: 100%;">
+                </div>
+                <div id="form2" class="tab-content">
+                    <h3 style="margin-top:0;">Contact</h3>
+                    <input type="email" class="field" placeholder="Work email" style="width: 100%; margin-bottom: .65rem;">
+                    <input type="tel" class="field" placeholder="Phone / WhatsApp" style="width: 100%;">
+                </div>
+                <div id="form3" class="tab-content">
+                    <h3 style="margin-top:0;">Security</h3>
+                    <input type="text" class="field" placeholder="Username" style="width: 100%; margin-bottom: .65rem;">
+                    <input type="password" class="field" placeholder="New password" style="width: 100%;">
+                </div>
             </div>
         </div>
     </div>
 
-    <div class="demo-section">
-        <div class="demo-title">Tabs with Forms</div>
-        <div class="demo-desc">Tabs containing different form sections</div>
-        
-        <div class="tabs">
-            <div class="tab-list">
-                <button class="tab-btn is-active" data-tab="form1">Personal</button>
-                <button class="tab-btn" data-tab="form2">Contact</button>
-                <button class="tab-btn" data-tab="form3">Account</button>
-            </div>
-            <div id="form1" class="tab-content is-active">
-                <h3>Personal Information</h3>
-                <div style="margin-bottom: 1rem;">
-                    <label style="display: block; margin-bottom: 0.5rem; color: #041301;">First Name</label>
-                    <input type="text" class="field" placeholder="Enter first name" style="width: 100%;">
-                </div>
-                <div style="margin-bottom: 1rem;">
-                    <label style="display: block; margin-bottom: 0.5rem; color: #041301;">Last Name</label>
-                    <input type="text" class="field" placeholder="Enter last name" style="width: 100%;">
-                </div>
-            </div>
-            <div id="form2" class="tab-content">
-                <h3>Contact Information</h3>
-                <div style="margin-bottom: 1rem;">
-                    <label style="display: block; margin-bottom: 0.5rem; color: #041301;">Email</label>
-                    <input type="email" class="field" placeholder="Enter email" style="width: 100%;">
-                </div>
-                <div style="margin-bottom: 1rem;">
-                    <label style="display: block; margin-bottom: 0.5rem; color: #041301;">Phone</label>
-                    <input type="tel" class="field" placeholder="Enter phone number" style="width: 100%;">
-                </div>
-            </div>
-            <div id="form3" class="tab-content">
-                <h3>Account Settings</h3>
-                <div style="margin-bottom: 1rem;">
-                    <label style="display: block; margin-bottom: 0.5rem; color: #041301;">Username</label>
-                    <input type="text" class="field" placeholder="Enter username" style="width: 100%;">
-                </div>
-                <div style="margin-bottom: 1rem;">
-                    <label style="display: block; margin-bottom: 0.5rem; color: #041301;">Password</label>
-                    <input type="password" class="field" placeholder="Enter password" style="width: 100%;">
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="demo-section">
-        <div class="demo-title">Minimal Structure</div>
-        <div class="demo-desc">Simple HTML structure for tabs</div>
-        
-        <pre style="background: #f5f5f5; padding: 1rem; border-radius: 0.25rem; overflow-x: auto;">
-&lt;div class="tabs"&gt;
-  &lt;div class="tab-list"&gt;
-    &lt;button class="tab-btn is-active" data-tab="tab1"&gt;Tab 1&lt;/button&gt;
-    &lt;button class="tab-btn" data-tab="tab2"&gt;Tab 2&lt;/button&gt;
-  &lt;/div&gt;
-  &lt;div id="tab1" class="tab-content is-active"&gt;
-    Content 1
-  &lt;/div&gt;
-  &lt;div id="tab2" class="tab-content"&gt;
-    Content 2
-  &lt;/div&gt;
-&lt;/div&gt;</pre>
-    </div>
-
-    <script src="../dist/my-framework.js"></script>
+    <script src="../../dist/my-framework.js"></script>
 </body>
 </html>

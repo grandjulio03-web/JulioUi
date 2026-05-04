@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Air — Buttons</title>
+  <link rel="stylesheet" href="../../dist/my-framework.css">
+  <style>
+    body { padding: 2.5rem; background: var(--air-50); font-family: var(--air-font); }
+    .demo-section { margin-bottom: 3.5rem; }
+    .demo-title {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--air-400);
+      margin-bottom: 1rem; padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--air-200);
+    }
+    .demo-row {
+      display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+    .demo-label {
+      font-size: 0.72rem; color: var(--air-400); font-weight: 500;
+      min-width: 80px;
+    }
+    .dark-bg {
+      background: #040c03; padding: 1.5rem; border-radius: 1rem;
+      display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div style="margin-bottom: 3rem;">
+    <span class="air-kicker dotted">Air Framework</span>
+    <h1 class="air-display" style="margin-top: 0.4rem;">Buttons</h1>
+    <p class="air-lead">
+      Chromatic depth shadows, spring-physics interactions, 6 variants × 5 tones.
+      Write: <code>air-btn ace glow lg</code> — done.
+    </p>
+  </div>
+
+  <!-- Solid (default) -->
+  <div class="demo-section">
+    <div class="demo-title">Solid — default variant</div>
+    <div class="demo-row">
+      <button class="air-btn">Default</button>
+      <button class="air-btn ace">Ace</button>
+      <button class="air-btn beta">Beta</button>
+      <button class="air-btn gamma">Gamma</button>
+      <button class="air-btn delta">Delta</button>
+      <button class="air-btn epsilon">Epsilon</button>
+    </div>
+  </div>
+
+  <!-- Ghost -->
+  <div class="demo-section">
+    <div class="demo-title">Ghost</div>
+    <div class="demo-row">
+      <button class="air-btn ghost">Default</button>
+      <button class="air-btn ace ghost">Ace</button>
+      <button class="air-btn beta ghost">Beta</button>
+      <button class="air-btn gamma ghost">Gamma</button>
+      <button class="air-btn delta ghost">Delta</button>
+      <button class="air-btn epsilon ghost">Epsilon</button>
+    </div>
+  </div>
+
+  <!-- Soft -->
+  <div class="demo-section">
+    <div class="demo-title">Soft</div>
+    <div class="demo-row">
+      <button class="air-btn ace soft">Ace</button>
+      <button class="air-btn beta soft">Beta</button>
+      <button class="air-btn gamma soft">Gamma</button>
+      <button class="air-btn delta soft">Delta</button>
+      <button class="air-btn epsilon soft">Epsilon</button>
+    </div>
+  </div>
+
+  <!-- Glow -->
+  <div class="demo-section">
+    <div class="demo-title">Glow — hover to see the radiant effect</div>
+    <div class="demo-row">
+      <button class="air-btn ace glow">Ace</button>
+      <button class="air-btn beta glow">Beta</button>
+      <button class="air-btn gamma glow">Gamma</button>
+      <button class="air-btn delta glow">Delta</button>
+      <button class="air-btn epsilon glow">Epsilon</button>
+    </div>
+  </div>
+
+  <!-- Glass -->
+  <div class="demo-section">
+    <div class="demo-title">Glass — frosted backdrop (best on colored backgrounds)</div>
+    <div style="background: linear-gradient(135deg, #72b0d7, #d94f8b); padding: 1.5rem; border-radius: 1rem;">
+      <div class="demo-row">
+        <button class="air-btn ace glass">Ace</button>
+        <button class="air-btn beta glass">Beta</button>
+        <button class="air-btn gamma glass">Gamma</button>
+        <button class="air-btn delta glass">Delta</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Gradient -->
+  <div class="demo-section">
+    <div class="demo-title">Gradient — hover to see gradient flow</div>
+    <div class="demo-row">
+      <button class="air-btn ace gradient">Ace</button>
+      <button class="air-btn beta gradient">Beta</button>
+      <button class="air-btn gamma gradient">Gamma</button>
+      <button class="air-btn delta gradient">Delta</button>
+    </div>
+  </div>
+
+  <!-- Link -->
+  <div class="demo-section">
+    <div class="demo-title">Link — text with animated underline</div>
+    <div class="demo-row">
+      <button class="air-btn ace link">Learn more</button>
+      <button class="air-btn beta link">Read article</button>
+      <button class="air-btn gamma link">View all</button>
+      <button class="air-btn delta link">See details</button>
+    </div>
+  </div>
+
+  <!-- Sizes -->
+  <div class="demo-section">
+    <div class="demo-title">Sizes</div>
+    <div class="demo-row" style="align-items: flex-end;">
+      <button class="air-btn ace xs">XS</button>
+      <button class="air-btn ace sm">Small</button>
+      <button class="air-btn ace">Default</button>
+      <button class="air-btn ace lg">Large</button>
+      <button class="air-btn ace xl">Extra Large</button>
+    </div>
+  </div>
+
+  <!-- Shapes -->
+  <div class="demo-section">
+    <div class="demo-title">Shapes</div>
+    <div class="demo-row">
+      <span class="demo-label">Pill</span>
+      <button class="air-btn ace pill">Pill</button>
+      <button class="air-btn beta ghost pill">Ghost Pill</button>
+      <button class="air-btn gamma glow pill">Glow Pill</button>
+    </div>
+    <div class="demo-row">
+      <span class="demo-label">Square</span>
+      <button class="air-btn ace square">Square</button>
+      <button class="air-btn beta ghost square">Ghost</button>
+    </div>
+    <div class="demo-row">
+      <span class="demo-label">Icon</span>
+      <button class="air-btn ace icon" aria-label="Star">★</button>
+      <button class="air-btn beta ghost icon" aria-label="Heart">♥</button>
+      <button class="air-btn gamma glow icon" aria-label="Arrow">→</button>
+      <button class="air-btn delta icon sm" aria-label="Plus">+</button>
+      <button class="air-btn ace icon lg" aria-label="Check">✓</button>
+      <button class="air-btn beta icon xl pill" aria-label="Play">▶</button>
+    </div>
+  </div>
+
+  <!-- Disabled -->
+  <div class="demo-section">
+    <div class="demo-title">Disabled state</div>
+    <div class="demo-row">
+      <button class="air-btn ace" disabled>Disabled Solid</button>
+      <button class="air-btn beta ghost" disabled>Disabled Ghost</button>
+      <button class="air-btn gamma glow" disabled>Disabled Glow</button>
+    </div>
+  </div>
+
+  <!-- Block -->
+  <div class="demo-section">
+    <div class="demo-title">Block (full-width)</div>
+    <button class="air-btn ace block">Full Width Button</button>
+    <div style="height: 0.5rem;"></div>
+    <button class="air-btn delta ghost block">Full Width Ghost</button>
+  </div>
+
+  <!-- Button Group -->
+  <div class="demo-section">
+    <div class="demo-title">Button Group</div>
+    <div class="demo-row">
+      <div class="air-btn-group">
+        <button class="air-btn ace">Left</button>
+        <button class="air-btn ace">Center</button>
+        <button class="air-btn ace">Right</button>
+      </div>
+      <div class="air-btn-group pill">
+        <button class="air-btn beta ghost pill">One</button>
+        <button class="air-btn beta ghost pill">Two</button>
+        <button class="air-btn beta ghost pill">Three</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dark surface -->
+  <div class="demo-section">
+    <div class="demo-title">On dark backgrounds</div>
+    <div class="dark-bg">
+      <button class="air-btn ace">Solid</button>
+      <button class="air-btn beta ghost">Ghost</button>
+      <button class="air-btn gamma glow">Glow</button>
+      <button class="air-btn delta glass">Glass</button>
+      <button class="air-btn ace gradient">Gradient</button>
+    </div>
+  </div>
+
+  <!-- Mix of everything -->
+  <div class="demo-section">
+    <div class="demo-title">Real-world usage mix</div>
+    <div class="demo-row">
+      <button class="air-btn ace lg">Get Started</button>
+      <button class="air-btn ace ghost lg">Learn More</button>
+    </div>
+    <div class="demo-row">
+      <button class="air-btn delta soft sm">
+        <svg viewBox="0 0 24 24" width="14" height="14"><polyline points="20 6 9 17 4 12"/></svg>
+        Saved
+      </button>
+      <button class="air-btn beta soft sm">
+        <svg viewBox="0 0 24 24" width="14" height="14"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14H6L5 6"/></svg>
+        Delete
+      </button>
+      <button class="air-btn ace glow pill">
+        ✦ Pro Feature
+      </button>
+    </div>
+  </div>
+
+</body>
+</html>

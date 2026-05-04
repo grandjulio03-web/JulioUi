@@ -1,0 +1,212 @@
+// ============================================================
+// Air Framework â€” Badges & Chips
+// Usage: air-badge [tone] [variant?] [size?]
+//        air-chip  [tone] [removable?]
+// Tones:    ace  beta  gamma  delta  epsilon
+// Variants: soft  outline  glow  (default = solid)
+// Sizes:    sm  (default)  lg
+// ============================================================
+
+// â”€â”€ Badge â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+.air-badge {
+  --_c:     #{$ace};
+  --_c-rgb: var(--air-ace-rgb);
+
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3em;
+  padding: 0.25em 0.65em;
+  border-radius: var(--air-r-pill);
+  font-family: var(--air-font);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  line-height: 1;
+  white-space: nowrap;
+  vertical-align: middle;
+
+  // Default solid
+  background: var(--_c);
+  color: #fff;
+  border: 1.5px solid transparent;
+
+  // Dot indicator
+  &.dot::before {
+    content: '';
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: currentColor;
+    opacity: 0.8;
+    flex-shrink: 0;
+  }
+}
+
+// Tones
+.air-badge.ace     { --_c: #{$ace};     --_c-rgb: var(--air-ace-rgb); }
+.air-badge.beta    { --_c: #{$beta};    --_c-rgb: var(--air-beta-rgb); }
+.air-badge.gamma   { --_c: #{$gamma};   --_c-rgb: var(--air-gamma-rgb); }
+.air-badge.delta   { --_c: #{$delta};   --_c-rgb: var(--air-delta-rgb); }
+.air-badge.epsilon { --_c: #{$epsilon}; --_c-rgb: var(--air-epsilon-rgb); }
+.air-badge.neutral {
+  --_c: var(--air-500);
+  --_c-rgb: 107 114 128;
+}
+
+// Soft variant â€” tinted background, colored text
+.air-badge.soft {
+  background: rgb(var(--_c-rgb) / 0.12);
+  color: var(--_c);
+  border-color: transparent;
+}
+
+// Outline variant
+.air-badge.outline {
+  background: transparent;
+  color: var(--_c);
+  border-color: var(--_c);
+}
+
+// Glow variant
+.air-badge.glow {
+  background: var(--_c);
+  color: #fff;
+  box-shadow: 0 0 10px rgb(var(--_c-rgb) / 0.5);
+}
+
+// Sizes
+.air-badge.sm {
+  font-size: 0.625rem;
+  padding: 0.2em 0.5em;
+}
+
+.air-badge.lg {
+  font-size: 0.8125rem;
+  padding: 0.35em 0.85em;
+  letter-spacing: 0.04em;
+}
+
+// Square badge (for counts)
+.air-badge.square {
+  border-radius: var(--air-r-sm);
+  padding: 0.25em 0.5em;
+}
+
+// Number bubble
+.air-badge.bubble {
+  padding: 0;
+  min-width: 1.5em;
+  height: 1.5em;
+  border-radius: var(--air-r-pill);
+  justify-content: center;
+  font-size: 0.7rem;
+}
+
+// Status badges with pulse
+.air-badge.live {
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 5px;
+    height: 5px;
+    border-radius: 50%;
+    background: currentColor;
+    opacity: 0.9;
+    flex-shrink: 0;
+    animation: air-badge-pulse 1.5s ease-in-out infinite;
+  }
+}
+
+@keyframes air-badge-pulse {
+  0%, 100% { opacity: 0.9; transform: scale(1); }
+  50%       { opacity: 0.4; transform: scale(1.5); }
+}
+
+// â”€â”€ Chip â€” interactive tag â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+.air-chip {
+  --_c:     #{$ace};
+  --_c-rgb: var(--air-ace-rgb);
+
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4em;
+  padding: 0.4em 0.9em;
+  border-radius: var(--air-r-pill);
+  font-family: var(--air-font);
+  font-size: var(--air-text-sm);
+  font-weight: 500;
+  line-height: 1;
+  white-space: nowrap;
+  cursor: default;
+  user-select: none;
+
+  // Default: soft
+  background: var(--air-100);
+  color: var(--air-700);
+  border: 1px solid var(--air-200);
+  transition: background var(--air-t-fast), color var(--air-t-fast);
+
+  &:hover { background: var(--air-200); }
+
+  // Accent chips
+  &.ace     { --_c: #{$ace};     --_c-rgb: var(--air-ace-rgb); }
+  &.beta    { --_c: #{$beta};    --_c-rgb: var(--air-beta-rgb); }
+  &.gamma   { --_c: #{$gamma};   --_c-rgb: var(--air-gamma-rgb); }
+  &.delta   { --_c: #{$delta};   --_c-rgb: var(--air-delta-rgb); }
+
+  &.ace, &.beta, &.gamma, &.delta {
+    background: rgb(var(--_c-rgb) / 0.1);
+    color: var(--_c);
+    border-color: rgb(var(--_c-rgb) / 0.22);
+
+    &:hover { background: rgb(var(--_c-rgb) / 0.18); }
+  }
+
+  // Remove button (x)
+  .air-chip-remove {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.1em;
+    height: 1.1em;
+    border-radius: 50%;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: inherit;
+    opacity: 0.6;
+    padding: 0;
+    transition: opacity var(--air-t-fast), background var(--air-t-fast);
+    font-size: 0.9em;
+    line-height: 1;
+
+    &:hover {
+      opacity: 1;
+      background: rgba(0,0,0,0.1);
+    }
+  }
+}
+
+// Selectable chip
+.air-chip.selectable {
+  cursor: pointer;
+
+  &.selected,
+  &[aria-selected="true"] {
+    background: var(--_c);
+    color: #fff;
+    border-color: var(--_c);
+    box-shadow: 0 2px 8px rgb(var(--_c-rgb) / 0.3);
+  }
+}
+
+// â”€â”€ Badge group â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+.air-badge-group,
+.air-chip-group {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  align-items: center;
+}

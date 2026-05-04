@@ -3,16 +3,130 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-     <link rel="stylesheet" href="./dist/my-framework.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="../../dist/my-framework.css">
+    <title>My Framework - Visual Test Studio</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: "Inter", "Poppins", "Montserrat", sans-serif;
+            background: linear-gradient(145deg, #f4f9ff, #edf4ff 45%, #f9fcff);
+            color: #041301;
+            padding: 1rem;
+        }
+        .studio {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            gap: 1rem;
+        }
+        .panel {
+            background: rgba(255,255,255,0.9);
+            border: 1px solid #dfe8f7;
+            border-radius: 1rem;
+            box-shadow: 0 12px 26px rgba(17, 24, 39, 0.07);
+            padding: 1rem;
+        }
+        .hero-card {
+            background: linear-gradient(130deg, #041301, #1a3657 55%, #72b0d7);
+            color: #fff;
+            border-radius: 1rem;
+            padding: 1.2rem;
+        }
+        .hero-card h1 {
+            margin: 0 0 .45rem;
+            font-size: clamp(1.35rem, 2.8vw, 2rem);
+        }
+        .hero-card p {
+            margin: 0;
+            color: rgba(255,255,255,0.9);
+        }
+        .showcase-card {
+            margin-top: .9rem;
+            border-radius: .9rem;
+            overflow: hidden;
+            border: 1px solid #2c5270;
+        }
+        .showcase-card .jf-card-header {
+            margin: 0;
+            padding: .85rem 1rem;
+            background: rgba(255,255,255,.14);
+            color: #fff;
+            font-weight: 700;
+        }
+        .showcase-card .jf-card-body {
+            padding: 1rem;
+            color: #edf4ff;
+        }
+        .stack {
+            display: grid;
+            gap: .75rem;
+        }
+        .chip {
+            display: inline-block;
+            padding: .3rem .7rem;
+            border: 1px solid #cfe0f4;
+            border-radius: 999px;
+            background: #f8fbff;
+            margin: 0 .35rem .4rem 0;
+            font-size: .82rem;
+        }
+        .mini-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: .7rem;
+        }
+        .metric {
+            background: #fff;
+            border: 1px solid #e4ecf8;
+            border-radius: .75rem;
+            padding: .8rem;
+        }
+        @media (max-width: 860px) {
+            .studio {
+                grid-template-columns: 1fr;
+            }
+            body {
+                padding: .75rem;
+            }
+        }
+    </style>
 </head>
 <body>
+    <div class="studio">
+        <section class="panel">
+            <div class="hero-card">
+                <h1>My Framework Test Studio</h1>
+                <p>Simple write. Stunning output. Every block crafted like digital art.</p>
+                <div class="showcase-card">
+                    <p class="jf-card-header">Creative Component Card</p>
+                    <div class="jf-card-body">
+                        Layered gradients, crisp typography, and balanced spacing create a premium first impression.
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <div class="jf-card bg-ace text-epsilon">
-    <p class="jf-card-header">
-        Hello worlds
-    </p>
-    <img src="" alt="" class="jf-card-img">
-  </div>
+        <section class="panel stack">
+            <div>
+                <h2 style="margin:0 0 .45rem;">Design DNA</h2>
+                <span class="chip">Responsive by default</span>
+                <span class="chip">Motion-first micro-interactions</span>
+                <span class="chip">Systematic color engine</span>
+                <span class="chip">Readable at every size</span>
+            </div>
+            <div class="mini-grid">
+                <div class="metric">
+                    <strong>92%</strong>
+                    <p style="margin:.35rem 0 0; color:#607088;">Visual harmony score</p>
+                </div>
+                <div class="metric">
+                    <strong>0 custom JS</strong>
+                    <p style="margin:.35rem 0 0; color:#607088;">For this showcase layer</p>
+                </div>
+            </div>
+            <button class="jf-btn ace">Preview Interaction</button>
+        </section>
+    </div>
 </body>
 </html>

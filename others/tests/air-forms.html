@@ -1,0 +1,463 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Air â€” Forms</title>
+  <link rel="stylesheet" href="../../dist/my-framework.css">
+  <style>
+    body { padding: 2.5rem; background: var(--air-50); font-family: var(--air-font); }
+    .demo-section { margin-bottom: 3.5rem; }
+    .demo-title {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--air-400);
+      margin-bottom: 1.25rem; padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--air-200);
+    }
+    .demo-row {
+      display: flex; flex-wrap: wrap; gap: 0.65rem; align-items: center;
+      margin-bottom: 0.75rem;
+    }
+    .demo-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    @media (max-width: 640px) { .demo-grid-2 { grid-template-columns: 1fr; } }
+    .form-card {
+      background: #fff;
+      border-radius: 1.25rem;
+      padding: 2rem;
+      box-shadow: 0 4px 12px rgba(4,19,1,0.08);
+      max-width: 520px;
+    }
+    .form-card-wide {
+      background: #fff;
+      border-radius: 1.25rem;
+      padding: 2rem;
+      box-shadow: 0 4px 12px rgba(4,19,1,0.08);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div style="margin-bottom: 3rem;">
+    <span class="air-kicker dotted">Air Framework</span>
+    <h1 class="air-display" style="margin-top: 0.4rem;">Forms</h1>
+    <p class="air-lead">Input, select, textarea, search, toggle, checkbox, radio, range, file upload. Clean, accessible, toned.</p>
+  </div>
+
+  <!-- Basic inputs -->
+  <div class="demo-section">
+    <div class="demo-title">Inputs â€” default bordered</div>
+    <div class="form-card">
+      <div class="air-form">
+        <div class="air-field">
+          <label class="air-label">Full name <span>*</span></label>
+          <input type="text" class="air-input" placeholder="John Doe">
+          <span class="air-hint">Enter your full legal name.</span>
+        </div>
+        <div class="air-field">
+          <label class="air-label">Email address <span>*</span></label>
+          <input type="email" class="air-input ace" placeholder="you@example.com">
+        </div>
+        <div class="air-field">
+          <label class="air-label">Password</label>
+          <input type="password" class="air-input" placeholder="Min. 8 characters">
+          <span class="air-hint">Use at least 8 characters with a mix of letters and numbers.</span>
+        </div>
+        <div class="air-field">
+          <label class="air-label">Message</label>
+          <textarea class="air-textarea" placeholder="Tell us what you need..."></textarea>
+        </div>
+        <button class="air-btn ace lg block">Submit Form</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Input variants -->
+  <div class="demo-section">
+    <div class="demo-title">Input variants</div>
+    <div class="form-card-wide">
+      <div class="air-form">
+        <div class="demo-grid-2">
+          <div class="air-field">
+            <label class="air-label">Default</label>
+            <input type="text" class="air-input" placeholder="Default style">
+          </div>
+          <div class="air-field">
+            <label class="air-label">Ghost</label>
+            <input type="text" class="air-input ghost" placeholder="Ghost (activates on focus)">
+          </div>
+          <div class="air-field">
+            <label class="air-label">Flat</label>
+            <input type="text" class="air-input flat" placeholder="Underline only">
+          </div>
+          <div class="air-field">
+            <label class="air-label">Neon</label>
+            <input type="text" class="air-input neon ace" placeholder="Glowing border">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Focus tones -->
+  <div class="demo-section">
+    <div class="demo-title">Focus ring tones â€” click each to see</div>
+    <div class="form-card-wide">
+      <div class="demo-grid-2">
+        <div class="air-field">
+          <label class="air-label">Ace focus ring</label>
+          <input type="text" class="air-input ace" placeholder="Click to focus">
+        </div>
+        <div class="air-field">
+          <label class="air-label">Beta focus ring</label>
+          <input type="text" class="air-input beta" placeholder="Click to focus">
+        </div>
+        <div class="air-field">
+          <label class="air-label">Gamma focus ring</label>
+          <input type="text" class="air-input gamma" placeholder="Click to focus">
+        </div>
+        <div class="air-field">
+          <label class="air-label">Delta focus ring</label>
+          <input type="text" class="air-input delta" placeholder="Click to focus">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sizes -->
+  <div class="demo-section">
+    <div class="demo-title">Sizes</div>
+    <div class="form-card">
+      <div class="air-form">
+        <div class="air-field">
+          <label class="air-label">Small</label>
+          <input type="text" class="air-input ace sm" placeholder="Small input">
+        </div>
+        <div class="air-field">
+          <label class="air-label">Default</label>
+          <input type="text" class="air-input ace" placeholder="Default size">
+        </div>
+        <div class="air-field">
+          <label class="air-label">Large</label>
+          <input type="text" class="air-input ace lg" placeholder="Large input">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- States -->
+  <div class="demo-section">
+    <div class="demo-title">Validation states</div>
+    <div class="form-card">
+      <div class="air-form">
+        <div class="air-field">
+          <label class="air-label">Error state</label>
+          <input type="email" class="air-input is-error" value="invalid@">
+          <span class="air-error is-visible">Please enter a valid email address.</span>
+        </div>
+        <div class="air-field">
+          <label class="air-label">Success state</label>
+          <input type="email" class="air-input is-success" value="john@example.com">
+          <span class="air-hint" style="color: #44a880;">âœ“ Email verified</span>
+        </div>
+        <div class="air-field">
+          <label class="air-label">Disabled</label>
+          <input type="text" class="air-input" value="Read only value" disabled>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Select -->
+  <div class="demo-section">
+    <div class="demo-title">Select</div>
+    <div class="form-card">
+      <div class="air-form">
+        <div class="air-field">
+          <label class="air-label">Country</label>
+          <select class="air-select ace">
+            <option value="">Choose a country</option>
+            <option>United States</option>
+            <option>United Kingdom</option>
+            <option>Canada</option>
+            <option>Australia</option>
+          </select>
+        </div>
+        <div class="air-field">
+          <label class="air-label">Category (flat)</label>
+          <select class="air-select flat">
+            <option value="">Select category</option>
+            <option>Design</option>
+            <option>Development</option>
+            <option>Marketing</option>
+          </select>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Search -->
+  <div class="demo-section">
+    <div class="demo-title">Search</div>
+    <div class="form-card-wide" style="max-width: 520px;">
+      <div class="air-form">
+        <div class="air-field">
+          <label class="air-label">Search</label>
+          <div class="air-search-wrap">
+            <svg class="air-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="search" class="air-search ace" placeholder="Search anything...">
+            <button class="air-search-clear" aria-label="Clear">âœ•</button>
+          </div>
+        </div>
+        <div class="air-input-action">
+          <input type="text" class="air-input" placeholder="Subscribe to newsletter">
+          <button class="air-btn ace">Subscribe</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Input with icons -->
+  <div class="demo-section">
+    <div class="demo-title">Input with prefix / suffix icons</div>
+    <div class="form-card">
+      <div class="air-form">
+        <div class="air-field">
+          <label class="air-label">Amount</label>
+          <div class="air-input-wrap">
+            <span class="air-input-prefix">$</span>
+            <input type="number" class="air-input has-prefix" placeholder="0.00">
+          </div>
+        </div>
+        <div class="air-field">
+          <label class="air-label">Username</label>
+          <div class="air-input-wrap">
+            <span class="air-input-prefix">@</span>
+            <input type="text" class="air-input has-prefix" placeholder="yourname">
+          </div>
+        </div>
+        <div class="air-field">
+          <label class="air-label">Website</label>
+          <div class="air-input-wrap">
+            <span class="air-input-prefix" style="font-size: 0.8rem;">https://</span>
+            <input type="url" class="air-input has-prefix" placeholder="yoursite.com">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toggle -->
+  <div class="demo-section">
+    <div class="demo-title">Toggles</div>
+    <div class="form-card">
+      <div style="display: flex; flex-direction: column; gap: 1rem;">
+        <label class="air-toggle">
+          <input type="checkbox" checked>
+          <span class="air-toggle-track"><span class="air-toggle-thumb"></span></span>
+          Notifications enabled (ace)
+        </label>
+        <label class="air-toggle beta">
+          <input type="checkbox" checked>
+          <span class="air-toggle-track"><span class="air-toggle-thumb"></span></span>
+          Marketing emails (beta)
+        </label>
+        <label class="air-toggle gamma">
+          <input type="checkbox">
+          <span class="air-toggle-track"><span class="air-toggle-thumb"></span></span>
+          Analytics tracking (gamma)
+        </label>
+        <label class="air-toggle delta">
+          <input type="checkbox" checked>
+          <span class="air-toggle-track"><span class="air-toggle-thumb"></span></span>
+          Dark mode (delta)
+        </label>
+        <label class="air-toggle lg">
+          <input type="checkbox">
+          <span class="air-toggle-track"><span class="air-toggle-thumb"></span></span>
+          Large toggle (lg modifier)
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Checkbox -->
+  <div class="demo-section">
+    <div class="demo-title">Checkboxes</div>
+    <div class="form-card">
+      <div style="display: flex; flex-direction: column; gap: 0.85rem;">
+        <label class="air-check ace">
+          <input type="checkbox" checked>
+          <span class="air-check-box"></span>
+          Checked â€” ace
+        </label>
+        <label class="air-check beta">
+          <input type="checkbox" checked>
+          <span class="air-check-box"></span>
+          Checked â€” beta
+        </label>
+        <label class="air-check gamma">
+          <input type="checkbox">
+          <span class="air-check-box"></span>
+          Unchecked â€” gamma
+        </label>
+        <label class="air-check delta">
+          <input type="checkbox">
+          <span class="air-check-box"></span>
+          Unchecked â€” delta
+        </label>
+        <label class="air-check ace indeterminate">
+          <input type="checkbox">
+          <span class="air-check-box"></span>
+          Indeterminate state
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Radio -->
+  <div class="demo-section">
+    <div class="demo-title">Radio buttons</div>
+    <div class="form-card">
+      <div style="display: flex; flex-direction: column; gap: 0.85rem;">
+        <label class="air-radio ace">
+          <input type="radio" name="plan" value="free" checked>
+          <span class="air-radio-dot"></span>
+          Free plan â€” $0/mo
+        </label>
+        <label class="air-radio ace">
+          <input type="radio" name="plan" value="pro">
+          <span class="air-radio-dot"></span>
+          Pro plan â€” $12/mo
+        </label>
+        <label class="air-radio beta">
+          <input type="radio" name="plan2" value="team" checked>
+          <span class="air-radio-dot"></span>
+          Team plan â€” $49/mo
+        </label>
+        <label class="air-radio delta">
+          <input type="radio" name="plan3" value="enterprise">
+          <span class="air-radio-dot"></span>
+          Enterprise â€” Custom pricing
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Range -->
+  <div class="demo-section">
+    <div class="demo-title">Range sliders</div>
+    <div class="form-card">
+      <div style="display: flex; flex-direction: column; gap: 1.25rem;">
+        <div class="air-field">
+          <label class="air-label">Volume (ace)</label>
+          <input type="range" class="air-range ace" min="0" max="100" value="65">
+        </div>
+        <div class="air-field">
+          <label class="air-label">Brightness (beta)</label>
+          <input type="range" class="air-range beta" min="0" max="100" value="30">
+        </div>
+        <div class="air-field">
+          <label class="air-label">Zoom (gamma)</label>
+          <input type="range" class="air-range gamma" min="0" max="100" value="75">
+        </div>
+        <div class="air-field">
+          <label class="air-label">Threshold (delta)</label>
+          <input type="range" class="air-range delta" min="0" max="100" value="50">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- File upload -->
+  <div class="demo-section">
+    <div class="demo-title">File upload</div>
+    <div class="form-card">
+      <label class="air-file-wrap">
+        <input type="file" accept="image/*,.pdf">
+        <span class="air-file-icon">ðŸ“</span>
+        <span class="air-file-label">Drop files here or click to upload</span>
+        <span class="air-file-hint">PNG, JPG, PDF â€” max 10MB</span>
+      </label>
+    </div>
+  </div>
+
+  <!-- Complete form example -->
+  <div class="demo-section">
+    <div class="demo-title">Complete form â€” real-world example</div>
+    <div class="form-card">
+      <h2 class="air-heading" style="margin-bottom: 1.5rem;">Create Account</h2>
+      <div class="air-form">
+        <div class="air-form-row">
+          <div class="air-field">
+            <label class="air-label">First name</label>
+            <input type="text" class="air-input ace" placeholder="John">
+          </div>
+          <div class="air-field">
+            <label class="air-label">Last name</label>
+            <input type="text" class="air-input ace" placeholder="Doe">
+          </div>
+        </div>
+        <div class="air-field">
+          <label class="air-label">Email <span>*</span></label>
+          <input type="email" class="air-input ace" placeholder="john@example.com">
+        </div>
+        <div class="air-field">
+          <label class="air-label">Password <span>*</span></label>
+          <input type="password" class="air-input ace" placeholder="Create a password">
+          <span class="air-hint">Minimum 8 characters.</span>
+        </div>
+        <div class="air-field">
+          <label class="air-label">Role</label>
+          <select class="air-select ace">
+            <option value="">Select your role</option>
+            <option>Designer</option>
+            <option>Developer</option>
+            <option>Product Manager</option>
+          </select>
+        </div>
+        <div style="display: flex; flex-direction: column; gap: 0.75rem;">
+          <label class="air-check ace">
+            <input type="checkbox" checked>
+            <span class="air-check-box"></span>
+            I agree to the Terms of Service and Privacy Policy
+          </label>
+          <label class="air-toggle ace">
+            <input type="checkbox" checked>
+            <span class="air-toggle-track"><span class="air-toggle-thumb"></span></span>
+            Send me product updates
+          </label>
+        </div>
+        <button class="air-btn ace lg block">Create Account</button>
+        <p class="air-caption text-center">Already have an account? <a href="#" style="color: #72b0d7; font-weight: 600;">Sign in</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Glass form on dark -->
+  <div class="demo-section">
+    <div class="demo-title">Glass form on gradient background</div>
+    <div style="background: linear-gradient(135deg, #020d18, #041301); padding: 3rem 2rem; border-radius: 1.25rem;">
+      <div class="form-card" style="background: rgba(255,255,255,0.07); backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.1); max-width: 400px; margin: 0 auto;">
+        <h2 style="color: #fff; font-weight: 700; margin-bottom: 1.5rem;">Sign in</h2>
+        <div class="air-form">
+          <div class="air-field">
+            <label class="air-label" style="color: rgba(255,255,255,0.7);">Email</label>
+            <input type="email" class="air-input glass" placeholder="you@example.com">
+          </div>
+          <div class="air-field">
+            <label class="air-label" style="color: rgba(255,255,255,0.7);">Password</label>
+            <input type="password" class="air-input glass" placeholder="Enter password">
+          </div>
+          <button class="air-btn ace glow block">Sign In</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Air Nav — All Types</title>
+  <link rel="stylesheet" href="../../dist/my-framework.css">
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; font-family: var(--air-font); background: var(--air-50); }
+
+    /* ── Page content padding ── */
+    .page { max-width: 1200px; margin: 0 auto; padding: 2.5rem 1.5rem 8rem; }
+
+    /* ── Section labels ── */
+    .s-title {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--air-400);
+      margin-bottom: 1.25rem; padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--air-200);
+    }
+    .s-block { margin-bottom: 4rem; }
+
+    /* ── Nav preview frame ── */
+    .frame {
+      border-radius: 1rem;
+      overflow: hidden;
+      border: 1px solid var(--air-200);
+      background: #fff;
+    }
+    .frame-body {
+      padding: 2rem;
+      background: var(--air-50);
+      min-height: 80px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--air-400); font-size: 0.82rem; font-weight: 500;
+    }
+    .frame-body.dark  { background: #030d07; color: rgba(255,255,255,0.3); }
+    .frame-body.grad  { background: linear-gradient(135deg, #72b0d7, #d94f8b 50%, #FF8F4B); }
+    .frame + .frame   { margin-top: 1rem; }
+
+    /* ── Demo navs sit in-flow (not sticky in the frame) ── */
+    .frame .air-nav { position: relative; top: auto; }
+
+    /* ── Code block ── */
+    .code {
+      background: #141a13;
+      border-radius: 0.875rem;
+      padding: 1.25rem 1.5rem;
+      overflow-x: auto;
+      font-family: var(--air-font-mono);
+      font-size: 0.82rem;
+      line-height: 1.75;
+      color: #c9d1d9;
+      margin-top: 0.75rem;
+    }
+    .t-sky  { color: #72b0d7; }
+    .t-red  { color: #d94f8b; }
+    .t-org  { color: #FF8F4B; }
+    .t-grn  { color: #6DC9A7; }
+    .t-dim  { color: rgba(255,255,255,0.3); }
+
+    /* ── Phone frame ── */
+    .phone {
+      width: 260px; height: 520px;
+      border-radius: 2.25rem;
+      border: 7px solid #111;
+      overflow: hidden;
+      position: relative;
+      box-shadow: var(--air-shadow-2xl);
+      background: var(--air-50);
+      margin: 0 auto;
+    }
+    .phone-screen { padding: 1.25rem 0.85rem; height: calc(100% - 56px); overflow: hidden; }
+    .phone .air-nav.floor { position: absolute; bottom: 0; left: 0; right: 0; }
+
+    /* ── Aside preview ── */
+    .aside-frame {
+      display: flex; height: 420px; border-radius: 1rem;
+      overflow: hidden; border: 1px solid var(--air-200);
+    }
+    .aside-body {
+      flex: 1; background: var(--air-50); display: flex;
+      align-items: center; justify-content: center;
+      color: var(--air-400); font-size: 0.82rem; padding: 2rem; text-align: center;
+    }
+    .aside-body.dark { background: #030d07; color: rgba(255,255,255,0.25); }
+
+    /* ── Float nav positioned inside a tall frame ── */
+    .float-frame {
+      position: relative; min-height: 260px;
+      border-radius: 1rem; overflow: hidden;
+      border: 1px solid var(--air-200);
+    }
+    .float-inner { padding-top: 5rem; min-height: 260px; }
+    .float-frame .air-nav.float {
+      position: absolute; top: 0.75rem;
+    }
+
+    /* ── Vocab grid ── */
+    .vocab-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 0.75rem;
+    }
+    .vocab-card {
+      background: #fff; border-radius: 0.875rem;
+      padding: 1rem 1.1rem;
+      border: 1px solid var(--air-200);
+    }
+    .vocab-class {
+      font-family: var(--air-font-mono); font-size: 0.8rem;
+      font-weight: 700; color: #4a8fc0;
+      background: rgba(114,176,215,0.1);
+      padding: 0.2em 0.5em; border-radius: 0.25rem;
+      display: inline-block; margin-bottom: 0.4rem;
+    }
+    .vocab-desc {
+      font-size: 0.8rem; color: var(--air-500); line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+
+<!-- =========================================================
+     LIVE RAIL NAV — sits on top of the page
+========================================================== -->
+<nav class="air-nav ace" data-scroll data-indicator>
+
+  <a href="#" class="brand">
+    <div class="air-nav-logo-icon">A</div>
+    AirUI
+  </a>
+
+  <div class="links">
+    <a href="#" class="link active">Home</a>
+    <a href="#" class="link">Features</a>
+    <a href="#" class="link" data-fly="fly-comp">Components</a>
+    <div class="fly wide" id="fly-comp">
+      <div class="fly-grid">
+        <a href="#" class="fly-row">
+          <span class="fly-icon"><svg viewBox="0 0 24 24"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></span>
+          <div><strong>Buttons</strong><span>6 variants × 5 tones</span></div>
+        </a>
+        <a href="#" class="fly-row">
+          <span class="fly-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></span>
+          <div><strong>Cards</strong><span>Bento, media, stat</span></div>
+        </a>
+        <a href="#" class="fly-row">
+          <span class="fly-icon"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></span>
+          <div><strong>Alerts</strong><span>Toast, banner, inline</span></div>
+        </a>
+        <a href="#" class="fly-row">
+          <span class="fly-icon"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></span>
+          <div><strong>Backgrounds</strong><span>Mesh, aurora, glow</span></div>
+        </a>
+      </div>
+      <div class="fly-cut"></div>
+      <a href="#" class="fly-row" style="color: var(--air-ace); font-size: 0.8rem; font-weight: 600;">All components →</a>
+    </div>
+    <a href="#" class="link">Pricing</a>
+  </div>
+
+  <div class="end">
+    <a href="#" class="air-btn ace ghost sm">Sign in</a>
+    <a href="#" class="air-btn ace sm">Get started</a>
+  </div>
+
+  <button class="menu" aria-label="Open menu" aria-expanded="false">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- =========================================================
+     PAGE BODY
+========================================================== -->
+<div class="page">
+
+  <!-- Header -->
+  <div style="margin-bottom: 3.5rem; padding-top: 1.5rem;">
+    <span class="air-kicker dotted">Air Framework</span>
+    <h1 class="air-display" style="margin-top: 0.4rem; font-size: clamp(2rem,5vw,3.25rem);">
+      Navigation — Air's own words
+    </h1>
+    <p class="air-lead">
+      Air doesn't borrow Bootstrap's vocabulary. No <code>navbar-brand</code>,
+      no <code>nav-item</code>, no <code>ul&gt;li</code>.
+      Every part has a name a human actually uses.
+    </p>
+    <div style="margin-top: 1rem; display: flex; gap: 0.65rem; flex-wrap: wrap;">
+      <span class="air-badge ace soft">brand · links · link · end · menu</span>
+      <span class="air-badge beta soft">fly (dropdown)</span>
+      <span class="air-badge gamma soft">floor · tab</span>
+      <span class="air-badge delta soft">air-side · path · mark</span>
+      <span class="air-badge ace soft">air-trail · crumb</span>
+    </div>
+  </div>
+
+  <!-- ==========================================================
+       VOCABULARY REFERENCE
+  =========================================================== -->
+  <div class="s-block">
+    <div class="s-title">Air's vocabulary — simple words, powerful meaning</div>
+    <div class="vocab-grid">
+      <div class="vocab-card">
+        <span class="vocab-class">air-nav</span>
+        <p class="vocab-desc">The nav bar itself. Sticky rail by default. Add <code>float</code> or <code>floor</code> for other types.</p>
+      </div>
+      <div class="vocab-card">
+        <span class="vocab-class">.brand</span>
+        <p class="vocab-desc">Your logo or site name. Direct child of <code>air-nav</code>. Just an <code>&lt;a&gt;</code> tag.</p>
+      </div>
+      <div class="vocab-card">
+        <span class="vocab-class">.links</span>
+        <p class="vocab-desc">Holds all nav links. A <code>&lt;div&gt;</code> — no <code>ul</code>, no <code>li</code> required.</p>
+      </div>
+      <div class="vocab-card">
+        <span class="vocab-class">.link</span>
+        <p class="vocab-desc">One nav link. Add <code>.active</code> for current page. Add <code>data-fly="id"</code> for a dropdown.</p>
+      </div>
+      <div class="vocab-card">
+        <span class="vocab-class">.end</span>
+        <p class="vocab-desc">The right-side zone — your CTAs, login buttons, avatars. Automatically hidden on mobile.</p>
+      </div>
+      <div class="vocab-card">
+        <span class="vocab-class">.menu</span>
+        <p class="vocab-desc">Hamburger button. JS auto-builds the mobile panel from your <code>.links</code> — no duplication.</p>
+      </div>
+      <div class="vocab-card">
+        <span class="vocab-class">.fly</span>
+        <p class="vocab-desc">A dropdown panel. Triggered by <code>data-fly="id"</code>. Add <code>.wide</code> for mega layout.</p>
+      </div>
+      <div class="vocab-card">
+        <span class="vocab-class">.fly-row</span>
+        <p class="vocab-desc">One item inside a <code>.fly</code>. Has icon, title, description — grid or stacked.</p>
+      </div>
+      <div class="vocab-card">
+        <span class="vocab-class">air-nav.float</span>
+        <p class="vocab-desc">Floating pill nav. Fixed, centered, rounded. The nav IS the pill — no inner wrapper.</p>
+      </div>
+      <div class="vocab-card">
+        <span class="vocab-class">air-nav.floor</span>
+        <p class="vocab-desc">Bottom tab bar. iOS-native feel. Use <code>.tab</code> inside, no links/end needed.</p>
+      </div>
+      <div class="vocab-card">
+        <span class="vocab-class">air-side</span>
+        <p class="vocab-desc">Sidebar nav. Parts: <code>.mark</code> (brand), <code>.section</code> (label), <code>.path</code> (link), <code>.tail</code> (badge).</p>
+      </div>
+      <div class="vocab-card">
+        <span class="vocab-class">air-trail</span>
+        <p class="vocab-desc">Breadcrumb. Use <code>.crumb</code> for each step. The separator is pure CSS — no extra HTML.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================
+       RAIL NAV VARIANTS
+  =========================================================== -->
+  <div class="s-block">
+    <div class="s-title">Rail nav — sticky, full width</div>
+
+    <!-- Default ace -->
+    <p class="air-caption" style="margin-bottom: 0.5rem;">Ace + sliding indicator (see the top of this page)</p>
+    <div class="code">
+<span class="t-dim">&lt;!-- Scroll the page to see glass effect. Hover links to see indicator. --&gt;</span>
+<span class="t-sky">&lt;nav</span> <span class="t-org">class</span>=<span class="t-grn">"air-nav ace"</span> <span class="t-red">data-scroll</span> <span class="t-red">data-indicator</span><span class="t-sky">&gt;</span>
+  <span class="t-sky">&lt;a</span> <span class="t-org">href</span>=<span class="t-grn">"#"</span> <span class="t-org">class</span>=<span class="t-grn">"brand"</span><span class="t-sky">&gt;</span>AirUI<span class="t-sky">&lt;/a&gt;</span>
+  <span class="t-sky">&lt;div</span> <span class="t-org">class</span>=<span class="t-grn">"links"</span><span class="t-sky">&gt;</span>
+    <span class="t-sky">&lt;a</span> <span class="t-org">href</span>=<span class="t-grn">"#"</span> <span class="t-org">class</span>=<span class="t-grn">"link active"</span><span class="t-sky">&gt;</span>Home<span class="t-sky">&lt;/a&gt;</span>
+    <span class="t-sky">&lt;a</span> <span class="t-org">href</span>=<span class="t-grn">"#"</span> <span class="t-org">class</span>=<span class="t-grn">"link"</span><span class="t-sky">&gt;</span>Features<span class="t-sky">&lt;/a&gt;</span>
+    <span class="t-sky">&lt;a</span> <span class="t-org">href</span>=<span class="t-grn">"#"</span> <span class="t-org">class</span>=<span class="t-grn">"link"</span> <span class="t-red">data-fly</span>=<span class="t-grn">"my-drop"</span><span class="t-sky">&gt;</span>Products<span class="t-sky">&lt;/a&gt;</span>
+    <span class="t-sky">&lt;div</span> <span class="t-org">class</span>=<span class="t-grn">"fly"</span> <span class="t-org">id</span>=<span class="t-grn">"my-drop"</span><span class="t-sky">&gt;</span>...<span class="t-sky">&lt;/div&gt;</span>
+  <span class="t-sky">&lt;/div&gt;</span>
+  <span class="t-sky">&lt;div</span> <span class="t-org">class</span>=<span class="t-grn">"end"</span><span class="t-sky">&gt;</span>
+    <span class="t-sky">&lt;a</span> <span class="t-org">class</span>=<span class="t-grn">"air-btn ace sm"</span><span class="t-sky">&gt;</span>Get started<span class="t-sky">&lt;/a&gt;</span>
+  <span class="t-sky">&lt;/div&gt;</span>
+  <span class="t-sky">&lt;button</span> <span class="t-org">class</span>=<span class="t-grn">"menu"</span><span class="t-sky">&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;/button&gt;</span>
+<span class="t-sky">&lt;/nav&gt;</span></div>
+
+    <!-- Dark -->
+    <div style="height: 1.5rem;"></div>
+    <p class="air-caption" style="margin-bottom: 0.5rem;">Dark style</p>
+    <div class="frame">
+      <nav class="air-nav dark delta" data-indicator>
+        <a href="#" class="brand">
+          <div class="air-nav-logo-icon" style="background: linear-gradient(135deg,#6DC9A7,#44a880);">V</div>
+          Verda
+        </a>
+        <div class="links">
+          <a href="#" class="link active">Dashboard</a>
+          <a href="#" class="link">Analytics</a>
+          <a href="#" class="link">Settings</a>
+        </div>
+        <div class="end">
+          <a href="#" class="air-btn delta ghost sm">Docs</a>
+          <a href="#" class="air-btn delta sm">Upgrade</a>
+        </div>
+        <button class="menu" aria-label="Menu"><span></span><span></span><span></span></button>
+      </nav>
+      <div class="frame-body dark">dark background content</div>
+    </div>
+
+    <!-- Glass -->
+    <div style="height: 1rem;"></div>
+    <p class="air-caption" style="margin-bottom: 0.5rem;">Glass style — over gradient</p>
+    <div class="frame">
+      <div style="position: relative;">
+        <nav class="air-nav glass gamma" data-indicator>
+          <a href="#" class="brand">Ember</a>
+          <div class="links">
+            <a href="#" class="link active">Explore</a>
+            <a href="#" class="link">Gallery</a>
+            <a href="#" class="link">Community</a>
+          </div>
+          <div class="end">
+            <a href="#" class="air-btn gamma sm pill">Join free</a>
+          </div>
+          <button class="menu" aria-label="Menu"><span></span><span></span><span></span></button>
+        </nav>
+        <div class="frame-body grad">glass nav over gradient background</div>
+      </div>
+    </div>
+
+    <!-- Clear (transparent) -->
+    <div style="height: 1rem;"></div>
+    <p class="air-caption" style="margin-bottom: 0.5rem;">Clear — transparent hero nav</p>
+    <div class="frame">
+      <div style="background: linear-gradient(135deg, #041301, #72b0d7); position: relative;">
+        <nav class="air-nav clear beta" data-indicator>
+          <a href="#" class="brand">Studio</a>
+          <div class="links">
+            <a href="#" class="link active">Work</a>
+            <a href="#" class="link">About</a>
+            <a href="#" class="link">Journal</a>
+            <a href="#" class="link">Contact</a>
+          </div>
+          <div class="end">
+            <a href="#" class="air-btn beta glow sm pill">Get in touch</a>
+          </div>
+          <button class="menu" aria-label="Menu"><span></span><span></span><span></span></button>
+        </nav>
+        <div class="frame-body" style="background: transparent; padding: 3rem 2rem; color: rgba(255,255,255,0.7);">Hero section content</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================
+       FLOATING NAV
+  =========================================================== -->
+  <div class="s-block">
+    <div class="s-title">Float nav — hovers above your page, the nav IS the pill</div>
+
+    <div class="float-frame">
+      <nav class="air-nav float ace" data-indicator>
+        <a href="#" class="brand">
+          <div class="air-nav-logo-icon">✦</div>
+          Air
+        </a>
+        <div class="links">
+          <a href="#" class="link active">Product</a>
+          <a href="#" class="link">Pricing</a>
+          <a href="#" class="link">Blog</a>
+          <a href="#" class="link">Docs</a>
+        </div>
+        <div class="end">
+          <a href="#" class="air-btn ace ghost sm">Log in</a>
+          <a href="#" class="air-btn ace sm pill">Start free</a>
+        </div>
+        <button class="menu" aria-label="Menu"><span></span><span></span><span></span></button>
+      </nav>
+      <div class="float-inner frame-body" style="min-height: 200px;">
+        <div style="text-align: center;">
+          <p style="font-weight: 600; color: var(--air-700);">Hover links to see sliding pill indicator</p>
+          <p style="font-size: 0.8rem; color: var(--air-400); margin-top: 0.3rem;">The nav element is the pill — no inner wrapper</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="code" style="margin-top: 0.75rem;">
+<span class="t-dim">&lt;!-- Float: no div.inner wrapper — the nav itself IS the pill --&gt;</span>
+<span class="t-sky">&lt;nav</span> <span class="t-org">class</span>=<span class="t-grn">"air-nav <span class="t-red">float</span> ace"</span> <span class="t-red">data-scroll</span> <span class="t-red">data-indicator</span><span class="t-sky">&gt;</span>
+  <span class="t-sky">&lt;a</span> <span class="t-org">class</span>=<span class="t-grn">"brand"</span><span class="t-sky">&gt;</span>AirUI<span class="t-sky">&lt;/a&gt;</span>
+  <span class="t-sky">&lt;div</span> <span class="t-org">class</span>=<span class="t-grn">"links"</span><span class="t-sky">&gt;</span>...<span class="t-sky">&lt;/div&gt;</span>
+  <span class="t-sky">&lt;div</span> <span class="t-org">class</span>=<span class="t-grn">"end"</span><span class="t-sky">&gt;</span>...<span class="t-sky">&lt;/div&gt;</span>
+  <span class="t-sky">&lt;button</span> <span class="t-org">class</span>=<span class="t-grn">"menu"</span><span class="t-sky">&gt;</span>...<span class="t-sky">&lt;/button&gt;</span>
+<span class="t-sky">&lt;/nav&gt;</span></div>
+
+    <!-- Dark float -->
+    <div style="height: 1rem;"></div>
+    <p class="air-caption" style="margin-bottom: 0.5rem;">Dark float</p>
+    <div class="float-frame" style="background: linear-gradient(135deg, #020a07, #041301);">
+      <nav class="air-nav float dark beta" data-indicator>
+        <a href="#" class="brand">Rose</a>
+        <div class="links">
+          <a href="#" class="link active">Home</a>
+          <a href="#" class="link">Work</a>
+          <a href="#" class="link">Studio</a>
+          <a href="#" class="link">Contact</a>
+        </div>
+        <div class="end">
+          <a href="#" class="air-btn beta glow sm pill">Let's talk</a>
+        </div>
+        <button class="menu" aria-label="Menu"><span></span><span></span><span></span></button>
+      </nav>
+      <div class="float-inner frame-body dark" style="min-height: 200px;"></div>
+    </div>
+  </div>
+
+  <!-- ==========================================================
+       FLOOR — BOTTOM BAR
+  =========================================================== -->
+  <div class="s-block">
+    <div class="s-title">Floor nav — iOS-style bottom bar</div>
+
+    <div style="display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center;">
+
+      <!-- Light -->
+      <div class="phone">
+        <div class="phone-screen">
+          <div style="font-size: 0.75rem; font-weight: 600; color: var(--air-700); margin-bottom: 0.5rem;">App</div>
+          <div class="air-card ace compact" style="margin-bottom: 0.5rem;">
+            <div class="air-card-body"><h3 class="air-card-title" style="font-size: 0.85rem;">Home</h3><p class="air-card-content" style="font-size: 0.75rem;">Tap tabs below.</p></div>
+          </div>
+        </div>
+        <nav class="air-nav floor ace">
+          <a href="#" class="tab active" onclick="floorActive(this);return false;">
+            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <span>Home</span>
+          </a>
+          <a href="#" class="tab" onclick="floorActive(this);return false;">
+            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <span>Search</span>
+          </a>
+          <a href="#" class="tab" onclick="floorActive(this);return false;">
+            <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+            <span>Saved</span>
+          </a>
+          <a href="#" class="tab" onclick="floorActive(this);return false;">
+            <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span>You</span>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Dark -->
+      <div class="phone" style="border-color: #333; background: #040c03;">
+        <div class="phone-screen">
+          <div style="font-size: 0.75rem; font-weight: 600; color: rgba(255,255,255,0.6); margin-bottom: 0.5rem;">App</div>
+        </div>
+        <nav class="air-nav floor delta" style="background: rgba(4,19,1,0.95); border-top-color: rgba(255,255,255,0.08);">
+          <a href="#" class="tab active" onclick="floorActive(this);return false;" style="color: #6DC9A7;">
+            <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            <span>Home</span>
+          </a>
+          <a href="#" class="tab" onclick="floorActive(this);return false;" style="color: rgba(255,255,255,0.35);">
+            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <span>Search</span>
+          </a>
+          <a href="#" class="tab" onclick="floorActive(this);return false;" style="color: rgba(255,255,255,0.35);">
+            <svg viewBox="0 0 24 24"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+            <span>Stats</span>
+          </a>
+          <a href="#" class="tab" onclick="floorActive(this);return false;" style="color: rgba(255,255,255,0.35);">
+            <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span>Me</span>
+          </a>
+        </nav>
+      </div>
+
+    </div>
+
+    <div class="code" style="margin-top: 1.5rem;">
+<span class="t-dim">&lt;!-- Floor: only tabs, no links/end/menu --&gt;</span>
+<span class="t-sky">&lt;nav</span> <span class="t-org">class</span>=<span class="t-grn">"air-nav <span class="t-red">floor</span> ace"</span><span class="t-sky">&gt;</span>
+  <span class="t-sky">&lt;a</span> <span class="t-org">href</span>=<span class="t-grn">"#"</span> <span class="t-org">class</span>=<span class="t-grn">"tab active"</span><span class="t-sky">&gt;</span>
+    &lt;svg&gt;...&lt;/svg&gt;  <span class="t-dim">icon</span>
+    <span class="t-sky">&lt;span&gt;</span>Home<span class="t-sky">&lt;/span&gt;</span>
+  <span class="t-sky">&lt;/a&gt;</span>
+  <span class="t-sky">&lt;a</span> <span class="t-org">href</span>=<span class="t-grn">"#"</span> <span class="t-org">class</span>=<span class="t-grn">"tab"</span><span class="t-sky">&gt;</span>...<span class="t-sky">&lt;/a&gt;</span>
+<span class="t-sky">&lt;/nav&gt;</span></div>
+  </div>
+
+  <!-- ==========================================================
+       FLY (DROPDOWN + MEGA)
+  =========================================================== -->
+  <div class="s-block">
+    <div class="s-title">Fly — hover dropdown + wide mega menu</div>
+
+    <div class="frame">
+      <nav class="air-nav ace">
+        <a href="#" class="brand">Air</a>
+        <div class="links">
+          <a href="#" class="link active">Home</a>
+          <a href="#" class="link" data-fly="fly-simple">Simple</a>
+          <div class="fly" id="fly-simple">
+            <a href="#" class="fly-row">Quick link one</a>
+            <a href="#" class="fly-row">Quick link two</a>
+            <div class="fly-cut"></div>
+            <a href="#" class="fly-row">Quick link three</a>
+          </div>
+          <a href="#" class="link" data-fly="fly-mega">Mega</a>
+          <div class="fly wide" id="fly-mega">
+            <div class="fly-grid">
+              <a href="#" class="fly-row">
+                <span class="fly-icon">⚡</span>
+                <div><strong>Performance</strong><span>Lightning fast</span></div>
+              </a>
+              <a href="#" class="fly-row">
+                <span class="fly-icon">🎨</span>
+                <div><strong>Design system</strong><span>5 tones, tokens</span></div>
+              </a>
+              <a href="#" class="fly-row">
+                <span class="fly-icon">📱</span>
+                <div><strong>Responsive</strong><span>Mobile first</span></div>
+              </a>
+              <a href="#" class="fly-row">
+                <span class="fly-icon">♿</span>
+                <div><strong>Accessible</strong><span>ARIA, keyboard</span></div>
+              </a>
+            </div>
+          </div>
+          <a href="#" class="link">Docs</a>
+        </div>
+        <div class="end">
+          <a href="#" class="air-btn ace sm">Start</a>
+        </div>
+        <button class="menu" aria-label="Menu"><span></span><span></span><span></span></button>
+      </nav>
+      <div class="frame-body">Hover "Simple" or "Mega" above — dropdowns open on hover, click, or arrow key</div>
+    </div>
+
+    <div class="code" style="margin-top: 0.75rem;">
+<span class="t-dim">&lt;!-- data-fly="id" on the link, .fly#id for the panel --&gt;</span>
+<span class="t-sky">&lt;a</span> <span class="t-org">class</span>=<span class="t-grn">"link"</span> <span class="t-red">data-fly</span>=<span class="t-grn">"my-fly"</span><span class="t-sky">&gt;</span>Products<span class="t-sky">&lt;/a&gt;</span>
+<span class="t-sky">&lt;div</span> <span class="t-org">class</span>=<span class="t-grn">"fly"</span> <span class="t-org">id</span>=<span class="t-grn">"my-fly"</span><span class="t-sky">&gt;</span>
+  <span class="t-sky">&lt;a</span> <span class="t-org">class</span>=<span class="t-grn">"fly-row"</span><span class="t-sky">&gt;</span>
+    <span class="t-sky">&lt;span</span> <span class="t-org">class</span>=<span class="t-grn">"fly-icon"</span><span class="t-sky">&gt;</span>⚡<span class="t-sky">&lt;/span&gt;</span>
+    <span class="t-sky">&lt;div&gt;&lt;strong&gt;</span>Fast<span class="t-sky">&lt;/strong&gt;&lt;span&gt;</span>Zero deps<span class="t-sky">&lt;/span&gt;&lt;/div&gt;</span>
+  <span class="t-sky">&lt;/a&gt;</span>
+  <span class="t-sky">&lt;div</span> <span class="t-org">class</span>=<span class="t-grn">"fly-cut"</span><span class="t-sky">&gt;&lt;/div&gt;</span>   <span class="t-dim">separator</span>
+  <span class="t-sky">&lt;a</span> <span class="t-org">class</span>=<span class="t-grn">"fly-row"</span><span class="t-sky">&gt;</span>See all →<span class="t-sky">&lt;/a&gt;</span>
+<span class="t-sky">&lt;/div&gt;</span>
+
+<span class="t-dim">&lt;!-- Mega: add .wide + .fly-grid inside --&gt;</span>
+<span class="t-sky">&lt;div</span> <span class="t-org">class</span>=<span class="t-grn">"fly <span class="t-red">wide</span>"</span> <span class="t-org">id</span>=<span class="t-grn">"my-mega"</span><span class="t-sky">&gt;</span>
+  <span class="t-sky">&lt;div</span> <span class="t-org">class</span>=<span class="t-grn">"fly-grid"</span><span class="t-sky">&gt;</span>...items...<span class="t-sky">&lt;/div&gt;</span>
+<span class="t-sky">&lt;/div&gt;</span></div>
+  </div>
+
+  <!-- ==========================================================
+       AIR-SIDE (SIDEBAR)
+  =========================================================== -->
+  <div class="s-block">
+    <div class="s-title">air-side — sidebar navigation</div>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+
+      <div class="aside-frame">
+        <nav class="air-side ace">
+          <a href="#" class="mark">
+            <div class="air-nav-logo-icon" style="width:28px;height:28px;font-size:0.75rem;">A</div>
+            AirUI
+          </a>
+          <span class="section">Main</span>
+          <a href="#" class="path active">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+            Dashboard
+          </a>
+          <a href="#" class="path">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10M12 20V4M6 20v-6"/></svg>
+            Analytics
+            <span class="tail">New</span>
+          </a>
+          <a href="#" class="path">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            Users
+            <span class="tail">48</span>
+          </a>
+          <span class="section">System</span>
+          <a href="#" class="path">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M4.93 19.07a10 10 0 0 1 0-14.14"/></svg>
+            Settings
+          </a>
+          <div class="foot">
+            <div style="display:flex;align-items:center;gap:0.5rem;padding:0.4rem 0.5rem;">
+              <div style="width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,#72b0d7,#4a8fc0);flex-shrink:0;"></div>
+              <div><div style="font-size:0.78rem;font-weight:600;color:var(--air-800);">Jane Cooper</div><div style="font-size:0.68rem;color:var(--air-400);">Admin</div></div>
+            </div>
+          </div>
+        </nav>
+        <div class="aside-body">Light sidebar · ace</div>
+      </div>
+
+      <div class="aside-frame">
+        <nav class="air-side dark delta">
+          <a href="#" class="mark">
+            <div class="air-nav-logo-icon" style="width:28px;height:28px;font-size:0.75rem;background:linear-gradient(135deg,#6DC9A7,#44a880);">V</div>
+            Verda
+          </a>
+          <span class="section">Navigation</span>
+          <a href="#" class="path active">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+            Overview
+          </a>
+          <a href="#" class="path">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+            Projects
+            <span class="tail">5</span>
+          </a>
+          <a href="#" class="path">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            Messages
+          </a>
+        </nav>
+        <div class="aside-body dark">Dark sidebar · delta</div>
+      </div>
+    </div>
+
+    <div class="code" style="margin-top: 0.75rem;">
+<span class="t-sky">&lt;nav</span> <span class="t-org">class</span>=<span class="t-grn">"air-side ace"</span><span class="t-sky">&gt;</span>
+  <span class="t-sky">&lt;a</span> <span class="t-org">class</span>=<span class="t-grn">"mark"</span><span class="t-sky">&gt;</span>AirUI<span class="t-sky">&lt;/a&gt;</span>          <span class="t-dim">brand</span>
+  <span class="t-sky">&lt;span</span> <span class="t-org">class</span>=<span class="t-grn">"section"</span><span class="t-sky">&gt;</span>Main<span class="t-sky">&lt;/span&gt;</span>   <span class="t-dim">group label</span>
+  <span class="t-sky">&lt;a</span> <span class="t-org">class</span>=<span class="t-grn">"path active"</span><span class="t-sky">&gt;</span>Dashboard<span class="t-sky">&lt;/a&gt;</span>
+  <span class="t-sky">&lt;a</span> <span class="t-org">class</span>=<span class="t-grn">"path"</span><span class="t-sky">&gt;</span>Analytics <span class="t-sky">&lt;span</span> <span class="t-org">class</span>=<span class="t-grn">"tail"</span><span class="t-sky">&gt;</span>48<span class="t-sky">&lt;/span&gt;&lt;/a&gt;</span>  <span class="t-dim">badge</span>
+  <span class="t-sky">&lt;div</span> <span class="t-org">class</span>=<span class="t-grn">"foot"</span><span class="t-sky">&gt;</span>...footer<span class="t-sky">&lt;/div&gt;</span>
+<span class="t-sky">&lt;/nav&gt;</span></div>
+  </div>
+
+  <!-- ==========================================================
+       AIR-TRAIL (BREADCRUMB)
+  =========================================================== -->
+  <div class="s-block">
+    <div class="s-title">air-trail — breadcrumb</div>
+    <div class="air-card" style="padding: 1.5rem; display: flex; flex-direction: column; gap: 1.5rem;">
+
+      <div>
+        <p class="air-caption" style="margin-bottom: 0.5rem;">Default — slash separator</p>
+        <nav class="air-trail">
+          <span class="crumb"><a href="#">Home</a></span>
+          <span class="crumb"><a href="#">Components</a></span>
+          <span class="crumb active">Navigation</span>
+        </nav>
+      </div>
+
+      <div>
+        <p class="air-caption" style="margin-bottom: 0.5rem;">Arrow style</p>
+        <nav class="air-trail arrow">
+          <span class="crumb"><a href="#">Dashboard</a></span>
+          <span class="crumb"><a href="#">Projects</a></span>
+          <span class="crumb"><a href="#">Air Framework</a></span>
+          <span class="crumb active">Navigation</span>
+        </nav>
+      </div>
+
+    </div>
+
+    <div class="code" style="margin-top: 0.75rem;">
+<span class="t-sky">&lt;nav</span> <span class="t-org">class</span>=<span class="t-grn">"air-trail"</span><span class="t-sky">&gt;</span>           <span class="t-dim">or .air-trail.arrow</span>
+  <span class="t-sky">&lt;span</span> <span class="t-org">class</span>=<span class="t-grn">"crumb"</span><span class="t-sky">&gt;&lt;a</span> <span class="t-org">href</span>=<span class="t-grn">"#"</span><span class="t-sky">&gt;</span>Home<span class="t-sky">&lt;/a&gt;&lt;/span&gt;</span>
+  <span class="t-sky">&lt;span</span> <span class="t-org">class</span>=<span class="t-grn">"crumb"</span><span class="t-sky">&gt;&lt;a</span> <span class="t-org">href</span>=<span class="t-grn">"#"</span><span class="t-sky">&gt;</span>Docs<span class="t-sky">&lt;/a&gt;&lt;/span&gt;</span>
+  <span class="t-sky">&lt;span</span> <span class="t-org">class</span>=<span class="t-grn">"crumb active"</span><span class="t-sky">&gt;</span>Nav<span class="t-sky">&lt;/span&gt;</span>  <span class="t-dim">current — no link</span>
+<span class="t-sky">&lt;/nav&gt;</span>
+<span class="t-dim">&lt;!-- Separator is pure CSS — no extra HTML --&gt;</span></div>
+  </div>
+
+</div><!-- /page -->
+
+<script src="../../src/js/air-nav.js"></script>
+<script>
+  function floorActive(el) {
+    var bar = el.closest('.air-nav.floor');
+    if (!bar) return;
+    bar.querySelectorAll('.tab').forEach(function(t) { t.classList.remove('active'); });
+    el.classList.add('active');
+  }
+
+  // Fix floating navs inside frames (override position:fixed for demo)
+  document.querySelectorAll('.float-frame .air-nav.float').forEach(function(n) {
+    n.style.cssText += 'position:absolute !important; top:0.75rem !important;';
+  });
+</script>
+</body>
+</html>

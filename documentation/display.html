@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Display Utilities Test</title>
+  <link rel="stylesheet" href="../dist/my-framework.css">
+  <style>
+    body {
+      margin: 0;
+      padding: 2rem;
+      background: #f7fafc;
+      font-family: "Inter", "Poppins", "Montserrat", sans-serif;
+      color: #041301;
+    }
+    .shell { max-width: 1000px; margin: 0 auto; }
+    .card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 0.75rem;
+      padding: 1rem;
+      margin-bottom: 1rem;
+    }
+    .chip {
+      padding: 0.4rem 0.6rem;
+      border-radius: 0.45rem;
+      border: 1px solid #d1d5db;
+      background: #f8fafc;
+      margin: 0.2rem;
+    }
+    .demo-grid {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 0.5rem;
+    }
+    .demo-table {
+      border: 1px solid #cbd5e1;
+      width: 100%;
+    }
+    .demo-table > * {
+      border: 1px solid #cbd5e1;
+      padding: 0.5rem;
+    }
+    .note { color: #6b7280; font-size: 0.9rem; }
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <div class="card">
+      <h1>Display Utilities</h1>
+      <p class="note">Simple HTML classes, full CSS display options in framework. Resize the screen to test auto-responsive behavior.</p>
+    </div>
+
+    <div class="card">
+      <h2>Block / Inline</h2>
+      <span class="chip d-block">d-block</span>
+      <span class="chip d-inline">d-inline</span>
+      <span class="chip d-inline">still inline</span>
+      <span class="chip d-inline-block">d-inline-block</span>
+    </div>
+
+    <div class="card">
+      <h2>Flex / Inline Flex</h2>
+      <div class="d-flex" style="gap:0.5rem;">
+        <span class="chip">A</span><span class="chip">B</span><span class="chip">C</span>
+      </div>
+      <div class="d-inline-flex mt-1" style="gap:0.5rem;">
+        <span class="chip">inline-flex A</span><span class="chip">B</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Grid / Inline Grid</h2>
+      <div class="d-grid demo-grid">
+        <span class="chip">1</span><span class="chip">2</span><span class="chip">3</span>
+      </div>
+      <div class="d-inline-grid demo-grid mt-1">
+        <span class="chip">A</span><span class="chip">B</span><span class="chip">C</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Auto Responsive Grid</h2>
+      <p class="note">Classes used: <code>grid grid-auto-responsive</code>. Items auto-wrap by available width.</p>
+      <div class="grid grid-auto-responsive" style="gap:0.5rem;">
+        <div class="grid-item bg-ace text-white">Card 1</div>
+        <div class="grid-item bg-beta text-white">Card 2</div>
+        <div class="grid-item bg-gamma text-white">Card 3</div>
+        <div class="grid-item bg-delta text-white">Card 4</div>
+        <div class="grid-item bg-epsilon text-white">Card 5</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Grid Template Areas - Dashboard</h2>
+      <p class="note">Classes used: <code>grid grid-areas-dashboard</code> + <code>grid-area-*</code>.</p>
+      <div class="grid grid-areas-dashboard" style="gap:0.5rem;">
+        <div class="grid-item bg-epsilon text-white grid-area-sidebar">Sidebar</div>
+        <div class="grid-item bg-ace text-white grid-area-header">Header</div>
+        <div class="grid-item bg-beta text-white grid-area-main">Main Content</div>
+        <div class="grid-item bg-gamma text-white grid-area-stats">Stats / Footer</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Responsive Display States</h2>
+      <p class="note">Use breakpoint utilities to switch display by screen size.</p>
+      <div class="chip d-mobile-only">Visible on mobile only (`d-mobile-only`)</div>
+      <div class="chip d-tablet-only">Visible on tablet only (`d-tablet-only`)</div>
+      <div class="chip d-desktop-only">Visible on desktop only (`d-desktop-only`)</div>
+      <div class="d-mobile-grid d-desktop-flex mt-1" style="gap:0.5rem;">
+        <span class="chip">Container becomes grid on mobile</span>
+        <span class="chip">and flex on desktop</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Grid Template Areas - Magazine</h2>
+      <p class="note">Classes used: <code>grid grid-areas-magazine</code> + area utilities.</p>
+      <div class="grid grid-areas-magazine" style="gap:0.5rem;">
+        <div class="grid-item bg-ace text-white grid-area-hero">Hero</div>
+        <div class="grid-item bg-delta text-white grid-area-side">Side Column</div>
+        <div class="grid-item bg-beta text-white grid-area-content">Article Content</div>
+        <div class="grid-item bg-gamma text-white grid-area-ads">Ads</div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Table Displays</h2>
+      <div class="d-table demo-table">
+        <div class="d-table-caption">d-table-caption</div>
+        <div class="d-table-row">
+          <div class="d-table-cell">d-table-cell 1</div>
+          <div class="d-table-cell">d-table-cell 2</div>
+        </div>
+      </div>
+      <div class="d-inline-table demo-table mt-1">
+        <div class="d-table-row">
+          <div class="d-table-cell">inline-table</div>
+          <div class="d-table-cell">cell</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>Other Displays</h2>
+      <ul>
+        <li class="d-list-item">d-list-item</li>
+      </ul>
+      <div class="d-flow-root" style="border:1px dashed #cbd5e1; padding:0.5rem;">
+        <span class="chip" style="float:left;">float child</span>
+        <span>Container uses d-flow-root to contain float.</span>
+      </div>
+      <div class="mt-1">
+        <div class="d-contents">
+          <span class="chip">d-contents child 1</span>
+          <span class="chip">d-contents child 2</span>
+        </div>
+      </div>
+      <div class="d-none">d-none (hidden)</div>
+    </div>
+  </div>
+</body>
+</html>

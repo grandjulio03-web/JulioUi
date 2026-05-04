@@ -3,20 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jforces Card Image Framework Test</title>
-    <link rel="stylesheet" href="./dist/my-framework.css">
+    <title>My Framework - Image Card Gallery</title>
+    <link rel="stylesheet" href="../../dist/my-framework.css">
     <style>
         body {
-            padding: 2rem;
-            background: #f9fafb;
+            padding: 1rem;
+            margin: 0;
+            background: radial-gradient(circle at top, #f8fcff, #edf4ff 42%, #f8fcff);
             font-family: "Inter", "Poppins", "Montserrat", sans-serif;
         }
+        .page { max-width: 1120px; margin: 0 auto; }
+        .hero { background: linear-gradient(130deg, #041301, #1e3857 56%, #72b0d7); color: #fff; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1rem; }
         .demo-section {
-            margin-bottom: 3rem;
-            padding: 2rem;
-            background: white;
-            border-radius: 0.5rem;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            margin-bottom: 1rem;
+            padding: 1rem;
+            background: rgba(255,255,255,.9);
+            border-radius: .85rem;
+            border: 1px solid #dce6f4;
+            box-shadow: 0 10px 22px rgba(0,0,0,0.06);
         }
         .demo-title {
             font-size: 1.25rem;
@@ -27,8 +31,8 @@
             padding-bottom: 0.5rem;
         }
         .demo-item {
-            margin-bottom: 2rem;
-            padding: 2rem;
+            margin-bottom: 1rem;
+            padding: 1rem;
             background: #f9fafb;
             border-radius: 0.25rem;
             border-left: 4px solid #72b0d7;
@@ -36,8 +40,11 @@
     </style>
 </head>
 <body>
-    <h1 class="heading-bold text-center">Jforces Card Image Framework</h1>
-    <p class="subheading text-center">Modern cards with images and overlays</p>
+    <div class="page">
+    <section class="hero">
+        <h1 class="heading-bold" style="margin:0 0 .35rem;">My Framework Image Card Gallery</h1>
+        <p style="margin:0; color:rgba(255,255,255,.9);">Cinematic visuals, layered overlays, and responsive compositions for premium content experiences.</p>
+    </section>
 
     <!-- Basic Image Cards -->
     <div class="demo-section">
@@ -271,5 +278,6 @@
         </div>
     </div>
 
+    </div>
 </body>
 </html>

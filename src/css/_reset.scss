@@ -1,0 +1,100 @@
+// ============================================================
+// Air Framework — Modern CSS Reset + Base
+// ============================================================
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  line-height: 1.5;
+  -webkit-text-size-adjust: 100%;
+  tab-size: 4;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  font-family: var(--air-font);
+  font-size: var(--air-text-base);
+  color: var(--air-800);
+  background-color: var(--air-white);
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+// Media
+img, video, svg, canvas, audio, iframe, embed, object {
+  display: block;
+  max-width: 100%;
+}
+img, video { height: auto; }
+
+// Form elements inherit from body
+input, button, textarea, select, optgroup {
+  font: inherit;
+  color: inherit;
+}
+
+button { cursor: pointer; background: none; border: none; }
+
+// Links
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+// Lists
+ol, ul { list-style: none; }
+
+// Headings
+h1, h2, h3, h4, h5, h6 {
+  font-size: inherit;
+  font-weight: inherit;
+  line-height: 1.2;
+}
+
+// Tables
+table { border-collapse: collapse; border-spacing: 0; }
+
+// Misc
+textarea { resize: vertical; }
+abbr[title] { text-decoration: underline dotted; cursor: help; }
+sub, sup { font-size: 75%; line-height: 0; position: relative; vertical-align: baseline; }
+sub { bottom: -0.25em; }
+sup { top: -0.5em; }
+hr { border: none; border-top: 1px solid var(--air-200); }
+[hidden] { display: none !important; }
+
+// Focus ring — clean, branded
+:focus { outline: none; }
+:focus-visible {
+  outline: 2px solid var(--air-ace);
+  outline-offset: 3px;
+  border-radius: var(--air-r-xs);
+}
+
+// Custom scrollbar — subtle, premium
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: var(--air-300);
+  border-radius: var(--air-r-pill);
+}
+::-webkit-scrollbar-thumb:hover { background: var(--air-400); }
+
+// Text selection
+::selection {
+  background: rgb(var(--air-ace-rgb) / 0.2);
+  color: var(--air-900);
+}
+
+// Placeholder
+::placeholder {
+  color: var(--air-400);
+  opacity: 1;
+}

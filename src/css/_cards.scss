@@ -1,105 +1,507 @@
-/* ===================== Jforces Simple Cards ===================== */
+// ============================================================
+// Air Framework â€” Cards
+// Usage: air-card [variant] [tone?] [effect?]
+//
+// Variants:  (default=surface)  media  stat  bento  glass  dark
+// Tones:     ace  beta  gamma  delta  bar (top accent bar)
+// Effects:   lift  tilt  shine  orbit  reveal  pulse  zoom
+// Sizes:     compact  flush
+// Layout:    split  (image|body side by side)
+// ============================================================
 
-/* -------------------- Base Card -------------------- */
-.card {
+// â”€â”€ Base card â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+.air-card {
+  --_accent:     #{$ace};
+  --_accent-rgb: var(--air-ace-rgb);
+
+  position: relative;
   display: flex;
   flex-direction: column;
-  padding: 1.5rem;
-  border-radius: 0.5rem;
-  background: white;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-  transition: all 0.3s ease;
+  border-radius: var(--air-r-2xl);
+  background: var(--air-white);
+  border: 1px solid var(--air-200);
+  box-shadow: var(--air-shadow-md);
+  overflow: hidden;
+  font-family: var(--air-font);
+  color: var(--air-800);
+  transition:
+    transform      var(--air-t-spring),
+    box-shadow     var(--air-t-spring);
 }
 
-.card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+// â”€â”€ Tone classes â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+.air-card.ace {
+  --_accent: #{$ace};
+  --_accent-rgb: var(--air-ace-rgb);
+}
+.air-card.beta {
+  --_accent: #{$beta};
+  --_accent-rgb: var(--air-beta-rgb);
+}
+.air-card.gamma {
+  --_accent: #{$gamma};
+  --_accent-rgb: var(--air-gamma-rgb);
+}
+.air-card.delta {
+  --_accent: #{$delta};
+  --_accent-rgb: var(--air-delta-rgb);
 }
 
-/* -------------------- Card Sections -------------------- */
-.card-header {
-  font-weight: 600;
-  margin-bottom: 0.5rem;
-}
-
-.card-body {
-  margin-bottom: 1rem;
-}
-
-/* -------------------- Solid Background Colors -------------------- */
-.card-ace { background: #72b0d7; color: white; }
-.card-beta { background: #d94f8b; color: white; }
-.card-gamma { background: #FF8F4B; color: white; }
-.card-delta { background: #6DC9A7; color: white; }
-.card-epsilon { background: #041301; color: white; }
-
-/* -------------------- Gradient Backgrounds -------------------- */
-.card-grad-ace-beta { background: linear-gradient(135deg, #72b0d7, #d94f8b); color: white; }
-.card-grad-beta-gamma { background: linear-gradient(135deg, #d94f8b, #FF8F4B); color: white; }
-.card-grad-gamma-delta { background: linear-gradient(135deg, #FF8F4B, #6DC9A7); color: white; }
-.card-grad-delta-ace { background: linear-gradient(135deg, #6DC9A7, #72b0d7); color: white; }
-
-/* -------------------- Card Images -------------------- */
-.card-img {
+// â”€â”€ Card sections â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+.air-card-media {
   position: relative;
   overflow: hidden;
-  border-radius: 0.5rem;
+  background: var(--air-100);
+  flex-shrink: 0;
 }
 
-.card-img img {
+.air-card-img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
+  transition: transform var(--air-t-spring);
 }
 
-.card-img-top {
-  border-radius: 0.5rem 0.5rem 0 0;
-  height: 200px;
-}
+// Aspect ratios
+.air-card-media.r-16-9  { aspect-ratio: 16/9; }
+.air-card-media.r-4-3   { aspect-ratio: 4/3; }
+.air-card-media.r-1-1   { aspect-ratio: 1/1; }
+.air-card-media.r-3-4   { aspect-ratio: 3/4; }
+.air-card-media.r-21-9  { aspect-ratio: 21/9; }
+.air-card-media.r-tall  { aspect-ratio: 2/3; min-height: 200px; }
 
-/* -------------------- Card Overlays -------------------- */
-.card-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
+// â”€â”€ Card body â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+.air-card-body {
+  padding: 1.35rem 1.5rem 1.5rem;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  gap: 0.45rem;
+  flex: 1;
+}
+
+.air-card-kicker {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--_accent);
+  line-height: 1;
+}
+
+.air-card-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+  color: var(--air-900);
+  margin: 0;
+}
+
+.air-card-meta {
+  font-size: var(--air-text-sm);
+  color: var(--air-400);
+  margin: 0;
+}
+
+.air-card-content {
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--air-600);
+  margin: 0;
+}
+
+.air-card-actions {
+  margin-top: auto;
+  padding-top: 0.85rem;
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  padding: 1rem;
-  color: white;
+  gap: 0.5rem;
 }
 
-.card-overlay-top {
-  justify-content: flex-start;
-  align-items: flex-start;
+// Corner badge
+.air-card-badge {
+  position: absolute;
+  top: 0.9rem;
+  right: 0.9rem;
+  z-index: 4;
+  padding: 0.28rem 0.7rem;
+  border-radius: var(--air-r-pill);
+  font-size: 0.65rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  background: rgba(255,255,255,0.95);
+  color: var(--air-900);
+  box-shadow: var(--air-shadow-md);
+  backdrop-filter: blur(6px);
+
+  &.accent {
+    background: var(--_accent);
+    color: #fff;
+  }
 }
 
-.card-overlay-bottom {
+// â”€â”€ Overlays â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+.air-card-overlay {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
   justify-content: flex-end;
-  align-items: flex-start;
+  padding: 1.25rem;
+  color: #fff;
+  z-index: 2;
+
+  &.interactive { pointer-events: auto; }
+  &.top         { justify-content: flex-start; }
+  &.center      { justify-content: center; align-items: center; text-align: center; }
+
+  // Bottom gradient â€” most used overlay
+  &.grad-b {
+    background: linear-gradient(
+      to top,
+      rgba(4,19,1,0.88) 0%,
+      rgba(4,19,1,0.35) 45%,
+      transparent 100%
+    );
+    justify-content: flex-end;
+  }
+
+  // Top gradient
+  &.grad-t {
+    background: linear-gradient(
+      to bottom,
+      rgba(4,19,1,0.75) 0%,
+      transparent 60%
+    );
+    justify-content: flex-start;
+  }
+
+  // Glass overlay
+  &.glass {
+    background: linear-gradient(
+      135deg,
+      rgba(255,255,255,0.2) 0%,
+      rgba(255,255,255,0.05) 50%,
+      rgba(4,19,1,0.2) 100%
+    );
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+  }
+
+  // Vignette
+  &.vignette {
+    background: radial-gradient(
+      ellipse 85% 75% at 50% 45%,
+      transparent 30%,
+      rgba(4,19,1,0.55) 100%
+    );
+  }
+
+  // Accent color tint
+  &.tint {
+    background: linear-gradient(
+      135deg,
+      rgb(var(--_accent-rgb) / 0.45) 0%,
+      rgba(4,19,1,0.6) 100%
+    );
+  }
 }
 
-.card-overlay-center {
-  justify-content: center;
+// â”€â”€ Hover effects â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+
+// Lift â€” rises with chromatic shadow
+.air-card.lift:hover {
+  transform: translateY(-6px);
+  box-shadow:
+    var(--air-shadow-xl),
+    0 0 0 1px rgb(var(--_accent-rgb) / 0.12),
+    0 12px 40px rgb(var(--_accent-rgb) / 0.14);
+}
+
+// Zoom â€” image scales in
+.air-card.zoom:hover .air-card-img {
+  transform: scale(1.06);
+}
+
+// Tilt â€” subtle 3D perspective
+.air-card.tilt:hover {
+  transform: translateY(-5px) perspective(900px) rotateX(3.5deg) rotateY(-4deg);
+  box-shadow: var(--air-shadow-xl);
+}
+
+// Shine â€” light sweep across card
+.air-card.shine::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    105deg,
+    transparent 38%,
+    rgba(255,255,255,0.3) 50%,
+    transparent 62%
+  );
+  transform: translateX(-100%);
+  transition: transform 0.75s ease;
+  pointer-events: none;
+  z-index: 5;
+  border-radius: inherit;
+}
+
+.air-card.shine:hover::after {
+  transform: translateX(110%);
+}
+
+// Reveal â€” overlay fades in, content slides up
+.air-card.reveal .air-card-overlay.grad-b {
+  opacity: 0.3;
+  transition: opacity var(--air-t-slow);
+}
+
+.air-card.reveal:hover .air-card-overlay.grad-b {
+  opacity: 1;
+}
+
+.air-card.reveal .air-card-overlay .air-card-title {
+  transform: translateY(10px);
+  opacity: 0.8;
+  transition: transform var(--air-t-slow), opacity var(--air-t-slow);
+}
+
+.air-card.reveal:hover .air-card-overlay .air-card-title {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+// Orbit â€” animated conic gradient border on hover
+.air-card.orbit {
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    border-radius: inherit;
+    padding: 2px;
+    background: conic-gradient(
+      from 0deg,
+      #{$ace}, #{$beta}, #{$gamma}, #{$delta}, #{$ace}
+    );
+    -webkit-mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    mask:
+      linear-gradient(#fff 0 0) content-box,
+      linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    opacity: 0;
+    z-index: 0;
+    pointer-events: none;
+    transition: opacity var(--air-t-base);
+  }
+
+  > * { position: relative; z-index: 1; }
+
+  &:hover::before {
+    opacity: 1;
+    animation: air-orbit-spin 4s linear infinite;
+  }
+}
+
+@keyframes air-orbit-spin {
+  to { transform: rotate(360deg); }
+}
+
+// Pulse ring
+.air-card.pulse:hover {
+  animation: air-card-pulse 1.8s ease-out infinite;
+}
+
+@keyframes air-card-pulse {
+  0%, 100% {
+    box-shadow: var(--air-shadow-md);
+  }
+  50% {
+    box-shadow:
+      var(--air-shadow-md),
+      0 0 0 5px rgb(var(--_accent-rgb) / 0.18);
+  }
+}
+
+// â”€â”€ Variants â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+
+// Top accent bar
+.air-card.bar { border-top: 3px solid var(--_accent); }
+
+// Glass card
+.air-card.glass {
+  background: rgba(255,255,255,0.7);
+  backdrop-filter: blur(18px) saturate(180%);
+  -webkit-backdrop-filter: blur(18px) saturate(180%);
+  border-color: rgba(255,255,255,0.55);
+  box-shadow:
+    inset 0 1px 0 rgba(255,255,255,0.8),
+    var(--air-shadow-md);
+}
+
+// Dark card
+.air-card.dark {
+  background: linear-gradient(160deg, #{$epsilon-lt} 0%, #{$epsilon} 100%);
+  border-color: rgba(255,255,255,0.08);
+  color: var(--air-100);
+
+  .air-card-title   { color: var(--air-white); }
+  .air-card-content { color: rgba(255,255,255,0.68); }
+  .air-card-meta    { color: rgba(255,255,255,0.42); }
+}
+
+// Compact density
+.air-card.compact {
+  .air-card-body { padding: 1rem 1.15rem 1.2rem; }
+  .air-card-title { font-size: 1.05rem; }
+}
+
+// Flush â€” no padding on body (image-only cards)
+.air-card.flush .air-card-body { padding-top: 0.85rem; }
+
+// â”€â”€ Stat card â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// Usage: .air-card .air-card-stat
+.air-card-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 1.35rem 1.5rem;
+}
+
+.air-card-stat-label {
+  font-size: var(--air-text-sm);
+  font-weight: 500;
+  color: var(--air-500);
+  letter-spacing: 0.03em;
+}
+
+.air-card-stat-value {
+  font-size: clamp(1.75rem, 3vw, 2.5rem);
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--air-900);
+  line-height: 1;
+}
+
+.air-card-stat-delta {
+  display: inline-flex;
   align-items: center;
-  text-align: center;
+  gap: 0.3em;
+  font-size: var(--air-text-sm);
+  font-weight: 600;
+  color: #{$delta};
+
+  &.negative { color: #{$beta}; }
+  &::before  { content: 'â†‘'; }
+  &.negative::before { content: 'â†“'; }
 }
 
-/* -------------------- Card with Image -------------------- */
-.card-img-container {
-  position: relative;
-  overflow: hidden;
-  border-radius: 0.5rem 0.5rem 0 0;
+.air-card-stat-sub {
+  font-size: var(--air-text-xs);
+  color: var(--air-400);
 }
 
-.card-img-container img {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  display: block;
+// â”€â”€ Bento card â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+// Grid-aware card â€” use inside .air-bento grid
+.air-card.bento {
+  padding: 1.5rem;
+  cursor: default;
+
+  .air-card-icon {
+    width: 2.75rem;
+    height: 2.75rem;
+    border-radius: var(--air-r-xl);
+    background: rgb(var(--_accent-rgb) / 0.12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.75rem;
+    color: var(--_accent);
+    font-size: 1.3rem;
+    flex-shrink: 0;
+  }
 }
+
+// Bento grid layout
+.air-bento {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(3, 1fr);
+
+  .air-card.span-2 { grid-column: span 2; }
+  .air-card.span-3 { grid-column: span 3; }
+  .air-card.row-2  { grid-row: span 2; }
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+    .air-card.span-2,
+    .air-card.span-3 { grid-column: span 1; }
+    .air-card.row-2  { grid-row: span 1; }
+  }
+}
+
+// â”€â”€ Split layout â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+.air-card.split {
+  flex-direction: column;
+
+  @media (min-width: 640px) {
+    flex-direction: row;
+    align-items: stretch;
+
+    .air-card-media {
+      flex: 0 0 42%;
+      max-width: 42%;
+    }
+
+    .air-card-media.r-16-9,
+    .air-card-media.r-4-3,
+    .air-card-media.r-1-1 {
+      aspect-ratio: auto;
+      min-height: 200px;
+    }
+
+    .air-card-body {
+      flex: 1;
+      justify-content: center;
+    }
+  }
+}
+
+// Reverse split
+.air-card.split.reverse {
+  @media (min-width: 640px) {
+    flex-direction: row-reverse;
+  }
+}
+
+// â”€â”€ Legacy simple card (backwards compat) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 1.5rem;
+  border-radius: var(--air-r-xl);
+  background: var(--air-white);
+  box-shadow: var(--air-shadow-md);
+  transition: transform var(--air-t-spring), box-shadow var(--air-t-spring);
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--air-shadow-xl);
+  }
+}
+
+.card-header { font-weight: 600; font-size: var(--air-text-lg); margin-bottom: 0.5rem; }
+.card-body   { flex: 1; margin-bottom: 1rem; color: var(--air-600); }
+
+.card-ace     { background: #{$ace};     color: #fff; }
+.card-beta    { background: #{$beta};    color: #fff; }
+.card-gamma   { background: #{$gamma};   color: #fff; }
+.card-delta   { background: #{$delta};   color: #fff; }
+.card-epsilon { background: #{$epsilon}; color: #fff; }

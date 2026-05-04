@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Air — Decimal Spacing p-0.1 to p-0.5</title>
+  <link rel="stylesheet" href="../../dist/my-framework.css">
+  <style>
+    /* ── Page chrome ────────────────────────────────────────── */
+    body {
+      font-family: var(--air-font);
+      background: var(--air-50);
+      color: var(--air-800);
+      padding: 2.5rem;
+    }
+
+    /* ── Section labels ─────────────────────────────────────── */
+    .section-label {
+      font-size: 0.7rem; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: var(--air-400); margin-bottom: 1.25rem;
+      padding-bottom: 0.5rem; border-bottom: 1px solid var(--air-200);
+    }
+    .demo-section { margin-bottom: 3.5rem; }
+
+    /* ── Visual padding swatch ──────────────────────────────── */
+    .swatch-wrap {
+      background: rgba(114,176,215,0.08);
+      border: 1.5px dashed rgba(114,176,215,0.4);
+      border-radius: 0.5rem;
+      display: inline-block;
+    }
+    .swatch-inner {
+      background: #72b0d7;
+      border-radius: 0.35rem;
+      color: #fff;
+      font-size: 0.78rem;
+      font-weight: 700;
+      white-space: nowrap;
+      min-width: 60px;
+      text-align: center;
+    }
+
+    /* ── Comparison table ───────────────────────────────────── */
+    .cmp-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+    .cmp-table th {
+      text-align: left; padding: 0.6rem 1rem;
+      background: var(--air-100); color: var(--air-600);
+      font-weight: 700; border-bottom: 2px solid var(--air-200);
+    }
+    .cmp-table td {
+      padding: 0.6rem 1rem;
+      border-bottom: 1px solid var(--air-100);
+      vertical-align: middle;
+    }
+    .cmp-table tr:last-child td { border-bottom: none; }
+    .cmp-table tr:hover td { background: var(--air-50); }
+
+    code {
+      font-family: var(--air-font-mono);
+      font-size: 0.85em;
+      background: var(--air-100);
+      padding: 0.15em 0.45em;
+      border-radius: 0.25rem;
+      border: 1px solid var(--air-200);
+    }
+    .code-air  { background: rgba(114,176,215,0.12); color: #4a8fc0; border-color: rgba(114,176,215,0.3); }
+    .code-bs   { background: rgba(109,67,196,0.08); color: #6943c4; border-color: rgba(109,67,196,0.2); }
+    .code-val  { background: rgba(4,19,1,0.05); color: var(--air-700); }
+
+    /* ── Pixel ruler ────────────────────────────────────────── */
+    .ruler {
+      height: 6px; background: linear-gradient(90deg, #72b0d7, #6DC9A7);
+      border-radius: 3px; display: block; margin-top: 4px;
+    }
+
+    /* ── Direction grid ─────────────────────────────────────── */
+    .dir-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+    }
+    .dir-box {
+      background: #fff; border-radius: 0.75rem;
+      border: 1px solid var(--air-200);
+      box-shadow: var(--air-shadow-sm);
+      overflow: hidden;
+    }
+    .dir-box-label {
+      font-size: 0.7rem; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.1em;
+      color: var(--air-400); padding: 0.65rem 0.85rem;
+      border-bottom: 1px solid var(--air-100);
+      background: var(--air-50);
+    }
+    .dir-inner {
+      background: rgba(114,176,215,0.18);
+      color: #4a8fc0;
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-align: center;
+    }
+
+    /* ── Live tester ────────────────────────────────────────── */
+    .live-box {
+      background: #fff;
+      border: 2px solid var(--air-200);
+      border-radius: 1rem;
+      box-shadow: var(--air-shadow-md);
+      position: relative;
+    }
+    .live-indicator {
+      position: absolute;
+      background: rgba(114,176,215,0.18);
+      border: 1.5px dashed #72b0d7;
+      inset: 0;
+      border-radius: inherit;
+      pointer-events: none;
+    }
+    .live-content {
+      background: #72b0d7;
+      color: #fff;
+      border-radius: 0.5rem;
+      font-weight: 700;
+      font-size: 0.85rem;
+      text-align: center;
+      position: relative;
+    }
+
+    /* ── Border demo ────────────────────────────────────────── */
+    .border-demo {
+      display: flex; gap: 1rem; flex-wrap: wrap; align-items: flex-start;
+    }
+    .b-sample {
+      padding: 1rem 1.25rem; border-radius: 0.5rem;
+      font-size: 0.8rem; font-weight: 600; color: var(--air-700);
+      background: #fff; min-width: 130px; text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- =========================================================
+       HEADER
+  ========================================================== -->
+  <div style="margin-bottom: 3.5rem;">
+    <span class="air-kicker dotted">Air Framework</span>
+    <h1 class="air-display" style="margin-top: 0.4rem; font-size: clamp(2rem,5vw,3.5rem);">
+      Decimal Spacing
+      <span class="air-gradient-text">p-0.1</span> —
+      <span class="air-gradient-text beta-gamma">p-0.5</span>
+    </h1>
+    <p class="air-lead">
+      Bootstrap uses <code class="code-bs">p-1</code> through <code class="code-bs">p-5</code>.
+      Air uses <code class="code-air">p-0.1</code> through <code class="code-air">p-0.5</code> —
+      the same values, with a cleaner decimal notation that reads as a scale, not arbitrary integers.
+    </p>
+    <div style="margin-top: 1rem; display: flex; gap: 0.65rem; flex-wrap: wrap; align-items: center;">
+      <span class="air-badge ace soft">CSS escaped-dot selectors</span>
+      <span class="air-badge delta soft">JS MutationObserver</span>
+      <span class="air-badge gamma soft">p · m · pt · pb · pl · pr · px · py · gap</span>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       HOW IT WORKS — Explanation
+  ========================================================== -->
+  <div class="demo-section">
+    <div class="section-label">How it works — 3 things to know</div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+
+      <div class="air-card ace bar">
+        <div class="air-card-body">
+          <span class="air-card-kicker">1. HTML attribute</span>
+          <h3 class="air-card-title" style="font-size: 1rem;">Dots are valid in class names</h3>
+          <p class="air-card-content" style="font-size: 0.85rem;">
+            HTML allows any character in <code>class=""</code> except spaces.
+            <code>class="p-0.3"</code> is perfectly valid HTML.
+          </p>
+        </div>
+      </div>
+
+      <div class="air-card beta bar">
+        <div class="air-card-body">
+          <span class="air-card-kicker">2. CSS selector</span>
+          <h3 class="air-card-title" style="font-size: 1rem;">Dot escaped with backslash</h3>
+          <p class="air-card-content" style="font-size: 0.85rem;">
+            In CSS, dots start class selectors — so the literal dot is escaped:
+            <code>.p-0\.3 &#123; padding: 1rem; &#125;</code>
+          </p>
+        </div>
+      </div>
+
+      <div class="air-card delta bar">
+        <div class="air-card-body">
+          <span class="air-card-kicker">3. JavaScript layer</span>
+          <h3 class="air-card-title" style="font-size: 1rem;">Dynamic elements covered</h3>
+          <p class="air-card-content" style="font-size: 0.85rem;">
+            <code>air-spacing.js</code> scans all <code>[class]</code> elements and uses a
+            MutationObserver to catch nodes added after page load.
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- =========================================================
+       REFERENCE TABLE
+  ========================================================== -->
+  <div class="demo-section">
+    <div class="section-label">Reference — Air vs Bootstrap vs px value</div>
+    <div class="air-card" style="overflow: hidden; padding: 0;">
+      <table class="cmp-table">
+        <thead>
+          <tr>
+            <th>Air class</th>
+            <th>Bootstrap equiv.</th>
+            <th>Value</th>
+            <th>Pixels</th>
+            <th>Visual scale</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code class="code-air">p-0.1</code></td>
+            <td><code class="code-bs">p-1</code></td>
+            <td><code class="code-val">0.25rem</code></td>
+            <td>4px</td>
+            <td><span class="ruler" style="width: 4px;"></span></td>
+          </tr>
+          <tr>
+            <td><code class="code-air">p-0.2</code></td>
+            <td><code class="code-bs">p-2</code></td>
+            <td><code class="code-val">0.5rem</code></td>
+            <td>8px</td>
+            <td><span class="ruler" style="width: 8px;"></span></td>
+          </tr>
+          <tr>
+            <td><code class="code-air">p-0.3</code></td>
+            <td><code class="code-bs">p-3</code></td>
+            <td><code class="code-val">1rem</code></td>
+            <td>16px</td>
+            <td><span class="ruler" style="width: 16px;"></span></td>
+          </tr>
+          <tr>
+            <td><code class="code-air">p-0.4</code></td>
+            <td><code class="code-bs">p-4</code></td>
+            <td><code class="code-val">1.5rem</code></td>
+            <td>24px</td>
+            <td><span class="ruler" style="width: 24px;"></span></td>
+          </tr>
+          <tr>
+            <td><code class="code-air">p-0.5</code></td>
+            <td><code class="code-bs">p-5</code></td>
+            <td><code class="code-val">3rem</code></td>
+            <td>48px</td>
+            <td><span class="ruler" style="width: 48px;"></span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       PADDING VISUAL SCALE
+  ========================================================== -->
+  <div class="demo-section">
+    <div class="section-label">Padding — visual scale (all 5 levels)</div>
+    <div style="display: flex; align-items: flex-start; gap: 1.25rem; flex-wrap: wrap;">
+
+      <div>
+        <div class="swatch-wrap p-0.1">
+          <div class="swatch-inner" style="padding: 0.5rem 1rem;">Content</div>
+        </div>
+        <p style="text-align: center; font-size: 0.72rem; color: var(--air-400); margin-top: 0.5rem; font-weight: 700;">
+          p-0.1<br><span style="font-weight: 400;">4px</span>
+        </p>
+      </div>
+
+      <div>
+        <div class="swatch-wrap p-0.2">
+          <div class="swatch-inner" style="padding: 0.5rem 1rem;">Content</div>
+        </div>
+        <p style="text-align: center; font-size: 0.72rem; color: var(--air-400); margin-top: 0.5rem; font-weight: 700;">
+          p-0.2<br><span style="font-weight: 400;">8px</span>
+        </p>
+      </div>
+
+      <div>
+        <div class="swatch-wrap p-0.3">
+          <div class="swatch-inner" style="padding: 0.5rem 1rem;">Content</div>
+        </div>
+        <p style="text-align: center; font-size: 0.72rem; color: var(--air-400); margin-top: 0.5rem; font-weight: 700;">
+          p-0.3<br><span style="font-weight: 400;">16px</span>
+        </p>
+      </div>
+
+      <div>
+        <div class="swatch-wrap p-0.4">
+          <div class="swatch-inner" style="padding: 0.5rem 1rem;">Content</div>
+        </div>
+        <p style="text-align: center; font-size: 0.72rem; color: var(--air-400); margin-top: 0.5rem; font-weight: 700;">
+          p-0.4<br><span style="font-weight: 400;">24px</span>
+        </p>
+      </div>
+
+      <div>
+        <div class="swatch-wrap p-0.5">
+          <div class="swatch-inner" style="padding: 0.5rem 1rem;">Content</div>
+        </div>
+        <p style="text-align: center; font-size: 0.72rem; color: var(--air-400); margin-top: 0.5rem; font-weight: 700;">
+          p-0.5<br><span style="font-weight: 400;">48px</span>
+        </p>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- =========================================================
+       DIRECTIONAL VARIANTS
+  ========================================================== -->
+  <div class="demo-section">
+    <div class="section-label">Directional variants — pt · pb · pl · pr · px · py</div>
+    <div class="dir-grid">
+
+      <div class="dir-box">
+        <div class="dir-box-label">pt-0.4 (top only)</div>
+        <div class="pt-0.4">
+          <div class="dir-inner" style="padding: 0.4rem;">inner</div>
+        </div>
+      </div>
+
+      <div class="dir-box">
+        <div class="dir-box-label">pb-0.4 (bottom only)</div>
+        <div class="pb-0.4">
+          <div class="dir-inner" style="padding: 0.4rem;">inner</div>
+        </div>
+      </div>
+
+      <div class="dir-box">
+        <div class="dir-box-label">pl-0.4 (left only)</div>
+        <div class="pl-0.4">
+          <div class="dir-inner" style="padding: 0.4rem;">inner</div>
+        </div>
+      </div>
+
+      <div class="dir-box">
+        <div class="dir-box-label">pr-0.4 (right only)</div>
+        <div class="pr-0.4">
+          <div class="dir-inner" style="padding: 0.4rem;">inner</div>
+        </div>
+      </div>
+
+      <div class="dir-box">
+        <div class="dir-box-label">px-0.4 (left + right)</div>
+        <div class="px-0.4">
+          <div class="dir-inner" style="padding: 0.4rem;">inner</div>
+        </div>
+      </div>
+
+      <div class="dir-box">
+        <div class="dir-box-label">py-0.4 (top + bottom)</div>
+        <div class="py-0.4">
+          <div class="dir-inner" style="padding: 0.4rem;">inner</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- =========================================================
+       MARGIN DEMO
+  ========================================================== -->
+  <div class="demo-section">
+    <div class="section-label">Margin — m, mt, mb, mx, my + all 5 levels</div>
+    <div style="background: rgba(217,79,139,0.07); border: 1.5px dashed rgba(217,79,139,0.3); border-radius: 0.75rem; padding: 1rem;">
+      <p style="font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: #b83a72; margin-bottom: 0.75rem;">Dashed area = outer margin zone</p>
+
+      <div style="display: flex; gap: 0; flex-wrap: wrap; align-items: flex-start;">
+
+        <div class="m-0.1" style="background: #d94f8b; color: #fff; padding: 0.5rem 0.75rem; border-radius: 0.4rem; font-size: 0.78rem; font-weight: 700;">m-0.1</div>
+        <div class="m-0.2" style="background: #d94f8b; color: #fff; padding: 0.5rem 0.75rem; border-radius: 0.4rem; font-size: 0.78rem; font-weight: 700;">m-0.2</div>
+        <div class="m-0.3" style="background: #d94f8b; color: #fff; padding: 0.5rem 0.75rem; border-radius: 0.4rem; font-size: 0.78rem; font-weight: 700;">m-0.3</div>
+        <div class="m-0.4" style="background: #d94f8b; color: #fff; padding: 0.5rem 0.75rem; border-radius: 0.4rem; font-size: 0.78rem; font-weight: 700;">m-0.4</div>
+        <div class="m-0.5" style="background: #d94f8b; color: #fff; padding: 0.5rem 0.75rem; border-radius: 0.4rem; font-size: 0.78rem; font-weight: 700;">m-0.5</div>
+
+      </div>
+
+      <div style="margin-top: 1rem;">
+        <p style="font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: #b83a72; margin-bottom: 0.5rem;">mt-0.4 pushes down / mb-0.4 pushes element below</p>
+        <div style="display: flex; flex-direction: column;">
+          <div style="background: #b83a72; color: #fff; padding: 0.4rem 0.75rem; border-radius: 0.4rem; font-size: 0.78rem; font-weight: 700; display: inline-block; align-self: flex-start;">Base element</div>
+          <div class="mt-0.4" style="background: #d94f8b; color: #fff; padding: 0.4rem 0.75rem; border-radius: 0.4rem; font-size: 0.78rem; font-weight: 700; display: inline-block; align-self: flex-start;">mt-0.4 below</div>
+          <div class="mt-0.5" style="background: rgba(217,79,139,0.5); color: #fff; padding: 0.4rem 0.75rem; border-radius: 0.4rem; font-size: 0.78rem; font-weight: 700; display: inline-block; align-self: flex-start;">mt-0.5 further below</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       REAL-WORLD: COMPONENT USAGE
+  ========================================================== -->
+  <div class="demo-section">
+    <div class="section-label">Real-world usage — buttons, badges, cards with decimal spacing</div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem;">
+
+      <!-- Tight button row -->
+      <div class="air-card">
+        <div class="air-card-body">
+          <span class="air-card-kicker">Tight spacing</span>
+          <h3 class="air-card-title" style="font-size: 1rem;">p-0.1 / p-0.2 on buttons</h3>
+          <div style="display: flex; gap: 0.5rem; flex-wrap: wrap; margin-top: 0.5rem;">
+            <button class="air-btn ace p-0.1" style="font-size: 0.72rem;">p-0.1</button>
+            <button class="air-btn beta p-0.2" style="font-size: 0.8rem;">p-0.2</button>
+            <button class="air-btn gamma p-0.3">p-0.3</button>
+          </div>
+          <p class="air-card-content" style="font-size: 0.82rem; margin-top: 0.5rem;">
+            Override built-in button padding with decimal classes for precise density control.
+          </p>
+        </div>
+      </div>
+
+      <!-- Loose card -->
+      <div class="air-card ace">
+        <div class="air-card-body p-0.5">
+          <span class="air-card-kicker">Generous spacing</span>
+          <h3 class="air-card-title" style="font-size: 1rem;">p-0.5 on card body</h3>
+          <p class="air-card-content" style="font-size: 0.85rem;">
+            This card's body has <code class="code-air">p-0.5</code> (3rem / 48px).
+            Spacious, premium feel — for hero cards.
+          </p>
+        </div>
+      </div>
+
+      <!-- Inline badge spacing -->
+      <div class="air-card">
+        <div class="air-card-body">
+          <span class="air-card-kicker">Badge spacing</span>
+          <h3 class="air-card-title" style="font-size: 1rem;">px-0.3 / py-0.1 on badges</h3>
+          <div style="display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: 0.5rem;">
+            <span class="air-badge ace px-0.3 py-0.1" style="font-size: 0.75rem; text-transform: none; letter-spacing: 0;">Wider badge</span>
+            <span class="air-badge beta px-0.2 py-0.1" style="font-size: 0.75rem; text-transform: none; letter-spacing: 0;">Normal</span>
+            <span class="air-badge delta" style="font-size: 0.75rem; text-transform: none; letter-spacing: 0;">Default</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- =========================================================
+       GAP DEMO
+  ========================================================== -->
+  <div class="demo-section">
+    <div class="section-label">Gap decimal — gap-0.1 to gap-0.5</div>
+    <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+
+      <div>
+        <p style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--air-400); margin-bottom: 0.5rem;">grid gap-0.1 (4px)</p>
+        <div class="grid grid-4 gap-0.1">
+          <div style="background: rgba(114,176,215,0.3); border-radius: 0.35rem; padding: 0.6rem; text-align: center; font-size: 0.72rem; font-weight: 700; color: #4a8fc0;">A</div>
+          <div style="background: rgba(114,176,215,0.3); border-radius: 0.35rem; padding: 0.6rem; text-align: center; font-size: 0.72rem; font-weight: 700; color: #4a8fc0;">B</div>
+          <div style="background: rgba(114,176,215,0.3); border-radius: 0.35rem; padding: 0.6rem; text-align: center; font-size: 0.72rem; font-weight: 700; color: #4a8fc0;">C</div>
+          <div style="background: rgba(114,176,215,0.3); border-radius: 0.35rem; padding: 0.6rem; text-align: center; font-size: 0.72rem; font-weight: 700; color: #4a8fc0;">D</div>
+        </div>
+      </div>
+
+      <div>
+        <p style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--air-400); margin-bottom: 0.5rem;">grid gap-0.3 (16px)</p>
+        <div class="grid grid-4 gap-0.3">
+          <div style="background: rgba(109,201,167,0.3); border-radius: 0.5rem; padding: 0.6rem; text-align: center; font-size: 0.72rem; font-weight: 700; color: #44a880;">A</div>
+          <div style="background: rgba(109,201,167,0.3); border-radius: 0.5rem; padding: 0.6rem; text-align: center; font-size: 0.72rem; font-weight: 700; color: #44a880;">B</div>
+          <div style="background: rgba(109,201,167,0.3); border-radius: 0.5rem; padding: 0.6rem; text-align: center; font-size: 0.72rem; font-weight: 700; color: #44a880;">C</div>
+          <div style="background: rgba(109,201,167,0.3); border-radius: 0.5rem; padding: 0.6rem; text-align: center; font-size: 0.72rem; font-weight: 700; color: #44a880;">D</div>
+        </div>
+      </div>
+
+      <div>
+        <p style="font-size: 0.72rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--air-400); margin-bottom: 0.5rem;">grid gap-0.5 (48px)</p>
+        <div class="grid grid-4 gap-0.5">
+          <div style="background: rgba(217,79,139,0.2); border-radius: 0.75rem; padding: 0.6rem; text-align: center; font-size: 0.72rem; font-weight: 700; color: #b83a72;">A</div>
+          <div style="background: rgba(217,79,139,0.2); border-radius: 0.75rem; padding: 0.6rem; text-align: center; font-size: 0.72rem; font-weight: 700; color: #b83a72;">B</div>
+          <div style="background: rgba(217,79,139,0.2); border-radius: 0.75rem; padding: 0.6rem; text-align: center; font-size: 0.72rem; font-weight: 700; color: #b83a72;">C</div>
+          <div style="background: rgba(217,79,139,0.2); border-radius: 0.75rem; padding: 0.6rem; text-align: center; font-size: 0.72rem; font-weight: 700; color: #b83a72;">D</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- =========================================================
+       BORDER SYSTEM REFERENCE
+  ========================================================== -->
+  <div class="demo-section">
+    <div class="section-label">Border — how it works in Air (current system)</div>
+    <p class="air-body" style="margin-bottom: 1.25rem; max-width: 64ch;">
+      Borders use width keywords (<code>.border</code> = 1px, <code>.border-2</code> = 2px) combined with
+      direction modifiers (<code>.border-t</code>, <code>.border-b</code>, <code>.border-l</code>, <code>.border-r</code>)
+      and tone colors (<code>.border-ace</code>, <code>.border-beta</code>, etc.).
+    </p>
+    <div class="border-demo">
+      <div class="b-sample border">border (1px)</div>
+      <div class="b-sample border-2">border-2 (2px)</div>
+      <div class="b-sample border border-ace" style="color: #4a8fc0;">border-ace</div>
+      <div class="b-sample border border-beta" style="color: #b83a72;">border-beta</div>
+      <div class="b-sample border border-gamma" style="color: #d96e2a;">border-gamma</div>
+      <div class="b-sample border border-delta" style="color: #44a880;">border-delta</div>
+      <div class="b-sample border-t border-ace" style="color: #4a8fc0;">border-t ace</div>
+      <div class="b-sample border-b border-beta" style="color: #b83a72;">border-b beta</div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       INTERACTIVE JS DEMO — dynamic injection
+  ========================================================== -->
+  <div class="demo-section">
+    <div class="section-label">JavaScript engine — dynamically injected elements</div>
+    <div class="air-note beta" style="margin-bottom: 1.25rem;">
+      <strong>How the JS works:</strong> <code>air-spacing.js</code> uses a <strong>MutationObserver</strong>
+      to watch the DOM. When new nodes appear (React renders, HTMX swaps, JS injection),
+      it scans their classes and applies the decimal spacing via inline styles — zero extra code needed.
+    </div>
+
+    <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center; margin-bottom: 1.25rem;">
+      <button class="air-btn ace" onclick="injectElement('p-0.1', '#72b0d7')">Inject p-0.1</button>
+      <button class="air-btn beta" onclick="injectElement('p-0.2', '#d94f8b')">Inject p-0.2</button>
+      <button class="air-btn gamma" onclick="injectElement('p-0.3', '#FF8F4B')">Inject p-0.3</button>
+      <button class="air-btn delta" onclick="injectElement('p-0.4', '#6DC9A7')">Inject p-0.4</button>
+      <button class="air-btn epsilon" onclick="injectElement('p-0.5', '#1c2e19')">Inject p-0.5</button>
+      <button class="air-btn ghost" onclick="clearInjected()">Clear</button>
+    </div>
+
+    <div id="inject-zone" style="
+      min-height: 80px;
+      background: var(--air-50);
+      border: 2px dashed var(--air-300);
+      border-radius: 0.75rem;
+      padding: 0.75rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      gap: 0;
+    ">
+      <p style="color: var(--air-300); font-size: 0.8rem; font-weight: 500; margin: auto;">
+        Click a button above — JS will inject a div with that class here
+      </p>
+    </div>
+    <p class="air-caption" style="margin-top: 0.5rem;">
+      The injected elements have no inline styles — <code>air-spacing.js</code> reads their class and applies the padding automatically.
+    </p>
+  </div>
+
+  <!-- =========================================================
+       CHEAT SHEET
+  ========================================================== -->
+  <div class="demo-section">
+    <div class="section-label">Cheat sheet — every class at a glance</div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 0.5rem;">
+
+      <!-- Padding -->
+      <div class="air-card ace bar" style="padding: 1rem 1.25rem;">
+        <div class="air-card-kicker" style="margin-bottom: 0.5rem;">Padding</div>
+        <div style="font-family: var(--air-font-mono); font-size: 0.78rem; line-height: 2; color: var(--air-700);">
+          p-0.1 &nbsp; p-0.2 &nbsp; p-0.3 &nbsp; p-0.4 &nbsp; p-0.5<br>
+          pt-0.1 … pt-0.5<br>
+          pb-0.1 … pb-0.5<br>
+          pl-0.1 … pl-0.5<br>
+          pr-0.1 … pr-0.5<br>
+          px-0.1 … px-0.5<br>
+          py-0.1 … py-0.5
+        </div>
+      </div>
+
+      <!-- Margin -->
+      <div class="air-card beta bar" style="padding: 1rem 1.25rem;">
+        <div class="air-card-kicker" style="margin-bottom: 0.5rem;">Margin</div>
+        <div style="font-family: var(--air-font-mono); font-size: 0.78rem; line-height: 2; color: var(--air-700);">
+          m-0.1 &nbsp; m-0.2 &nbsp; m-0.3 &nbsp; m-0.4 &nbsp; m-0.5<br>
+          mt-0.1 … mt-0.5<br>
+          mb-0.1 … mb-0.5<br>
+          ml-0.1 … ml-0.5<br>
+          mr-0.1 … mr-0.5<br>
+          mx-0.1 … mx-0.5<br>
+          my-0.1 … my-0.5
+        </div>
+      </div>
+
+      <!-- Gap -->
+      <div class="air-card delta bar" style="padding: 1rem 1.25rem;">
+        <div class="air-card-kicker" style="margin-bottom: 0.5rem;">Gap</div>
+        <div style="font-family: var(--air-font-mono); font-size: 0.78rem; line-height: 2; color: var(--air-700);">
+          gap-0.1 … gap-0.5<br>
+          <br>
+          <span style="color: var(--air-400);">Use inside .flex or .grid</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- =========================================================
+       JS — load air-spacing.js and inject demo
+  ========================================================== -->
+  <script src="../../src/js/air-spacing.js"></script>
+  <script>
+    var colors = [];
+    var count  = 0;
+
+    function injectElement(cls, color) {
+      var zone = document.getElementById('inject-zone');
+
+      // Remove placeholder text
+      var ph = zone.querySelector('p');
+      if (ph) ph.remove();
+
+      var div = document.createElement('div');
+      // NOTE: no inline style for padding — air-spacing.js will handle it
+      div.className = cls;
+      div.style.cssText = 'background:' + color + '; color:#fff; border-radius:0.4rem; font-size:0.75rem; font-weight:700; display:inline-flex; align-items:center; justify-content:center; min-width:70px; margin:4px;';
+      div.textContent = cls;
+
+      // Add a label showing what JS computed
+      zone.appendChild(div);
+
+      // Small delay so MutationObserver fires, then show computed value
+      setTimeout(function () {
+        var cs = window.getComputedStyle(div);
+        div.title = 'padding: ' + cs.padding;
+      }, 50);
+    }
+
+    function clearInjected() {
+      var zone = document.getElementById('inject-zone');
+      zone.innerHTML = '<p style="color:var(--air-300);font-size:0.8rem;font-weight:500;margin:auto;">Click a button above — JS will inject a div with that class here</p>';
+    }
+  </script>
+
+</body>
+</html>

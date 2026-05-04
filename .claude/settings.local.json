@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm run *)",
+      "Bash(grep -v \"^$\")",
+      "Bash(grep -v \"src\\\\\\\\\")",
+      "Bash(findstr /v \"DEPRECATION\")",
+      "Bash(findstr /v \"More info\")",
+      "Bash(findstr /v \"migrator\")",
+      "Bash(findstr /v \"sass-lang\")",
+      "Bash(grep -n \"p-0\\\\\\\\\\\\\\\\\\\\.1\\\\|p-0\\\\\\\\\\\\\\\\\\\\.3\" dist/my-framework.css)"
+    ]
+  }
+}

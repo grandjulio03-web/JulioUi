@@ -12,7 +12,10 @@ document.addEventListener('click', function(e) {
     }
   }
 
-  if (closeBtn || (modal && e.target === modal)) {
+  if (closeBtn) {
+    const modalEl = closeBtn.closest('.modal');
+    if (modalEl) modalEl.classList.remove('is-open');
+  } else if (modal && e.target === modal) {
     modal.classList.remove('is-open');
   }
 });
