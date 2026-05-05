@@ -1,0 +1,272 @@
+// ============================================================
+// Air Framework -- Modals
+//
+// Vocabulary:
+//   air-modal        the backdrop + positioner (triggers via data-open="id")
+//   air-modal-box    the actual dialog card
+//   air-modal-head   top bar (title + close)
+//   air-modal-body   scrollable content area
+//   air-modal-foot   bottom action row
+//
+// Sizes (on air-modal-box): sm  lg  xl  full
+// Styles:                   glass  dark
+// Tones  (on air-modal-head border): ace  beta  gamma  delta
+//
+// JS trigger:
+//   <button data-open="my-modal">Open</button>
+//   Any element with data-close inside the modal closes it.
+//   Click backdrop or press Escape also closes.
+// ============================================================
+
+$modal-tones: (
+  ace:   $ace,
+  beta:  $beta,
+  gamma: $gamma,
+  delta: $delta,
+);
+
+// ── Backdrop + positioner ─────────────────────────────────────
+.air-modal {
+  position: fixed;
+  inset: 0;
+  z-index: var(--air-z-modal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.25rem;
+
+  // Backdrop
+  background: rgba(4, 19, 1, 0.5);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+
+  // Hidden state
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity     var(--air-t-base),
+    visibility  0s var(--air-t-base);
+
+  &.open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition-delay: 0s;
+  }
+
+  // Bottom-sheet variant on mobile
+  &.sheet {
+    align-items: flex-end;
+    padding: 0;
+
+    .air-modal-box {
+      width: 100%;
+      max-width: 100%;
+      border-radius: var(--air-r-2xl) var(--air-r-2xl) 0 0;
+      transform: translateY(100%);
+      max-height: 90dvh;
+    }
+
+    &.open .air-modal-box {
+      transform: translateY(0);
+    }
+  }
+}
+
+// ── Dialog box ────────────────────────────────────────────────
+.air-modal-box {
+  position: relative;
+  background: var(--air-white);
+  border-radius: var(--air-r-2xl);
+  border: 1px solid var(--air-200);
+  width: 100%;
+  max-width: 520px;
+  max-height: calc(100dvh - 2.5rem);
+  display: flex;
+  flex-direction: column;
+  box-shadow:
+    var(--air-shadow-2xl),
+    0 0 0 1px rgba(255,255,255,0.6) inset;
+
+  // Spring entrance
+  transform: scale(0.94) translateY(10px);
+  transition: transform var(--air-t-spring);
+  will-change: transform;
+
+  .air-modal.open & {
+    transform: scale(1) translateY(0);
+  }
+
+  // Sizes
+  &.sm  { max-width: 380px; }
+  &.lg  { max-width: 700px; }
+  &.xl  { max-width: 900px; }
+  &.full {
+    max-width: calc(100vw - 2.5rem);
+    max-height: calc(100dvh - 2.5rem);
+  }
+
+  // Glass variant
+  &.glass {
+    background: rgba(255,255,255,0.82);
+    backdrop-filter: blur(24px) saturate(180%);
+    -webkit-backdrop-filter: blur(24px) saturate(180%);
+    border-color: rgba(255,255,255,0.6);
+  }
+
+  // Dark variant
+  &.dark {
+    background: linear-gradient(160deg, #{$epsilon-lt} 0%, #{$epsilon} 100%);
+    border-color: rgba(255,255,255,0.1);
+    color: var(--air-100);
+
+    .air-modal-head {
+      border-bottom-color: rgba(255,255,255,0.08);
+      .air-modal-title { color: #fff; }
+    }
+
+    .air-modal-foot {
+      border-top-color: rgba(255,255,255,0.08);
+    }
+  }
+}
+
+// Tone top border accent
+@each $name, $color in $modal-tones {
+  .air-modal-box.#{$name} {
+    border-top: 3px solid #{$color};
+  }
+}
+
+// ── Head ──────────────────────────────────────────────────────
+.air-modal-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.25rem 1.5rem 1rem;
+  border-bottom: 1px solid var(--air-100);
+  flex-shrink: 0;
+}
+
+.air-modal-title {
+  font-size: var(--air-text-xl);
+  font-weight: 700;
+  color: var(--air-900);
+  letter-spacing: -0.02em;
+  line-height: 1.3;
+  margin: 0;
+}
+
+.air-modal-sub {
+  font-size: var(--air-text-sm);
+  color: var(--air-400);
+  margin: 0.2rem 0 0;
+  line-height: 1.5;
+}
+
+// Close button (x)
+.air-modal-x {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: var(--air-r-lg);
+  border: 1.5px solid var(--air-200);
+  background: transparent;
+  cursor: pointer;
+  color: var(--air-400);
+  font-size: 1rem;
+  flex-shrink: 0;
+  transition: background var(--air-t-fast), color var(--air-t-fast), border-color var(--air-t-fast);
+
+  &:hover { background: var(--air-100); color: var(--air-800); border-color: var(--air-300); }
+  &:focus-visible { outline: 2px solid var(--air-ace); outline-offset: 2px; }
+}
+
+// ── Body ──────────────────────────────────────────────────────
+.air-modal-body {
+  padding: 1.25rem 1.5rem;
+  overflow-y: auto;
+  flex: 1;
+  overscroll-behavior: contain;
+  color: var(--air-600);
+  font-size: var(--air-text-base);
+  line-height: 1.65;
+
+  // Scrollbar subtle
+  &::-webkit-scrollbar { width: 5px; }
+  &::-webkit-scrollbar-thumb { background: var(--air-300); border-radius: 3px; }
+}
+
+// ── Foot ──────────────────────────────────────────────────────
+.air-modal-foot {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.6rem;
+  padding: 1rem 1.5rem 1.25rem;
+  border-top: 1px solid var(--air-100);
+  flex-shrink: 0;
+  flex-wrap: wrap;
+
+  &.left  { justify-content: flex-start; }
+  &.split { justify-content: space-between; }
+}
+
+// ── Confirm/alert shorthand variants ─────────────────────────
+.air-modal-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: var(--air-r-2xl);
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+
+  &.ace     { background: rgb(var(--air-ace-rgb) / 0.12);   color: #{$ace}; }
+  &.beta    { background: rgb(var(--air-beta-rgb) / 0.12);  color: #{$beta}; }
+  &.gamma   { background: rgb(var(--air-gamma-rgb) / 0.12); color: #{$gamma}; }
+  &.delta   { background: rgb(var(--air-delta-rgb) / 0.12); color: #{$delta}; }
+
+  svg {
+    width: 1.5rem; height: 1.5rem;
+    fill: none; stroke: currentColor;
+    stroke-width: 2; stroke-linecap: round; stroke-linejoin: round;
+  }
+}
+
+// ── Drawer (side modal) ───────────────────────────────────────
+.air-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: var(--air-z-modal);
+  width: min(420px, 90vw);
+  background: var(--air-white);
+  border-left: 1px solid var(--air-200);
+  box-shadow: var(--air-shadow-2xl);
+  display: flex;
+  flex-direction: column;
+  transform: translateX(110%);
+  transition: transform var(--air-t-spring);
+
+  &.open { transform: translateX(0); }
+
+  &.left {
+    right: auto;
+    left: 0;
+    border-left: none;
+    border-right: 1px solid var(--air-200);
+    transform: translateX(-110%);
+    &.open { transform: translateX(0); }
+  }
+
+  .air-modal-head  { border-bottom-color: var(--air-100); }
+  .air-modal-body  { flex: 1; }
+  .air-modal-foot  { border-top-color: var(--air-100); }
+}

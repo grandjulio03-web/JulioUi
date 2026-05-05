@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Navigation — Air Framework</title>
+  <script>try{var t=localStorage.getItem('air-theme');if(t)document.documentElement.setAttribute('data-theme',t);else if(window.matchMedia('(prefers-color-scheme: dark)').matches)document.documentElement.setAttribute('data-theme','dark');}catch(e){}</script>
+  <link rel="stylesheet" href="../dist/my-framework.css">
+  <link rel="stylesheet" href="docs.css">
+  <style>
+    .nav-frame { border:1px solid var(--air-200); border-radius:1rem; overflow:hidden; }
+    .nav-frame .air-nav { position:relative; top:auto; }
+    .nav-frame-body { background:var(--air-50); padding:1.5rem; text-align:center; color:var(--air-400); font-size:0.82rem; }
+  </style>
+</head>
+<body>
+<div class="docs-shell">
+  <aside class="docs-sidebar" id="docs-sidebar-container"></aside>
+  <main class="docs-main">
+    <div class="docs-topbar">
+      <button id="docs-menu-btn" class="air-theme-btn" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+      <nav class="air-trail" style="flex:1; padding-left:0.5rem;"><span class="crumb"><a href="index.html">Docs</a></span><span class="crumb active">Navigation</span></nav>
+    </div>
+    <div class="docs-content">
+
+      <h1 class="docs-page-title">Navigation</h1>
+      <p class="docs-page-lead">Three archetypes: <code>air-nav</code> (rail), <code>air-nav float</code> (pill), <code>air-nav floor</code> (bottom bar). Plus <code>air-side</code> sidebar and <code>air-trail</code> breadcrumb. Write links once — JS auto-builds the mobile panel.</p>
+
+      <!-- Unique features -->
+      <div class="docs-callout delta">
+        <div><strong>What makes Air Nav unique:</strong> Sliding indicator animates between links in real time. Mobile panel is auto-cloned from your desktop links — no duplication. Scroll behavior (auto-glass) from one <code>data-scroll</code> attribute. Viewport-aware dropdowns flip direction automatically.</div>
+      </div>
+
+      <!-- Rail nav -->
+      <div class="docs-section" id="rail">
+        <h2 class="docs-section-title">Rail nav — sticky full-width</h2>
+        <div class="docs-demo">
+          <div class="docs-preview" style="padding:0; flex-direction:column;">
+            <div class="nav-frame">
+              <nav class="air-nav ace" data-indicator>
+                <a href="#" class="brand"><div class="air-nav-logo-icon" style="width:26px;height:26px;font-size:0.75rem;">A</div>AirUI</a>
+                <div class="links">
+                  <a href="#" class="link active">Home</a>
+                  <a href="#" class="link">Features</a>
+                  <a href="#" class="link">Pricing</a>
+                  <a href="#" class="link">Docs</a>
+                </div>
+                <div class="end">
+                  <a href="#" class="air-btn ace ghost sm">Login</a>
+                  <a href="#" class="air-btn ace sm">Start</a>
+                </div>
+                <button class="menu" aria-label="Menu"><span></span><span></span><span></span></button>
+              </nav>
+              <div class="nav-frame-body">Hover links to see indicator · Resize to &lt;900px for hamburger</div>
+            </div>
+          </div>
+          <div class="docs-code-header"><span class="docs-code-lang">HTML</span><button class="docs-copy-btn">Copy</button></div>
+          <pre class="docs-code-block"><span class="t-tag">&lt;nav</span> <span class="t-attr">class</span>=<span class="t-val">"air-nav ace"</span> <span class="t-kw">data-scroll</span> <span class="t-kw">data-indicator</span><span class="t-tag">&gt;</span>
+
+  <span class="t-tag">&lt;a</span> <span class="t-attr">href</span>=<span class="t-val">"#"</span> <span class="t-attr">class</span>=<span class="t-val">"brand"</span><span class="t-tag">&gt;</span>AirUI<span class="t-tag">&lt;/a&gt;</span>
+
+  <span class="t-dim">&lt;!-- Write links ONCE — JS clones to mobile panel --&gt;</span>
+  <span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-val">"links"</span><span class="t-tag">&gt;</span>
+    <span class="t-tag">&lt;a</span> <span class="t-attr">href</span>=<span class="t-val">"#"</span> <span class="t-attr">class</span>=<span class="t-val">"link active"</span><span class="t-tag">&gt;</span>Home<span class="t-tag">&lt;/a&gt;</span>
+    <span class="t-tag">&lt;a</span> <span class="t-attr">href</span>=<span class="t-val">"#"</span> <span class="t-attr">class</span>=<span class="t-val">"link"</span><span class="t-tag">&gt;</span>Features<span class="t-tag">&lt;/a&gt;</span>
+    <span class="t-dim">&lt;!-- Dropdown link --&gt;</span>
+    <span class="t-tag">&lt;a</span> <span class="t-attr">href</span>=<span class="t-val">"#"</span> <span class="t-attr">class</span>=<span class="t-val">"link"</span> <span class="t-kw">data-fly</span>=<span class="t-val">"my-drop"</span><span class="t-tag">&gt;</span>Products<span class="t-tag">&lt;/a&gt;</span>
+    <span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-val">"fly"</span> <span class="t-attr">id</span>=<span class="t-val">"my-drop"</span><span class="t-tag">&gt;</span>
+      <span class="t-tag">&lt;a</span> <span class="t-attr">class</span>=<span class="t-val">"fly-row"</span><span class="t-tag">&gt;</span>Item 1<span class="t-tag">&lt;/a&gt;</span>
+      <span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-val">"fly-cut"</span><span class="t-tag">&gt;&lt;/div&gt;</span>
+      <span class="t-tag">&lt;a</span> <span class="t-attr">class</span>=<span class="t-val">"fly-row"</span><span class="t-tag">&gt;</span>See all →<span class="t-tag">&lt;/a&gt;</span>
+    <span class="t-tag">&lt;/div&gt;</span>
+  <span class="t-tag">&lt;/div&gt;</span>
+
+  <span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-val">"end"</span><span class="t-tag">&gt;</span>
+    <span class="t-tag">&lt;a</span> <span class="t-attr">class</span>=<span class="t-val">"air-btn ace sm"</span><span class="t-tag">&gt;</span>Get started<span class="t-tag">&lt;/a&gt;</span>
+  <span class="t-tag">&lt;/div&gt;</span>
+
+  <span class="t-dim">&lt;!-- Hamburger: panel auto-built by JS --&gt;</span>
+  <span class="t-tag">&lt;button</span> <span class="t-attr">class</span>=<span class="t-val">"menu"</span> <span class="t-attr">aria-label</span>=<span class="t-val">"Menu"</span><span class="t-tag">&gt;</span>
+    <span class="t-tag">&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;&lt;/span&gt;</span>
+  <span class="t-tag">&lt;/button&gt;</span>
+<span class="t-tag">&lt;/nav&gt;</span></pre>
+        </div>
+      </div>
+
+      <!-- Styles -->
+      <div class="docs-section">
+        <h2 class="docs-section-title">Nav styles</h2>
+        <div class="docs-demo">
+          <div class="docs-preview" style="padding:0; flex-direction:column; gap:0;">
+            <div class="nav-frame-body" style="background:#030d07;">
+              <nav class="air-nav dark delta" data-indicator style="position:relative; top:auto; border-radius:0;">
+                <a href="#" class="brand" style="font-size:0.9rem;"><div class="air-nav-logo-icon" style="width:24px;height:24px;font-size:0.7rem;background:linear-gradient(135deg,#6DC9A7,#44a880);">V</div>Verda</a>
+                <div class="links"><a href="#" class="link active">Dashboard</a><a href="#" class="link">Analytics</a><a href="#" class="link">Settings</a></div>
+                <div class="end"><a href="#" class="air-btn delta sm">Upgrade</a></div>
+                <button class="menu" aria-label="Menu"><span></span><span></span><span></span></button>
+              </nav>
+            </div>
+          </div>
+          <div class="docs-code-header"><span class="docs-code-lang">HTML — style variants</span><button class="docs-copy-btn">Copy</button></div>
+          <pre class="docs-code-block"><span class="t-dim">&lt;!-- Dark --&gt;</span>
+<span class="t-tag">&lt;nav</span> <span class="t-attr">class</span>=<span class="t-val">"air-nav dark delta"</span><span class="t-tag">&gt;</span>...<span class="t-tag">&lt;/nav&gt;</span>
+
+<span class="t-dim">&lt;!-- Glass --&gt;</span>
+<span class="t-tag">&lt;nav</span> <span class="t-attr">class</span>=<span class="t-val">"air-nav glass gamma"</span><span class="t-tag">&gt;</span>...<span class="t-tag">&lt;/nav&gt;</span>
+
+<span class="t-dim">&lt;!-- Clear / transparent (hero navs) --&gt;</span>
+<span class="t-tag">&lt;nav</span> <span class="t-attr">class</span>=<span class="t-val">"air-nav clear"</span><span class="t-tag">&gt;</span>...<span class="t-tag">&lt;/nav&gt;</span></pre>
+        </div>
+      </div>
+
+      <!-- Float nav -->
+      <div class="docs-section" id="float">
+        <h2 class="docs-section-title">Float nav — pill that hovers above content</h2>
+        <div class="docs-demo">
+          <div class="docs-code-header"><span class="docs-code-lang">HTML</span><button class="docs-copy-btn">Copy</button></div>
+          <pre class="docs-code-block"><span class="t-dim">&lt;!-- Add .float — the nav element IS the pill --&gt;</span>
+<span class="t-tag">&lt;nav</span> <span class="t-attr">class</span>=<span class="t-val">"air-nav float ace"</span> <span class="t-kw">data-scroll</span> <span class="t-kw">data-indicator</span><span class="t-tag">&gt;</span>
+  <span class="t-tag">&lt;a</span> <span class="t-attr">class</span>=<span class="t-val">"brand"</span><span class="t-tag">&gt;</span>AirUI<span class="t-tag">&lt;/a&gt;</span>
+  <span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-val">"links"</span><span class="t-tag">&gt;</span>...<span class="t-tag">&lt;/div&gt;</span>
+  <span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-val">"end"</span><span class="t-tag">&gt;</span>...<span class="t-tag">&lt;/div&gt;</span>
+  <span class="t-tag">&lt;button</span> <span class="t-attr">class</span>=<span class="t-val">"menu"</span><span class="t-tag">&gt;</span>...<span class="t-tag">&lt;/button&gt;</span>
+<span class="t-tag">&lt;/nav&gt;</span>
+
+<span class="t-dim">&lt;!-- Dark float --&gt;</span>
+<span class="t-tag">&lt;nav</span> <span class="t-attr">class</span>=<span class="t-val">"air-nav float dark beta"</span><span class="t-tag">&gt;</span>...<span class="t-tag">&lt;/nav&gt;</span></pre>
+        </div>
+      </div>
+
+      <!-- Floor nav -->
+      <div class="docs-section" id="floor">
+        <h2 class="docs-section-title">Floor nav — bottom tab bar</h2>
+        <div class="docs-demo">
+          <div class="docs-code-header"><span class="docs-code-lang">HTML</span><button class="docs-copy-btn">Copy</button></div>
+          <pre class="docs-code-block"><span class="t-tag">&lt;nav</span> <span class="t-attr">class</span>=<span class="t-val">"air-nav floor ace"</span><span class="t-tag">&gt;</span>
+  <span class="t-tag">&lt;a</span> <span class="t-attr">href</span>=<span class="t-val">"#"</span> <span class="t-attr">class</span>=<span class="t-val">"tab active"</span><span class="t-tag">&gt;</span>
+    <span class="t-tag">&lt;svg&gt;</span>...<span class="t-tag">&lt;/svg&gt;</span>
+    <span class="t-tag">&lt;span&gt;</span>Home<span class="t-tag">&lt;/span&gt;</span>
+  <span class="t-tag">&lt;/a&gt;</span>
+  <span class="t-tag">&lt;a</span> <span class="t-attr">href</span>=<span class="t-val">"#"</span> <span class="t-attr">class</span>=<span class="t-val">"tab"</span><span class="t-tag">&gt;</span>
+    <span class="t-tag">&lt;svg&gt;</span>...<span class="t-tag">&lt;/svg&gt;</span>
+    <span class="t-tag">&lt;span&gt;</span>Search<span class="t-tag">&lt;/span&gt;</span>
+  <span class="t-tag">&lt;/a&gt;</span>
+<span class="t-tag">&lt;/nav&gt;</span></pre>
+        </div>
+      </div>
+
+      <!-- Sidebar -->
+      <div class="docs-section" id="side">
+        <h2 class="docs-section-title">air-side — sidebar navigation</h2>
+        <div class="docs-demo">
+          <div class="docs-code-header"><span class="docs-code-lang">HTML</span><button class="docs-copy-btn">Copy</button></div>
+          <pre class="docs-code-block"><span class="t-tag">&lt;nav</span> <span class="t-attr">class</span>=<span class="t-val">"air-side ace"</span><span class="t-tag">&gt;</span>
+  <span class="t-tag">&lt;a</span> <span class="t-attr">href</span>=<span class="t-val">"#"</span> <span class="t-attr">class</span>=<span class="t-val">"mark"</span><span class="t-tag">&gt;</span>AirUI<span class="t-tag">&lt;/a&gt;</span>       <span class="t-dim">brand</span>
+  <span class="t-tag">&lt;span</span> <span class="t-attr">class</span>=<span class="t-val">"section"</span><span class="t-tag">&gt;</span>Main<span class="t-tag">&lt;/span&gt;</span>       <span class="t-dim">group label</span>
+  <span class="t-tag">&lt;a</span> <span class="t-attr">href</span>=<span class="t-val">"#"</span> <span class="t-attr">class</span>=<span class="t-val">"path active"</span><span class="t-tag">&gt;</span>         <span class="t-dim">active link</span>
+    <span class="t-tag">&lt;svg&gt;</span>...<span class="t-tag">&lt;/svg&gt;</span>
+    Dashboard
+  <span class="t-tag">&lt;/a&gt;</span>
+  <span class="t-tag">&lt;a</span> <span class="t-attr">href</span>=<span class="t-val">"#"</span> <span class="t-attr">class</span>=<span class="t-val">"path"</span><span class="t-tag">&gt;</span>
+    Analytics
+    <span class="t-tag">&lt;span</span> <span class="t-attr">class</span>=<span class="t-val">"tail"</span><span class="t-tag">&gt;</span>48<span class="t-tag">&lt;/span&gt;</span>          <span class="t-dim">badge count</span>
+  <span class="t-tag">&lt;/a&gt;</span>
+  <span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-val">"foot"</span><span class="t-tag">&gt;</span>...<span class="t-tag">&lt;/div&gt;</span>            <span class="t-dim">footer area</span>
+<span class="t-tag">&lt;/nav&gt;</span>
+
+<span class="t-dim">&lt;!-- Dark variant --&gt;</span>
+<span class="t-tag">&lt;nav</span> <span class="t-attr">class</span>=<span class="t-val">"air-side dark delta"</span><span class="t-tag">&gt;</span>...<span class="t-tag">&lt;/nav&gt;</span></pre>
+        </div>
+      </div>
+
+      <!-- Breadcrumb -->
+      <div class="docs-section" id="trail">
+        <h2 class="docs-section-title">air-trail — breadcrumb</h2>
+        <div class="docs-demo">
+          <div class="docs-preview">
+            <nav class="air-trail">
+              <span class="crumb"><a href="#">Home</a></span>
+              <span class="crumb"><a href="#">Components</a></span>
+              <span class="crumb active">Navigation</span>
+            </nav>
+            <nav class="air-trail arrow">
+              <span class="crumb"><a href="#">Dashboard</a></span>
+              <span class="crumb"><a href="#">Settings</a></span>
+              <span class="crumb active">Profile</span>
+            </nav>
+          </div>
+          <div class="docs-code-header"><span class="docs-code-lang">HTML</span><button class="docs-copy-btn">Copy</button></div>
+          <pre class="docs-code-block"><span class="t-dim">&lt;!-- Default: slash separator --&gt;</span>
+<span class="t-tag">&lt;nav</span> <span class="t-attr">class</span>=<span class="t-val">"air-trail"</span><span class="t-tag">&gt;</span>
+  <span class="t-tag">&lt;span</span> <span class="t-attr">class</span>=<span class="t-val">"crumb"</span><span class="t-tag">&gt;&lt;a</span> <span class="t-attr">href</span>=<span class="t-val">"#"</span><span class="t-tag">&gt;</span>Home<span class="t-tag">&lt;/a&gt;&lt;/span&gt;</span>
+  <span class="t-tag">&lt;span</span> <span class="t-attr">class</span>=<span class="t-val">"crumb active"</span><span class="t-tag">&gt;</span>Current page<span class="t-tag">&lt;/span&gt;</span>
+<span class="t-tag">&lt;/nav&gt;</span>
+
+<span class="t-dim">&lt;!-- Arrow separator --&gt;</span>
+<span class="t-tag">&lt;nav</span> <span class="t-attr">class</span>=<span class="t-val">"air-trail arrow"</span><span class="t-tag">&gt;</span>...<span class="t-tag">&lt;/nav&gt;</span></pre>
+        </div>
+      </div>
+
+      <!-- Reference table -->
+      <div class="docs-section">
+        <h2 class="docs-section-title">Class reference</h2>
+        <table class="docs-table">
+          <thead><tr><th>Class / Attribute</th><th>Element</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr><td><code>air-nav</code></td><td><code>&lt;nav&gt;</code></td><td>Sticky rail nav. Default tone: ace.</td></tr>
+            <tr><td><code>air-nav float</code></td><td><code>&lt;nav&gt;</code></td><td>Fixed pill nav, centered, hovers above content.</td></tr>
+            <tr><td><code>air-nav floor</code></td><td><code>&lt;nav&gt;</code></td><td>Bottom tab bar.</td></tr>
+            <tr><td><code>dark glass clear</code></td><td>on air-nav</td><td>Visual style modifier.</td></tr>
+            <tr><td><code>data-scroll</code></td><td>on air-nav</td><td>Auto-glassmorphism when page is scrolled.</td></tr>
+            <tr><td><code>data-indicator</code></td><td>on air-nav</td><td>Inject sliding active indicator (underline/pill).</td></tr>
+            <tr><td><code>.brand</code></td><td>inside air-nav</td><td>Logo / site name.</td></tr>
+            <tr><td><code>.links</code></td><td>inside air-nav</td><td>Nav links container (no ul/li needed).</td></tr>
+            <tr><td><code>.link</code></td><td>inside .links</td><td>Individual nav link. Add <code>.active</code>.</td></tr>
+            <tr><td><code>data-fly="id"</code></td><td>on .link</td><td>Opens dropdown <code>.fly#id</code> on hover/click.</td></tr>
+            <tr><td><code>.fly</code></td><td>inside .links</td><td>Dropdown panel. Add <code>.wide</code> for mega.</td></tr>
+            <tr><td><code>.end</code></td><td>inside air-nav</td><td>Right-side CTA area.</td></tr>
+            <tr><td><code>.menu</code></td><td>inside air-nav</td><td>Hamburger. JS auto-builds mobile panel from links.</td></tr>
+            <tr><td><code>.tab</code></td><td>inside air-nav.floor</td><td>Bottom bar tab item.</td></tr>
+            <tr><td><code>air-side</code></td><td><code>&lt;nav&gt;</code></td><td>Sidebar nav with mark/section/path/tail/foot parts.</td></tr>
+            <tr><td><code>air-trail</code></td><td><code>&lt;nav&gt;</code></td><td>Breadcrumb. Use <code>.crumb</code> + <code>.crumb.active</code>.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </main>
+</div>
+<script src="../src/js/air-nav.js"></script>
+<script src="../src/js/air-theme.js"></script>
+<script src="docs.js"></script>
+<script>if(window.innerWidth<=900)document.getElementById('docs-menu-btn').style.display='flex';</script>
+</body>
+</html>

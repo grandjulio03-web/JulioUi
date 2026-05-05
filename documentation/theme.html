@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Light / Dark Theme — Air Framework</title>
+  <script>try{var t=localStorage.getItem('air-theme');if(t)document.documentElement.setAttribute('data-theme',t);else if(window.matchMedia('(prefers-color-scheme: dark)').matches)document.documentElement.setAttribute('data-theme','dark');}catch(e){}</script>
+  <link rel="stylesheet" href="../dist/my-framework.css">
+  <link rel="stylesheet" href="docs.css">
+</head>
+<body>
+<div class="docs-shell">
+  <aside class="docs-sidebar" id="docs-sidebar-container"></aside>
+  <main class="docs-main">
+    <div class="docs-topbar">
+      <button id="docs-menu-btn" class="air-theme-btn" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+      <nav class="air-trail" style="flex:1; padding-left:0.5rem;"><span class="crumb"><a href="index.html">Docs</a></span><span class="crumb active">Light / Dark Theme</span></nav>
+    </div>
+    <div class="docs-content">
+
+      <h1 class="docs-page-title">Light / Dark Theme</h1>
+      <p class="docs-page-lead">One attribute on <code>&lt;html&gt;</code>. Every component switches automatically. System preference detected. Preference saved. Zero flash.</p>
+
+      <div class="docs-demo">
+        <div class="docs-preview" style="justify-content:center; gap:1rem;">
+          <button class="air-btn ace" onclick="Air.theme.set('light')">Force light</button>
+          <button class="air-theme-btn" data-theme-toggle style="width:auto; padding:0 1rem; border-radius:0.75rem; gap:0.5rem; font-size:0.85rem; font-weight:600; color:var(--air-500);">
+            <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+            <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/></svg>
+            Toggle theme
+          </button>
+          <button class="air-btn epsilon" onclick="Air.theme.set('dark')">Force dark</button>
+        </div>
+      </div>
+
+      <!-- How it works -->
+      <div class="docs-section">
+        <h2 class="docs-section-title">How it works</h2>
+        <p class="docs-section-desc">Air uses CSS custom properties for all colors. Dark mode overrides those properties at <code>[data-theme="dark"]</code> on the root element. All components automatically follow.</p>
+        <div class="docs-demo">
+          <div class="docs-code-header"><span class="docs-code-lang">CSS mechanism</span></div>
+          <pre class="docs-code-block"><span class="t-dim">/* Light mode (default) */</span>
+<span class="t-sel">:root</span> {
+  <span class="t-prop">--air-white</span>: <span class="t-val">#ffffff</span>;
+  <span class="t-prop">--air-900</span>: <span class="t-val">#111827</span>;
+  <span class="t-prop">--air-200</span>: <span class="t-val">#e4e8ec</span>;
+  <span class="t-dim">/* ... all tokens ... */</span>
+}
+
+<span class="t-dim">/* Dark mode — override same tokens */</span>
+<span class="t-sel">[data-theme="dark"]</span> {
+  <span class="t-prop">--air-white</span>: <span class="t-val">#111b0f</span>;  <span class="t-dim">/* dark background */</span>
+  <span class="t-prop">--air-900</span>: <span class="t-val">#edf8eb</span>;   <span class="t-dim">/* light text */</span>
+  <span class="t-prop">--air-200</span>: <span class="t-val">#263821</span>;  <span class="t-dim">/* dark borders */</span>
+}
+
+<span class="t-dim">/* Components use the tokens — no changes needed */</span>
+<span class="t-sel">.air-card</span> {
+  <span class="t-prop">background</span>: <span class="t-val">var(--air-white)</span>;  <span class="t-dim">/* auto-switches */</span>
+  <span class="t-prop">border</span>: <span class="t-val">1px solid var(--air-200)</span>; <span class="t-dim">/* auto-switches */</span>
+}</pre>
+        </div>
+      </div>
+
+      <!-- Setup -->
+      <div class="docs-section">
+        <h2 class="docs-section-title">Setup</h2>
+        <div class="docs-demo">
+          <div class="docs-code-header"><span class="docs-code-lang">HTML — complete setup</span><button class="docs-copy-btn">Copy</button></div>
+          <pre class="docs-code-block"><span class="t-tag">&lt;html</span> <span class="t-attr">lang</span>=<span class="t-val">"en"</span><span class="t-tag">&gt;</span>
+<span class="t-tag">&lt;head&gt;</span>
+  <span class="t-dim">&lt;!-- 1. Flash prevention — BEFORE the CSS link --&gt;</span>
+  <span class="t-tag">&lt;script&gt;</span>
+    try {
+      var t = localStorage.getItem(<span class="t-val">'air-theme'</span>);
+      if (t) document.documentElement.setAttribute(<span class="t-val">'data-theme'</span>, t);
+      else if (window.matchMedia(<span class="t-val">'(prefers-color-scheme: dark)'</span>).matches)
+        document.documentElement.setAttribute(<span class="t-val">'data-theme'</span>, <span class="t-val">'dark'</span>);
+    } catch(e) {}
+  <span class="t-tag">&lt;/script&gt;</span>
+
+  <span class="t-dim">&lt;!-- 2. CSS --&gt;</span>
+  <span class="t-tag">&lt;link</span> <span class="t-attr">rel</span>=<span class="t-val">"stylesheet"</span> <span class="t-attr">href</span>=<span class="t-val">"dist/my-framework.css"</span><span class="t-tag">&gt;</span>
+<span class="t-tag">&lt;/head&gt;</span>
+<span class="t-tag">&lt;body&gt;</span>
+  <span class="t-dim">&lt;!-- 3. Toggle button (put anywhere) --&gt;</span>
+  <span class="t-tag">&lt;button</span> <span class="t-attr">class</span>=<span class="t-val">"air-theme-btn"</span> <span class="t-kw">data-theme-toggle</span><span class="t-tag">&gt;</span>
+    <span class="t-tag">&lt;svg</span> <span class="t-attr">class</span>=<span class="t-val">"icon-moon"</span><span class="t-tag">&gt;</span>...<span class="t-tag">&lt;/svg&gt;</span>  <span class="t-dim">shown in light mode</span>
+    <span class="t-tag">&lt;svg</span> <span class="t-attr">class</span>=<span class="t-val">"icon-sun"</span><span class="t-tag">&gt;</span>...<span class="t-tag">&lt;/svg&gt;</span>   <span class="t-dim">shown in dark mode</span>
+  <span class="t-tag">&lt;/button&gt;</span>
+
+  <span class="t-dim">&lt;!-- 4. JS at bottom --&gt;</span>
+  <span class="t-tag">&lt;script</span> <span class="t-attr">src</span>=<span class="t-val">"src/js/air-theme.js"</span><span class="t-tag">&gt;&lt;/script&gt;</span>
+<span class="t-tag">&lt;/body&gt;</span></pre>
+        </div>
+      </div>
+
+      <!-- Toggle button -->
+      <div class="docs-section">
+        <h2 class="docs-section-title">Toggle button — air-theme-btn</h2>
+        <p class="docs-section-desc">The <code>.air-theme-btn</code> class styles a toggle button. The <code>data-theme-toggle</code> attribute wires it to the JS engine. Put it anywhere — nav, sidebar, settings page.</p>
+        <div class="docs-demo">
+          <div class="docs-preview" style="gap:1rem;">
+            <button class="air-theme-btn" data-theme-toggle>
+              <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+              <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+            </button>
+          </div>
+          <div class="docs-code-header"><span class="docs-code-lang">HTML</span><button class="docs-copy-btn">Copy</button></div>
+          <pre class="docs-code-block"><span class="t-tag">&lt;button</span> <span class="t-attr">class</span>=<span class="t-val">"air-theme-btn"</span> <span class="t-kw">data-theme-toggle</span><span class="t-tag">&gt;</span>
+  <span class="t-dim">&lt;!-- Moon icon: shown in light mode --&gt;</span>
+  <span class="t-tag">&lt;svg</span> <span class="t-attr">class</span>=<span class="t-val">"icon-moon"</span> <span class="t-attr">viewBox</span>=<span class="t-val">"0 0 24 24"</span> <span class="t-attr">fill</span>=<span class="t-val">"none"</span> <span class="t-attr">stroke</span>=<span class="t-val">"currentColor"</span> <span class="t-attr">stroke-width</span>=<span class="t-val">"2"</span><span class="t-tag">&gt;</span>
+    <span class="t-tag">&lt;path</span> <span class="t-attr">d</span>=<span class="t-val">"M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"</span><span class="t-tag">/&gt;</span>
+  <span class="t-tag">&lt;/svg&gt;</span>
+  <span class="t-dim">&lt;!-- Sun icon: shown in dark mode --&gt;</span>
+  <span class="t-tag">&lt;svg</span> <span class="t-attr">class</span>=<span class="t-val">"icon-sun"</span> <span class="t-attr">viewBox</span>=<span class="t-val">"0 0 24 24"</span> <span class="t-attr">fill</span>=<span class="t-val">"none"</span> <span class="t-attr">stroke</span>=<span class="t-val">"currentColor"</span> <span class="t-attr">stroke-width</span>=<span class="t-val">"2"</span><span class="t-tag">&gt;</span>
+    <span class="t-tag">&lt;circle</span> <span class="t-attr">cx</span>=<span class="t-val">"12"</span> <span class="t-attr">cy</span>=<span class="t-val">"12"</span> <span class="t-attr">r</span>=<span class="t-val">"5"</span><span class="t-tag">/&gt;</span>
+    <span class="t-tag">&lt;line</span> <span class="t-attr">x1</span>=<span class="t-val">"12"</span> <span class="t-attr">y1</span>=<span class="t-val">"1"</span> <span class="t-attr">x2</span>=<span class="t-val">"12"</span> <span class="t-attr">y2</span>=<span class="t-val">"3"</span><span class="t-tag">/&gt;</span> <span class="t-dim">...rays</span>
+  <span class="t-tag">&lt;/svg&gt;</span>
+<span class="t-tag">&lt;/button&gt;</span></pre>
+        </div>
+      </div>
+
+      <!-- JS API -->
+      <div class="docs-section">
+        <h2 class="docs-section-title">JavaScript API</h2>
+        <div class="docs-demo">
+          <div class="docs-code-header"><span class="docs-code-lang">JavaScript</span><button class="docs-copy-btn">Copy</button></div>
+          <pre class="docs-code-block">Air.theme.toggle()           <span class="t-dim">// switch between light and dark</span>
+Air.theme.set(<span class="t-val">'dark'</span>)         <span class="t-dim">// force dark</span>
+Air.theme.set(<span class="t-val">'light'</span>)        <span class="t-dim">// force light</span>
+Air.theme.get()              <span class="t-dim">// returns 'dark' | 'light'</span>
+
+<span class="t-dim">// Subscribe to theme changes</span>
+Air.theme.onChange(function(theme) {
+  console.log(<span class="t-val">'Theme is now:'</span>, theme);
+  <span class="t-dim">// Update charts, third-party widgets, etc.</span>
+});</pre>
+        </div>
+      </div>
+
+      <!-- Dark color scale -->
+      <div class="docs-section">
+        <h2 class="docs-section-title">Dark mode neutral scale</h2>
+        <p class="docs-section-desc">All neutrals are green-tinted in dark mode to complement Air's epsilon (void) color palette.</p>
+        <table class="docs-table">
+          <thead><tr><th>Token</th><th>Light</th><th>Dark</th><th>Use</th></tr></thead>
+          <tbody>
+            <tr><td><code>--air-white</code></td><td>#ffffff</td><td>#111b0f</td><td>Page background</td></tr>
+            <tr><td><code>--air-50</code></td><td>#f8fafb</td><td>#151f12</td><td>Subtle background</td></tr>
+            <tr><td><code>--air-100</code></td><td>#f1f4f6</td><td>#1c2a19</td><td>Input background</td></tr>
+            <tr><td><code>--air-200</code></td><td>#e4e8ec</td><td>#263821</td><td>Borders</td></tr>
+            <tr><td><code>--air-400</code></td><td>#9ca3af</td><td>#5e7858</td><td>Placeholder / muted</td></tr>
+            <tr><td><code>--air-600</code></td><td>#4b5563</td><td>#adc5a7</td><td>Body text</td></tr>
+            <tr><td><code>--air-800</code></td><td>#1f2937</td><td>#dff1dd</td><td>Primary text</td></tr>
+            <tr><td><code>--air-900</code></td><td>#111827</td><td>#edf8eb</td><td>Headings</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </main>
+</div>
+<script src="../src/js/air-theme.js"></script>
+<script src="docs.js"></script>
+<script>if(window.innerWidth<=900)document.getElementById('docs-menu-btn').style.display='flex';</script>
+</body>
+</html>

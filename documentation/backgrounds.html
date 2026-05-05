@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Backgrounds — Air Framework</title>
+  <script>try{var t=localStorage.getItem('air-theme');if(t)document.documentElement.setAttribute('data-theme',t);else if(window.matchMedia('(prefers-color-scheme: dark)').matches)document.documentElement.setAttribute('data-theme','dark');}catch(e){}</script>
+  <link rel="stylesheet" href="../dist/my-framework.css">
+  <link rel="stylesheet" href="docs.css">
+  <style>
+    .bg-swatch { border-radius:1rem; min-height:140px; display:flex; align-items:flex-end; padding:1rem; position:relative; overflow:hidden; }
+    .bg-label  { font-family:var(--air-font-mono); font-size:0.75rem; background:rgba(0,0,0,0.35); color:rgba(255,255,255,0.9); padding:0.25rem 0.6rem; border-radius:0.35rem; backdrop-filter:blur(6px); position:relative; z-index:2; }
+  </style>
+</head>
+<body>
+<div class="docs-shell">
+  <aside class="docs-sidebar" id="docs-sidebar-container"></aside>
+  <main class="docs-main">
+    <div class="docs-topbar">
+      <button id="docs-menu-btn" class="air-theme-btn" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+      <nav class="air-trail" style="flex:1; padding-left:0.5rem;"><span class="crumb"><a href="index.html">Docs</a></span><span class="crumb active">Backgrounds</span></nav>
+    </div>
+    <div class="docs-content">
+
+      <h1 class="docs-page-title">Backgrounds</h1>
+      <p class="docs-page-lead">The feature Bootstrap and Tailwind don't ship. Mesh gradients, aurora, glow, noise, dots, grid, beam — all pure CSS, one class. No JS.</p>
+
+      <div class="docs-callout">
+        <div><strong>Pattern:</strong> <code>air-bg [style] [tone?]</code> — the <code>air-bg</code> class sets <code>position:relative; overflow:hidden</code>. All children need <code>position:relative; z-index:1</code> to appear above pseudo-element layers.</div>
+      </div>
+
+      <!-- Mesh -->
+      <div class="docs-section">
+        <h2 class="docs-section-title">Mesh — animated blob gradients</h2>
+        <p class="docs-section-desc">Radial gradient blobs that drift slowly. Best for hero sections and landing pages.</p>
+        <div class="docs-demo">
+          <div class="docs-preview" style="padding:0;">
+            <div class="air-bg mesh" style="width:100%; min-height:200px; display:flex; align-items:center; justify-content:center;">
+              <div style="position:relative; z-index:2; text-align:center;">
+                <h2 style="font-size:1.5rem; font-weight:800; letter-spacing:-0.02em; color:var(--air-900);">Animated mesh gradient</h2>
+                <p style="color:var(--air-500); font-size:0.9rem; margin-top:0.35rem;">Pure CSS background-size animation</p>
+              </div>
+            </div>
+          </div>
+          <div class="docs-code-header"><span class="docs-code-lang">HTML</span><button class="docs-copy-btn">Copy</button></div>
+          <pre class="docs-code-block"><span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-val">"air-bg mesh"</span><span class="t-tag">&gt;</span>
+  <span class="t-dim">&lt;!-- children need position:relative; z-index:1 --&gt;</span>
+  <span class="t-tag">&lt;div</span> <span class="t-attr">style</span>=<span class="t-val">"position:relative; z-index:1;"</span><span class="t-tag">&gt;</span>Content<span class="t-tag">&lt;/div&gt;</span>
+<span class="t-tag">&lt;/div&gt;</span></pre>
+        </div>
+      </div>
+
+      <!-- Aurora -->
+      <div class="docs-section">
+        <h2 class="docs-section-title">Aurora — northern lights</h2>
+        <p class="docs-section-desc">Layered conic gradients with blur, rotating continuously. Best for dark hero sections.</p>
+        <div class="docs-demo">
+          <div class="docs-preview" style="padding:0;">
+            <div class="air-bg aurora" style="width:100%; min-height:220px; display:flex; align-items:center; justify-content:center;">
+              <div style="position:relative;z-index:2;text-align:center;">
+                <h2 style="color:#fff; font-size:1.5rem; font-weight:800; letter-spacing:-0.02em;">Northern Lights</h2>
+                <p style="color:rgba(255,255,255,0.6); font-size:0.9rem; margin-top:0.35rem;">Conic gradient layers, rotating on loop</p>
+              </div>
+            </div>
+          </div>
+          <div class="docs-code-header"><span class="docs-code-lang">HTML</span><button class="docs-copy-btn">Copy</button></div>
+          <pre class="docs-code-block"><span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-val">"air-bg aurora"</span><span class="t-tag">&gt;</span>...<span class="t-tag">&lt;/div&gt;</span></pre>
+        </div>
+      </div>
+
+      <!-- Glow -->
+      <div class="docs-section">
+        <h2 class="docs-section-title">Glow — radial color pulse</h2>
+        <p class="docs-section-desc">Centered radial glow with a pulsing animation. Available in all 4 tones.</p>
+        <div class="docs-demo">
+          <div class="docs-preview" style="flex-wrap:wrap; gap:0.75rem;">
+            <div class="air-bg glow ace" style="flex:1; min-width:140px; min-height:100px; border-radius:0.75rem;"><span class="bg-label" style="background:rgba(74,143,192,0.6);">glow ace</span></div>
+            <div class="air-bg glow beta" style="flex:1; min-width:140px; min-height:100px; border-radius:0.75rem;"><span class="bg-label" style="background:rgba(184,58,114,0.6);">glow beta</span></div>
+            <div class="air-bg glow gamma" style="flex:1; min-width:140px; min-height:100px; border-radius:0.75rem;"><span class="bg-label" style="background:rgba(217,110,42,0.6);">glow gamma</span></div>
+            <div class="air-bg glow delta" style="flex:1; min-width:140px; min-height:100px; border-radius:0.75rem;"><span class="bg-label" style="background:rgba(68,168,128,0.6);">glow delta</span></div>
+          </div>
+          <div class="docs-code-header"><span class="docs-code-lang">HTML</span><button class="docs-copy-btn">Copy</button></div>
+          <pre class="docs-code-block"><span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-val">"air-bg glow ace"</span><span class="t-tag">&gt;</span>...<span class="t-tag">&lt;/div&gt;</span>
+<span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-val">"air-bg glow beta"</span><span class="t-tag">&gt;</span>...<span class="t-tag">&lt;/div&gt;</span></pre>
+        </div>
+      </div>
+
+      <!-- Patterns -->
+      <div class="docs-section">
+        <h2 class="docs-section-title">Dots & Grid — pattern backgrounds</h2>
+        <div class="docs-demo">
+          <div class="docs-preview" style="flex-wrap:wrap; gap:0.75rem;">
+            <div class="air-bg dots" style="flex:1;min-width:130px;min-height:80px;border-radius:0.75rem;"></div>
+            <div class="air-bg dots dark" style="flex:1;min-width:130px;min-height:80px;border-radius:0.75rem;"></div>
+            <div class="air-bg grid" style="flex:1;min-width:130px;min-height:80px;border-radius:0.75rem;"></div>
+            <div class="air-bg grid dark" style="flex:1;min-width:130px;min-height:80px;border-radius:0.75rem;"></div>
+          </div>
+          <div class="docs-code-header"><span class="docs-code-lang">HTML</span><button class="docs-copy-btn">Copy</button></div>
+          <pre class="docs-code-block"><span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-val">"air-bg dots"</span><span class="t-tag">&gt;</span>...<span class="t-tag">&lt;/div&gt;</span>        <span class="t-dim">light dots</span>
+<span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-val">"air-bg dots dark"</span><span class="t-tag">&gt;</span>...<span class="t-tag">&lt;/div&gt;</span>   <span class="t-dim">dark dots</span>
+<span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-val">"air-bg dots sm"</span><span class="t-tag">&gt;</span>...<span class="t-tag">&lt;/div&gt;</span>    <span class="t-dim">small dots</span>
+<span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-val">"air-bg grid"</span><span class="t-tag">&gt;</span>...<span class="t-tag">&lt;/div&gt;</span>        <span class="t-dim">line grid</span>
+<span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-val">"air-bg grid dark"</span><span class="t-tag">&gt;</span>...<span class="t-tag">&lt;/div&gt;</span>   <span class="t-dim">dark grid</span></pre>
+        </div>
+      </div>
+
+      <!-- Beam -->
+      <div class="docs-section">
+        <h2 class="docs-section-title">Beam — sweeping light (hover to trigger)</h2>
+        <div class="docs-demo">
+          <div class="docs-preview">
+            <div class="air-bg beam ace" style="width:100%; min-height:100px; border-radius:0.75rem; cursor:pointer; display:flex; align-items:center; justify-content:center;">
+              <span style="font-weight:600; color:var(--air-700); position:relative; z-index:2;">Hover me — beam sweeps</span>
+            </div>
+            <div class="air-bg beam gamma beam-loop" style="width:100%; min-height:100px; border-radius:0.75rem; background:#fdf4ef; display:flex; align-items:center; justify-content:center;">
+              <span style="font-weight:600; color:var(--air-700); position:relative; z-index:2;">Continuous loop (.beam-loop)</span>
+            </div>
+          </div>
+          <div class="docs-code-header"><span class="docs-code-lang">HTML</span><button class="docs-copy-btn">Copy</button></div>
+          <pre class="docs-code-block"><span class="t-dim">&lt;!-- Triggers once on hover --&gt;</span>
+<span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-val">"air-bg beam ace"</span><span class="t-tag">&gt;</span>...<span class="t-tag">&lt;/div&gt;</span>
+
+<span class="t-dim">&lt;!-- Continuous loop --&gt;</span>
+<span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-val">"air-bg beam gamma beam-loop"</span><span class="t-tag">&gt;</span>...<span class="t-tag">&lt;/div&gt;</span></pre>
+        </div>
+      </div>
+
+      <!-- Dark / Frost / Gradient -->
+      <div class="docs-section">
+        <h2 class="docs-section-title">Dark, Void, Frost, Gradients</h2>
+        <div class="docs-demo">
+          <div class="docs-preview" style="flex-wrap:wrap; gap:0.75rem;">
+            <div class="air-bg dark" style="flex:1; min-width:130px; min-height:80px; border-radius:0.75rem; display:flex; align-items:center; justify-content:center;"><span style="color:rgba(255,255,255,0.6); font-size:0.75rem;">dark</span></div>
+            <div class="air-bg void" style="flex:1; min-width:130px; min-height:80px; border-radius:0.75rem; display:flex; align-items:center; justify-content:center;"><span style="color:rgba(255,255,255,0.5); font-size:0.75rem;">void</span></div>
+            <div class="air-bg grad-sunset" style="flex:1; min-width:130px; min-height:80px; border-radius:0.75rem; display:flex; align-items:center; justify-content:center;"><span style="color:rgba(255,255,255,0.9); font-size:0.75rem;">grad-sunset</span></div>
+            <div class="air-bg grad-ocean" style="flex:1; min-width:130px; min-height:80px; border-radius:0.75rem; display:flex; align-items:center; justify-content:center;"><span style="color:rgba(255,255,255,0.9); font-size:0.75rem;">grad-ocean</span></div>
+            <div class="air-bg grad-neon" style="flex:1; min-width:130px; min-height:80px; border-radius:0.75rem; display:flex; align-items:center; justify-content:center;"><span style="color:rgba(255,255,255,0.8); font-size:0.75rem;">grad-neon</span></div>
+            <div class="air-bg stripe" style="flex:1; min-width:130px; min-height:80px; border-radius:0.75rem; display:flex; align-items:center; justify-content:center;"><span style="font-size:0.75rem; color:var(--air-500);">stripe</span></div>
+          </div>
+          <div class="docs-code-header"><span class="docs-code-lang">HTML</span><button class="docs-copy-btn">Copy</button></div>
+          <pre class="docs-code-block"><span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-val">"air-bg dark"</span><span class="t-tag">&gt;</span>...<span class="t-tag">&lt;/div&gt;</span>          <span class="t-dim">rich dark green</span>
+<span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-val">"air-bg void"</span><span class="t-tag">&gt;</span>...<span class="t-tag">&lt;/div&gt;</span>          <span class="t-dim">near-black</span>
+<span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-val">"air-bg frost"</span><span class="t-tag">&gt;</span>...<span class="t-tag">&lt;/div&gt;</span>         <span class="t-dim">frosted glass</span>
+<span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-val">"air-bg grad-sky"</span><span class="t-tag">&gt;</span>...<span class="t-tag">&lt;/div&gt;</span>     <span class="t-dim">ace gradient</span>
+<span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-val">"air-bg grad-sunset"</span><span class="t-tag">&gt;</span>...<span class="t-tag">&lt;/div&gt;</span>  <span class="t-dim">beta→gamma</span>
+<span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-val">"air-bg grad-ocean"</span><span class="t-tag">&gt;</span>...<span class="t-tag">&lt;/div&gt;</span>   <span class="t-dim">deep blue→teal</span>
+<span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-val">"air-bg grad-neon"</span><span class="t-tag">&gt;</span>...<span class="t-tag">&lt;/div&gt;</span>    <span class="t-dim">dark + glows</span>
+<span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-val">"air-bg stripe"</span><span class="t-tag">&gt;</span>...<span class="t-tag">&lt;/div&gt;</span>       <span class="t-dim">diagonal lines</span></pre>
+        </div>
+      </div>
+
+      <!-- Reference -->
+      <div class="docs-section">
+        <h2 class="docs-section-title">All background classes</h2>
+        <table class="docs-table">
+          <thead><tr><th>Class</th><th>Description</th><th>Animated</th></tr></thead>
+          <tbody>
+            <tr><td><code>air-bg mesh</code></td><td>4-color radial gradient blob, background-size drift</td><td>Yes</td></tr>
+            <tr><td><code>air-bg aurora</code></td><td>Layered conic gradients, rotating</td><td>Yes</td></tr>
+            <tr><td><code>air-bg glow [tone]</code></td><td>Radial color glow + pulse</td><td>Yes</td></tr>
+            <tr><td><code>air-bg noise</code></td><td>SVG turbulence grain texture overlay</td><td>Yes</td></tr>
+            <tr><td><code>air-bg dots [sm|lg|dark]</code></td><td>Polka dot grid pattern</td><td>No</td></tr>
+            <tr><td><code>air-bg grid [sm|lg|dark]</code></td><td>Line grid pattern</td><td>No</td></tr>
+            <tr><td><code>air-bg beam [tone] [beam-loop]</code></td><td>Light beam sweep on hover / loop</td><td>Hover / loop</td></tr>
+            <tr><td><code>air-bg dark</code></td><td>Rich dark gradient</td><td>No</td></tr>
+            <tr><td><code>air-bg void</code></td><td>Near-black deep space</td><td>No</td></tr>
+            <tr><td><code>air-bg frost [dark]</code></td><td>Frosted glass (backdrop-filter)</td><td>No</td></tr>
+            <tr><td><code>air-bg surface</code></td><td>Clean white→light gradient</td><td>No</td></tr>
+            <tr><td><code>air-bg stripe</code></td><td>Diagonal stripe pattern</td><td>No</td></tr>
+            <tr><td><code>air-bg grad-sky|rose|ember|sage</code></td><td>Single-tone fade gradients</td><td>No</td></tr>
+            <tr><td><code>air-bg grad-sunset|ocean|neon</code></td><td>Multi-tone editorial gradients</td><td>No</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </main>
+</div>
+<script src="../src/js/air-theme.js"></script>
+<script src="docs.js"></script>
+<script>if(window.innerWidth<=900)document.getElementById('docs-menu-btn').style.display='flex';</script>
+</body>
+</html>

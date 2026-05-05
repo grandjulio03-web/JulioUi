@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Air — Light & Dark Theme</title>
+  <!-- Load theme BEFORE css to prevent flash -->
+  <script>
+    try {
+      var saved = localStorage.getItem('air-theme');
+      if (saved) document.documentElement.setAttribute('data-theme', saved);
+      else if (window.matchMedia('(prefers-color-scheme: dark)').matches)
+        document.documentElement.setAttribute('data-theme', 'dark');
+    } catch(e) {}
+  </script>
+  <link rel="stylesheet" href="../../dist/my-framework.css">
+  <style>
+    body { font-family: var(--air-font); background: var(--air-white); color: var(--air-800); min-height: 100vh; transition: background var(--air-t-slow), color var(--air-t-slow); }
+    .page { max-width: 1100px; margin: 0 auto; padding: 0 1.5rem 6rem; }
+    .s { margin-bottom: 3.5rem; }
+    .s-title { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--air-400); margin-bottom: 1.25rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--air-200); }
+    code { font-family: var(--air-font-mono); font-size: 0.82em; background: var(--air-100); padding: 0.15em 0.45em; border-radius: 0.25rem; border: 1px solid var(--air-200); color: var(--air-beta); }
+  </style>
+</head>
+<body>
+
+<!-- TOP NAV with theme toggle -->
+<nav class="air-nav ace" data-scroll data-indicator>
+  <a href="#" class="brand">
+    <div class="air-nav-logo-icon">A</div>
+    AirUI
+  </a>
+  <div class="links">
+    <a href="#" class="link active">Theme Demo</a>
+    <a href="#" class="link">Components</a>
+    <a href="#" class="link">Docs</a>
+  </div>
+  <div class="end">
+    <!-- Theme toggle button -->
+    <button class="air-theme-btn" data-theme-toggle aria-label="Toggle dark mode">
+      <svg class="icon-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg class="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+    </button>
+    <a href="#" class="air-btn ace ghost sm">Login</a>
+    <a href="#" class="air-btn ace sm">Start free</a>
+  </div>
+  <button class="menu" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<div class="page">
+
+  <!-- Header -->
+  <div style="padding: 3rem 0 2rem;">
+    <span class="air-kicker dotted">Air Framework</span>
+    <h1 class="air-display" style="margin-top:0.4rem; font-size:clamp(2rem,5vw,3rem);">Light & Dark Theme</h1>
+    <p class="air-lead">One toggle. Every component switches. CSS custom properties cascade from <code>&lt;html data-theme="dark"&gt;</code>. Preference saved to localStorage. System preference auto-detected.</p>
+
+    <!-- Big toggle demo -->
+    <div style="margin-top:2rem; display:flex; align-items:center; gap:1.5rem; flex-wrap:wrap;">
+      <button class="air-btn ace lg" data-theme-toggle>Toggle theme</button>
+      <button class="air-btn ace ghost lg" onclick="Air.theme.set('light')">Force light</button>
+      <button class="air-btn epsilon lg" onclick="Air.theme.set('dark')">Force dark</button>
+      <span id="theme-status" class="air-badge ace soft" style="font-size:0.85rem; padding:0.4em 1em; letter-spacing:0; text-transform:none; font-weight:600;">Current: light</span>
+    </div>
+  </div>
+
+  <!-- ===== HOW IT WORKS ===== -->
+  <div class="s">
+    <div class="s-title">How it works — three steps</div>
+    <div class="air-grid cols-3 gap-4">
+      <div class="air-card ace bar">
+        <div class="air-card-body">
+          <span class="air-card-kicker">Step 1</span>
+          <h3 class="air-card-title">Custom properties cascade</h3>
+          <p class="air-card-content">All Air colors are CSS custom properties. Dark mode overrides them at <code>[data-theme="dark"]</code> on <code>&lt;html&gt;</code>.</p>
+        </div>
+      </div>
+      <div class="air-card beta bar">
+        <div class="air-card-body">
+          <span class="air-card-kicker">Step 2</span>
+          <h3 class="air-card-title">Zero class changes on components</h3>
+          <p class="air-card-content">You never touch component markup. Toggle one attribute on the root, every card, input, nav, badge switches instantly.</p>
+        </div>
+      </div>
+      <div class="air-card delta bar">
+        <div class="air-card-body">
+          <span class="air-card-kicker">Step 3</span>
+          <h3 class="air-card-title">System preference + localStorage</h3>
+          <p class="air-card-content">On first visit, reads <code>prefers-color-scheme</code>. After user toggles, preference is saved. No flash on next load.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== COMPONENTS IN BOTH THEMES ===== -->
+  <div class="s">
+    <div class="s-title">All components respond — toggle the theme to see</div>
+
+    <!-- Buttons -->
+    <p style="font-size:0.78rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--air-400); margin-bottom:0.65rem;">Buttons</p>
+    <div class="shelf" style="flex-wrap:wrap; gap:0.65rem; margin-bottom:2rem;">
+      <button class="air-btn ace">Ace solid</button>
+      <button class="air-btn ace ghost">Ghost</button>
+      <button class="air-btn ace soft">Soft</button>
+      <button class="air-btn ace glow">Glow</button>
+      <button class="air-btn ace glass">Glass</button>
+      <button class="air-btn beta">Beta</button>
+      <button class="air-btn delta">Delta</button>
+      <button class="air-btn epsilon">Epsilon</button>
+    </div>
+
+    <!-- Inputs -->
+    <p style="font-size:0.78rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--air-400); margin-bottom:0.65rem;">Forms</p>
+    <div class="air-grid cols-2 gap-4" style="margin-bottom:2rem;">
+      <div class="air-field">
+        <label class="air-label">Name</label>
+        <input type="text" class="air-input ace" placeholder="Enter name">
+      </div>
+      <div class="air-field">
+        <label class="air-label">Category</label>
+        <select class="air-select ace"><option>Design</option><option>Development</option></select>
+      </div>
+      <div>
+        <label class="air-toggle ace"><input type="checkbox" checked><span class="air-toggle-track"><span class="air-toggle-thumb"></span></span>Toggle</label>
+      </div>
+      <div>
+        <label class="air-check ace"><input type="checkbox" checked><span class="air-check-box"></span>Checkbox</label>
+      </div>
+    </div>
+
+    <!-- Cards -->
+    <p style="font-size:0.78rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--air-400); margin-bottom:0.65rem;">Cards</p>
+    <div class="air-grid cols-auto gap-4" style="margin-bottom:2rem;">
+      <div class="air-card ace bar lift">
+        <div class="air-card-body">
+          <span class="air-card-kicker">Card</span>
+          <h3 class="air-card-title">Ace card</h3>
+          <p class="air-card-content">Background, borders, text — all switch with theme.</p>
+        </div>
+      </div>
+      <div class="air-card beta bar lift">
+        <div class="air-card-body">
+          <span class="air-card-kicker">Card</span>
+          <h3 class="air-card-title">Beta card</h3>
+          <p class="air-card-content">Same component class, different visual result.</p>
+        </div>
+      </div>
+      <div class="air-card delta bar lift">
+        <div class="air-card-body">
+          <span class="air-card-kicker">Card</span>
+          <h3 class="air-card-title">Delta card</h3>
+          <p class="air-card-content">Zero markup changes needed for dark mode.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Badges + Alerts -->
+    <p style="font-size:0.78rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--air-400); margin-bottom:0.65rem;">Badges & Alerts</p>
+    <div class="shelf" style="flex-wrap:wrap; gap:0.65rem; margin-bottom:1.25rem;">
+      <span class="air-badge ace">Ace</span>
+      <span class="air-badge beta soft">Beta soft</span>
+      <span class="air-badge gamma outline">Gamma outline</span>
+      <span class="air-badge delta glow">Delta glow</span>
+      <span class="air-badge ace live">Live</span>
+    </div>
+    <div class="pile" style="gap:0.75rem; margin-bottom:2rem;">
+      <div class="air-alert ace"><div class="air-alert-body"><p class="air-alert-title">Information</p><p class="air-alert-text">Alert components adapt to the theme automatically.</p></div></div>
+      <div class="air-alert delta"><div class="air-alert-body"><p class="air-alert-title">Success</p><p class="air-alert-text">All alert tones work in both light and dark mode.</p></div></div>
+    </div>
+
+    <!-- Typography -->
+    <p style="font-size:0.78rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--air-400); margin-bottom:0.65rem;">Typography</p>
+    <div class="air-card" style="padding:1.5rem; margin-bottom:2rem;">
+      <div class="air-prose">
+        <h2>Typography in dark mode</h2>
+        <p>Body text uses <code>var(--air-700)</code> which maps to the dark-tinted neutral in dark mode. Headings use <code>var(--air-900)</code> for maximum contrast.</p>
+        <blockquote>All type tokens are CSS custom properties. Toggle the theme and text naturally adapts.</blockquote>
+        <ul>
+          <li>Token-driven: no hardcoded colors</li>
+          <li>Smooth transition: 380ms ease</li>
+          <li>Neutral scale: 10 stops, green-tinted in dark</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Nav variants -->
+    <p style="font-size:0.78rem; font-weight:700; letter-spacing:0.1em; text-transform:uppercase; color:var(--air-400); margin-bottom:0.65rem;">Navigation (the top nav follows theme)</p>
+    <div class="air-note ace" style="margin-bottom:2rem;">The live nav at the top of this page uses <code>air-nav ace</code> without any explicit dark modifier. When <code>data-theme="dark"</code> is applied to <code>&lt;html&gt;</code>, the nav automatically switches via CSS custom property cascade.</div>
+  </div>
+
+  <!-- ===== MANUAL DARK CLASSES ===== -->
+  <div class="s">
+    <div class="s-title">Manual dark — pin a component to dark regardless of theme</div>
+    <div class="air-grid cols-2 gap-4">
+      <div class="air-card dark ace" style="min-height:120px;">
+        <div class="air-card-body">
+          <span class="air-card-kicker">Always dark</span>
+          <h3 class="air-card-title">air-card.dark.ace</h3>
+          <p class="air-card-content" style="color:rgba(255,255,255,0.65);">This card is pinned to dark regardless of the page theme.</p>
+        </div>
+      </div>
+      <div class="air-nav dark delta" style="position:relative; border-radius:0.75rem; padding:1rem 1.25rem;">
+        <a href="#" class="brand" style="font-size:0.9rem;">Always dark nav</a>
+        <div class="links" style="display:flex;">
+          <a href="#" class="link active" style="font-size:0.82rem;">Home</a>
+          <a href="#" class="link" style="font-size:0.82rem;">About</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== CODE ===== -->
+  <div class="s">
+    <div class="s-title">Write once, theme for free</div>
+    <div class="air-card" style="padding:0; overflow:hidden;">
+      <div style="background:#141a13; padding:1.25rem 1.5rem; overflow-x:auto;">
+        <pre style="margin:0; font-family:var(--air-font-mono); font-size:0.8rem; line-height:1.75; color:#c9d1d9;"><span style="color:rgba(255,255,255,0.35);">/* 1. Include air-theme.js (adds data-theme toggle) */</span>
+<span style="color:#72b0d7;">&lt;script</span> <span style="color:#FF8F4B;">src</span>=<span style="color:#6DC9A7;">"air-theme.js"</span><span style="color:#72b0d7;">&gt;&lt;/script&gt;</span>
+
+<span style="color:rgba(255,255,255,0.35);">/* 2. Add toggle button anywhere */</span>
+<span style="color:#72b0d7;">&lt;button</span> <span style="color:#FF8F4B;">class</span>=<span style="color:#6DC9A7;">"air-theme-btn"</span> <span style="color:#d94f8b;">data-theme-toggle</span><span style="color:#72b0d7;">&gt;</span>
+  <span style="color:#72b0d7;">&lt;svg</span> <span style="color:#FF8F4B;">class</span>=<span style="color:#6DC9A7;">"icon-moon"</span><span style="color:#72b0d7;">&gt;</span>...<span style="color:#72b0d7;">&lt;/svg&gt;</span>
+  <span style="color:#72b0d7;">&lt;svg</span> <span style="color:#FF8F4B;">class</span>=<span style="color:#6DC9A7;">"icon-sun"</span><span style="color:#72b0d7;">&gt;</span>...<span style="color:#72b0d7;">&lt;/svg&gt;</span>
+<span style="color:#72b0d7;">&lt;/button&gt;</span>
+
+<span style="color:rgba(255,255,255,0.35);">/* 3. Write components normally — no dark: prefix spam */</span>
+<span style="color:#72b0d7;">&lt;div</span> <span style="color:#FF8F4B;">class</span>=<span style="color:#6DC9A7;">"air-card ace"</span><span style="color:#72b0d7;">&gt;</span>...<span style="color:#72b0d7;">&lt;/div&gt;</span>
+
+<span style="color:rgba(255,255,255,0.35);">/* API */</span>
+Air.theme.toggle()        <span style="color:rgba(255,255,255,0.35);">// switch light/dark</span>
+Air.theme.set(<span style="color:#6DC9A7;">'dark'</span>)     <span style="color:rgba(255,255,255,0.35);">// force dark</span>
+Air.theme.get()           <span style="color:rgba(255,255,255,0.35);">// returns 'light' | 'dark'</span>
+Air.theme.onChange(fn)    <span style="color:rgba(255,255,255,0.35);">// subscribe to changes</span></pre>
+      </div>
+    </div>
+  </div>
+
+</div><!-- /page -->
+
+<script src="../../src/js/air-nav.js"></script>
+<script src="../../src/js/air-theme.js"></script>
+<script>
+  // Update status badge
+  function updateStatus() {
+    var el = document.getElementById('theme-status');
+    var t  = Air.theme.get();
+    if (el) {
+      el.textContent = 'Current: ' + t;
+      el.className = 'air-badge ' + (t === 'dark' ? 'epsilon' : 'ace') + ' soft';
+      el.style.cssText = 'font-size:0.85rem; padding:0.4em 1em; letter-spacing:0; text-transform:none; font-weight:600;';
+    }
+  }
+  Air.theme.onChange(updateStatus);
+  updateStatus();
+</script>
+</body>
+</html>

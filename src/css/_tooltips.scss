@@ -1,0 +1,209 @@
+// ============================================================
+// Air Framework -- Tooltips
+//
+// Zero extra HTML -- one attribute is all you write.
+//
+// Usage:
+//   <button data-tip="Save changes">Save</button>
+//   <span data-tip="This is a tooltip" data-tip-pos="right">hover me</span>
+//
+// Positions (data-tip-pos): top (default)  bottom  left  right
+// Sizes    (data-tip-size): sm             (default)  lg
+// Variants (data-tip-type): default  dark  ace  beta  gamma  delta
+//
+// The tooltip text lives in the data-tip attribute.
+// CSS ::before draws the bubble, ::after draws the arrow.
+// ============================================================
+
+// ── Base ─────────────────────────────────────────────────────
+[data-tip] {
+  position: relative;
+  cursor: default;
+
+  // Bubble
+  &::before {
+    content: attr(data-tip);
+    position: absolute;
+    z-index: var(--air-z-tooltip);
+    white-space: nowrap;
+    max-width: 240px;
+    white-space: normal;
+    word-break: break-word;
+
+    padding: 0.4rem 0.7rem;
+    border-radius: var(--air-r-lg);
+    background: var(--air-900);
+    color: var(--air-50);
+    font-family: var(--air-font);
+    font-size: var(--air-text-xs);
+    font-weight: 500;
+    line-height: 1.45;
+    letter-spacing: 0.01em;
+    box-shadow: var(--air-shadow-lg);
+    pointer-events: none;
+
+    // Hidden + shifted
+    opacity: 0;
+    transition:
+      opacity   var(--air-t-fast),
+      transform var(--air-t-spring);
+  }
+
+  // Arrow
+  &::after {
+    content: '';
+    position: absolute;
+    z-index: calc(var(--air-z-tooltip) + 1);
+    width: 0;
+    height: 0;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity var(--air-t-fast);
+  }
+
+  // Show on hover and focus
+  &:hover::before,
+  &:focus-visible::before,
+  &:hover::after,
+  &:focus-visible::after {
+    opacity: 1;
+  }
+}
+
+// ── Top (default) ────────────────────────────────────────────
+[data-tip]:not([data-tip-pos]),
+[data-tip][data-tip-pos="top"] {
+  &::before {
+    bottom: calc(100% + 9px);
+    left: 50%;
+    transform: translateX(-50%) translateY(4px);
+  }
+  &:hover::before, &:focus-visible::before {
+    transform: translateX(-50%) translateY(0);
+  }
+  &::after {
+    bottom: calc(100% + 4px);
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 5px solid var(--air-900);
+  }
+}
+
+// ── Bottom ───────────────────────────────────────────────────
+[data-tip][data-tip-pos="bottom"] {
+  &::before {
+    top: calc(100% + 9px);
+    left: 50%;
+    transform: translateX(-50%) translateY(-4px);
+  }
+  &:hover::before, &:focus-visible::before {
+    transform: translateX(-50%) translateY(0);
+  }
+  &::after {
+    top: calc(100% + 4px);
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-bottom: 5px solid var(--air-900);
+  }
+}
+
+// ── Left ─────────────────────────────────────────────────────
+[data-tip][data-tip-pos="left"] {
+  &::before {
+    right: calc(100% + 9px);
+    top: 50%;
+    transform: translateY(-50%) translateX(4px);
+  }
+  &:hover::before, &:focus-visible::before {
+    transform: translateY(-50%) translateX(0);
+  }
+  &::after {
+    right: calc(100% + 4px);
+    top: 50%;
+    transform: translateY(-50%);
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 5px solid var(--air-900);
+  }
+}
+
+// ── Right ────────────────────────────────────────────────────
+[data-tip][data-tip-pos="right"] {
+  &::before {
+    left: calc(100% + 9px);
+    top: 50%;
+    transform: translateY(-50%) translateX(-4px);
+  }
+  &:hover::before, &:focus-visible::before {
+    transform: translateY(-50%) translateX(0);
+  }
+  &::after {
+    left: calc(100% + 4px);
+    top: 50%;
+    transform: translateY(-50%);
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-right: 5px solid var(--air-900);
+  }
+}
+
+// ── Size: lg ─────────────────────────────────────────────────
+[data-tip][data-tip-size="lg"]::before {
+  font-size: var(--air-text-sm);
+  padding: 0.55rem 0.85rem;
+  max-width: 300px;
+}
+
+// ── Variants ─────────────────────────────────────────────────
+// Light
+[data-tip][data-tip-type="light"] {
+  &::before {
+    background: var(--air-white);
+    color: var(--air-800);
+    border: 1px solid var(--air-200);
+    box-shadow: var(--air-shadow-lg);
+  }
+  &:not([data-tip-pos]):not([data-tip-pos="bottom"])::after,
+  &[data-tip-pos="top"]::after    { border-top-color: var(--air-200); }
+  &[data-tip-pos="bottom"]::after { border-bottom-color: var(--air-200); }
+  &[data-tip-pos="left"]::after   { border-left-color: var(--air-200); }
+  &[data-tip-pos="right"]::after  { border-right-color: var(--air-200); }
+}
+
+// Tone variants
+$tip-tones: (
+  ace:   ($ace,   #fff),
+  beta:  ($beta,  #fff),
+  gamma: ($gamma, #fff),
+  delta: ($delta, #fff),
+);
+
+@each $name, $vals in $tip-tones {
+  $bg:  nth($vals, 1);
+  $fg:  nth($vals, 2);
+
+  [data-tip][data-tip-type="#{$name}"] {
+    &::before {
+      background: #{$bg};
+      color: #{$fg};
+    }
+    // arrows by position
+    &:not([data-tip-pos])::after,
+    &[data-tip-pos="top"]::after    { border-top-color: #{$bg}; }
+    &[data-tip-pos="bottom"]::after { border-bottom-color: #{$bg}; }
+    &[data-tip-pos="left"]::after   { border-left-color: #{$bg}; }
+    &[data-tip-pos="right"]::after  { border-right-color: #{$bg}; }
+  }
+}
+
+// ── Keep tooltip visible on touch devices ────────────────────
+@media (hover: none) {
+  [data-tip]:active::before,
+  [data-tip]:active::after {
+    opacity: 1;
+  }
+}

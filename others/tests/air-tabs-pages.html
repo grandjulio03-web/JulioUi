@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Air — Tabs & Pagination</title>
+  <link rel="stylesheet" href="../../dist/my-framework.css">
+  <style>
+    body { padding: 2.5rem; background: var(--air-50); font-family: var(--air-font); }
+    .s { margin-bottom: 3.5rem; }
+    .s-title { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--air-400); margin-bottom: 1.25rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--air-200); }
+    .demo-panel { padding: 1.5rem; background: var(--air-50); border-radius: 0 var(--air-r-xl) var(--air-r-xl); border: 1px solid var(--air-200); border-top: none; }
+    code { font-family: var(--air-font-mono); font-size: 0.82em; background: var(--air-100); padding: 0.15em 0.45em; border-radius: 0.25rem; border: 1px solid var(--air-200); }
+  </style>
+</head>
+<body>
+
+  <div style="margin-bottom:3rem;">
+    <span class="air-kicker dotted">Air Framework</span>
+    <h1 class="air-display" style="margin-top:0.4rem; font-size:clamp(2rem,5vw,3rem);">Tabs & Pagination</h1>
+    <p class="air-lead">Tabs switch content with keyboard navigation + ARIA. Pagination shows/hides items client-side — no server needed.</p>
+  </div>
+
+  <!-- ===== TABS: UNDERLINE (default) ===== -->
+  <div class="s">
+    <div class="s-title">Default tabs — underline indicator</div>
+    <div class="air-card" style="padding:1.5rem;">
+      <div class="air-tabs ace" data-tabs>
+        <div class="air-tabs-nav">
+          <button class="air-tab active" data-tab="t1-overview">Overview</button>
+          <button class="air-tab" data-tab="t1-features">Features <span class="tab-count">4</span></button>
+          <button class="air-tab" data-tab="t1-pricing">Pricing</button>
+          <button class="air-tab" data-tab="t1-docs">Docs</button>
+        </div>
+        <div class="air-panels">
+          <div class="air-panel active" id="t1-overview">
+            <h3 class="air-heading" style="margin-bottom:0.75rem;">Product Overview</h3>
+            <p class="air-body">The active tab content is shown. Click another tab — content switches instantly. Arrow keys also work for navigation.</p>
+            <div class="shelf" style="gap:0.75rem; margin-top:1rem; flex-wrap:wrap;">
+              <span class="air-badge ace soft dot">Online</span>
+              <span class="air-badge delta soft">Stable</span>
+              <span class="air-badge gamma glow">v2.0</span>
+            </div>
+          </div>
+          <div class="air-panel" id="t1-features">
+            <h3 class="air-heading" style="margin-bottom:0.75rem;">Features</h3>
+            <div class="air-grid cols-2 gap-3">
+              <div class="air-note ace">Sliding indicator</div>
+              <div class="air-note beta">ARIA keyboard nav</div>
+              <div class="air-note gamma">Content fade animation</div>
+              <div class="air-note delta">Tab count badges</div>
+            </div>
+          </div>
+          <div class="air-panel" id="t1-pricing">
+            <h3 class="air-heading" style="margin-bottom:0.75rem;">Pricing</h3>
+            <div class="air-grid cols-3 gap-4">
+              <div class="air-card bar ace compact"><div class="air-card-body"><span class="air-card-kicker">Free</span><p class="air-card-title">$0/mo</p></div></div>
+              <div class="air-card bar beta compact"><div class="air-card-body"><span class="air-card-kicker">Pro</span><p class="air-card-title">$12/mo</p></div></div>
+              <div class="air-card bar delta compact"><div class="air-card-body"><span class="air-card-kicker">Team</span><p class="air-card-title">$49/mo</p></div></div>
+            </div>
+          </div>
+          <div class="air-panel" id="t1-docs">
+            <h3 class="air-heading" style="margin-bottom:0.75rem;">Documentation</h3>
+            <div class="air-prose" style="max-width:none;">
+              <p>Use <code>data-tabs</code> on the <code>.air-tabs</code> wrapper. Each <code>.air-tab</code> needs <code>data-tab="panel-id"</code>. Each panel needs a matching <code>id</code>.</p>
+              <p>JS handles ARIA, keyboard navigation (arrow keys, Home, End), and fade animation between panels.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== TABS: PILLS ===== -->
+  <div class="s">
+    <div class="s-title">Pills style — segmented control look</div>
+    <div class="air-card" style="padding:1.5rem;">
+      <div class="air-tabs pills beta" data-tabs>
+        <div class="air-tabs-nav">
+          <button class="air-tab active" data-tab="t2-all">All</button>
+          <button class="air-tab" data-tab="t2-active">Active</button>
+          <button class="air-tab" data-tab="t2-draft">Draft</button>
+          <button class="air-tab" data-tab="t2-archived">Archived</button>
+        </div>
+        <div class="air-panels">
+          <div class="air-panel active" id="t2-all"><p class="air-body">All items — 24 total. The pill background slides between buttons like a real segmented control.</p></div>
+          <div class="air-panel" id="t2-active"><p class="air-body">Active items — 18 items. Tab switched successfully.</p></div>
+          <div class="air-panel" id="t2-draft"><p class="air-body">Draft items — 4 items. Content changed correctly.</p></div>
+          <div class="air-panel" id="t2-archived"><p class="air-body">Archived items — 2 items. Pagination on archived content.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== TABS: CARDS ===== -->
+  <div class="s">
+    <div class="s-title">Cards style — bordered tab buttons</div>
+    <div class="air-card" style="padding:1.5rem;">
+      <div class="air-tabs cards gamma" data-tabs>
+        <div class="air-tabs-nav">
+          <button class="air-tab active" data-tab="t3-design">Design</button>
+          <button class="air-tab" data-tab="t3-code">Code</button>
+          <button class="air-tab" data-tab="t3-preview">Preview</button>
+        </div>
+        <div class="air-panels" style="padding-top:1.25rem;">
+          <div class="air-panel active" id="t3-design"><p class="air-body">Design tab — canvas, components, tokens.</p></div>
+          <div class="air-panel" id="t3-code"><p class="air-body">Code tab — source editor, syntax highlighting.</p></div>
+          <div class="air-panel" id="t3-preview"><p class="air-body">Preview tab — live rendered output.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== TABS: FLUSH ===== -->
+  <div class="s">
+    <div class="s-title">Flush style — compact, uppercase labels</div>
+    <div class="air-card" style="padding:1.5rem;">
+      <div class="air-tabs flush delta" data-tabs>
+        <div class="air-tabs-nav">
+          <button class="air-tab active" data-tab="t4-week">Week</button>
+          <button class="air-tab" data-tab="t4-month">Month</button>
+          <button class="air-tab" data-tab="t4-year">Year</button>
+        </div>
+        <div class="air-panels">
+          <div class="air-panel active" id="t4-week"><p class="air-body" style="padding-top:0.5rem;">Weekly view — 7 days of data.</p></div>
+          <div class="air-panel" id="t4-month"><p class="air-body" style="padding-top:0.5rem;">Monthly view — 30 days.</p></div>
+          <div class="air-panel" id="t4-year"><p class="air-body" style="padding-top:0.5rem;">Annual view — 12 months.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== PAGINATION: VISUAL ===== -->
+  <div class="s">
+    <div class="s-title">Pagination — styles & tones</div>
+    <div class="air-card" style="padding:1.5rem; display:flex; flex-direction:column; gap:1.5rem;">
+
+      <div>
+        <p class="air-caption" style="margin-bottom:0.5rem;">Default — ace</p>
+        <nav class="air-pages ace">
+          <button class="air-page prev disabled">&lsaquo;</button>
+          <button class="air-page active">1</button>
+          <button class="air-page">2</button>
+          <button class="air-page">3</button>
+          <span class="air-page-gap">...</span>
+          <button class="air-page">12</button>
+          <button class="air-page next">&rsaquo;</button>
+        </nav>
+      </div>
+
+      <div>
+        <p class="air-caption" style="margin-bottom:0.5rem;">Beta tone</p>
+        <nav class="air-pages beta">
+          <button class="air-page prev">&lsaquo;</button>
+          <button class="air-page">1</button>
+          <button class="air-page active">4</button>
+          <button class="air-page">5</button>
+          <button class="air-page">6</button>
+          <span class="air-page-gap">...</span>
+          <button class="air-page">20</button>
+          <button class="air-page next">&rsaquo;</button>
+        </nav>
+      </div>
+
+      <div>
+        <p class="air-caption" style="margin-bottom:0.5rem;">Rounded (pill) — delta</p>
+        <nav class="air-pages delta rounded">
+          <button class="air-page prev">&lsaquo;</button>
+          <button class="air-page">1</button>
+          <button class="air-page active">2</button>
+          <button class="air-page">3</button>
+          <button class="air-page">4</button>
+          <button class="air-page next">&rsaquo;</button>
+        </nav>
+      </div>
+
+      <div>
+        <p class="air-caption" style="margin-bottom:0.5rem;">Outline style — gamma</p>
+        <nav class="air-pages gamma outline">
+          <button class="air-page prev">&lsaquo;</button>
+          <button class="air-page">1</button>
+          <button class="air-page active">2</button>
+          <button class="air-page">3</button>
+          <button class="air-page next">&rsaquo;</button>
+        </nav>
+      </div>
+
+      <div>
+        <p class="air-caption" style="margin-bottom:0.5rem;">Minimal — ace</p>
+        <nav class="air-pages ace minimal">
+          <button class="air-page prev">&lsaquo;</button>
+          <button class="air-page">1</button>
+          <button class="air-page active">2</button>
+          <button class="air-page">3</button>
+          <button class="air-page next">&rsaquo;</button>
+        </nav>
+      </div>
+
+      <div>
+        <p class="air-caption" style="margin-bottom:0.5rem;">Small size — beta</p>
+        <nav class="air-pages beta sm">
+          <button class="air-page prev">&lsaquo;</button>
+          <button class="air-page active">1</button>
+          <button class="air-page">2</button>
+          <button class="air-page">3</button>
+          <button class="air-page next">&rsaquo;</button>
+        </nav>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ===== LIVE PAGINATION ===== -->
+  <div class="s">
+    <div class="s-title">Live pagination — JS shows/hides items, no server needed</div>
+    <p class="air-body" style="margin-bottom:1.25rem;">12 cards below, 4 per page. <code>data-paginate</code> on the grid + <code>data-per-page="4"</code>. The <code>.air-pages</code> nav below is auto-generated.</p>
+
+    <div class="air-grid cols-auto gap-4" data-paginate data-per-page="4">
+      <div class="air-card ace bar compact"><div class="air-card-body"><span class="air-card-kicker">Item 1</span><h3 class="air-card-title">Dashboard</h3><p class="air-card-content">Analytics overview</p></div></div>
+      <div class="air-card beta bar compact"><div class="air-card-body"><span class="air-card-kicker">Item 2</span><h3 class="air-card-title">Users</h3><p class="air-card-content">Manage accounts</p></div></div>
+      <div class="air-card gamma bar compact"><div class="air-card-body"><span class="air-card-kicker">Item 3</span><h3 class="air-card-title">Products</h3><p class="air-card-content">Product catalog</p></div></div>
+      <div class="air-card delta bar compact"><div class="air-card-body"><span class="air-card-kicker">Item 4</span><h3 class="air-card-title">Orders</h3><p class="air-card-content">Order management</p></div></div>
+      <div class="air-card ace bar compact"><div class="air-card-body"><span class="air-card-kicker">Item 5</span><h3 class="air-card-title">Reports</h3><p class="air-card-content">Export reports</p></div></div>
+      <div class="air-card beta bar compact"><div class="air-card-body"><span class="air-card-kicker">Item 6</span><h3 class="air-card-title">Revenue</h3><p class="air-card-content">Revenue charts</p></div></div>
+      <div class="air-card gamma bar compact"><div class="air-card-body"><span class="air-card-kicker">Item 7</span><h3 class="air-card-title">Settings</h3><p class="air-card-content">System config</p></div></div>
+      <div class="air-card delta bar compact"><div class="air-card-body"><span class="air-card-kicker">Item 8</span><h3 class="air-card-title">Billing</h3><p class="air-card-content">Invoices & plans</p></div></div>
+      <div class="air-card ace bar compact"><div class="air-card-body"><span class="air-card-kicker">Item 9</span><h3 class="air-card-title">Logs</h3><p class="air-card-content">Audit trail</p></div></div>
+      <div class="air-card beta bar compact"><div class="air-card-body"><span class="air-card-kicker">Item 10</span><h3 class="air-card-title">API</h3><p class="air-card-content">Keys & webhooks</p></div></div>
+      <div class="air-card gamma bar compact"><div class="air-card-body"><span class="air-card-kicker">Item 11</span><h3 class="air-card-title">Roles</h3><p class="air-card-content">Permissions</p></div></div>
+      <div class="air-card delta bar compact"><div class="air-card-body"><span class="air-card-kicker">Item 12</span><h3 class="air-card-title">Notifications</h3><p class="air-card-content">Alert settings</p></div></div>
+    </div>
+
+    <!-- Pagination nav auto-generated and placed here -->
+    <nav class="air-pages ace" style="margin-top:1.5rem; justify-content:center;"></nav>
+  </div>
+
+  <script src="../../src/js/air-tabs.js"></script>
+</body>
+</html>

@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buttons — Air Framework</title>
+  <script>try{var t=localStorage.getItem('air-theme');if(t)document.documentElement.setAttribute('data-theme',t);else if(window.matchMedia('(prefers-color-scheme: dark)').matches)document.documentElement.setAttribute('data-theme','dark');}catch(e){}</script>
+  <link rel="stylesheet" href="../dist/my-framework.css">
+  <link rel="stylesheet" href="docs.css">
+</head>
+<body>
+<div class="docs-shell">
+  <aside class="docs-sidebar" id="docs-sidebar-container"></aside>
+  <main class="docs-main">
+    <div class="docs-topbar">
+      <button id="docs-menu-btn" class="air-theme-btn" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+      <nav class="air-trail" style="flex:1; padding-left:0.5rem;">
+        <span class="crumb"><a href="index.html">Docs</a></span>
+        <span class="crumb active">Buttons</span>
+      </nav>
+    </div>
+    <div class="docs-content">
+
+      <h1 class="docs-page-title">Buttons</h1>
+      <p class="docs-page-lead">Chromatic depth shadows, spring physics, 6 variants × 5 tones. Write: <code>air-btn ace glow lg</code> — done.</p>
+
+      <!-- Pattern -->
+      <div class="docs-callout">
+        <div><strong>Pattern:</strong> <code>air-btn [tone] [variant] [size] [shape]</code> — each is a separate class, all optional.</div>
+      </div>
+
+      <!-- Solid -->
+      <div class="docs-section">
+        <h2 class="docs-section-title">Solid — default</h2>
+        <div class="docs-demo">
+          <div class="docs-preview">
+            <button class="air-btn ace">Ace</button>
+            <button class="air-btn beta">Beta</button>
+            <button class="air-btn gamma">Gamma</button>
+            <button class="air-btn delta">Delta</button>
+            <button class="air-btn epsilon">Epsilon</button>
+          </div>
+          <div class="docs-code-header"><span class="docs-code-lang">HTML</span><button class="docs-copy-btn">Copy</button></div>
+          <pre class="docs-code-block"><span class="t-tag">&lt;button</span> <span class="t-attr">class</span>=<span class="t-val">"air-btn ace"</span><span class="t-tag">&gt;</span>Ace<span class="t-tag">&lt;/button&gt;</span>
+<span class="t-tag">&lt;button</span> <span class="t-attr">class</span>=<span class="t-val">"air-btn beta"</span><span class="t-tag">&gt;</span>Beta<span class="t-tag">&lt;/button&gt;</span>
+<span class="t-tag">&lt;button</span> <span class="t-attr">class</span>=<span class="t-val">"air-btn gamma"</span><span class="t-tag">&gt;</span>Gamma<span class="t-tag">&lt;/button&gt;</span>
+<span class="t-tag">&lt;button</span> <span class="t-attr">class</span>=<span class="t-val">"air-btn delta"</span><span class="t-tag">&gt;</span>Delta<span class="t-tag">&lt;/button&gt;</span>
+<span class="t-tag">&lt;button</span> <span class="t-attr">class</span>=<span class="t-val">"air-btn epsilon"</span><span class="t-tag">&gt;</span>Epsilon<span class="t-tag">&lt;/button&gt;</span></pre>
+        </div>
+      </div>
+
+      <!-- Ghost -->
+      <div class="docs-section">
+        <h2 class="docs-section-title">Ghost — outline only, fills on hover</h2>
+        <div class="docs-demo">
+          <div class="docs-preview">
+            <button class="air-btn ace ghost">Ace</button>
+            <button class="air-btn beta ghost">Beta</button>
+            <button class="air-btn gamma ghost">Gamma</button>
+            <button class="air-btn delta ghost">Delta</button>
+          </div>
+          <div class="docs-code-header"><span class="docs-code-lang">HTML</span><button class="docs-copy-btn">Copy</button></div>
+          <pre class="docs-code-block"><span class="t-tag">&lt;button</span> <span class="t-attr">class</span>=<span class="t-val">"air-btn ace ghost"</span><span class="t-tag">&gt;</span>Ghost<span class="t-tag">&lt;/button&gt;</span></pre>
+        </div>
+      </div>
+
+      <!-- Soft -->
+      <div class="docs-section">
+        <h2 class="docs-section-title">Soft — tinted background</h2>
+        <div class="docs-demo">
+          <div class="docs-preview">
+            <button class="air-btn ace soft">Ace</button>
+            <button class="air-btn beta soft">Beta</button>
+            <button class="air-btn gamma soft">Gamma</button>
+            <button class="air-btn delta soft">Delta</button>
+          </div>
+          <div class="docs-code-header"><span class="docs-code-lang">HTML</span><button class="docs-copy-btn">Copy</button></div>
+          <pre class="docs-code-block"><span class="t-tag">&lt;button</span> <span class="t-attr">class</span>=<span class="t-val">"air-btn ace soft"</span><span class="t-tag">&gt;</span>Soft<span class="t-tag">&lt;/button&gt;</span></pre>
+        </div>
+      </div>
+
+      <!-- Glow -->
+      <div class="docs-section">
+        <h2 class="docs-section-title">Glow — radiant color glow on hover</h2>
+        <div class="docs-demo">
+          <div class="docs-preview">
+            <button class="air-btn ace glow">Ace</button>
+            <button class="air-btn beta glow">Beta</button>
+            <button class="air-btn gamma glow">Gamma</button>
+            <button class="air-btn delta glow">Delta</button>
+          </div>
+          <div class="docs-code-header"><span class="docs-code-lang">HTML</span><button class="docs-copy-btn">Copy</button></div>
+          <pre class="docs-code-block"><span class="t-tag">&lt;button</span> <span class="t-attr">class</span>=<span class="t-val">"air-btn ace glow"</span><span class="t-tag">&gt;</span>Glow<span class="t-tag">&lt;/button&gt;</span></pre>
+        </div>
+      </div>
+
+      <!-- Glass -->
+      <div class="docs-section">
+        <h2 class="docs-section-title">Glass — frosted, best over colored backgrounds</h2>
+        <div class="docs-demo">
+          <div class="docs-preview" style="background: linear-gradient(135deg,#72b0d7,#d94f8b);">
+            <button class="air-btn ace glass">Ace</button>
+            <button class="air-btn beta glass">Beta</button>
+            <button class="air-btn gamma glass">Gamma</button>
+          </div>
+          <div class="docs-code-header"><span class="docs-code-lang">HTML</span><button class="docs-copy-btn">Copy</button></div>
+          <pre class="docs-code-block"><span class="t-tag">&lt;button</span> <span class="t-attr">class</span>=<span class="t-val">"air-btn ace glass"</span><span class="t-tag">&gt;</span>Glass<span class="t-tag">&lt;/button&gt;</span></pre>
+        </div>
+      </div>
+
+      <!-- Gradient -->
+      <div class="docs-section">
+        <h2 class="docs-section-title">Gradient — animated gradient flow on hover</h2>
+        <div class="docs-demo">
+          <div class="docs-preview">
+            <button class="air-btn ace gradient">Ace</button>
+            <button class="air-btn beta gradient">Beta</button>
+            <button class="air-btn gamma gradient">Gamma</button>
+            <button class="air-btn delta gradient">Delta</button>
+          </div>
+          <div class="docs-code-header"><span class="docs-code-lang">HTML</span><button class="docs-copy-btn">Copy</button></div>
+          <pre class="docs-code-block"><span class="t-tag">&lt;button</span> <span class="t-attr">class</span>=<span class="t-val">"air-btn ace gradient"</span><span class="t-tag">&gt;</span>Gradient<span class="t-tag">&lt;/button&gt;</span></pre>
+        </div>
+      </div>
+
+      <!-- Sizes -->
+      <div class="docs-section">
+        <h2 class="docs-section-title">Sizes</h2>
+        <div class="docs-demo">
+          <div class="docs-preview" style="align-items:flex-end;">
+            <button class="air-btn ace xs">XS</button>
+            <button class="air-btn ace sm">Small</button>
+            <button class="air-btn ace">Default</button>
+            <button class="air-btn ace lg">Large</button>
+            <button class="air-btn ace xl">XL</button>
+          </div>
+          <div class="docs-code-header"><span class="docs-code-lang">HTML</span><button class="docs-copy-btn">Copy</button></div>
+          <pre class="docs-code-block"><span class="t-tag">&lt;button</span> <span class="t-attr">class</span>=<span class="t-val">"air-btn ace xs"</span><span class="t-tag">&gt;</span>XS<span class="t-tag">&lt;/button&gt;</span>
+<span class="t-tag">&lt;button</span> <span class="t-attr">class</span>=<span class="t-val">"air-btn ace sm"</span><span class="t-tag">&gt;</span>Small<span class="t-tag">&lt;/button&gt;</span>
+<span class="t-tag">&lt;button</span> <span class="t-attr">class</span>=<span class="t-val">"air-btn ace"</span><span class="t-tag">&gt;</span>Default<span class="t-tag">&lt;/button&gt;</span>
+<span class="t-tag">&lt;button</span> <span class="t-attr">class</span>=<span class="t-val">"air-btn ace lg"</span><span class="t-tag">&gt;</span>Large<span class="t-tag">&lt;/button&gt;</span>
+<span class="t-tag">&lt;button</span> <span class="t-attr">class</span>=<span class="t-val">"air-btn ace xl"</span><span class="t-tag">&gt;</span>XL<span class="t-tag">&lt;/button&gt;</span></pre>
+        </div>
+      </div>
+
+      <!-- Shapes -->
+      <div class="docs-section">
+        <h2 class="docs-section-title">Shapes — pill, icon</h2>
+        <div class="docs-demo">
+          <div class="docs-preview">
+            <button class="air-btn ace pill">Pill</button>
+            <button class="air-btn beta ghost pill">Ghost pill</button>
+            <button class="air-btn ace icon" aria-label="Star">★</button>
+            <button class="air-btn beta ghost icon" aria-label="Heart">♥</button>
+            <button class="air-btn gamma glow icon" aria-label="Arrow">→</button>
+          </div>
+          <div class="docs-code-header"><span class="docs-code-lang">HTML</span><button class="docs-copy-btn">Copy</button></div>
+          <pre class="docs-code-block"><span class="t-dim">&lt;!-- Pill --&gt;</span>
+<span class="t-tag">&lt;button</span> <span class="t-attr">class</span>=<span class="t-val">"air-btn ace pill"</span><span class="t-tag">&gt;</span>Pill<span class="t-tag">&lt;/button&gt;</span>
+
+<span class="t-dim">&lt;!-- Icon-only (perfectly square) --&gt;</span>
+<span class="t-tag">&lt;button</span> <span class="t-attr">class</span>=<span class="t-val">"air-btn ace icon"</span> <span class="t-attr">aria-label</span>=<span class="t-val">"Star"</span><span class="t-tag">&gt;</span>★<span class="t-tag">&lt;/button&gt;</span></pre>
+        </div>
+      </div>
+
+      <!-- Full width -->
+      <div class="docs-section">
+        <h2 class="docs-section-title">Block — full width</h2>
+        <div class="docs-demo">
+          <div class="docs-preview" style="flex-direction:column;">
+            <button class="air-btn ace block">Full width</button>
+            <button class="air-btn delta ghost block">Full width ghost</button>
+          </div>
+          <div class="docs-code-header"><span class="docs-code-lang">HTML</span><button class="docs-copy-btn">Copy</button></div>
+          <pre class="docs-code-block"><span class="t-tag">&lt;button</span> <span class="t-attr">class</span>=<span class="t-val">"air-btn ace block"</span><span class="t-tag">&gt;</span>Full width<span class="t-tag">&lt;/button&gt;</span></pre>
+        </div>
+      </div>
+
+      <!-- Group -->
+      <div class="docs-section">
+        <h2 class="docs-section-title">Button group</h2>
+        <div class="docs-demo">
+          <div class="docs-preview">
+            <div class="air-btn-group">
+              <button class="air-btn ace">Left</button>
+              <button class="air-btn ace">Center</button>
+              <button class="air-btn ace">Right</button>
+            </div>
+            <div class="air-btn-group pill">
+              <button class="air-btn beta ghost pill">One</button>
+              <button class="air-btn beta ghost pill">Two</button>
+              <button class="air-btn beta ghost pill">Three</button>
+            </div>
+          </div>
+          <div class="docs-code-header"><span class="docs-code-lang">HTML</span><button class="docs-copy-btn">Copy</button></div>
+          <pre class="docs-code-block"><span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-val">"air-btn-group"</span><span class="t-tag">&gt;</span>
+  <span class="t-tag">&lt;button</span> <span class="t-attr">class</span>=<span class="t-val">"air-btn ace"</span><span class="t-tag">&gt;</span>Left<span class="t-tag">&lt;/button&gt;</span>
+  <span class="t-tag">&lt;button</span> <span class="t-attr">class</span>=<span class="t-val">"air-btn ace"</span><span class="t-tag">&gt;</span>Center<span class="t-tag">&lt;/button&gt;</span>
+  <span class="t-tag">&lt;button</span> <span class="t-attr">class</span>=<span class="t-val">"air-btn ace"</span><span class="t-tag">&gt;</span>Right<span class="t-tag">&lt;/button&gt;</span>
+<span class="t-tag">&lt;/div&gt;</span>
+
+<span class="t-dim">&lt;!-- Add .pill for rounded group --&gt;</span>
+<span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-val">"air-btn-group pill"</span><span class="t-tag">&gt;</span>...<span class="t-tag">&lt;/div&gt;</span></pre>
+        </div>
+      </div>
+
+      <!-- Reference -->
+      <div class="docs-section">
+        <h2 class="docs-section-title">Class reference</h2>
+        <table class="docs-table">
+          <thead><tr><th>Class</th><th>Type</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr><td><code>air-btn</code></td><td><span class="prop-badge required">required</span></td><td>Base class. Defaults to ace solid.</td></tr>
+            <tr><td><code>ace beta gamma delta epsilon</code></td><td><span class="prop-badge optional">tone</span></td><td>Sets the button color and chromatic shadow.</td></tr>
+            <tr><td><code>ghost soft glow glass gradient link</code></td><td><span class="prop-badge optional">variant</span></td><td>Visual style of the button.</td></tr>
+            <tr><td><code>xs sm lg xl</code></td><td><span class="prop-badge optional">size</span></td><td>Font size and padding scale.</td></tr>
+            <tr><td><code>pill</code></td><td><span class="prop-badge optional">shape</span></td><td>Full border-radius (capsule shape).</td></tr>
+            <tr><td><code>square</code></td><td><span class="prop-badge optional">shape</span></td><td>Small border-radius.</td></tr>
+            <tr><td><code>icon</code></td><td><span class="prop-badge optional">shape</span></td><td>Square button, equal width and height.</td></tr>
+            <tr><td><code>block</code></td><td><span class="prop-badge optional">layout</span></td><td>width: 100%</td></tr>
+            <tr><td><code>is-loading</code></td><td><span class="prop-badge js">JS state</span></td><td>Swap to spinner, set cursor:wait.</td></tr>
+            <tr><td><code>is-disabled</code> / <code>disabled</code></td><td><span class="prop-badge optional">state</span></td><td>Opacity 45%, pointer-events none.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </main>
+</div>
+<script src="../src/js/air-theme.js"></script>
+<script src="docs.js"></script>
+<script>if(window.innerWidth<=900)document.getElementById('docs-menu-btn').style.display='flex';</script>
+</body>
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Air — Transforms & Animations</title>
+  <link rel="stylesheet" href="../../dist/my-framework.css">
+  <style>
+    body { font-family: var(--air-font); background: var(--air-50); }
+    .page { max-width: 1100px; margin: 0 auto; padding: 2.5rem 1.5rem 6rem; }
+    .s { margin-bottom: 4rem; }
+    .s-title { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--air-400); margin-bottom: 1.25rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--air-200); }
+    .demo-card { background: #fff; border-radius: 1rem; padding: 1.5rem; border: 1px solid var(--air-200); box-shadow: var(--air-shadow-sm); }
+    .demo-item { background: rgba(114,176,215,0.18); border-radius: 0.75rem; padding: 1.25rem; display: flex; align-items: center; justify-content: center; font-size: 0.82rem; font-weight: 700; color: #4a8fc0; text-align: center; }
+    code { font-family: var(--air-font-mono); font-size: 0.82em; background: var(--air-100); padding: 0.15em 0.45em; border-radius: 0.25rem; border: 1px solid var(--air-200); }
+    .loop-demo { width: 80px; height: 80px; background: linear-gradient(135deg, var(--air-ace), var(--air-ace-dk)); border-radius: 1rem; display: flex; align-items: center; justify-content: center; color: #fff; font-size: 1.5rem; }
+    /* Space for scroll demo sections */
+    .scroll-spacer { height: 60px; }
+  </style>
+</head>
+<body>
+
+<div class="page">
+
+  <div style="margin-bottom:3rem;">
+    <span class="air-kicker dotted">Air Framework</span>
+    <h1 class="air-display" style="margin-top:0.4rem; font-size:clamp(2rem,5vw,3rem);">Transforms & Animations</h1>
+    <p class="air-lead">Hover transforms. Scroll-triggered entry with IntersectionObserver. Loop animations. One attribute — zero config.</p>
+    <div class="shelf" style="gap:0.65rem; margin-top:0.75rem; flex-wrap:wrap;">
+      <span class="air-badge ace soft">data-animate="rise"</span>
+      <span class="air-badge beta soft">data-stagger="rise"</span>
+      <span class="air-badge gamma soft">hover: lift grow tilt</span>
+      <span class="air-badge delta soft">loop: spin pulse float bounce</span>
+    </div>
+  </div>
+
+  <!-- ===== HOVER TRANSFORMS ===== -->
+  <div class="s">
+    <div class="s-title">Hover transforms — add class, it just works</div>
+    <div class="air-grid cols-auto-sm gap-4">
+      <div class="demo-card lift" style="cursor:pointer;"><strong>lift</strong><br><code>.lift</code><p style="font-size:0.8rem;color:var(--air-400);margin-top:0.4rem;">translateY(-4px) + shadow</p></div>
+      <div class="demo-card grow" style="cursor:pointer;"><strong>grow</strong><br><code>.grow</code><p style="font-size:0.8rem;color:var(--air-400);margin-top:0.4rem;">scale(1.04) spring</p></div>
+      <div class="demo-card shrink" style="cursor:pointer;"><strong>shrink</strong><br><code>.shrink</code><p style="font-size:0.8rem;color:var(--air-400);margin-top:0.4rem;">scale(0.97) inward</p></div>
+      <div class="demo-card tilt" style="cursor:pointer;"><strong>tilt</strong><br><code>.tilt</code><p style="font-size:0.8rem;color:var(--air-400);margin-top:0.4rem;">3D perspective rotate</p></div>
+      <div class="demo-card bright" style="cursor:pointer;"><strong>bright</strong><br><code>.bright</code><p style="font-size:0.8rem;color:var(--air-400);margin-top:0.4rem;">filter brightness +12%</p></div>
+      <div class="demo-card dim" style="cursor:pointer;"><strong>dim</strong><br><code>.dim</code><p style="font-size:0.8rem;color:var(--air-400);margin-top:0.4rem;">opacity 65% on hover</p></div>
+      <div class="demo-card push-right" style="cursor:pointer;"><strong>push-right</strong><br><code>.push-right</code><p style="font-size:0.8rem;color:var(--air-400);margin-top:0.4rem;">nudge right 4px</p></div>
+      <div class="demo-card flip-x" style="cursor:pointer; overflow:hidden;"><strong>flip-x</strong><br><code>.flip-x</code><p style="font-size:0.8rem;color:var(--air-400);margin-top:0.4rem;">scaleX(-1) mirror</p></div>
+    </div>
+  </div>
+
+  <!-- ===== STATIC TRANSFORMS ===== -->
+  <div class="s">
+    <div class="s-title">Static transforms — rotate, scale, mirror</div>
+    <div class="shelf" style="gap:1.5rem; flex-wrap:wrap; padding:1.5rem; background:var(--air-100); border-radius:1rem;">
+      <div style="text-align:center;">
+        <div style="font-size:2rem; display:inline-block;" class="rotate-45">★</div>
+        <div style="font-size:0.7rem; color:var(--air-400); margin-top:0.3rem;">.rotate-45</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="font-size:2rem; display:inline-block;" class="rotate-90">★</div>
+        <div style="font-size:0.7rem; color:var(--air-400); margin-top:0.3rem;">.rotate-90</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="font-size:2rem; display:inline-block;" class="rotate-180">★</div>
+        <div style="font-size:0.7rem; color:var(--air-400); margin-top:0.3rem;">.rotate-180</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="font-size:2rem; display:inline-block;" class="mirror">R</div>
+        <div style="font-size:0.7rem; color:var(--air-400); margin-top:0.3rem;">.mirror</div>
+      </div>
+      <div style="text-align:center;">
+        <div style="font-size:2rem; display:inline-block;" class="scale-125">★</div>
+        <div style="font-size:0.7rem; color:var(--air-400); margin-top:0.3rem;">.scale-125</div>
+      </div>
+      <div style="text-align:center;">
+        <svg width="32" height="32" viewBox="0 0 24 24" class="spin-hover" style="cursor:pointer; fill:none; stroke:#72b0d7; stroke-width:2; stroke-linecap:round;" data-tip="Hover to spin" data-tip-pos="top"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        <div style="font-size:0.7rem; color:var(--air-400); margin-top:0.3rem;">.spin-hover</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== LOOP ANIMATIONS ===== -->
+  <div class="s">
+    <div class="s-title">Loop animations — continuous motion</div>
+    <div class="air-grid cols-auto-sm gap-4">
+      <div class="demo-card center pile" style="gap:1rem; min-height:140px;">
+        <div class="loop-demo is-spinning">⚙</div>
+        <code>.is-spinning</code>
+      </div>
+      <div class="demo-card center pile" style="gap:1rem; min-height:140px;">
+        <div class="loop-demo is-pulsing" style="background: linear-gradient(135deg,#d94f8b,#b83a72);">♥</div>
+        <code>.is-pulsing</code>
+      </div>
+      <div class="demo-card center pile" style="gap:1rem; min-height:140px;">
+        <div class="loop-demo is-floating" style="background: linear-gradient(135deg,#6DC9A7,#44a880);">▲</div>
+        <code>.is-floating</code>
+      </div>
+      <div class="demo-card center pile" style="gap:1rem; min-height:140px;">
+        <div class="loop-demo is-bouncing" style="background: linear-gradient(135deg,#FF8F4B,#d96e2a);">●</div>
+        <code>.is-bouncing</code>
+      </div>
+      <div class="demo-card center pile" style="gap:1rem; min-height:140px;">
+        <div class="loop-demo is-shaking" style="background: linear-gradient(135deg,#d94f8b,#FF8F4B);">!</div>
+        <code>.is-shaking</code>
+      </div>
+      <div class="demo-card center pile" style="gap:1rem; min-height:140px;">
+        <div style="padding:0.75rem 1.5rem; background:rgba(114,176,215,0.15); border-radius:0.75rem;" class="is-shimmering">Shimmer</div>
+        <code>.is-shimmering</code>
+      </div>
+    </div>
+
+    <!-- Rainbow shimmer text -->
+    <div style="margin-top:1.5rem; text-align:center; padding:2rem; background:#111b0f; border-radius:1rem;">
+      <p class="air-display is-shimmer-ace" style="font-size:clamp(1.5rem,4vw,3rem);">
+        Rainbow shimmer text
+      </p>
+      <code style="color:rgba(255,255,255,0.5); background:rgba(255,255,255,0.08); border-color:rgba(255,255,255,0.1);">.is-shimmer-ace</code>
+    </div>
+  </div>
+
+  <!-- ===== DIRECT CSS ANIMATIONS ===== -->
+  <div class="s">
+    <div class="s-title">Direct CSS animations — class triggers immediately on page load</div>
+    <div class="air-grid cols-auto-sm gap-4">
+      <div class="demo-item anim-rise"><code>.anim-rise</code></div>
+      <div class="demo-item anim-drop" style="background:rgba(217,79,139,0.15); color:#b83a72;"><code>.anim-drop</code></div>
+      <div class="demo-item anim-left" style="background:rgba(255,143,75,0.15); color:#d96e2a;"><code>.anim-left</code></div>
+      <div class="demo-item anim-right" style="background:rgba(109,201,167,0.15); color:#44a880;"><code>.anim-right</code></div>
+      <div class="demo-item anim-pop"><code>.anim-pop</code></div>
+      <div class="demo-item anim-blur" style="background:rgba(217,79,139,0.15); color:#b83a72;"><code>.anim-blur</code></div>
+      <div class="demo-item anim-flip" style="background:rgba(255,143,75,0.15); color:#d96e2a;"><code>.anim-flip</code></div>
+      <div class="demo-item anim-wipe" style="background:rgba(109,201,167,0.15); color:#44a880;"><code>.anim-wipe</code></div>
+    </div>
+  </div>
+
+  <!-- ===== SCROLL ENTRY ANIMATIONS ===== -->
+  <div class="s">
+    <div class="s-title">Scroll entry — data-animate triggers when element enters viewport</div>
+    <div class="air-note ace" style="margin-bottom:1.5rem;">Scroll down to see elements animate in as they enter view. Each uses <code>data-animate</code> and gets the class <code>.awake</code> added by <code>air-animate.js</code>.</div>
+
+    <div class="scroll-spacer"></div>
+
+    <div class="air-grid cols-auto gap-5">
+      <div class="demo-card" data-animate="rise">
+        <h3 style="font-weight:700; margin-bottom:0.35rem;">Rise</h3>
+        <code>data-animate="rise"</code>
+        <p style="font-size:0.82rem; color:var(--air-500); margin-top:0.4rem;">Slides up from below + fades in</p>
+      </div>
+      <div class="demo-card" data-animate="left" data-delay="100">
+        <h3 style="font-weight:700; margin-bottom:0.35rem;">Left + delay</h3>
+        <code>data-animate="left" data-delay="100"</code>
+        <p style="font-size:0.82rem; color:var(--air-500); margin-top:0.4rem;">100ms delay after parent enters</p>
+      </div>
+      <div class="demo-card" data-animate="pop" data-delay="200">
+        <h3 style="font-weight:700; margin-bottom:0.35rem;">Pop + delay</h3>
+        <code>data-animate="pop" data-delay="200"</code>
+        <p style="font-size:0.82rem; color:var(--air-500); margin-top:0.4rem;">Spring scale from 88%</p>
+      </div>
+      <div class="demo-card" data-animate="blur" data-delay="300">
+        <h3 style="font-weight:700; margin-bottom:0.35rem;">Blur + delay</h3>
+        <code>data-animate="blur" data-delay="300"</code>
+        <p style="font-size:0.82rem; color:var(--air-500); margin-top:0.4rem;">Resolves from 10px blur</p>
+      </div>
+      <div class="demo-card" data-animate="flip" data-delay="400">
+        <h3 style="font-weight:700; margin-bottom:0.35rem;">Flip + delay</h3>
+        <code>data-animate="flip"</code>
+        <p style="font-size:0.82rem; color:var(--air-500); margin-top:0.4rem;">3D perspective unflip</p>
+      </div>
+      <div class="demo-card" data-animate="zoom" data-delay="500">
+        <h3 style="font-weight:700; margin-bottom:0.35rem;">Zoom + delay</h3>
+        <code>data-animate="zoom"</code>
+        <p style="font-size:0.82rem; color:var(--air-500); margin-top:0.4rem;">Zooms in from 110%</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== STAGGER ===== -->
+  <div class="s">
+    <div class="s-title">data-stagger — parent auto-staggers all children</div>
+    <div class="air-note beta" style="margin-bottom:1.5rem;">Add <code>data-stagger="rise"</code> to a container. JS sets staggered delays on every direct child automatically.</div>
+
+    <div class="air-grid cols-4 gap-4" data-stagger="rise" data-stagger-step="80">
+      <div class="air-card ace bar compact"><div class="air-card-body"><span class="air-card-kicker">Revenue</span><p class="air-card-title">$48K</p></div></div>
+      <div class="air-card beta bar compact"><div class="air-card-body"><span class="air-card-kicker">Users</span><p class="air-card-title">3,847</p></div></div>
+      <div class="air-card gamma bar compact"><div class="air-card-body"><span class="air-card-kicker">Orders</span><p class="air-card-title">1,204</p></div></div>
+      <div class="air-card delta bar compact"><div class="air-card-body"><span class="air-card-kicker">Rate</span><p class="air-card-title">6.8%</p></div></div>
+    </div>
+
+    <div style="margin-top:1.5rem; padding:2rem; background:linear-gradient(135deg, #020d18, #041301); border-radius:1rem;">
+      <div class="air-grid cols-3 gap-4" data-stagger="pop" data-stagger-step="90">
+        <div class="air-card glass ace" style="min-height:100px; display:flex; align-items:center; justify-content:center; font-weight:700; color:var(--air-ace);">Pop 1</div>
+        <div class="air-card glass beta" style="min-height:100px; display:flex; align-items:center; justify-content:center; font-weight:700; color:var(--air-beta);">Pop 2</div>
+        <div class="air-card glass delta" style="min-height:100px; display:flex; align-items:center; justify-content:center; font-weight:700; color:var(--air-delta);">Pop 3</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== DELAY UTILITIES ===== -->
+  <div class="s">
+    <div class="s-title">Delay utilities — data-delay or .delay-* classes</div>
+    <div class="shelf" style="gap:0.75rem; flex-wrap:wrap;">
+      <div class="demo-card" data-animate="rise" data-delay="0"  style="min-width:100px; text-align:center;"><code>delay-0</code></div>
+      <div class="demo-card" data-animate="rise" data-delay="100" style="min-width:100px; text-align:center;"><code>100ms</code></div>
+      <div class="demo-card" data-animate="rise" data-delay="200" style="min-width:100px; text-align:center;"><code>200ms</code></div>
+      <div class="demo-card" data-animate="rise" data-delay="300" style="min-width:100px; text-align:center;"><code>300ms</code></div>
+      <div class="demo-card" data-animate="rise" data-delay="400" style="min-width:100px; text-align:center;"><code>400ms</code></div>
+      <div class="demo-card" data-animate="rise" data-delay="500" style="min-width:100px; text-align:center;"><code>500ms</code></div>
+    </div>
+  </div>
+
+</div><!-- /page -->
+
+<script src="../../src/js/air-animate.js"></script>
+</body>
+</html>

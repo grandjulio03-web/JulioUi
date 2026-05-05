@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animations — Air Framework</title>
+  <script>try{var t=localStorage.getItem('air-theme');if(t)document.documentElement.setAttribute('data-theme',t);else if(window.matchMedia('(prefers-color-scheme: dark)').matches)document.documentElement.setAttribute('data-theme','dark');}catch(e){}</script>
+  <link rel="stylesheet" href="../dist/my-framework.css">
+  <link rel="stylesheet" href="docs.css">
+</head>
+<body>
+<div class="docs-shell">
+  <aside class="docs-sidebar" id="docs-sidebar-container"></aside>
+  <main class="docs-main">
+    <div class="docs-topbar">
+      <button id="docs-menu-btn" class="air-theme-btn" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+      <nav class="air-trail" style="flex:1; padding-left:0.5rem;"><span class="crumb"><a href="index.html">Docs</a></span><span class="crumb active">Animations</span></nav>
+    </div>
+    <div class="docs-content">
+
+      <h1 class="docs-page-title">Animations & Transforms</h1>
+      <p class="docs-page-lead">Three layers: hover transforms, scroll-triggered entry animations (IntersectionObserver), and continuous loop animations. One attribute — zero config.</p>
+
+      <!-- Hover transforms -->
+      <div class="docs-section">
+        <h2 class="docs-section-title">Hover transforms</h2>
+        <p class="docs-section-desc">Add a class to any element. The transform fires on hover — CSS only, no JS.</p>
+        <div class="docs-demo">
+          <div class="docs-preview" style="flex-wrap:wrap; gap:1rem; justify-content:center;">
+            <div class="air-card lift" style="padding:1rem; cursor:pointer; width:100px; text-align:center;"><code style="font-size:0.7rem;">.lift</code></div>
+            <div class="air-card grow" style="padding:1rem; cursor:pointer; width:100px; text-align:center;"><code style="font-size:0.7rem;">.grow</code></div>
+            <div class="air-card tilt" style="padding:1rem; cursor:pointer; width:100px; text-align:center;"><code style="font-size:0.7rem;">.tilt</code></div>
+            <div class="air-card bright" style="padding:1rem; cursor:pointer; width:100px; text-align:center;"><code style="font-size:0.7rem;">.bright</code></div>
+            <div class="air-card dim" style="padding:1rem; cursor:pointer; width:100px; text-align:center;"><code style="font-size:0.7rem;">.dim</code></div>
+            <div class="air-card push-right" style="padding:1rem; cursor:pointer; width:100px; text-align:center;"><code style="font-size:0.7rem;">.push-right</code></div>
+          </div>
+          <div class="docs-code-header"><span class="docs-code-lang">HTML</span><button class="docs-copy-btn">Copy</button></div>
+          <pre class="docs-code-block"><span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-val">"lift"</span><span class="t-tag">&gt;</span>...<span class="t-tag">&lt;/div&gt;</span>        <span class="t-dim">translateY(-4px) + shadow</span>
+<span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-val">"grow"</span><span class="t-tag">&gt;</span>...<span class="t-tag">&lt;/div&gt;</span>        <span class="t-dim">scale(1.04)</span>
+<span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-val">"shrink"</span><span class="t-tag">&gt;</span>...<span class="t-tag">&lt;/div&gt;</span>      <span class="t-dim">scale(0.97)</span>
+<span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-val">"tilt"</span><span class="t-tag">&gt;</span>...<span class="t-tag">&lt;/div&gt;</span>        <span class="t-dim">3D perspective rotate</span>
+<span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-val">"flip-x"</span><span class="t-tag">&gt;</span>...<span class="t-tag">&lt;/div&gt;</span>      <span class="t-dim">scaleX(-1)</span>
+<span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-val">"bright"</span><span class="t-tag">&gt;</span>...<span class="t-tag">&lt;/div&gt;</span>      <span class="t-dim">filter brightness +12%</span>
+<span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-val">"dim"</span><span class="t-tag">&gt;</span>...<span class="t-tag">&lt;/div&gt;</span>         <span class="t-dim">opacity 65% on hover</span>
+<span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-val">"push-right"</span><span class="t-tag">&gt;</span>...<span class="t-tag">&lt;/div&gt;</span>  <span class="t-dim">translateX(4px)</span>
+<span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-val">"spin-hover"</span><span class="t-tag">&gt;</span>...<span class="t-tag">&lt;/div&gt;</span>  <span class="t-dim">rotate(180deg)</span></pre>
+        </div>
+      </div>
+
+      <!-- Scroll entry -->
+      <div class="docs-section">
+        <h2 class="docs-section-title">Scroll entry — data-animate</h2>
+        <p class="docs-section-desc">Add <code>data-animate="name"</code> to any element. When it enters the viewport, <code>air-animate.js</code> adds the class <code>.awake</code> and CSS transitions fire.</p>
+        <div class="docs-demo">
+          <div class="docs-code-header"><span class="docs-code-lang">HTML</span><button class="docs-copy-btn">Copy</button></div>
+          <pre class="docs-code-block"><span class="t-dim">&lt;!-- Basic scroll entry --&gt;</span>
+<span class="t-tag">&lt;div</span> <span class="t-kw">data-animate</span>=<span class="t-val">"rise"</span><span class="t-tag">&gt;</span>Slides up when scrolled into view<span class="t-tag">&lt;/div&gt;</span>
+
+<span class="t-dim">&lt;!-- With delay (ms) --&gt;</span>
+<span class="t-tag">&lt;div</span> <span class="t-kw">data-animate</span>=<span class="t-val">"fade"</span> <span class="t-kw">data-delay</span>=<span class="t-val">"200"</span><span class="t-tag">&gt;</span>Fades in after 200ms<span class="t-tag">&lt;/div&gt;</span>
+
+<span class="t-dim">&lt;!-- Re-animate on every scroll (default is once) --&gt;</span>
+<span class="t-tag">&lt;div</span> <span class="t-kw">data-animate</span>=<span class="t-val">"pop"</span> <span class="t-kw">data-once</span>=<span class="t-val">"false"</span><span class="t-tag">&gt;</span>Pops in every time<span class="t-tag">&lt;/div&gt;</span>
+
+<span class="t-dim">&lt;!-- Stagger: auto-delay all children --&gt;</span>
+<span class="t-tag">&lt;div</span> <span class="t-kw">data-stagger</span>=<span class="t-val">"rise"</span> <span class="t-kw">data-stagger-step</span>=<span class="t-val">"80"</span><span class="t-tag">&gt;</span>
+  <span class="t-tag">&lt;div&gt;</span>Appears first<span class="t-tag">&lt;/div&gt;</span>
+  <span class="t-tag">&lt;div&gt;</span>80ms later<span class="t-tag">&lt;/div&gt;</span>
+  <span class="t-tag">&lt;div&gt;</span>160ms later<span class="t-tag">&lt;/div&gt;</span>
+<span class="t-tag">&lt;/div&gt;</span></pre>
+        </div>
+
+        <table class="docs-table">
+          <thead><tr><th>Name</th><th>Effect</th></tr></thead>
+          <tbody>
+            <tr><td><code>fade</code></td><td>Opacity 0 → 1</td></tr>
+            <tr><td><code>rise</code></td><td>translateY(32px) + fade</td></tr>
+            <tr><td><code>drop</code></td><td>translateY(-32px) + fade</td></tr>
+            <tr><td><code>left</code></td><td>translateX(-32px) + fade</td></tr>
+            <tr><td><code>right</code></td><td>translateX(32px) + fade</td></tr>
+            <tr><td><code>pop</code></td><td>scale(0.88) + fade — spring cubic-bezier</td></tr>
+            <tr><td><code>blur</code></td><td>blur(10px) + fade</td></tr>
+            <tr><td><code>flip</code></td><td>perspective(500px) rotateX(20deg) + fade</td></tr>
+            <tr><td><code>zoom</code></td><td>scale(1.1) + fade (zooms in)</td></tr>
+            <tr><td><code>wipe</code></td><td>clip-path wipe from left</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Loop animations -->
+      <div class="docs-section">
+        <h2 class="docs-section-title">Loop animations — continuous motion</h2>
+        <div class="docs-demo">
+          <div class="docs-preview" style="flex-wrap:wrap; gap:1.5rem; justify-content:center;">
+            <div style="text-align:center;"><div style="width:48px;height:48px;background:linear-gradient(135deg,#72b0d7,#4a8fc0);border-radius:0.75rem;margin:0 auto 0.35rem;" class="is-spinning"></div><code style="font-size:0.7rem;">.is-spinning</code></div>
+            <div style="text-align:center;"><div style="width:48px;height:48px;background:linear-gradient(135deg,#d94f8b,#b83a72);border-radius:0.75rem;margin:0 auto 0.35rem;" class="is-pulsing"></div><code style="font-size:0.7rem;">.is-pulsing</code></div>
+            <div style="text-align:center;"><div style="width:48px;height:48px;background:linear-gradient(135deg,#6DC9A7,#44a880);border-radius:0.75rem;margin:0 auto 0.35rem;" class="is-floating"></div><code style="font-size:0.7rem;">.is-floating</code></div>
+            <div style="text-align:center;"><div style="width:48px;height:48px;background:linear-gradient(135deg,#FF8F4B,#d96e2a);border-radius:0.75rem;margin:0 auto 0.35rem;" class="is-bouncing"></div><code style="font-size:0.7rem;">.is-bouncing</code></div>
+            <div style="text-align:center;"><div style="width:48px;height:48px;background:linear-gradient(135deg,#d94f8b,#FF8F4B);border-radius:0.75rem;margin:0 auto 0.35rem;" class="is-shaking"></div><code style="font-size:0.7rem;">.is-shaking</code></div>
+          </div>
+          <div class="docs-code-header"><span class="docs-code-lang">HTML</span><button class="docs-copy-btn">Copy</button></div>
+          <pre class="docs-code-block"><span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-val">"is-spinning"</span><span class="t-tag">&gt;</span>...<span class="t-tag">&lt;/div&gt;</span>    <span class="t-dim">360° loop</span>
+<span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-val">"is-pulsing"</span><span class="t-tag">&gt;</span>...<span class="t-tag">&lt;/div&gt;</span>    <span class="t-dim">scale pulse</span>
+<span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-val">"is-floating"</span><span class="t-tag">&gt;</span>...<span class="t-tag">&lt;/div&gt;</span>   <span class="t-dim">gentle up/down float</span>
+<span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-val">"is-bouncing"</span><span class="t-tag">&gt;</span>...<span class="t-tag">&lt;/div&gt;</span>   <span class="t-dim">bounce</span>
+<span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-val">"is-shaking"</span><span class="t-tag">&gt;</span>...<span class="t-tag">&lt;/div&gt;</span>    <span class="t-dim">attention shake</span>
+<span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-val">"is-shimmering"</span><span class="t-tag">&gt;</span>...<span class="t-tag">&lt;/div&gt;</span> <span class="t-dim">gradient shimmer</span>
+<span class="t-tag">&lt;p</span>   <span class="t-attr">class</span>=<span class="t-val">"is-shimmer-ace"</span><span class="t-tag">&gt;</span>...<span class="t-tag">&lt;/p&gt;</span>   <span class="t-dim">rainbow gradient text</span></pre>
+        </div>
+      </div>
+
+      <!-- Direct CSS -->
+      <div class="docs-section">
+        <h2 class="docs-section-title">Direct CSS animations — plays immediately on page load</h2>
+        <div class="docs-demo">
+          <div class="docs-code-header"><span class="docs-code-lang">HTML</span><button class="docs-copy-btn">Copy</button></div>
+          <pre class="docs-code-block"><span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-val">"anim-rise"</span><span class="t-tag">&gt;</span>...<span class="t-tag">&lt;/div&gt;</span>     <span class="t-dim">plays on page load</span>
+<span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-val">"anim-pop"</span><span class="t-tag">&gt;</span>...<span class="t-tag">&lt;/div&gt;</span>      <span class="t-dim">spring scale-in</span>
+<span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-val">"anim-blur"</span><span class="t-tag">&gt;</span>...<span class="t-tag">&lt;/div&gt;</span>     <span class="t-dim">resolves from blur</span>
+<span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-val">"anim-wipe"</span><span class="t-tag">&gt;</span>...<span class="t-tag">&lt;/div&gt;</span>     <span class="t-dim">clip-path wipe</span>
+
+<span class="t-dim">&lt;!-- Delay utilities --&gt;</span>
+<span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-val">"anim-rise delay-200"</span><span class="t-tag">&gt;</span>...<span class="t-tag">&lt;/div&gt;</span>
+<span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-val">"anim-rise"</span> <span class="t-kw">data-delay</span>=<span class="t-val">"400"</span><span class="t-tag">&gt;</span>...<span class="t-tag">&lt;/div&gt;</span>
+
+<span class="t-dim">&lt;!-- Duration utilities --&gt;</span>
+<span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-val">"anim-rise anim-slow"</span><span class="t-tag">&gt;</span>...<span class="t-tag">&lt;/div&gt;</span>    <span class="t-dim">slower</span>
+<span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-val">"anim-rise anim-fast"</span><span class="t-tag">&gt;</span>...<span class="t-tag">&lt;/div&gt;</span>    <span class="t-dim">faster</span></pre>
+        </div>
+      </div>
+
+      <!-- JS API -->
+      <div class="docs-section">
+        <h2 class="docs-section-title">JS API — air-animate.js</h2>
+        <div class="docs-demo">
+          <div class="docs-code-header"><span class="docs-code-lang">JavaScript</span><button class="docs-copy-btn">Copy</button></div>
+          <pre class="docs-code-block"><span class="t-dim">// Re-scan DOM for new data-animate elements</span>
+Air.animate.refresh();
+
+<span class="t-dim">// Manually wake an element (trigger animation)</span>
+Air.animate.wake(document.querySelector(<span class="t-val">'.my-card'</span>));
+
+<span class="t-dim">// Put element back to sleep (re-animates next scroll)</span>
+Air.animate.sleep(document.querySelector(<span class="t-val">'.my-card'</span>));</pre>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+<script src="../src/js/air-theme.js"></script>
+<script src="../src/js/air-animate.js"></script>
+<script src="docs.js"></script>
+<script>if(window.innerWidth<=900)document.getElementById('docs-menu-btn').style.display='flex';</script>
+</body>
+</html>

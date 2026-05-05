@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Air — Modals & Drawers</title>
+  <link rel="stylesheet" href="../../dist/my-framework.css">
+  <style>
+    body { padding: 2.5rem; background: var(--air-50); font-family: var(--air-font); }
+    .s { margin-bottom: 3rem; }
+    .s-title { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--air-400); margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--air-200); }
+    .row { display: flex; flex-wrap: wrap; gap: 0.65rem; align-items: center; }
+  </style>
+</head>
+<body>
+
+  <div style="margin-bottom:3rem;">
+    <span class="air-kicker dotted">Air Framework</span>
+    <h1 class="air-display" style="margin-top:0.4rem; font-size:clamp(2rem,5vw,3rem);">Modals & Drawers</h1>
+    <p class="air-lead">One attribute opens it. Escape or backdrop click closes. Focus trapping, stacking, keyboard nav — built in.</p>
+    <div class="row" style="margin-top:0.75rem;">
+      <span class="air-badge ace soft">data-open="id"</span>
+      <span class="air-badge beta soft">data-close</span>
+      <span class="air-badge gamma soft">Focus trap</span>
+      <span class="air-badge delta soft">Escape key</span>
+      <span class="air-badge ace soft">Stack support</span>
+    </div>
+  </div>
+
+  <!-- ===== BASIC MODALS ===== -->
+  <div class="s">
+    <div class="s-title">Basic modals — all sizes</div>
+    <div class="row">
+      <button class="air-btn ace" data-open="m-default">Default</button>
+      <button class="air-btn ace ghost" data-open="m-sm">Small</button>
+      <button class="air-btn ace soft" data-open="m-lg">Large</button>
+      <button class="air-btn ace gradient" data-open="m-xl">XL</button>
+      <button class="air-btn beta" data-open="m-full">Full screen</button>
+    </div>
+  </div>
+
+  <!-- ===== TONE VARIANTS ===== -->
+  <div class="s">
+    <div class="s-title">Tone accents — top bar color</div>
+    <div class="row">
+      <button class="air-btn ace" data-open="m-ace">Ace</button>
+      <button class="air-btn beta" data-open="m-beta">Beta</button>
+      <button class="air-btn gamma" data-open="m-gamma">Gamma</button>
+      <button class="air-btn delta" data-open="m-delta">Delta</button>
+    </div>
+  </div>
+
+  <!-- ===== STYLE VARIANTS ===== -->
+  <div class="s">
+    <div class="s-title">Style variants</div>
+    <div class="row">
+      <button class="air-btn ace glass" data-open="m-glass">Glass</button>
+      <button class="air-btn epsilon" data-open="m-dark">Dark</button>
+      <button class="air-btn beta glow" data-open="m-confirm">Confirm dialog</button>
+      <button class="air-btn gamma soft" data-open="m-sheet">Bottom sheet</button>
+    </div>
+  </div>
+
+  <!-- ===== DRAWERS ===== -->
+  <div class="s">
+    <div class="s-title">Drawers — side panels</div>
+    <div class="row">
+      <button class="air-btn ace" data-open="drawer-right">Right drawer</button>
+      <button class="air-btn beta ghost" data-open="drawer-left">Left drawer</button>
+    </div>
+  </div>
+
+  <!-- ===== CODE REFERENCE ===== -->
+  <div class="s">
+    <div class="s-title">How to write it</div>
+    <div class="air-card" style="padding:0; overflow:hidden;">
+      <div style="background:#141a13; padding:1.25rem 1.5rem; overflow-x:auto;">
+        <pre style="margin:0; font-family:var(--air-font-mono); font-size:0.8rem; line-height:1.75; color:#c9d1d9;"><span style="color:#72b0d7;">&lt;!-- Trigger --&gt;</span>
+<span style="color:#72b0d7;">&lt;button</span> <span style="color:#FF8F4B;">data-open</span>=<span style="color:#6DC9A7;">"my-modal"</span> <span style="color:#FF8F4B;">class</span>=<span style="color:#6DC9A7;">"air-btn ace"</span><span style="color:#72b0d7;">&gt;</span>Open<span style="color:#72b0d7;">&lt;/button&gt;</span>
+
+<span style="color:#72b0d7;">&lt;!-- Modal --&gt;</span>
+<span style="color:#72b0d7;">&lt;div</span> <span style="color:#FF8F4B;">class</span>=<span style="color:#6DC9A7;">"air-modal"</span> <span style="color:#FF8F4B;">id</span>=<span style="color:#6DC9A7;">"my-modal"</span><span style="color:#72b0d7;">&gt;</span>
+  <span style="color:#72b0d7;">&lt;div</span> <span style="color:#FF8F4B;">class</span>=<span style="color:#6DC9A7;">"air-modal-box ace"</span><span style="color:#72b0d7;">&gt;</span>
+    <span style="color:#72b0d7;">&lt;div</span> <span style="color:#FF8F4B;">class</span>=<span style="color:#6DC9A7;">"air-modal-head"</span><span style="color:#72b0d7;">&gt;</span>
+      <span style="color:#72b0d7;">&lt;div&gt;&lt;h3</span> <span style="color:#FF8F4B;">class</span>=<span style="color:#6DC9A7;">"air-modal-title"</span><span style="color:#72b0d7;">&gt;</span>Title<span style="color:#72b0d7;">&lt;/h3&gt;&lt;/div&gt;</span>
+      <span style="color:#72b0d7;">&lt;button</span> <span style="color:#d94f8b;">data-close</span> <span style="color:#FF8F4B;">class</span>=<span style="color:#6DC9A7;">"air-modal-x"</span><span style="color:#72b0d7;">&gt;</span>&#x2715;<span style="color:#72b0d7;">&lt;/button&gt;</span>
+    <span style="color:#72b0d7;">&lt;/div&gt;</span>
+    <span style="color:#72b0d7;">&lt;div</span> <span style="color:#FF8F4B;">class</span>=<span style="color:#6DC9A7;">"air-modal-body"</span><span style="color:#72b0d7;">&gt;</span>Content<span style="color:#72b0d7;">&lt;/div&gt;</span>
+    <span style="color:#72b0d7;">&lt;div</span> <span style="color:#FF8F4B;">class</span>=<span style="color:#6DC9A7;">"air-modal-foot"</span><span style="color:#72b0d7;">&gt;</span>
+      <span style="color:#72b0d7;">&lt;button</span> <span style="color:#d94f8b;">data-close</span> <span style="color:#FF8F4B;">class</span>=<span style="color:#6DC9A7;">"air-btn ghost sm"</span><span style="color:#72b0d7;">&gt;</span>Cancel<span style="color:#72b0d7;">&lt;/button&gt;</span>
+      <span style="color:#72b0d7;">&lt;button</span> <span style="color:#FF8F4B;">class</span>=<span style="color:#6DC9A7;">"air-btn ace sm"</span><span style="color:#72b0d7;">&gt;</span>Confirm<span style="color:#72b0d7;">&lt;/button&gt;</span>
+    <span style="color:#72b0d7;">&lt;/div&gt;</span>
+  <span style="color:#72b0d7;">&lt;/div&gt;</span>
+<span style="color:#72b0d7;">&lt;/div&gt;</span></pre>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===================================================================
+       MODALS
+  =================================================================== -->
+
+  <!-- Default -->
+  <div class="air-modal" id="m-default">
+    <div class="air-modal-box">
+      <div class="air-modal-head">
+        <div><h3 class="air-modal-title">Default Modal</h3><p class="air-modal-sub">520px width, spring entrance</p></div>
+        <button data-close class="air-modal-x">&#10005;</button>
+      </div>
+      <div class="air-modal-body">
+        <p>This is the base modal. No size class — defaults to 520px max-width. Click the backdrop or press <kbd>Escape</kbd> to close.</p>
+        <br>
+        <div class="air-form" style="gap:1rem;">
+          <div class="air-field"><label class="air-label">Your name</label><input type="text" class="air-input ace" placeholder="Jane Doe"></div>
+          <div class="air-field"><label class="air-label">Email</label><input type="email" class="air-input ace" placeholder="you@example.com"></div>
+        </div>
+      </div>
+      <div class="air-modal-foot">
+        <button data-close class="air-btn ace ghost sm">Cancel</button>
+        <button data-close class="air-btn ace sm">Save changes</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Small -->
+  <div class="air-modal" id="m-sm">
+    <div class="air-modal-box sm">
+      <div class="air-modal-head">
+        <div><h3 class="air-modal-title">Small Modal</h3></div>
+        <button data-close class="air-modal-x">&#10005;</button>
+      </div>
+      <div class="air-modal-body"><p>Max-width 380px. Good for confirmations, alerts, short messages.</p></div>
+      <div class="air-modal-foot">
+        <button data-close class="air-btn ace ghost sm">No</button>
+        <button data-close class="air-btn ace sm">Yes</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Large -->
+  <div class="air-modal" id="m-lg">
+    <div class="air-modal-box lg">
+      <div class="air-modal-head">
+        <div><h3 class="air-modal-title">Large Modal</h3><p class="air-modal-sub">700px — for forms, data tables, media</p></div>
+        <button data-close class="air-modal-x">&#10005;</button>
+      </div>
+      <div class="air-modal-body">
+        <div class="air-grid cols-2 gap-4">
+          <div class="air-field"><label class="air-label">First name</label><input type="text" class="air-input ace" placeholder="John"></div>
+          <div class="air-field"><label class="air-label">Last name</label><input type="text" class="air-input ace" placeholder="Doe"></div>
+          <div class="air-field" style="grid-column:span 2"><label class="air-label">Email</label><input type="email" class="air-input ace" placeholder="john@example.com"></div>
+          <div class="air-field" style="grid-column:span 2"><label class="air-label">Bio</label><textarea class="air-textarea" placeholder="Tell us about yourself..." style="min-height:5rem;"></textarea></div>
+        </div>
+      </div>
+      <div class="air-modal-foot split">
+        <button data-close class="air-btn ace ghost sm">Discard</button>
+        <div class="shelf" style="gap:0.5rem;">
+          <button data-close class="air-btn ace ghost sm">Cancel</button>
+          <button data-close class="air-btn ace sm">Save profile</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- XL -->
+  <div class="air-modal" id="m-xl">
+    <div class="air-modal-box xl">
+      <div class="air-modal-head">
+        <div><h3 class="air-modal-title">XL Modal</h3><p class="air-modal-sub">900px — dashboards, editors, media viewers</p></div>
+        <button data-close class="air-modal-x">&#10005;</button>
+      </div>
+      <div class="air-modal-body">
+        <div class="air-grid cols-3 gap-4">
+          <div class="air-card ace bar compact"><div class="air-card-body"><span class="air-card-kicker">Revenue</span><p class="air-card-title">$48,291</p></div></div>
+          <div class="air-card beta bar compact"><div class="air-card-body"><span class="air-card-kicker">Users</span><p class="air-card-title">3,847</p></div></div>
+          <div class="air-card delta bar compact"><div class="air-card-body"><span class="air-card-kicker">Rate</span><p class="air-card-title">6.8%</p></div></div>
+        </div>
+        <p style="margin-top:1rem; color:var(--air-500); font-size:0.875rem;">XL modals are ideal for embedded dashboards, image editors, video players, or any content that needs breathing room.</p>
+      </div>
+      <div class="air-modal-foot">
+        <button data-close class="air-btn ace ghost sm">Close</button>
+        <button data-close class="air-btn ace sm">Export</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Full -->
+  <div class="air-modal" id="m-full">
+    <div class="air-modal-box full">
+      <div class="air-modal-head">
+        <div><h3 class="air-modal-title">Full Screen Modal</h3></div>
+        <button data-close class="air-modal-x">&#10005;</button>
+      </div>
+      <div class="air-modal-body"><p>Fills the entire viewport minus safe padding. Use for immersive experiences: image editing, full-screen forms, onboarding flows.</p></div>
+      <div class="air-modal-foot"><button data-close class="air-btn ace sm">Done</button></div>
+    </div>
+  </div>
+
+  <!-- Tone: ace -->
+  <div class="air-modal" id="m-ace">
+    <div class="air-modal-box ace">
+      <div class="air-modal-head">
+        <div><h3 class="air-modal-title">Ace Accent</h3></div>
+        <button data-close class="air-modal-x">&#10005;</button>
+      </div>
+      <div class="air-modal-body"><p>Top border uses the ace (sky) tone. Mix any tone with any size or style.</p></div>
+      <div class="air-modal-foot"><button data-close class="air-btn ace sm">Got it</button></div>
+    </div>
+  </div>
+
+  <!-- Tone: beta -->
+  <div class="air-modal" id="m-beta">
+    <div class="air-modal-box beta">
+      <div class="air-modal-head">
+        <div><h3 class="air-modal-title">Beta Accent</h3></div>
+        <button data-close class="air-modal-x">&#10005;</button>
+      </div>
+      <div class="air-modal-body"><p>Beta (rose) tone accent on top border.</p></div>
+      <div class="air-modal-foot"><button data-close class="air-btn beta sm">Close</button></div>
+    </div>
+  </div>
+
+  <!-- Tone: gamma -->
+  <div class="air-modal" id="m-gamma">
+    <div class="air-modal-box gamma">
+      <div class="air-modal-head">
+        <div><h3 class="air-modal-title">Gamma Accent</h3></div>
+        <button data-close class="air-modal-x">&#10005;</button>
+      </div>
+      <div class="air-modal-body"><p>Gamma (ember) tone accent.</p></div>
+      <div class="air-modal-foot"><button data-close class="air-btn gamma sm">Close</button></div>
+    </div>
+  </div>
+
+  <!-- Tone: delta -->
+  <div class="air-modal" id="m-delta">
+    <div class="air-modal-box delta">
+      <div class="air-modal-head">
+        <div><h3 class="air-modal-title">Delta Accent</h3></div>
+        <button data-close class="air-modal-x">&#10005;</button>
+      </div>
+      <div class="air-modal-body"><p>Delta (sage) tone — success / confirmation feel.</p></div>
+      <div class="air-modal-foot"><button data-close class="air-btn delta sm">Close</button></div>
+    </div>
+  </div>
+
+  <!-- Glass -->
+  <div class="air-modal" id="m-glass">
+    <div class="air-modal-box glass ace">
+      <div class="air-modal-head">
+        <div><h3 class="air-modal-title">Glass Modal</h3><p class="air-modal-sub">backdrop-filter blur + saturate</p></div>
+        <button data-close class="air-modal-x">&#10005;</button>
+      </div>
+      <div class="air-modal-body"><p>Frosted glass surface. Best over colorful or image backgrounds.</p></div>
+      <div class="air-modal-foot"><button data-close class="air-btn ace sm">Close</button></div>
+    </div>
+  </div>
+
+  <!-- Dark -->
+  <div class="air-modal" id="m-dark">
+    <div class="air-modal-box dark ace">
+      <div class="air-modal-head">
+        <div><h3 class="air-modal-title">Dark Modal</h3></div>
+        <button data-close class="air-modal-x" style="border-color:rgba(255,255,255,0.15);color:rgba(255,255,255,0.5);">&#10005;</button>
+      </div>
+      <div class="air-modal-body"><p style="color:rgba(255,255,255,0.65);">Deep dark background. Pair with glow or gradient buttons.</p></div>
+      <div class="air-modal-foot">
+        <button data-close class="air-btn ace ghost sm">Cancel</button>
+        <button data-close class="air-btn ace glow sm">Confirm</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Confirm dialog -->
+  <div class="air-modal" id="m-confirm">
+    <div class="air-modal-box sm beta">
+      <div class="air-modal-head">
+        <div>
+          <div class="air-modal-icon beta">
+            <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </div>
+          <h3 class="air-modal-title">Delete this item?</h3>
+          <p class="air-modal-sub">This action cannot be undone. The item will be permanently removed.</p>
+        </div>
+      </div>
+      <div class="air-modal-foot">
+        <button data-close class="air-btn ace ghost sm">Keep it</button>
+        <button data-close class="air-btn beta sm">Yes, delete</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Bottom sheet -->
+  <div class="air-modal sheet" id="m-sheet">
+    <div class="air-modal-box" style="border-radius:1.5rem 1.5rem 0 0;">
+      <div style="width:2.5rem;height:4px;background:var(--air-300);border-radius:2px;margin:0.75rem auto 0;"></div>
+      <div class="air-modal-head">
+        <div><h3 class="air-modal-title">Bottom Sheet</h3><p class="air-modal-sub">Mobile-native pattern</p></div>
+        <button data-close class="air-modal-x">&#10005;</button>
+      </div>
+      <div class="air-modal-body">
+        <div class="pile" style="gap:0.35rem;">
+          <button class="air-btn ace ghost block" data-close>Share</button>
+          <button class="air-btn ace ghost block" data-close>Copy link</button>
+          <button class="air-btn ace ghost block" data-close>Download</button>
+          <button class="air-btn beta soft block" data-close>Delete</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Drawer right -->
+  <div class="air-drawer" id="drawer-right">
+    <div class="air-modal-head">
+      <div><h3 class="air-modal-title">Right Drawer</h3></div>
+      <button data-close class="air-modal-x">&#10005;</button>
+    </div>
+    <div class="air-modal-body">
+      <p>Slides in from the right edge. Full height. Use for settings panels, filter panels, detail views.</p>
+      <div class="air-form" style="margin-top:1.5rem; gap:1rem;">
+        <div class="air-field"><label class="air-label">Setting A</label><input type="text" class="air-input ace" placeholder="Value"></div>
+        <div class="air-field"><label class="air-label">Setting B</label><select class="air-select ace"><option>Option 1</option><option>Option 2</option></select></div>
+        <label class="air-toggle ace"><input type="checkbox" checked><span class="air-toggle-track"><span class="air-toggle-thumb"></span></span>Enable notifications</label>
+      </div>
+    </div>
+    <div class="air-modal-foot">
+      <button data-close class="air-btn ace ghost sm">Cancel</button>
+      <button data-close class="air-btn ace sm">Apply</button>
+    </div>
+  </div>
+
+  <!-- Drawer left -->
+  <div class="air-drawer left" id="drawer-left">
+    <div class="air-modal-head">
+      <div><h3 class="air-modal-title">Left Drawer</h3></div>
+      <button data-close class="air-modal-x">&#10005;</button>
+    </div>
+    <div class="air-modal-body"><p>Slides from the left. Use for mobile nav panels, side menus.</p></div>
+    <div class="air-modal-foot"><button data-close class="air-btn beta sm">Close</button></div>
+  </div>
+
+  <script src="../../src/js/air-modal.js"></script>
+</body>
+</html>

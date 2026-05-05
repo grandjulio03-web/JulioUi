@@ -3,20 +3,29 @@
 // ============================================================
 
 // Foundation
-@import 'variables';   // Design tokens (must be first)
-@import 'reset';       // Modern CSS reset + base
-@import 'typography';  // Type scale, prose, utilities
+@import 'variables';     // Design tokens (must be first)
+@import 'reset';         // Modern CSS reset + base
+@import 'typography';    // Type scale, prose, utilities
+
+// Layout
+@import 'display';       // Grid, display types, positioning (Air vocabulary)
+
+// Visual
+@import 'backgrounds';   // Mesh, aurora, glow, noise, grid, beam
+@import 'animations';    // Transforms, hover effects, scroll entry, loops
 
 // Components
-@import 'backgrounds'; // Mesh, aurora, glow, noise, grid, beam
-@import 'buttons';     // Solid, ghost, glow, glass, soft, gradient
-@import 'cards';       // Surface, media, stat, bento, glass, dark
-@import 'badges';      // Badge, chip, chip-group
-@import 'alerts';      // Alert, toast, banner
-@import 'forms';       // Input, select, textarea, toggle, check, radio, range, file
-@import 'navigation';  // Air-bar, neo-nav, aside
-@import 'tables';      // Air-table with tone variants
-@import 'loaders';     // Spinners, skeletons, page loaders
+@import 'buttons';       // Solid, ghost, glow, glass, soft, gradient
+@import 'cards';         // Surface, media, stat, bento, glass, dark
+@import 'badges';        // Badge, chip, chip-group
+@import 'alerts';        // Alert, toast, banner
+@import 'forms';         // Input, select, textarea, toggle, check, radio, range, file
+@import 'modals';        // Modal, drawer, confirm dialog
+@import 'tooltips';      // data-tip CSS-only tooltip
+@import 'tabs';          // Tabs + pagination
+@import 'navigation';    // air-nav, air-side, air-trail
+@import 'tables';        // Air-table with tone variants
+@import 'loaders';       // Spinners, skeletons, page loaders
 
-// Utilities (last — override layer)
-@import 'utilities';   // Spacing, flex, grid, display, responsive
+// Theme
+@import 'theme';         // Light / dark theme system (must be last)

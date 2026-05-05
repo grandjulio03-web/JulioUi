@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Air Framework — Documentation</title>
+  <script>try{var t=localStorage.getItem('air-theme');if(t)document.documentElement.setAttribute('data-theme',t);else if(window.matchMedia('(prefers-color-scheme: dark)').matches)document.documentElement.setAttribute('data-theme','dark');}catch(e){}</script>
+  <link rel="stylesheet" href="../dist/my-framework.css">
+  <link rel="stylesheet" href="docs.css">
+  <style>
+    /* Landing page specific */
+    .hero {
+      background: var(--air-white);
+      padding: 5rem 2.5rem 4rem;
+      border-bottom: 1px solid var(--air-200);
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 80% 30%, rgba(114,176,215,0.12) 0%, transparent 65%),
+        radial-gradient(ellipse 45% 45% at 15% 80%, rgba(109,201,167,0.1) 0%, transparent 65%);
+      pointer-events: none;
+    }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1px;
+      background: var(--air-200);
+      border: 1px solid var(--air-200);
+      border-radius: var(--air-r-2xl);
+      overflow: hidden;
+    }
+    .feature-cell {
+      padding: 1.75rem 1.5rem;
+      background: var(--air-white);
+      transition: background 0.15s;
+    }
+    .feature-cell:hover { background: var(--air-50); }
+    .feature-icon {
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+    .component-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 0.65rem;
+    }
+    .component-card {
+      display: flex;
+      align-items: center;
+      gap: 0.65rem;
+      padding: 0.85rem 1rem;
+      background: var(--air-white);
+      border: 1px solid var(--air-200);
+      border-radius: var(--air-r-xl);
+      text-decoration: none;
+      color: var(--air-700);
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: border-color 0.15s, color 0.15s, transform 0.2s, box-shadow 0.2s;
+    }
+    .component-card:hover {
+      border-color: var(--air-ace);
+      color: var(--air-ace);
+      transform: translateY(-2px);
+      box-shadow: var(--air-shadow-md);
+    }
+    .component-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1px;
+      background: var(--air-200);
+      border: 1px solid var(--air-200);
+      border-radius: var(--air-r-2xl);
+      overflow: hidden;
+      margin-bottom: 3rem;
+    }
+    .stat-cell {
+      background: var(--air-white);
+      padding: 1.5rem 1.25rem;
+      text-align: center;
+    }
+    .stat-num {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      color: var(--air-900);
+    }
+    .stat-label { font-size: 0.78rem; color: var(--air-400); margin-top: 0.3rem; font-weight: 500; }
+    @media (max-width: 640px) {
+      .stat-row { grid-template-columns: 1fr 1fr; }
+      .hero { padding: 3rem 1.5rem 2.5rem; }
+    }
+  </style>
+</head>
+<body>
+<div class="docs-shell">
+
+  <!-- SIDEBAR -->
+  <aside class="docs-sidebar" id="docs-sidebar-container"></aside>
+
+  <!-- MAIN -->
+  <main class="docs-main">
+
+    <!-- Top bar -->
+    <div class="docs-topbar">
+      <button id="docs-menu-btn" class="air-theme-btn" style="display:none;" aria-label="Menu">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+      </button>
+      <span style="flex:1;"></span>
+      <div class="shelf" style="gap:0.5rem;">
+        <span class="air-badge ace soft">v2.0</span>
+        <span class="air-badge delta soft dot">Stable</span>
+      </div>
+    </div>
+
+    <!-- Hero -->
+    <div class="hero">
+      <div style="max-width:860px; margin:0 auto; position:relative; z-index:1;">
+        <div class="shelf" style="gap:0.65rem; flex-wrap:wrap; margin-bottom:1.25rem;">
+          <span class="air-badge ace soft">CSS Framework</span>
+          <span class="air-badge beta soft">Vanilla JS</span>
+          <span class="air-badge delta soft">Zero deps</span>
+          <span class="air-badge gamma soft">140KB</span>
+        </div>
+
+        <h1 style="font-size:clamp(2.5rem,6vw,4.5rem); font-weight:900; letter-spacing:-0.04em; color:var(--air-900); line-height:1.05; margin-bottom:1rem;">
+          Air Framework
+          <span style="display:block;" class="air-gradient-text">Documentation</span>
+        </h1>
+
+        <p class="docs-page-lead">
+          A premium CSS + vanilla JS component framework built around simple English words, powerful CSS custom property cascade, and features no other framework ships — scroll-triggered animations, floating navs, auto dark mode, and more.
+        </p>
+
+        <div class="shelf" style="gap:0.75rem; flex-wrap:wrap;">
+          <a href="getting-started.html" class="air-btn ace lg">Get Started →</a>
+          <a href="buttons.html" class="air-btn ace ghost lg">Components</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="docs-content">
+
+      <!-- Stats -->
+      <div class="stat-row" style="margin-top:2.5rem;">
+        <div class="stat-cell"><div class="stat-num air-gradient-text">20+</div><div class="stat-label">Components</div></div>
+        <div class="stat-cell"><div class="stat-num" style="color:var(--air-beta);">5</div><div class="stat-label">Color tones</div></div>
+        <div class="stat-cell"><div class="stat-num" style="color:var(--air-delta);">0</div><div class="stat-label">Dependencies</div></div>
+        <div class="stat-cell"><div class="stat-num" style="color:var(--air-gamma);">140K</div><div class="stat-label">CSS bundle</div></div>
+      </div>
+
+      <!-- What makes Air different -->
+      <div class="docs-section">
+        <h2 class="docs-section-title">What makes Air different</h2>
+        <div class="feature-grid">
+          <div class="feature-cell">
+            <span class="feature-icon">✦</span>
+            <h3 style="font-weight:700; font-size:0.9375rem; margin-bottom:0.35rem; color:var(--air-900);">Air's own vocabulary</h3>
+            <p style="font-size:0.82rem; color:var(--air-500); line-height:1.55;">Write <code>shelf</code> not <code>d-flex align-items-center</code>. Write <code>brand</code> not <code>navbar-brand</code>. Human words, CSS power.</p>
+          </div>
+          <div class="feature-cell">
+            <span class="feature-icon">⚡</span>
+            <h3 style="font-weight:700; font-size:0.9375rem; margin-bottom:0.35rem; color:var(--air-900);">Chromatic shadows</h3>
+            <p style="font-size:0.82rem; color:var(--air-500); line-height:1.55;">Shadows carry the button's own color, not plain black. 6 button variants, spring physics on every interaction.</p>
+          </div>
+          <div class="feature-cell">
+            <span class="feature-icon">🌙</span>
+            <h3 style="font-weight:700; font-size:0.9375rem; margin-bottom:0.35rem; color:var(--air-900);">Auto dark mode</h3>
+            <p style="font-size:0.82rem; color:var(--air-500); line-height:1.55;">One attribute on <code>&lt;html&gt;</code>. CSS custom property cascade handles every component. System preference detected. No flash.</p>
+          </div>
+          <div class="feature-cell">
+            <span class="feature-icon">🎯</span>
+            <h3 style="font-weight:700; font-size:0.9375rem; margin-bottom:0.35rem; color:var(--air-900);">Scroll animations built in</h3>
+            <p style="font-size:0.82rem; color:var(--air-500); line-height:1.55;"><code>data-animate="rise"</code> on any element. IntersectionObserver adds <code>.awake</code> when it enters view. Zero config.</p>
+          </div>
+          <div class="feature-cell">
+            <span class="feature-icon">🌊</span>
+            <h3 style="font-weight:700; font-size:0.9375rem; margin-bottom:0.35rem; color:var(--air-900);">Unique backgrounds</h3>
+            <p style="font-size:0.82rem; color:var(--air-500); line-height:1.55;">Mesh gradients, aurora, glows, noise grain, dot grids, light beams — all pure CSS, one class. Bootstrap has nothing like this.</p>
+          </div>
+          <div class="feature-cell">
+            <span class="feature-icon">📱</span>
+            <h3 style="font-weight:700; font-size:0.9375rem; margin-bottom:0.35rem; color:var(--air-900);">Auto mobile panel</h3>
+            <p style="font-size:0.82rem; color:var(--air-500); line-height:1.55;">Write nav links once. JS auto-clones them into the mobile slide panel. Bootstrap makes you write everything twice.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Color system -->
+      <div class="docs-section">
+        <h2 class="docs-section-title">5-Tone color system</h2>
+        <p class="docs-section-desc">Every component accepts a tone class. Mix tones with variants freely — <code>air-btn ace glow</code>, <code>air-card beta dark</code>.</p>
+        <div style="display:grid; grid-template-columns: repeat(5,1fr); gap:0.75rem;">
+          <div style="text-align:center;">
+            <div style="height:64px; border-radius:0.75rem; background:#72b0d7; margin-bottom:0.5rem; box-shadow:0 6px 18px rgba(114,176,215,0.4);"></div>
+            <div style="font-size:0.72rem; font-weight:700; color:var(--air-700);">ace</div>
+            <div style="font-size:0.65rem; color:var(--air-400);">#72b0d7</div>
+            <div style="font-size:0.62rem; color:var(--air-400);">Sky</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="height:64px; border-radius:0.75rem; background:#d94f8b; margin-bottom:0.5rem; box-shadow:0 6px 18px rgba(217,79,139,0.4);"></div>
+            <div style="font-size:0.72rem; font-weight:700; color:var(--air-700);">beta</div>
+            <div style="font-size:0.65rem; color:var(--air-400);">#d94f8b</div>
+            <div style="font-size:0.62rem; color:var(--air-400);">Rose</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="height:64px; border-radius:0.75rem; background:#FF8F4B; margin-bottom:0.5rem; box-shadow:0 6px 18px rgba(255,143,75,0.4);"></div>
+            <div style="font-size:0.72rem; font-weight:700; color:var(--air-700);">gamma</div>
+            <div style="font-size:0.65rem; color:var(--air-400);">#FF8F4B</div>
+            <div style="font-size:0.62rem; color:var(--air-400);">Ember</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="height:64px; border-radius:0.75rem; background:#6DC9A7; margin-bottom:0.5rem; box-shadow:0 6px 18px rgba(109,201,167,0.4);"></div>
+            <div style="font-size:0.72rem; font-weight:700; color:var(--air-700);">delta</div>
+            <div style="font-size:0.65rem; color:var(--air-400);">#6DC9A7</div>
+            <div style="font-size:0.62rem; color:var(--air-400);">Sage</div>
+          </div>
+          <div style="text-align:center;">
+            <div style="height:64px; border-radius:0.75rem; background:#041301; margin-bottom:0.5rem; box-shadow:0 6px 18px rgba(4,19,1,0.5);"></div>
+            <div style="font-size:0.72rem; font-weight:700; color:var(--air-700);">epsilon</div>
+            <div style="font-size:0.65rem; color:var(--air-400);">#041301</div>
+            <div style="font-size:0.62rem; color:var(--air-400);">Void</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- All components -->
+      <div class="docs-section">
+        <h2 class="docs-section-title">All components</h2>
+        <div class="component-grid">
+          <a href="buttons.html"      class="component-card"><div class="component-dot" style="background:#72b0d7;"></div>Buttons</a>
+          <a href="cards.html"        class="component-card"><div class="component-dot" style="background:#d94f8b;"></div>Cards</a>
+          <a href="backgrounds.html"  class="component-card"><div class="component-dot" style="background:#FF8F4B;"></div>Backgrounds</a>
+          <a href="badges.html"       class="component-card"><div class="component-dot" style="background:#6DC9A7;"></div>Badges</a>
+          <a href="alerts.html"       class="component-card"><div class="component-dot" style="background:#72b0d7;"></div>Alerts & Toasts</a>
+          <a href="forms.html"        class="component-card"><div class="component-dot" style="background:#d94f8b;"></div>Forms</a>
+          <a href="modals.html"       class="component-card"><div class="component-dot" style="background:#FF8F4B;"></div>Modals</a>
+          <a href="tooltips.html"     class="component-card"><div class="component-dot" style="background:#6DC9A7;"></div>Tooltips</a>
+          <a href="navigation.html"   class="component-card"><div class="component-dot" style="background:#72b0d7;"></div>Navigation</a>
+          <a href="tabs.html"         class="component-card"><div class="component-dot" style="background:#d94f8b;"></div>Tabs</a>
+          <a href="pagination.html"   class="component-card"><div class="component-dot" style="background:#FF8F4B;"></div>Pagination</a>
+          <a href="tables.html"       class="component-card"><div class="component-dot" style="background:#6DC9A7;"></div>Tables</a>
+          <a href="loaders.html"      class="component-card"><div class="component-dot" style="background:#72b0d7;"></div>Loaders</a>
+          <a href="typography.html"   class="component-card"><div class="component-dot" style="background:#d94f8b;"></div>Typography</a>
+          <a href="animations.html"   class="component-card"><div class="component-dot" style="background:#FF8F4B;"></div>Animations</a>
+          <a href="display-grid.html" class="component-card"><div class="component-dot" style="background:#6DC9A7;"></div>Display & Grid</a>
+          <a href="theme.html"        class="component-card"><div class="component-dot" style="background:#72b0d7;"></div>Dark Theme</a>
+          <a href="utilities.html"    class="component-card"><div class="component-dot" style="background:#d94f8b;"></div>Utilities</a>
+        </div>
+      </div>
+
+      <!-- Quick start snippet -->
+      <div class="docs-section">
+        <h2 class="docs-section-title">Quick start</h2>
+        <p class="docs-section-desc">Include the compiled CSS and any JS modules you need. No build tool required.</p>
+        <div class="docs-demo">
+          <div class="docs-code-header">
+            <span class="docs-code-lang">HTML</span>
+            <button class="docs-copy-btn">Copy</button>
+          </div>
+          <pre class="docs-code-block"><span class="t-dim">&lt;!-- 1. CSS (one file) --&gt;</span>
+<span class="t-tag">&lt;link</span> <span class="t-attr">rel</span>=<span class="t-val">"stylesheet"</span> <span class="t-attr">href</span>=<span class="t-val">"dist/my-framework.css"</span><span class="t-tag">&gt;</span>
+
+<span class="t-dim">&lt;!-- 2. JS modules (include only what you use) --&gt;</span>
+<span class="t-tag">&lt;script</span> <span class="t-attr">src</span>=<span class="t-val">"src/js/air-nav.js"</span><span class="t-tag">&gt;&lt;/script&gt;</span>
+<span class="t-tag">&lt;script</span> <span class="t-attr">src</span>=<span class="t-val">"src/js/air-modal.js"</span><span class="t-tag">&gt;&lt;/script&gt;</span>
+<span class="t-tag">&lt;script</span> <span class="t-attr">src</span>=<span class="t-val">"src/js/air-tabs.js"</span><span class="t-tag">&gt;&lt;/script&gt;</span>
+<span class="t-tag">&lt;script</span> <span class="t-attr">src</span>=<span class="t-val">"src/js/air-animate.js"</span><span class="t-tag">&gt;&lt;/script&gt;</span>
+<span class="t-tag">&lt;script</span> <span class="t-attr">src</span>=<span class="t-val">"src/js/air-theme.js"</span><span class="t-tag">&gt;&lt;/script&gt;</span>
+<span class="t-tag">&lt;script</span> <span class="t-attr">src</span>=<span class="t-val">"src/js/air-spacing.js"</span><span class="t-tag">&gt;&lt;/script&gt;</span>
+
+<span class="t-dim">&lt;!-- 3. Write Air HTML --&gt;</span>
+<span class="t-tag">&lt;button</span> <span class="t-attr">class</span>=<span class="t-val">"air-btn ace glow"</span><span class="t-tag">&gt;</span>Get started<span class="t-tag">&lt;/button&gt;</span>
+<span class="t-tag">&lt;div</span>    <span class="t-attr">class</span>=<span class="t-val">"air-bg mesh"</span><span class="t-tag">&gt;</span>Hero section<span class="t-tag">&lt;/div&gt;</span>
+<span class="t-tag">&lt;div</span>    <span class="t-attr">data-animate</span>=<span class="t-val">"rise"</span><span class="t-tag">&gt;</span>Wakes on scroll<span class="t-tag">&lt;/div&gt;</span></pre>
+        </div>
+
+        <div class="docs-callout">
+          <div>
+            <strong>Build from source:</strong> Run <code>npm run build-css</code> to compile SCSS → CSS.
+            Run <code>npm run minify-css</code> for a minified production build.
+            No other build step needed — JS files are vanilla, no bundler required.
+          </div>
+        </div>
+      </div>
+
+      <!-- File structure -->
+      <div class="docs-section">
+        <h2 class="docs-section-title">File structure</h2>
+        <div class="docs-demo">
+          <div class="docs-code-header">
+            <span class="docs-code-lang">Directory</span>
+          </div>
+          <pre class="docs-code-block"><span class="t-val">framework/</span>
+<span class="t-dim">├──</span> <span class="t-tag">src/</span>
+<span class="t-dim">│   ├──</span> <span class="t-tag">css/</span>
+<span class="t-dim">│   │   ├──</span> <span class="t-val">main.scss</span>          <span class="t-dim">← entry point, imports all partials</span>
+<span class="t-dim">│   │   ├──</span> <span class="t-val">_variables.scss</span>    <span class="t-dim">← design tokens (colors, radii, shadows...)</span>
+<span class="t-dim">│   │   ├──</span> <span class="t-val">_buttons.scss</span>
+<span class="t-dim">│   │   ├──</span> <span class="t-val">_cards.scss</span>
+<span class="t-dim">│   │   ├──</span> <span class="t-val">_backgrounds.scss</span>
+<span class="t-dim">│   │   ├──</span> <span class="t-val">_animations.scss</span>
+<span class="t-dim">│   │   ├──</span> <span class="t-val">_theme.scss</span>        <span class="t-dim">← light/dark (must be last)</span>
+<span class="t-dim">│   │   └──</span> <span class="t-val">... (15 partials total)</span>
+<span class="t-dim">│   └──</span> <span class="t-tag">js/</span>
+<span class="t-dim">│       ├──</span> <span class="t-val">air-nav.js</span>         <span class="t-dim">← navigation engine</span>
+<span class="t-dim">│       ├──</span> <span class="t-val">air-modal.js</span>       <span class="t-dim">← modal + drawer</span>
+<span class="t-dim">│       ├──</span> <span class="t-val">air-tabs.js</span>        <span class="t-dim">← tabs + pagination</span>
+<span class="t-dim">│       ├──</span> <span class="t-val">air-animate.js</span>     <span class="t-dim">← scroll entry animations</span>
+<span class="t-dim">│       ├──</span> <span class="t-val">air-theme.js</span>       <span class="t-dim">← light/dark toggle</span>
+<span class="t-dim">│       └──</span> <span class="t-val">air-spacing.js</span>     <span class="t-dim">← decimal spacing (p-0.3 etc.)</span>
+<span class="t-dim">├──</span> <span class="t-tag">dist/</span>
+<span class="t-dim">│   ├──</span> <span class="t-val">my-framework.css</span>   <span class="t-dim">← compiled, 140KB</span>
+<span class="t-dim">│   └──</span> <span class="t-val">my-framework.min.css</span>
+<span class="t-dim">├──</span> <span class="t-tag">documentation/</span>      <span class="t-dim">← you are here</span>
+<span class="t-dim">└──</span> <span class="t-tag">others/tests/</span>       <span class="t-dim">← live component test pages</span></pre>
+        </div>
+      </div>
+
+    </div>
+  </main>
+</div>
+
+<script src="../dist/my-framework.css" type="x-skip"></script>
+<script src="../src/js/air-theme.js"></script>
+<script src="docs.js"></script>
+<script>
+  // Show mobile menu button on small screens
+  if (window.innerWidth <= 900) {
+    document.getElementById('docs-menu-btn').style.display = 'flex';
+  }
+</script>
+</body>
+</html>

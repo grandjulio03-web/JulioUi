@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Forms — Air Framework</title>
+  <script>try{var t=localStorage.getItem('air-theme');if(t)document.documentElement.setAttribute('data-theme',t);else if(window.matchMedia('(prefers-color-scheme: dark)').matches)document.documentElement.setAttribute('data-theme','dark');}catch(e){}</script>
+  <link rel="stylesheet" href="../dist/my-framework.css">
+  <link rel="stylesheet" href="docs.css">
+</head>
+<body>
+<div class="docs-shell">
+  <aside class="docs-sidebar" id="docs-sidebar-container"></aside>
+  <main class="docs-main">
+    <div class="docs-topbar">
+      <button id="docs-menu-btn" class="air-theme-btn" aria-label="Menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+      <nav class="air-trail" style="flex:1; padding-left:0.5rem;"><span class="crumb"><a href="index.html">Docs</a></span><span class="crumb active">Forms</span></nav>
+    </div>
+    <div class="docs-content">
+
+      <h1 class="docs-page-title">Forms</h1>
+      <p class="docs-page-lead">Input, select, textarea, search, toggle, checkbox, radio, range, file upload. All accessible, all toned, all dark-mode aware.</p>
+
+      <div class="docs-callout">
+        <div><strong>Pattern:</strong> <code>air-field</code> wrapper → <code>air-label</code> → <code>air-input [tone] [variant] [size]</code> → <code>air-hint</code></div>
+      </div>
+
+      <!-- Field structure -->
+      <div class="docs-section">
+        <h2 class="docs-section-title">Field structure</h2>
+        <div class="docs-demo">
+          <div class="docs-preview" style="flex-direction:column; max-width:400px;">
+            <div class="air-field">
+              <label class="air-label">Email address <span>*</span></label>
+              <input type="email" class="air-input ace" placeholder="you@example.com">
+              <span class="air-hint">We'll never share your email.</span>
+            </div>
+          </div>
+          <div class="docs-code-header"><span class="docs-code-lang">HTML</span><button class="docs-copy-btn">Copy</button></div>
+          <pre class="docs-code-block"><span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-val">"air-field"</span><span class="t-tag">&gt;</span>
+  <span class="t-tag">&lt;label</span> <span class="t-attr">class</span>=<span class="t-val">"air-label"</span><span class="t-tag">&gt;</span>Email <span class="t-tag">&lt;span&gt;</span>*<span class="t-tag">&lt;/span&gt;&lt;/label&gt;</span>
+  <span class="t-tag">&lt;input</span> <span class="t-attr">type</span>=<span class="t-val">"email"</span> <span class="t-attr">class</span>=<span class="t-val">"air-input ace"</span> <span class="t-attr">placeholder</span>=<span class="t-val">"you@example.com"</span><span class="t-tag">&gt;</span>
+  <span class="t-tag">&lt;span</span> <span class="t-attr">class</span>=<span class="t-val">"air-hint"</span><span class="t-tag">&gt;</span>We'll never share your email.<span class="t-tag">&lt;/span&gt;</span>
+<span class="t-tag">&lt;/div&gt;</span></pre>
+        </div>
+      </div>
+
+      <!-- Input variants -->
+      <div class="docs-section">
+        <h2 class="docs-section-title">Input variants</h2>
+        <div class="docs-demo">
+          <div class="docs-preview" style="flex-direction:column; gap:1rem; max-width:500px;">
+            <input type="text" class="air-input" placeholder="Default (bordered)">
+            <input type="text" class="air-input ghost" placeholder="Ghost — activates on focus">
+            <input type="text" class="air-input flat" placeholder="Flat — underline only">
+            <input type="text" class="air-input neon ace" placeholder="Neon — glowing border">
+          </div>
+          <div class="docs-code-header"><span class="docs-code-lang">HTML</span><button class="docs-copy-btn">Copy</button></div>
+          <pre class="docs-code-block"><span class="t-tag">&lt;input</span> <span class="t-attr">class</span>=<span class="t-val">"air-input"</span> <span class="t-attr">placeholder</span>=<span class="t-val">"Default"</span><span class="t-tag">&gt;</span>
+<span class="t-tag">&lt;input</span> <span class="t-attr">class</span>=<span class="t-val">"air-input ghost"</span><span class="t-tag">&gt;</span>
+<span class="t-tag">&lt;input</span> <span class="t-attr">class</span>=<span class="t-val">"air-input flat"</span><span class="t-tag">&gt;</span>
+<span class="t-tag">&lt;input</span> <span class="t-attr">class</span>=<span class="t-val">"air-input neon ace"</span><span class="t-tag">&gt;</span>
+
+<span class="t-dim">&lt;!-- Glass variant for dark backgrounds --&gt;</span>
+<span class="t-tag">&lt;input</span> <span class="t-attr">class</span>=<span class="t-val">"air-input glass"</span><span class="t-tag">&gt;</span></pre>
+        </div>
+      </div>
+
+      <!-- Toggle -->
+      <div class="docs-section">
+        <h2 class="docs-section-title">Toggle switch</h2>
+        <div class="docs-demo">
+          <div class="docs-preview" style="flex-direction:column; gap:0.75rem;">
+            <label class="air-toggle ace"><input type="checkbox" checked><span class="air-toggle-track"><span class="air-toggle-thumb"></span></span>Notifications (ace)</label>
+            <label class="air-toggle beta"><input type="checkbox"><span class="air-toggle-track"><span class="air-toggle-thumb"></span></span>Marketing (beta)</label>
+            <label class="air-toggle delta"><input type="checkbox" checked><span class="air-toggle-track"><span class="air-toggle-thumb"></span></span>Dark mode (delta)</label>
+          </div>
+          <div class="docs-code-header"><span class="docs-code-lang">HTML</span><button class="docs-copy-btn">Copy</button></div>
+          <pre class="docs-code-block"><span class="t-tag">&lt;label</span> <span class="t-attr">class</span>=<span class="t-val">"air-toggle ace"</span><span class="t-tag">&gt;</span>
+  <span class="t-tag">&lt;input</span> <span class="t-attr">type</span>=<span class="t-val">"checkbox"</span> <span class="t-attr">checked</span><span class="t-tag">&gt;</span>
+  <span class="t-tag">&lt;span</span> <span class="t-attr">class</span>=<span class="t-val">"air-toggle-track"</span><span class="t-tag">&gt;</span>
+    <span class="t-tag">&lt;span</span> <span class="t-attr">class</span>=<span class="t-val">"air-toggle-thumb"</span><span class="t-tag">&gt;&lt;/span&gt;</span>
+  <span class="t-tag">&lt;/span&gt;</span>
+  Label text
+<span class="t-tag">&lt;/label&gt;</span></pre>
+        </div>
+      </div>
+
+      <!-- Checkbox & Radio -->
+      <div class="docs-section">
+        <h2 class="docs-section-title">Checkbox & Radio</h2>
+        <div class="docs-demo">
+          <div class="docs-preview" style="flex-direction:column; gap:0.75rem;">
+            <label class="air-check ace"><input type="checkbox" checked><span class="air-check-box"></span>Checked checkbox</label>
+            <label class="air-check beta"><input type="checkbox"><span class="air-check-box"></span>Unchecked</label>
+            <label class="air-radio ace"><input type="radio" name="r" checked><span class="air-radio-dot"></span>Option A</label>
+            <label class="air-radio ace"><input type="radio" name="r"><span class="air-radio-dot"></span>Option B</label>
+          </div>
+          <div class="docs-code-header"><span class="docs-code-lang">HTML</span><button class="docs-copy-btn">Copy</button></div>
+          <pre class="docs-code-block"><span class="t-dim">&lt;!-- Checkbox --&gt;</span>
+<span class="t-tag">&lt;label</span> <span class="t-attr">class</span>=<span class="t-val">"air-check ace"</span><span class="t-tag">&gt;</span>
+  <span class="t-tag">&lt;input</span> <span class="t-attr">type</span>=<span class="t-val">"checkbox"</span> <span class="t-attr">checked</span><span class="t-tag">&gt;</span>
+  <span class="t-tag">&lt;span</span> <span class="t-attr">class</span>=<span class="t-val">"air-check-box"</span><span class="t-tag">&gt;&lt;/span&gt;</span>
+  Label
+<span class="t-tag">&lt;/label&gt;</span>
+
+<span class="t-dim">&lt;!-- Radio --&gt;</span>
+<span class="t-tag">&lt;label</span> <span class="t-attr">class</span>=<span class="t-val">"air-radio delta"</span><span class="t-tag">&gt;</span>
+  <span class="t-tag">&lt;input</span> <span class="t-attr">type</span>=<span class="t-val">"radio"</span> <span class="t-attr">name</span>=<span class="t-val">"group"</span><span class="t-tag">&gt;</span>
+  <span class="t-tag">&lt;span</span> <span class="t-attr">class</span>=<span class="t-val">"air-radio-dot"</span><span class="t-tag">&gt;&lt;/span&gt;</span>
+  Option
+<span class="t-tag">&lt;/label&gt;</span></pre>
+        </div>
+      </div>
+
+      <!-- Range -->
+      <div class="docs-section">
+        <h2 class="docs-section-title">Range slider</h2>
+        <div class="docs-demo">
+          <div class="docs-preview" style="flex-direction:column; gap:1rem; width:100%; max-width:400px;">
+            <input type="range" class="air-range ace" value="65">
+            <input type="range" class="air-range beta" value="30">
+            <input type="range" class="air-range delta" value="80">
+          </div>
+          <div class="docs-code-header"><span class="docs-code-lang">HTML</span><button class="docs-copy-btn">Copy</button></div>
+          <pre class="docs-code-block"><span class="t-tag">&lt;input</span> <span class="t-attr">type</span>=<span class="t-val">"range"</span> <span class="t-attr">class</span>=<span class="t-val">"air-range ace"</span> <span class="t-attr">min</span>=<span class="t-val">"0"</span> <span class="t-attr">max</span>=<span class="t-val">"100"</span> <span class="t-attr">value</span>=<span class="t-val">"65"</span><span class="t-tag">&gt;</span></pre>
+        </div>
+      </div>
+
+      <!-- Form layouts -->
+      <div class="docs-section">
+        <h2 class="docs-section-title">Form layouts</h2>
+        <div class="docs-demo">
+          <div class="docs-code-header"><span class="docs-code-lang">HTML</span><button class="docs-copy-btn">Copy</button></div>
+          <pre class="docs-code-block"><span class="t-dim">&lt;!-- Vertical stack --&gt;</span>
+<span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-val">"air-form"</span><span class="t-tag">&gt;</span>
+  <span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-val">"air-field"</span><span class="t-tag">&gt;</span>...<span class="t-tag">&lt;/div&gt;</span>
+  <span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-val">"air-field"</span><span class="t-tag">&gt;</span>...<span class="t-tag">&lt;/div&gt;</span>
+<span class="t-tag">&lt;/div&gt;</span>
+
+<span class="t-dim">&lt;!-- Two-column row --&gt;</span>
+<span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-val">"air-form-row"</span><span class="t-tag">&gt;</span>
+  <span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-val">"air-field"</span><span class="t-tag">&gt;</span>...<span class="t-tag">&lt;/div&gt;</span>
+  <span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-val">"air-field"</span><span class="t-tag">&gt;</span>...<span class="t-tag">&lt;/div&gt;</span>
+<span class="t-tag">&lt;/div&gt;</span>
+
+<span class="t-dim">&lt;!-- Input + button combo --&gt;</span>
+<span class="t-tag">&lt;div</span> <span class="t-attr">class</span>=<span class="t-val">"air-input-action"</span><span class="t-tag">&gt;</span>
+  <span class="t-tag">&lt;input</span> <span class="t-attr">class</span>=<span class="t-val">"air-input"</span> <span class="t-attr">placeholder</span>=<span class="t-val">"Subscribe..."</span><span class="t-tag">&gt;</span>
+  <span class="t-tag">&lt;button</span> <span class="t-attr">class</span>=<span class="t-val">"air-btn ace"</span><span class="t-tag">&gt;</span>Join<span class="t-tag">&lt;/button&gt;</span>
+<span class="t-tag">&lt;/div&gt;</span></pre>
+        </div>
+      </div>
+
+      <!-- Reference -->
+      <div class="docs-section">
+        <h2 class="docs-section-title">Class reference</h2>
+        <table class="docs-table">
+          <thead><tr><th>Class</th><th>Element</th><th>Description</th></tr></thead>
+          <tbody>
+            <tr><td><code>air-field</code></td><td>wrapper</td><td>Flex column gap. Wraps label + input + hint.</td></tr>
+            <tr><td><code>air-label</code></td><td><code>&lt;label&gt;</code></td><td>Form field label. <code>&lt;span&gt;*&lt;/span&gt;</code> shows red required marker.</td></tr>
+            <tr><td><code>air-input</code></td><td><code>&lt;input&gt;</code></td><td>Base input. Add tone for focus ring color.</td></tr>
+            <tr><td><code>air-select</code></td><td><code>&lt;select&gt;</code></td><td>Styled select with custom arrow.</td></tr>
+            <tr><td><code>air-textarea</code></td><td><code>&lt;textarea&gt;</code></td><td>Resizable textarea.</td></tr>
+            <tr><td><code>ghost flat glass neon</code></td><td>on inputs</td><td>Style variants.</td></tr>
+            <tr><td><code>sm lg</code></td><td>on inputs</td><td>Size variants.</td></tr>
+            <tr><td><code>is-error is-success</code></td><td>on inputs</td><td>Validation state classes.</td></tr>
+            <tr><td><code>air-hint</code></td><td><code>&lt;span&gt;</code></td><td>Helper text below input.</td></tr>
+            <tr><td><code>air-error</code></td><td><code>&lt;span&gt;</code></td><td>Error message. Add <code>.is-visible</code> to show.</td></tr>
+            <tr><td><code>air-toggle</code></td><td><code>&lt;label&gt;</code></td><td>Toggle switch. Needs track + thumb inside.</td></tr>
+            <tr><td><code>air-check</code></td><td><code>&lt;label&gt;</code></td><td>Checkbox. Needs <code>.air-check-box</code> span inside.</td></tr>
+            <tr><td><code>air-radio</code></td><td><code>&lt;label&gt;</code></td><td>Radio button. Needs <code>.air-radio-dot</code> span inside.</td></tr>
+            <tr><td><code>air-range</code></td><td><code>&lt;input type="range"&gt;</code></td><td>Styled range slider.</td></tr>
+            <tr><td><code>air-form</code></td><td>wrapper</td><td>Vertical form layout with gap.</td></tr>
+            <tr><td><code>air-form-row</code></td><td>wrapper</td><td>Two-column row (stacks on mobile).</td></tr>
+            <tr><td><code>air-input-action</code></td><td>wrapper</td><td>Input + button fused inline.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+  </main>
+</div>
+<script src="../src/js/air-theme.js"></script>
+<script src="docs.js"></script>
+<script>if(window.innerWidth<=900)document.getElementById('docs-menu-btn').style.display='flex';</script>
+</body>
+</html>

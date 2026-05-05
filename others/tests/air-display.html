@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Air — Display, Grid & Positioning</title>
+  <link rel="stylesheet" href="../../dist/my-framework.css">
+  <style>
+    body { padding: 2.5rem; background: var(--air-50); font-family: var(--air-font); }
+    .s { margin-bottom: 3.5rem; }
+    .s-title { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--air-400); margin-bottom: 1.25rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--air-200); }
+    .demo-box { background: rgba(114,176,215,0.18); border-radius: 0.5rem; padding: 0.75rem 1rem; font-size: 0.78rem; font-weight: 700; color: #4a8fc0; text-align: center; min-height: 2.5rem; display: flex; align-items: center; justify-content: center; }
+    .demo-box.b { background: rgba(217,79,139,0.15); color: #b83a72; }
+    .demo-box.g { background: rgba(109,201,167,0.18); color: #44a880; }
+    .demo-box.o { background: rgba(255,143,75,0.18); color: #d96e2a; }
+    code { font-family: var(--air-font-mono); font-size: 0.82em; background: var(--air-100); padding: 0.15em 0.45em; border-radius: 0.25rem; border: 1px solid var(--air-200); }
+    .word-card { background: #fff; border-radius: 0.875rem; padding: 0.9rem 1.1rem; border: 1px solid var(--air-200); }
+    .wc-class { font-family: var(--air-font-mono); font-size: 0.8rem; font-weight: 700; color: #4a8fc0; background: rgba(114,176,215,0.1); padding: 0.18em 0.5em; border-radius: 0.25rem; display: inline-block; margin-bottom: 0.35rem; }
+    .wc-desc { font-size: 0.8rem; color: var(--air-500); line-height: 1.5; }
+    .label { font-size: 0.72rem; font-weight: 600; color: var(--air-400); margin-bottom: 0.5rem; display: block; }
+  </style>
+</head>
+<body>
+
+  <div style="margin-bottom:3rem;">
+    <span class="air-kicker dotted">Air Framework</span>
+    <h1 class="air-display" style="margin-top:0.4rem; font-size:clamp(2rem,5vw,3rem);">Display, Grid & Positioning</h1>
+    <p class="air-lead">Air's own English words for display types. Powerful grid with named layouts. Positioning helpers. All responsive.</p>
+  </div>
+
+  <!-- ===== DISPLAY WORDS ===== -->
+  <div class="s">
+    <div class="s-title">Air's display vocabulary — human words over CSS jargon</div>
+    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:0.75rem;">
+      <div class="word-card"><span class="wc-class">shelf</span><p class="wc-desc"><code>display:flex; align-items:center</code> — items sit side by side on a shelf. The most common flex pattern.</p></div>
+      <div class="word-card"><span class="wc-class">pile</span><p class="wc-desc"><code>display:flex; flex-direction:column</code> — items stacked in a pile.</p></div>
+      <div class="word-card"><span class="wc-class">line</span><p class="wc-desc"><code>display:inline-flex; align-items:center</code> — inline horizontal row, flows with text.</p></div>
+      <div class="word-card"><span class="wc-class">flow</span><p class="wc-desc"><code>display:flow-root</code> — creates a new Block Formatting Context. Clears floats.</p></div>
+      <div class="word-card"><span class="wc-class">hide</span><p class="wc-desc"><code>display:none</code> — gone, takes no space.</p></div>
+      <div class="word-card"><span class="wc-class">blind</span><p class="wc-desc"><code>visibility:hidden</code> — invisible but still takes space. Keeps layout stable.</p></div>
+      <div class="word-card"><span class="wc-class">ghost</span><p class="wc-desc"><code>opacity:0; pointer-events:none</code> — invisible, no interaction, still there.</p></div>
+      <div class="word-card"><span class="wc-class">center</span><p class="wc-desc"><code>display:flex; align-items:center; justify-content:center</code> — dead center both axes.</p></div>
+      <div class="word-card"><span class="wc-class">push</span><p class="wc-desc"><code>margin-left:auto</code> — pushes item to the far right inside a shelf.</p></div>
+      <div class="word-card"><span class="wc-class">grow</span><p class="wc-desc"><code>flex-grow:1</code> — fills remaining space in a flex container.</p></div>
+    </div>
+  </div>
+
+  <!-- ===== SHELF DEMO ===== -->
+  <div class="s">
+    <div class="s-title">shelf — flex row with centered alignment</div>
+    <span class="label">shelf</span>
+    <div class="shelf" style="background:var(--air-100); padding:1rem; border-radius:0.75rem;">
+      <div class="demo-box">Alpha</div>
+      <div class="demo-box">Beta</div>
+      <div class="demo-box">Gamma</div>
+      <div class="demo-box push">Pushed to end</div>
+    </div>
+    <span class="label" style="margin-top:1rem;">shelf with j-between</span>
+    <div class="shelf j-between" style="background:var(--air-100); padding:1rem; border-radius:0.75rem;">
+      <div class="demo-box">Left</div>
+      <div class="demo-box">Center</div>
+      <div class="demo-box">Right</div>
+    </div>
+  </div>
+
+  <!-- ===== PILE DEMO ===== -->
+  <div class="s">
+    <div class="s-title">pile — flex column</div>
+    <div class="pile" style="background:var(--air-100); padding:1rem; border-radius:0.75rem; max-width:300px;">
+      <div class="demo-box">First</div>
+      <div class="demo-box">Second</div>
+      <div class="demo-box push-down">Pushed to bottom</div>
+    </div>
+  </div>
+
+  <!-- ===== AIR GRID ===== -->
+  <div class="s">
+    <div class="s-title">air-grid — the grid system</div>
+
+    <span class="label">air-grid cols-3 gap-4</span>
+    <div class="air-grid cols-3 gap-4" style="margin-bottom:1.5rem;">
+      <div class="demo-box">1</div><div class="demo-box">2</div><div class="demo-box">3</div>
+      <div class="demo-box">4</div><div class="demo-box">5</div><div class="demo-box">6</div>
+    </div>
+
+    <span class="label">air-grid cols-auto (auto-fit minmax 240px)</span>
+    <div class="air-grid cols-auto gap-4" style="margin-bottom:1.5rem;">
+      <div class="demo-box b">Auto</div><div class="demo-box b">Auto</div><div class="demo-box b">Auto</div><div class="demo-box b">Auto</div><div class="demo-box b">Auto</div>
+    </div>
+
+    <span class="label">air-grid cols-4 — becomes cols-2 at 900px, cols-1 at 639px</span>
+    <div class="air-grid cols-4 gap-4" style="margin-bottom:1.5rem;">
+      <div class="demo-box g">1</div><div class="demo-box g">2</div><div class="demo-box g">3</div><div class="demo-box g">4</div>
+    </div>
+
+    <span class="label">Span modifiers: span-2, span-full, row-span-2</span>
+    <div class="air-grid cols-3 gap-4" style="margin-bottom:1.5rem;">
+      <div class="demo-box o span-2" style="min-height:5rem;">span-2</div>
+      <div class="demo-box o row-span-2" style="min-height:100%;">row-span-2</div>
+      <div class="demo-box o">normal</div>
+      <div class="demo-box o">normal</div>
+    </div>
+
+    <span class="label">cols-side (260px sidebar + 1fr main)</span>
+    <div class="air-grid cols-side gap-4" style="margin-bottom:1.5rem; max-width:800px;">
+      <div class="demo-box b" style="min-height:6rem;">Sidebar<br><small style="opacity:0.7;">260px fixed</small></div>
+      <div class="demo-box" style="min-height:6rem;">Main content<br><small style="opacity:0.7;">1fr flexible</small></div>
+    </div>
+
+    <span class="label">Asymmetric: cols-1-2 / cols-2-1 / cols-1-3</span>
+    <div style="display:flex; flex-direction:column; gap:0.5rem; max-width:800px;">
+      <div class="air-grid cols-1-2 gap-4"><div class="demo-box g">1fr</div><div class="demo-box g">2fr</div></div>
+      <div class="air-grid cols-2-1 gap-4"><div class="demo-box o">2fr</div><div class="demo-box o">1fr</div></div>
+      <div class="air-grid cols-1-3 gap-4"><div class="demo-box b">1fr</div><div class="demo-box b">3fr</div></div>
+    </div>
+  </div>
+
+  <!-- ===== POSITIONING ===== -->
+  <div class="s">
+    <div class="s-title">Positioning helpers</div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+
+      <div>
+        <span class="label">dead-center</span>
+        <div style="position:relative; background:var(--air-100); border-radius:0.75rem; height:120px;">
+          <div class="dead-center demo-box" style="width:120px;">dead-center</div>
+        </div>
+      </div>
+
+      <div>
+        <span class="label">pin-top / pin-bot / pin-left / pin-right</span>
+        <div style="position:relative; background:var(--air-100); border-radius:0.75rem; height:120px; overflow:hidden;">
+          <div class="pos-abs pin-top" style="background:rgba(114,176,215,0.3); height:24px; display:flex; align-items:center; justify-content:center; font-size:0.7rem; font-weight:700; color:#4a8fc0;">pin-top</div>
+          <div class="pos-abs pin-bot" style="background:rgba(109,201,167,0.3); height:24px; display:flex; align-items:center; justify-content:center; font-size:0.7rem; font-weight:700; color:#44a880;">pin-bot</div>
+          <div class="dead-center" style="font-size:0.72rem; font-weight:700; color:var(--air-500);">content</div>
+        </div>
+      </div>
+
+      <div>
+        <span class="label">pin corners (pin-tl, pin-tr, pin-bl, pin-br)</span>
+        <div style="position:relative; background:var(--air-100); border-radius:0.75rem; height:120px; overflow:hidden;">
+          <div class="pos-abs pin-tl" style="padding:0.25rem 0.5rem; background:rgba(114,176,215,0.5); font-size:0.65rem; font-weight:700; color:#4a8fc0; border-radius:0 0 0.35rem 0;">TL</div>
+          <div class="pos-abs pin-tr" style="padding:0.25rem 0.5rem; background:rgba(217,79,139,0.4); font-size:0.65rem; font-weight:700; color:#b83a72; border-radius:0 0 0 0.35rem;">TR</div>
+          <div class="pos-abs pin-bl" style="padding:0.25rem 0.5rem; background:rgba(255,143,75,0.4); font-size:0.65rem; font-weight:700; color:#d96e2a; border-radius:0 0.35rem 0 0;">BL</div>
+          <div class="pos-abs pin-br" style="padding:0.25rem 0.5rem; background:rgba(109,201,167,0.4); font-size:0.65rem; font-weight:700; color:#44a880; border-radius:0.35rem 0 0 0;">BR</div>
+        </div>
+      </div>
+
+      <div>
+        <span class="label">z-index scale</span>
+        <div style="position:relative; height:120px;">
+          <div class="pos-abs z-0"   style="left:0; top:20px; width:80px; height:80px; border-radius:0.5rem; background:rgba(114,176,215,0.7); display:flex; align-items:center; justify-content:center; font-size:0.7rem; font-weight:700; color:#fff;">z-0</div>
+          <div class="pos-abs z-10"  style="left:30px; top:10px; width:80px; height:80px; border-radius:0.5rem; background:rgba(217,79,139,0.7); display:flex; align-items:center; justify-content:center; font-size:0.7rem; font-weight:700; color:#fff;">z-10</div>
+          <div class="pos-abs z-20"  style="left:60px; top:0; width:80px; height:80px; border-radius:0.5rem; background:rgba(255,143,75,0.7); display:flex; align-items:center; justify-content:center; font-size:0.7rem; font-weight:700; color:#fff;">z-20</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== FLEX ALIGNMENT ===== -->
+  <div class="s">
+    <div class="s-title">Alignment helpers — j-* (justify) · a-* (align items)</div>
+
+    <div style="display:grid; grid-template-columns:1fr 1fr; gap:1rem;">
+      <div>
+        <span class="label">shelf a-start j-between</span>
+        <div class="shelf a-start j-between" style="background:var(--air-100); padding:1rem; border-radius:0.75rem; min-height:80px;">
+          <div class="demo-box" style="height:60px;">Tall</div>
+          <div class="demo-box" style="height:30px;">Short</div>
+          <div class="demo-box" style="height:45px;">Mid</div>
+        </div>
+      </div>
+      <div>
+        <span class="label">shelf a-end j-center</span>
+        <div class="shelf a-end j-center" style="background:var(--air-100); padding:1rem; border-radius:0.75rem; min-height:80px;">
+          <div class="demo-box b" style="height:60px;">Tall</div>
+          <div class="demo-box b" style="height:30px;">Short</div>
+          <div class="demo-box b" style="height:45px;">Mid</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== SIZING ===== -->
+  <div class="s">
+    <div class="s-title">Max-width scale — max-xs to max-2xl</div>
+    <div style="display:flex; flex-direction:column; gap:0.4rem;">
+      <div class="demo-box max-xs" style="width:100%;">max-xs (360px)</div>
+      <div class="demo-box max-sm" style="width:100%;">max-sm (480px)</div>
+      <div class="demo-box max-md" style="width:100%;">max-md (680px)</div>
+      <div class="demo-box max-lg" style="width:100%;">max-lg (900px)</div>
+      <div class="demo-box max-xl" style="width:100%;">max-xl (1024px)</div>
+    </div>
+  </div>
+
+  <!-- ===== TOOLTIPS ===== -->
+  <div class="s">
+    <div class="s-title">Tooltips — data-tip attribute, zero extra HTML</div>
+    <div class="shelf" style="gap:1.5rem; flex-wrap:wrap; padding:2rem; background:var(--air-100); border-radius:1rem;">
+      <button class="air-btn ace" data-tip="This is a top tooltip">Top (default)</button>
+      <button class="air-btn beta" data-tip="Bottom tooltip" data-tip-pos="bottom">Bottom</button>
+      <button class="air-btn gamma" data-tip="Left tooltip" data-tip-pos="left">Left</button>
+      <button class="air-btn delta" data-tip="Right tooltip" data-tip-pos="right">Right</button>
+      <button class="air-btn ace ghost" data-tip="Light tooltip style" data-tip-type="light">Light style</button>
+      <button class="air-btn ace soft" data-tip="Ace colored tooltip" data-tip-type="ace">Ace tone</button>
+      <button class="air-btn beta soft" data-tip="Beta colored tooltip" data-tip-type="beta">Beta tone</button>
+      <span data-tip="Tooltips work on any element, not just buttons" data-tip-pos="top" style="cursor:help; color:var(--air-500); font-size:0.875rem; border-bottom:1px dashed var(--air-300);">hover me (any element)</span>
+    </div>
+  </div>
+
+</body>
+</html>

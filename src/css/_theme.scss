@@ -1,0 +1,278 @@
+// ============================================================
+// Air Framework -- Light / Dark Theme
+//
+// Usage:
+//   <html data-theme="dark">    dark mode
+//   <html data-theme="light">   explicit light (default)
+//   <html>                      light by default
+//
+// Toggle button:
+//   <button class="air-theme-btn" data-theme-toggle>...</button>
+//   JS (air-theme.js) handles the toggle.
+//   Preference saved to localStorage key "air-theme".
+//
+// System preference auto-detect:
+//   Air respects prefers-color-scheme unless user explicitly toggles.
+//
+// All Air CSS custom properties are overridden in dark mode.
+// Every component built on those tokens is automatically themed.
+// ============================================================
+
+// ── Dark token overrides ──────────────────────────────────────
+[data-theme="dark"] {
+  // Neutral scale -- inverted & tinted with epsilon green
+  --air-white:  #111b0f;
+  --air-50:     #151f12;
+  --air-100:    #1c2a19;
+  --air-200:    #263821;
+  --air-300:    #374f31;
+  --air-400:    #5e7858;
+  --air-500:    #88a082;
+  --air-600:    #adc5a7;
+  --air-700:    #c8dfc6;
+  --air-800:    #dff1dd;
+  --air-900:    #edf8eb;
+  --air-black:  #f5fef3;
+
+  // Tone colors -- slightly lighter for dark surface contrast
+  --air-ace:     #8ec5e3;
+  --air-ace-dk:  #72b0d7;
+  --air-beta:    #e87bb0;
+  --air-beta-dk: #d94f8b;
+  --air-gamma:   #ffad7a;
+  --air-gamma-dk:#FF8F4B;
+  --air-delta:   #8dddc0;
+  --air-delta-dk:#6DC9A7;
+
+  // RGB values for the lighter tones
+  --air-ace-rgb:     142 197 227;
+  --air-beta-rgb:    232 123 176;
+  --air-gamma-rgb:   255 173 122;
+  --air-delta-rgb:   141 221 192;
+
+  // Shadows -- darker + more opacity needed on dark surfaces
+  --air-shadow-xs: 0 1px 2px rgba(0,0,0,0.4);
+  --air-shadow-sm: 0 1px 3px rgba(0,0,0,0.5), 0 1px 2px rgba(0,0,0,0.35);
+  --air-shadow-md: 0 4px 12px rgba(0,0,0,0.5), 0 2px 5px rgba(0,0,0,0.35);
+  --air-shadow-lg: 0 10px 28px rgba(0,0,0,0.55), 0 4px 10px rgba(0,0,0,0.35);
+  --air-shadow-xl: 0 20px 48px rgba(0,0,0,0.6), 0 8px 18px rgba(0,0,0,0.4);
+  --air-shadow-2xl:0 35px 80px rgba(0,0,0,0.65), 0 12px 28px rgba(0,0,0,0.4);
+}
+
+// ── Auto: respect system preference (when no explicit choice) ──
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]):not([data-theme="dark"]) {
+    --air-white:  #111b0f;
+    --air-50:     #151f12;
+    --air-100:    #1c2a19;
+    --air-200:    #263821;
+    --air-300:    #374f31;
+    --air-400:    #5e7858;
+    --air-500:    #88a082;
+    --air-600:    #adc5a7;
+    --air-700:    #c8dfc6;
+    --air-800:    #dff1dd;
+    --air-900:    #edf8eb;
+    --air-black:  #f5fef3;
+    --air-ace:    #8ec5e3;
+    --air-ace-dk: #72b0d7;
+    --air-beta:   #e87bb0;
+    --air-gamma:  #ffad7a;
+    --air-delta:  #8dddc0;
+    --air-ace-rgb:   142 197 227;
+    --air-beta-rgb:  232 123 176;
+    --air-gamma-rgb: 255 173 122;
+    --air-delta-rgb: 141 221 192;
+    --air-shadow-md: 0 4px 12px rgba(0,0,0,0.5), 0 2px 5px rgba(0,0,0,0.35);
+    --air-shadow-lg: 0 10px 28px rgba(0,0,0,0.55), 0 4px 10px rgba(0,0,0,0.35);
+    --air-shadow-xl: 0 20px 48px rgba(0,0,0,0.6), 0 8px 18px rgba(0,0,0,0.4);
+  }
+}
+
+// ── Body background + color ───────────────────────────────────
+// Smooth transition when switching themes
+html {
+  transition:
+    background-color var(--air-t-slow),
+    color            var(--air-t-slow);
+}
+
+body {
+  background-color: var(--air-white);
+  color: var(--air-800);
+}
+
+// ── Dark-specific component tweaks ────────────────────────────
+// Things that need more than just token swaps.
+
+[data-theme="dark"] {
+
+  // Scrollbar
+  ::-webkit-scrollbar-thumb { background: var(--air-300); }
+  ::-webkit-scrollbar-thumb:hover { background: var(--air-400); }
+
+  // Code blocks
+  code {
+    background: var(--air-100);
+    border-color: var(--air-300);
+    color: var(--air-beta);
+  }
+
+  pre {
+    background: var(--air-100);
+    border: 1px solid var(--air-200);
+    code { background: none; color: var(--air-700); }
+  }
+
+  // Navigation adjustments
+  .air-nav:not(.dark) {
+    --nav-bg:     var(--air-white);
+    --nav-line:   var(--air-200);
+    --nav-ink:    var(--air-500);
+    --nav-ink-hover: var(--air-900);
+    --nav-hover-fill: var(--air-100);
+  }
+
+  // Cards
+  .air-card:not(.dark) {
+    background: var(--air-white);
+    border-color: var(--air-200);
+    color: var(--air-800);
+    .air-card-title   { color: var(--air-900); }
+    .air-card-content { color: var(--air-600); }
+    .air-card-meta    { color: var(--air-400); }
+  }
+
+  // Forms
+  .air-input, .air-select, .air-textarea, .air-search {
+    background: var(--air-100);
+    border-color: var(--air-300);
+    color: var(--air-800);
+    &::placeholder { color: var(--air-400); }
+    &:focus { background: var(--air-100); }
+    &:disabled { background: var(--air-50); }
+  }
+
+  .air-label { color: var(--air-700); }
+
+  // Modals
+  .air-modal-box:not(.dark) {
+    background: var(--air-100);
+    border-color: var(--air-300);
+    .air-modal-head, .air-modal-foot {
+      border-color: var(--air-200);
+    }
+    .air-modal-title { color: var(--air-900); }
+    .air-modal-body  { color: var(--air-600); }
+  }
+
+  // Tabs
+  .air-tabs-nav    { border-bottom-color: var(--air-300); }
+  .air-tab         { color: var(--air-500); &:hover { background: var(--air-100); color: var(--air-800); } }
+
+  // Dropdown (fly)
+  .air-nav .fly {
+    background: var(--air-100);
+    border-color: var(--air-300);
+    .fly-row { color: var(--air-600); &:hover { background: var(--air-200); color: var(--air-900); } }
+    .fly-cut { background: var(--air-200); }
+    strong   { color: var(--air-900); }
+    span:not(.fly-icon) { color: var(--air-400); }
+  }
+
+  // Panel overlay
+  .air-nav-panel {
+    background: var(--air-white);
+    border-right-color: var(--air-200);
+  }
+  .air-nav-panel-head, .air-nav-panel-foot { border-color: var(--air-200); }
+
+  // Tooltips
+  [data-tip]::before {
+    background: var(--air-100);
+    color: var(--air-800);
+    border: 1px solid var(--air-300);
+  }
+
+  // Prose
+  .air-prose {
+    color: var(--air-700);
+    h1,h2,h3,h4,h5 { color: var(--air-900); }
+    blockquote { background: var(--air-100); }
+    hr { border-top-color: var(--air-200); }
+    table th { color: var(--air-800); border-bottom-color: var(--air-300); }
+    table td { color: var(--air-600); border-bottom-color: var(--air-200); }
+  }
+
+  // Badges
+  .air-badge.soft    { background: rgb(var(--_c-rgb, var(--air-ace-rgb)) / 0.18); }
+  .air-badge.outline { border-color: currentColor; }
+
+  // Alerts
+  .air-alert { background: rgb(var(--_c-rgb, var(--air-ace-rgb)) / 0.1); border-color: rgb(var(--_c-rgb, var(--air-ace-rgb)) / 0.25); }
+  .air-toast { background: var(--air-100); border-color: var(--air-200); .air-toast-title { color: var(--air-900); } .air-toast-text { color: var(--air-500); } }
+
+  // Aside
+  .air-aside:not(.dark) {
+    background: var(--air-white);
+    border-right-color: var(--air-200);
+    .mark  { color: var(--air-900); }
+    .section { color: var(--air-400); }
+    .path  { color: var(--air-600); &:hover { background: var(--air-100); color: var(--air-900); } &.active { background: rgb(var(--_c-rgb, var(--air-ace-rgb)) / 0.1); } }
+    .foot  { border-top-color: var(--air-200); }
+  }
+
+  // Utility overrides
+  .bg-white  { background-color: var(--air-white); }
+  .bg-light  { background-color: var(--air-50); }
+}
+
+// ── Theme toggle button ────────────────────────────────────────
+.air-theme-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.375rem;
+  height: 2.375rem;
+  border-radius: var(--air-r-lg);
+  border: 1.5px solid var(--air-200);
+  background: var(--air-white);
+  cursor: pointer;
+  color: var(--air-500);
+  transition:
+    background    var(--air-t-fast),
+    border-color  var(--air-t-fast),
+    color         var(--air-t-fast),
+    transform     var(--air-t-spring);
+
+  &:hover {
+    background: var(--air-100);
+    color: var(--air-800);
+    border-color: var(--air-300);
+    transform: rotate(15deg);
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--air-ace);
+    outline-offset: 2px;
+  }
+
+  // Sun icon (shown in dark mode)
+  .icon-sun  { display: none; }
+  .icon-moon { display: block; }
+
+  [data-theme="dark"] & {
+    .icon-sun  { display: block; }
+    .icon-moon { display: none; }
+  }
+
+  svg {
+    width: 1.1rem;
+    height: 1.1rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+}
