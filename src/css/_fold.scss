@@ -1,0 +1,163 @@
+// ============================================================
+// Air Framework — Fold  (Accordion / Collapse)
+//
+// Vocabulary:
+//   air-fold           wrapper  [data-fold]  [data-single]
+//   air-fold-item      one collapsible panel  [.open]
+//   air-fold-trigger   clickable header button
+//   air-fold-panel     body (grid-row animated)
+//   air-fold-body      inner padding container
+//   air-fold-icon      animated chevron slot
+//
+// Tones  (on air-fold-item): ace  beta  gamma  delta
+// Style  (on air-fold):      flush  ghost
+//
+// JS attr: data-fold         auto-init
+//          data-single        only one open at a time
+// ============================================================
+
+// ── Item ──────────────────────────────────────────────────────
+.air-fold {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--air-r-xl);
+  border: 1px solid var(--air-200);
+  overflow: hidden;
+  background: var(--air-white);
+}
+
+.air-fold-item {
+  --_c:     #{$ace};
+  --_c-rgb: var(--air-ace-rgb);
+
+  border-bottom: 1px solid var(--air-200);
+  &:last-child { border-bottom: none; }
+}
+
+.air-fold-item.ace   { --_c: #{$ace};   --_c-rgb: var(--air-ace-rgb);   }
+.air-fold-item.beta  { --_c: #{$beta};  --_c-rgb: var(--air-beta-rgb);  }
+.air-fold-item.gamma { --_c: #{$gamma}; --_c-rgb: var(--air-gamma-rgb); }
+.air-fold-item.delta { --_c: #{$delta}; --_c-rgb: var(--air-delta-rgb); }
+
+// ── Trigger ───────────────────────────────────────────────────
+.air-fold-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  width: 100%;
+  padding: 1rem 1.25rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  font-family: var(--air-font);
+  font-size: var(--air-text-base);
+  font-weight: 600;
+  color: var(--air-800);
+  line-height: 1.4;
+  transition:
+    background  var(--air-t-fast),
+    color       var(--air-t-base);
+
+  &:hover { background: var(--air-50); }
+
+  &:focus-visible {
+    outline: 2px solid var(--_c);
+    outline-offset: -2px;
+  }
+}
+
+// ── Animated chevron ──────────────────────────────────────────
+.air-fold-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 1.375rem;
+  height: 1.375rem;
+  color: var(--air-400);
+  transition:
+    transform  var(--air-t-spring),
+    color      var(--air-t-base);
+
+  svg {
+    width: 1rem;
+    height: 1rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+}
+
+// ── Panel (grid-row animation — no max-height hack) ───────────
+.air-fold-panel {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition:
+    grid-template-rows  var(--air-t-spring),
+    opacity             var(--air-t-base);
+}
+
+.air-fold-body {
+  overflow: hidden;
+  padding: 0 1.25rem 1.125rem;
+  color: var(--air-600);
+  font-size: var(--air-text-sm);
+  line-height: 1.7;
+}
+
+// ── Open state ────────────────────────────────────────────────
+.air-fold-item.open {
+  > .air-fold-trigger {
+    color: var(--_c);
+    background: rgb(var(--_c-rgb) / 0.04);
+  }
+
+  > .air-fold-trigger .air-fold-icon {
+    transform: rotate(180deg);
+    color: var(--_c);
+  }
+
+  > .air-fold-panel {
+    grid-template-rows: 1fr;
+    opacity: 1;
+  }
+}
+
+// ── Variant: flush (no outer border, edge-to-edge) ────────────
+.air-fold.flush {
+  border: none;
+  border-radius: 0;
+  background: transparent;
+
+  .air-fold-item  { border-bottom-color: var(--air-100); }
+  .air-fold-trigger { padding-left: 0; padding-right: 0; }
+  .air-fold-body    { padding-left: 0; padding-right: 0; }
+}
+
+// ── Variant: ghost (separated cards) ─────────────────────────
+.air-fold.ghost {
+  border: none;
+  border-radius: 0;
+  overflow: visible;
+  background: transparent;
+  gap: 0.5rem;
+  display: flex;
+  flex-direction: column;
+
+  .air-fold-item {
+    border: 1px solid var(--air-200);
+    border-radius: var(--air-r-xl);
+    overflow: hidden;
+    background: var(--air-white);
+    box-shadow: var(--air-shadow-xs);
+    transition: box-shadow var(--air-t-base);
+
+    &.open { box-shadow: var(--air-shadow-md); }
+    &:last-child { border-bottom: 1px solid var(--air-200); }
+  }
+}

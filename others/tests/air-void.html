@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Air — Void (Empty State)</title>
+  <link rel="stylesheet" href="../../dist/my-framework.css">
+  <style>
+    body { padding: 2.5rem; background: var(--air-50); font-family: var(--air-font); }
+    .s { margin-bottom: 3.5rem; }
+    .s-title { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--air-400); margin-bottom: 1.25rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--air-200); }
+    .grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; }
+    @media (max-width: 700px) { .grid-3 { grid-template-columns: 1fr; } }
+  </style>
+</head>
+<body>
+
+  <div style="margin-bottom:3rem;">
+    <span class="air-kicker dotted">Air Framework</span>
+    <h1 class="air-display" style="margin-top:0.4rem; font-size:clamp(2rem,5vw,3rem);">Void</h1>
+    <p class="air-lead">Empty state placeholders for tables, search results, dashboards, and settings pages. Toned icons, sizes, bordered and card variants.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:.65rem;margin-top:.75rem;">
+      <span class="air-badge ace soft">air-void</span>
+      <span class="air-badge beta soft">air-void-icon</span>
+      <span class="air-badge gamma soft">bordered  card</span>
+      <span class="air-badge delta soft">sm  lg  sizes</span>
+    </div>
+  </div>
+
+  <!-- ── DEFAULT ─────────────────────────────────────────────── -->
+  <div class="s">
+    <div class="s-title">Default — centred, no container style</div>
+    <div class="air-void">
+      <div class="air-void-icon ace">
+        <svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </div>
+      <h3 class="air-void-title">No messages yet</h3>
+      <p class="air-void-sub">When you start a conversation it will appear here. Send your first message below.</p>
+      <div class="air-void-act">
+        <button class="air-btn ace">New conversation</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CARD VARIANT ──────────────────────────────────────── -->
+  <div class="s">
+    <div class="s-title">Card — contained with background and shadow</div>
+    <div style="max-width:480px;">
+      <div class="air-void card">
+        <div class="air-void-icon beta">
+          <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        </div>
+        <h3 class="air-void-title">No results found</h3>
+        <p class="air-void-sub">We searched everywhere but couldn't find anything matching your query. Try different keywords.</p>
+        <div class="air-void-act">
+          <button class="air-btn ace">Clear filters</button>
+          <button class="air-btn ace ghost">Browse all</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── BORDERED ───────────────────────────────────────────── -->
+  <div class="s">
+    <div class="s-title">Bordered — dashed outline, drag-target friendly</div>
+    <div style="max-width:480px;">
+      <div class="air-void bordered">
+        <div class="air-void-icon gamma emoji">📎</div>
+        <h3 class="air-void-title">Drop files here</h3>
+        <p class="air-void-sub">Drag and drop files or click to browse. Supports PDF, PNG, JPG up to 20 MB.</p>
+        <div class="air-void-act">
+          <button class="air-btn ace soft">Browse files</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SIZES ───────────────────────────────────────────────── -->
+  <div class="s">
+    <div class="s-title">Sizes — sm  default  lg</div>
+    <div class="grid-3">
+      <div class="air-void sm card">
+        <div class="air-void-icon delta">
+          <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+        </div>
+        <h3 class="air-void-title">No activity</h3>
+        <p class="air-void-sub">Events will show here once recorded.</p>
+        <div class="air-void-act">
+          <button class="air-btn delta sm">Trigger event</button>
+        </div>
+      </div>
+
+      <div class="air-void card">
+        <div class="air-void-icon ace">
+          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+        </div>
+        <h3 class="air-void-title">No documents</h3>
+        <p class="air-void-sub">Upload your first document to get started.</p>
+        <div class="air-void-act">
+          <button class="air-btn ace sm">Upload</button>
+        </div>
+      </div>
+
+      <div class="air-void lg card">
+        <div class="air-void-icon beta">
+          <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.61 3.41 2 2 0 0 1 3.59 1h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8.91A16 16 0 0 0 16 16.91l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+        </div>
+        <h3 class="air-void-title">No contacts</h3>
+        <p class="air-void-sub">Your address book is empty. Add your first contact.</p>
+        <div class="air-void-act">
+          <button class="air-btn beta lg">Add contact</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── TONES ───────────────────────────────────────────────── -->
+  <div class="s">
+    <div class="s-title">Tones — icon colour variations</div>
+    <div class="grid-3">
+      <div class="air-void sm card">
+        <div class="air-void-icon ace">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <h3 class="air-void-title">Info state</h3>
+        <p class="air-void-sub">Ace / sky tone.</p>
+      </div>
+      <div class="air-void sm card">
+        <div class="air-void-icon gamma">
+          <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        </div>
+        <h3 class="air-void-title">Warning state</h3>
+        <p class="air-void-sub">Gamma / ember tone.</p>
+      </div>
+      <div class="air-void sm card">
+        <div class="air-void-icon delta">
+          <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+        </div>
+        <h3 class="air-void-title">Success state</h3>
+        <p class="air-void-sub">Delta / sage tone.</p>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

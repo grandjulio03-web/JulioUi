@@ -1,0 +1,194 @@
+// ============================================================
+// Air Framework — Drop  (Dropdown Menu)
+//
+// Vocabulary:
+//   air-drop           wrapper (position:relative)
+//   air-drop-trigger   element that opens the menu
+//   air-drop-menu      floating panel  [.open]
+//   air-drop-item      menu row (button/a)
+//   air-drop-sep       horizontal separator
+//   air-drop-label     section header label
+//
+// Position (on air-drop): end  top  top-end
+// Variants (on air-drop-menu): glass  dark  wide
+// JS attr: data-drop on the .air-drop wrapper  (or standalone)
+// ============================================================
+
+.air-drop {
+  position: relative;
+  display: inline-block;
+}
+
+// ── Menu panel ────────────────────────────────────────────────
+.air-drop-menu {
+  position: absolute;
+  top: calc(100% + 0.45rem);
+  left: 0;
+  z-index: var(--air-z-dropdown);
+  min-width: 190px;
+  background: var(--air-white);
+  border: 1px solid var(--air-200);
+  border-radius: var(--air-r-xl);
+  box-shadow:
+    var(--air-shadow-xl),
+    0 0 0 1px rgba(255,255,255,0.5) inset;
+  padding: 0.375rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(-6px) scale(0.97);
+  transform-origin: top left;
+  transition:
+    opacity    var(--air-t-base),
+    visibility 0s var(--air-t-base),
+    transform  var(--air-t-spring);
+
+  &.open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateY(0) scale(1);
+    transition-delay: 0s;
+  }
+}
+
+// ── Position modifiers ────────────────────────────────────────
+.air-drop.end > .air-drop-menu {
+  left: auto;
+  right: 0;
+  transform-origin: top right;
+}
+
+.air-drop.top > .air-drop-menu {
+  top: auto;
+  bottom: calc(100% + 0.45rem);
+  transform-origin: bottom left;
+  transform: translateY(6px) scale(0.97);
+
+  &.open { transform: translateY(0) scale(1); }
+}
+
+.air-drop.top.end > .air-drop-menu {
+  transform-origin: bottom right;
+}
+
+// ── Menu item ─────────────────────────────────────────────────
+.air-drop-item {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.55rem 0.875rem;
+  border-radius: var(--air-r-lg);
+  font-family: var(--air-font);
+  font-size: var(--air-text-sm);
+  font-weight: 500;
+  color: var(--air-700);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  width: 100%;
+  text-align: left;
+  transition:
+    background  var(--air-t-fast),
+    color       var(--air-t-fast);
+
+  &:hover,
+  &:focus-visible {
+    background: var(--air-50);
+    color: var(--air-900);
+    outline: none;
+  }
+
+  &.active {
+    background: rgb(var(--air-ace-rgb) / 0.08);
+    color: #{$ace};
+    font-weight: 600;
+  }
+
+  &:disabled,
+  &.is-disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+
+  // Tone variants
+  &.ace   { color: #{$ace};   &:hover { background: rgb(var(--air-ace-rgb) / 0.08);   } }
+  &.beta  { color: #{$beta};  &:hover { background: rgb(var(--air-beta-rgb) / 0.08);  } }
+  &.gamma { color: #{$gamma}; &:hover { background: rgb(var(--air-gamma-rgb) / 0.08); } }
+  &.delta { color: #{$delta}; &:hover { background: rgb(var(--air-delta-rgb) / 0.08); } }
+
+  svg {
+    width: 1rem;
+    height: 1rem;
+    flex-shrink: 0;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    opacity: 0.7;
+  }
+
+  .air-drop-badge {
+    margin-left: auto;
+    font-size: 0.7rem;
+    font-weight: 700;
+    background: var(--air-100);
+    color: var(--air-500);
+    padding: 0.1em 0.45em;
+    border-radius: var(--air-r-pill);
+  }
+}
+
+// ── Separator ─────────────────────────────────────────────────
+.air-drop-sep {
+  height: 1px;
+  background: var(--air-100);
+  margin: 0.25rem 0;
+  border: none;
+}
+
+// ── Section label ─────────────────────────────────────────────
+.air-drop-label {
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--air-400);
+  padding: 0.5rem 0.875rem 0.2rem;
+}
+
+// ── Variant: glass ────────────────────────────────────────────
+.air-drop-menu.glass {
+  background: rgba(255, 255, 255, 0.82);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border-color: rgba(255, 255, 255, 0.55);
+
+  .air-drop-item:hover { background: rgba(255, 255, 255, 0.5); }
+}
+
+// ── Variant: dark ─────────────────────────────────────────────
+.air-drop-menu.dark {
+  background: #{$epsilon};
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: var(--air-shadow-xl), 0 0 0 1px rgba(255,255,255,0.05) inset;
+
+  .air-drop-label { color: rgba(255, 255, 255, 0.3); }
+  .air-drop-sep   { background: rgba(255, 255, 255, 0.08); }
+
+  .air-drop-item {
+    color: rgba(255, 255, 255, 0.78);
+    &:hover  { background: rgba(255, 255, 255, 0.08); color: #fff; }
+    &.active { background: rgb(var(--air-ace-rgb) / 0.18); color: #{$ace}; }
+  }
+}
+
+// ── Wide ──────────────────────────────────────────────────────
+.air-drop-menu.wide { min-width: 260px; }

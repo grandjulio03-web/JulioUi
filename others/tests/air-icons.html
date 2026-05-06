@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Air — Icons</title>
+  <link rel="stylesheet" href="../../dist/my-framework.css">
+  <style>
+    body { padding: 2.5rem; background: var(--air-50); font-family: var(--air-font); }
+    .s { margin-bottom: 3.5rem; }
+    .s-title { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--air-400); margin-bottom: 1.25rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--air-200); }
+    .row { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+
+    /* Icon grid */
+    .icon-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(90px, 1fr));
+      gap: 0.75rem;
+    }
+    .icon-cell {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      padding: 1rem 0.5rem 0.75rem;
+      background: var(--air-white);
+      border: 1px solid var(--air-200);
+      border-radius: var(--air-r-xl);
+      cursor: default;
+      transition: box-shadow var(--air-t-base), border-color var(--air-t-base), transform var(--air-t-spring);
+    }
+    .icon-cell:hover {
+      box-shadow: var(--air-shadow-md);
+      border-color: var(--air-ace);
+      transform: translateY(-2px);
+    }
+    .icon-cell span {
+      font-size: 0.62rem;
+      color: var(--air-400);
+      text-align: center;
+      font-family: var(--air-font-mono);
+      line-height: 1.3;
+    }
+
+    /* Animation showcase grid */
+    .anim-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+      gap: 1rem;
+    }
+    .anim-cell {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      padding: 1.5rem 1rem;
+      background: var(--air-white);
+      border: 1px solid var(--air-200);
+      border-radius: var(--air-r-xl);
+    }
+    .anim-cell .lbl {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--air-400);
+    }
+
+    /* Tone strip */
+    .tone-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      align-items: center;
+    }
+    .tone-cell {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .tone-cell span {
+      font-size: 0.65rem;
+      color: var(--air-400);
+      font-family: var(--air-font-mono);
+    }
+
+    /* In-context demos */
+    .demo-nav {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: var(--air-white);
+      border: 1px solid var(--air-200);
+      border-radius: var(--air-r-xl);
+      padding: 0.75rem 1.25rem;
+      max-width: 520px;
+    }
+    .demo-nav-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.4rem 0.75rem;
+      border-radius: var(--air-r-lg);
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--air-600);
+      cursor: pointer;
+      transition: background var(--air-t-fast), color var(--air-t-fast);
+      text-decoration: none;
+    }
+    .demo-nav-item:hover { background: var(--air-50); color: var(--air-900); }
+    .demo-nav-item.active { background: rgb(var(--air-ace-rgb)/.1); color: var(--air-ace); font-weight: 600; }
+  </style>
+</head>
+<body>
+
+  <div style="margin-bottom:3rem;">
+    <span class="air-kicker dotted">Air Framework</span>
+    <h1 class="air-display" style="margin-top:0.4rem; font-size:clamp(2rem,5vw,3rem);">Icons</h1>
+    <p class="air-lead">Pure SVG icon set with CSS-animated states. No font files, no external deps. Drop in a custom element or use raw SVG with <code>.air-ico</code>.</p>
+    <div class="row" style="margin-top:.75rem;">
+      <span class="air-badge ace soft">&lt;air-icon&gt;</span>
+      <span class="air-badge beta soft">10 animations</span>
+      <span class="air-badge gamma soft">5 tones</span>
+      <span class="air-badge delta soft">60+ icons</span>
+    </div>
+  </div>
+
+  <!-- ── ANIMATIONS ─────────────────────────────────────────── -->
+  <div class="s">
+    <div class="s-title">Animations — anim attribute</div>
+    <div class="anim-grid">
+
+      <div class="anim-cell">
+        <air-icon name="loader" anim="spin" tone="ace" size="xl"></air-icon>
+        <span class="lbl">spin</span>
+      </div>
+
+      <div class="anim-cell">
+        <air-icon name="heart" anim="pulse" tone="beta" size="xl"></air-icon>
+        <span class="lbl">pulse</span>
+      </div>
+
+      <div class="anim-cell">
+        <air-icon name="bell" anim="bounce" tone="gamma" size="xl"></air-icon>
+        <span class="lbl">bounce</span>
+      </div>
+
+      <div class="anim-cell">
+        <air-icon name="alert" anim="shake" tone="beta" size="xl"></air-icon>
+        <span class="lbl">shake</span>
+      </div>
+
+      <div class="anim-cell">
+        <air-icon name="activity" anim="float" tone="ace" size="xl"></air-icon>
+        <span class="lbl">float</span>
+      </div>
+
+      <div class="anim-cell" style="position:relative;">
+        <air-icon name="zap" anim="ping" tone="gamma" size="xl"></air-icon>
+        <span class="lbl">ping</span>
+      </div>
+
+      <div class="anim-cell">
+        <air-icon name="star" anim="glow" tone="gamma" size="xl"></air-icon>
+        <span class="lbl">glow</span>
+      </div>
+
+      <div class="anim-cell">
+        <air-icon name="smile" anim="wave" size="xl" tone="delta"></air-icon>
+        <span class="lbl">wave</span>
+      </div>
+
+      <div class="anim-cell">
+        <air-icon name="bell" anim="swing" tone="ace" size="xl"></air-icon>
+        <span class="lbl">swing</span>
+      </div>
+
+      <div class="anim-cell">
+        <air-icon name="star" anim="morph" size="xl"></air-icon>
+        <span class="lbl">morph</span>
+      </div>
+
+      <div class="anim-cell">
+        <air-icon name="eye" anim="blink" tone="ace" size="xl"></air-icon>
+        <span class="lbl">blink</span>
+      </div>
+
+      <div class="anim-cell">
+        <air-icon name="check-circle" anim="draw" tone="delta" size="xl"></air-icon>
+        <span class="lbl">draw</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── TONES ─────────────────────────────────────────────── -->
+  <div class="s">
+    <div class="s-title">Tones — tone attribute</div>
+    <div class="tone-strip">
+      <div class="tone-cell">
+        <air-icon name="shield-check" tone="ace" size="2xl"></air-icon>
+        <span>ace</span>
+      </div>
+      <div class="tone-cell">
+        <air-icon name="heart" tone="beta" size="2xl"></air-icon>
+        <span>beta</span>
+      </div>
+      <div class="tone-cell">
+        <air-icon name="zap" tone="gamma" size="2xl"></air-icon>
+        <span>gamma</span>
+      </div>
+      <div class="tone-cell">
+        <air-icon name="check-circle" tone="delta" size="2xl"></air-icon>
+        <span>delta</span>
+      </div>
+      <div class="tone-cell">
+        <air-icon name="cpu" tone="epsilon" size="2xl"></air-icon>
+        <span>epsilon</span>
+      </div>
+      <div class="tone-cell">
+        <air-icon name="check-circle" tone="ok" size="2xl"></air-icon>
+        <span>ok</span>
+      </div>
+      <div class="tone-cell">
+        <air-icon name="alert" tone="warn" size="2xl"></air-icon>
+        <span>warn</span>
+      </div>
+      <div class="tone-cell">
+        <air-icon name="x-circle" tone="risk" size="2xl"></air-icon>
+        <span>risk</span>
+      </div>
+      <div class="tone-cell">
+        <air-icon name="info" tone="info" size="2xl"></air-icon>
+        <span>info</span>
+      </div>
+      <div class="tone-cell">
+        <air-icon name="eye" tone="muted" size="2xl"></air-icon>
+        <span>muted</span>
+      </div>
+      <div class="tone-cell" style="background:var(--air-900);padding:.75rem;border-radius:var(--air-r-xl);">
+        <air-icon name="moon" tone="white" size="2xl"></air-icon>
+        <span style="color:rgba(255,255,255,.4);">white</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SIZES ─────────────────────────────────────────────── -->
+  <div class="s">
+    <div class="s-title">Sizes — size attribute</div>
+    <div class="row" style="align-items:flex-end;gap:1.25rem;">
+      <div style="text-align:center;">
+        <air-icon name="star" tone="gamma" size="xs"></air-icon>
+        <p style="font-size:.65rem;color:var(--air-400);margin-top:.4rem;">xs</p>
+      </div>
+      <div style="text-align:center;">
+        <air-icon name="star" tone="gamma" size="sm"></air-icon>
+        <p style="font-size:.65rem;color:var(--air-400);margin-top:.4rem;">sm</p>
+      </div>
+      <div style="text-align:center;">
+        <air-icon name="star" tone="gamma" size="md"></air-icon>
+        <p style="font-size:.65rem;color:var(--air-400);margin-top:.4rem;">md</p>
+      </div>
+      <div style="text-align:center;">
+        <air-icon name="star" tone="gamma" size="lg"></air-icon>
+        <p style="font-size:.65rem;color:var(--air-400);margin-top:.4rem;">lg</p>
+      </div>
+      <div style="text-align:center;">
+        <air-icon name="star" tone="gamma" size="xl"></air-icon>
+        <p style="font-size:.65rem;color:var(--air-400);margin-top:.4rem;">xl</p>
+      </div>
+      <div style="text-align:center;">
+        <air-icon name="star" tone="gamma" size="2xl"></air-icon>
+        <p style="font-size:.65rem;color:var(--air-400);margin-top:.4rem;">2xl</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── HOVER TRIGGERS ────────────────────────────────────── -->
+  <div class="s">
+    <div class="s-title">Hover triggers — parent class fires animation on hover</div>
+    <div class="row">
+      <button class="air-btn ace hover-bounce" style="display:inline-flex;align-items:center;gap:.5rem;">
+        <air-icon name="download" size="sm"></air-icon> Download
+      </button>
+      <button class="air-btn beta ghost hover-shake" style="display:inline-flex;align-items:center;gap:.5rem;">
+        <air-icon name="trash" size="sm"></air-icon> Delete
+      </button>
+      <button class="air-btn delta soft hover-spin" style="display:inline-flex;align-items:center;gap:.5rem;">
+        <air-icon name="refresh" size="sm"></air-icon> Refresh
+      </button>
+      <button class="air-btn gamma soft hover-pulse" style="display:inline-flex;align-items:center;gap:.5rem;">
+        <air-icon name="heart" size="sm"></air-icon> Like
+      </button>
+    </div>
+  </div>
+
+  <!-- ── IN CONTEXT — NAV ──────────────────────────────────── -->
+  <div class="s">
+    <div class="s-title">In context — navigation bar</div>
+    <nav class="demo-nav">
+      <a class="demo-nav-item active" href="#">
+        <air-icon name="home" size="sm"></air-icon> Home
+      </a>
+      <a class="demo-nav-item" href="#">
+        <air-icon name="file-text" size="sm"></air-icon> Docs
+      </a>
+      <a class="demo-nav-item" href="#">
+        <air-icon name="layers" size="sm"></air-icon> Components
+      </a>
+      <a class="demo-nav-item" href="#" style="margin-left:auto;">
+        <air-icon name="github" size="sm"></air-icon>
+        <air-icon name="search" size="sm"></air-icon>
+      </a>
+    </nav>
+  </div>
+
+  <!-- ── IN CONTEXT — ALERTS ───────────────────────────────── -->
+  <div class="s">
+    <div class="s-title">In context — alerts with animated icons</div>
+    <div style="display:flex;flex-direction:column;gap:.75rem;max-width:540px;">
+
+      <div class="air-alert delta" style="align-items:center;">
+        <air-icon name="check-circle" tone="ok" size="lg" style="flex-shrink:0;"></air-icon>
+        <div>
+          <strong>Deploy succeeded</strong> — All 4 checks passed. Build #429 is live.
+        </div>
+      </div>
+
+      <div class="air-alert gamma">
+        <air-icon name="alert" tone="warn" size="lg" anim="bounce" style="flex-shrink:0;margin-top:.1rem;"></air-icon>
+        <div>
+          <strong>Rate limit at 80%</strong> — You're approaching your daily API quota. Consider upgrading.
+        </div>
+      </div>
+
+      <div class="air-alert beta">
+        <air-icon name="x-circle" tone="risk" size="lg" anim="shake" style="flex-shrink:0;margin-top:.1rem;"></air-icon>
+        <div>
+          <strong>Build failed</strong> — SCSS compilation error in <code>_fold.scss</code> line 42.
+        </div>
+      </div>
+
+      <div class="air-alert ace">
+        <air-icon name="loader" tone="info" size="lg" anim="spin" style="flex-shrink:0;margin-top:.1rem;"></air-icon>
+        <div>
+          <strong>Deploying…</strong> — Build #430 is running. This usually takes about 2 minutes.
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── IN CONTEXT — STAT CARDS ───────────────────────────── -->
+  <div class="s">
+    <div class="s-title">In context — stat cards</div>
+    <div class="air-grid cols-auto-sm gap-4" style="max-width:700px;">
+
+      <div class="air-card surface">
+        <div class="air-card-body">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem;">
+            <span style="font-size:.8rem;font-weight:600;color:var(--air-500);">Total Revenue</span>
+            <div style="width:2rem;height:2rem;border-radius:var(--air-r-lg);background:rgb(var(--air-delta-rgb)/.12);display:flex;align-items:center;justify-content:center;">
+              <air-icon name="trending-up" tone="ok" size="sm"></air-icon>
+            </div>
+          </div>
+          <p style="font-size:1.75rem;font-weight:800;color:var(--air-900);margin:0;">$48,295</p>
+          <p style="font-size:.78rem;color:var(--air-delta);margin:.3rem 0 0;font-weight:600;">↑ 12.4% this month</p>
+        </div>
+      </div>
+
+      <div class="air-card surface">
+        <div class="air-card-body">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem;">
+            <span style="font-size:.8rem;font-weight:600;color:var(--air-500);">Active Users</span>
+            <div style="width:2rem;height:2rem;border-radius:var(--air-r-lg);background:rgb(var(--air-ace-rgb)/.12);display:flex;align-items:center;justify-content:center;">
+              <air-icon name="users" tone="ace" size="sm" anim="pulse"></air-icon>
+            </div>
+          </div>
+          <p style="font-size:1.75rem;font-weight:800;color:var(--air-900);margin:0;">3,841</p>
+          <p style="font-size:.78rem;color:var(--air-ace);margin:.3rem 0 0;font-weight:600;">↑ 8.1% this week</p>
+        </div>
+      </div>
+
+      <div class="air-card surface">
+        <div class="air-card-body">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem;">
+            <span style="font-size:.8rem;font-weight:600;color:var(--air-500);">Incidents</span>
+            <div style="width:2rem;height:2rem;border-radius:var(--air-r-lg);background:rgb(var(--air-beta-rgb)/.12);display:flex;align-items:center;justify-content:center;">
+              <air-icon name="alert" tone="risk" size="sm" anim="blink"></air-icon>
+            </div>
+          </div>
+          <p style="font-size:1.75rem;font-weight:800;color:var(--air-900);margin:0;">2</p>
+          <p style="font-size:.78rem;color:var(--air-beta);margin:.3rem 0 0;font-weight:600;">Active — needs attention</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── FULL ICON GRID ─────────────────────────────────────── -->
+  <div class="s">
+    <div class="s-title">Full icon set — hover to highlight, name shown below</div>
+    <div class="icon-grid" id="icon-grid"></div>
+  </div>
+
+  <!-- ── .air-ico STATIC CLASS ─────────────────────────────── -->
+  <div class="s">
+    <div class="s-title">.air-ico — raw SVG class (no custom element needed)</div>
+    <div class="row">
+      <svg class="air-ico lg ace" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
+      <svg class="air-ico lg beta bounce" viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+      <svg class="air-ico lg gamma spin" viewBox="0 0 24 24"><line x1="12" y1="2" x2="12" y2="6"/><line x1="12" y1="18" x2="12" y2="22"/><line x1="4.93" y1="4.93" x2="7.76" y2="7.76"/><line x1="16.24" y1="16.24" x2="19.07" y2="19.07"/><line x1="2" y1="12" x2="6" y2="12"/><line x1="18" y1="12" x2="22" y2="12"/><line x1="4.93" y1="19.07" x2="7.76" y2="16.24"/><line x1="16.24" y1="7.76" x2="19.07" y2="4.93"/></svg>
+      <svg class="air-ico lg delta pulse" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      <svg class="air-ico xl morph" viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+    </div>
+    <p style="margin-top:.75rem;font-size:.8rem;color:var(--air-500);">Use raw SVG with <code class="air-mono" style="font-size:.85em;background:var(--air-100);padding:.15em .45em;border-radius:.25rem;border:1px solid var(--air-200);">.air-ico [size] [tone] [anim]</code> for any inline SVG.</p>
+  </div>
+
+  <script src="../../src/js/air-icon.js"></script>
+  <script>
+    // Auto-build the full icon grid
+    var grid = document.getElementById('icon-grid');
+    var icons = Air.icon.list();
+    icons.sort().forEach(function(name) {
+      var cell = document.createElement('div');
+      cell.className = 'icon-cell';
+      cell.innerHTML = '<air-icon name="' + name + '" size="lg"></air-icon><span>' + name + '</span>';
+      cell.querySelector('air-icon').addEventListener('mouseenter', function() {
+        this.setAttribute('tone', 'ace');
+      });
+      cell.querySelector('air-icon').addEventListener('mouseleave', function() {
+        this.removeAttribute('tone');
+      });
+      grid.appendChild(cell);
+    });
+  </script>
+</body>
+</html>

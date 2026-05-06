@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Air — Face (Avatar)</title>
+  <link rel="stylesheet" href="../../dist/my-framework.css">
+  <style>
+    body { padding: 2.5rem; background: var(--air-50); font-family: var(--air-font); }
+    .s { margin-bottom: 3.5rem; }
+    .s-title { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--air-400); margin-bottom: 1.25rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--air-200); }
+    .row { display: flex; flex-wrap: wrap; gap: 1rem; align-items: center; }
+  </style>
+</head>
+<body>
+
+  <div style="margin-bottom:3rem;">
+    <span class="air-kicker dotted">Air Framework</span>
+    <h1 class="air-display" style="margin-top:0.4rem; font-size:clamp(2rem,5vw,3rem);">Face</h1>
+    <p class="air-lead">User avatars with image, initials fallback, status dots, tone rings, and overlapping stacks with hover separation.</p>
+    <div class="row" style="margin-top:.75rem;">
+      <span class="air-badge ace soft">air-face</span>
+      <span class="air-badge beta soft">air-face-stack</span>
+      <span class="air-badge gamma soft">Status dots</span>
+      <span class="air-badge delta soft">Tone rings</span>
+    </div>
+  </div>
+
+  <!-- ── SIZES ───────────────────────────────────────────────── -->
+  <div class="s">
+    <div class="s-title">Sizes — xs  sm  default  lg  xl  2xl</div>
+    <div class="row">
+      <div class="air-face xs"><div class="air-face-init" style="background:#72b0d7;">JF</div></div>
+      <div class="air-face sm"><div class="air-face-init" style="background:#d94f8b;">JF</div></div>
+      <div class="air-face"><div class="air-face-init" style="background:#FF8F4B;">JF</div></div>
+      <div class="air-face lg"><div class="air-face-init" style="background:#6DC9A7;">JF</div></div>
+      <div class="air-face xl"><div class="air-face-init" style="background:#72b0d7;">JF</div></div>
+      <div class="air-face" style="--_size:6rem;"><div class="air-face-init" style="background:#041301;">JF</div></div>
+    </div>
+  </div>
+
+  <!-- ── TONES ───────────────────────────────────────────────── -->
+  <div class="s">
+    <div class="s-title">Initials — all five tones</div>
+    <div class="row">
+      <div class="air-face ace lg"><div class="air-face-init">AC</div></div>
+      <div class="air-face beta lg"><div class="air-face-init">BE</div></div>
+      <div class="air-face gamma lg"><div class="air-face-init">GA</div></div>
+      <div class="air-face delta lg"><div class="air-face-init">DE</div></div>
+      <div class="air-face epsilon lg"><div class="air-face-init">EP</div></div>
+    </div>
+  </div>
+
+  <!-- ── SHAPES ──────────────────────────────────────────────── -->
+  <div class="s">
+    <div class="s-title">Shapes — circle (default)  rounded  square</div>
+    <div class="row">
+      <div class="air-face lg"><div class="air-face-init" style="background:#72b0d7;">CI</div></div>
+      <div class="air-face rounded lg"><div class="air-face-init" style="background:#d94f8b;">RO</div></div>
+      <div class="air-face square lg"><div class="air-face-init" style="background:#FF8F4B;">SQ</div></div>
+    </div>
+  </div>
+
+  <!-- ── STATUS DOTS ─────────────────────────────────────────── -->
+  <div class="s">
+    <div class="s-title">Status dots — online  away  busy  offline</div>
+    <div class="row">
+      <div class="air-face ace lg" style="position:relative;">
+        <div class="air-face-init">ON</div>
+        <span class="air-face-status online"></span>
+      </div>
+      <div class="air-face gamma lg" style="position:relative;">
+        <div class="air-face-init">AW</div>
+        <span class="air-face-status away"></span>
+      </div>
+      <div class="air-face beta lg" style="position:relative;">
+        <div class="air-face-init">BS</div>
+        <span class="air-face-status busy"></span>
+      </div>
+      <div class="air-face lg" style="position:relative;">
+        <div class="air-face-init" style="background:#9ca3af;">OF</div>
+        <span class="air-face-status offline"></span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── TONE RINGS ──────────────────────────────────────────── -->
+  <div class="s">
+    <div class="s-title">Tone rings — coloured border for active / selected state</div>
+    <div class="row">
+      <div class="air-face ring-ace lg"><div class="air-face-init" style="background:#72b0d7;">AC</div></div>
+      <div class="air-face ring-beta lg"><div class="air-face-init" style="background:#d94f8b;">BE</div></div>
+      <div class="air-face ring-gamma lg"><div class="air-face-init" style="background:#FF8F4B;">GA</div></div>
+      <div class="air-face ring-delta lg"><div class="air-face-init" style="background:#6DC9A7;">DE</div></div>
+    </div>
+  </div>
+
+  <!-- ── STACKS ──────────────────────────────────────────────── -->
+  <div class="s">
+    <div class="s-title">Face Stack — hover to separate, overflow count</div>
+    <div style="display:flex;flex-direction:column;gap:1.5rem;">
+
+      <!-- Default stack -->
+      <div>
+        <p style="font-size:.8rem;color:var(--air-400);margin-bottom:.75rem;">Default (2.5rem)</p>
+        <div class="air-face-stack">
+          <div class="air-face-count">+4</div>
+          <div class="air-face gamma"><div class="air-face-init">GA</div></div>
+          <div class="air-face beta"><div class="air-face-init">BE</div></div>
+          <div class="air-face ace"><div class="air-face-init">AC</div></div>
+          <div class="air-face delta"><div class="air-face-init">DE</div></div>
+        </div>
+      </div>
+
+      <!-- Large stack -->
+      <div>
+        <p style="font-size:.8rem;color:var(--air-400);margin-bottom:.75rem;">Large (3.5rem) with status</p>
+        <div class="air-face-stack">
+          <div class="air-face lg" style="position:relative;">
+            <div class="air-face-init" style="background:#9ca3af;">OF</div>
+            <span class="air-face-status offline"></span>
+          </div>
+          <div class="air-face gamma lg" style="position:relative;">
+            <div class="air-face-init">GA</div>
+            <span class="air-face-status away"></span>
+          </div>
+          <div class="air-face beta lg" style="position:relative;">
+            <div class="air-face-init">BE</div>
+            <span class="air-face-status busy"></span>
+          </div>
+          <div class="air-face ace lg" style="position:relative;">
+            <div class="air-face-init">AC</div>
+            <span class="air-face-status online"></span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── IN CONTEXT ──────────────────────────────────────────── -->
+  <div class="s">
+    <div class="s-title">In context — comment thread</div>
+    <div style="max-width:480px;display:flex;flex-direction:column;gap:1rem;">
+      <div class="air-card surface" style="padding:1rem 1.25rem;">
+        <div style="display:flex;gap:.875rem;align-items:flex-start;">
+          <div class="air-face sm ace" style="margin-top:.1rem;flex-shrink:0;"><div class="air-face-init">JF</div></div>
+          <div>
+            <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.3rem;">
+              <span style="font-weight:700;font-size:.9rem;color:var(--air-900);">JforceX</span>
+              <span style="font-size:.75rem;color:var(--air-400);">2 min ago</span>
+            </div>
+            <p style="margin:0;font-size:.875rem;color:var(--air-600);line-height:1.6;">The new fold component looks really clean. Single-open mode is a great default.</p>
+          </div>
+        </div>
+      </div>
+      <div class="air-card surface" style="padding:1rem 1.25rem;">
+        <div style="display:flex;gap:.875rem;align-items:flex-start;">
+          <div class="air-face sm delta" style="margin-top:.1rem;flex-shrink:0;"><div class="air-face-init">SA</div></div>
+          <div>
+            <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.3rem;">
+              <span style="font-weight:700;font-size:.9rem;color:var(--air-900);">Sara</span>
+              <span class="air-badge delta soft" style="font-size:.65rem;padding:.15em .5em;">Author</span>
+              <span style="font-size:.75rem;color:var(--air-400);">just now</span>
+            </div>
+            <p style="margin:0;font-size:.875rem;color:var(--air-600);line-height:1.6;">Thanks — the grid-row trick avoids the max-height jitter. Worth the extra rule.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

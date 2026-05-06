@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Air — Path (Stepper)</title>
+  <link rel="stylesheet" href="../../dist/my-framework.css">
+  <style>
+    body { padding: 2.5rem; background: var(--air-50); font-family: var(--air-font); }
+    .s { margin-bottom: 3.5rem; }
+    .s-title { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--air-400); margin-bottom: 1.25rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--air-200); }
+    .demo { max-width: 680px; }
+  </style>
+</head>
+<body>
+
+  <div style="margin-bottom:3rem;">
+    <span class="air-kicker dotted">Air Framework</span>
+    <h1 class="air-display" style="margin-top:0.4rem; font-size:clamp(2rem,5vw,3rem);">Path</h1>
+    <p class="air-lead">Multi-step wizard indicator with connector lines that fill on completion. Horizontal and vertical orientations, numbered, compact.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:.65rem;margin-top:.75rem;">
+      <span class="air-badge ace soft">air-path</span>
+      <span class="air-badge beta soft">.done  .active</span>
+      <span class="air-badge gamma soft">Connector lines</span>
+      <span class="air-badge delta soft">vertical  numbered</span>
+    </div>
+  </div>
+
+  <!-- Check icon SVG -->
+  <svg style="display:none">
+    <symbol id="ico-check" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></symbol>
+  </svg>
+
+  <!-- ── HORIZONTAL ─────────────────────────────────────────── -->
+  <div class="s">
+    <div class="s-title">Horizontal — 3 states: done, active, upcoming</div>
+    <div class="demo">
+      <div class="air-path ace">
+        <div class="air-path-step done ace">
+          <div class="air-path-dot">
+            <svg viewBox="0 0 24 24"><use href="#ico-check"/></svg>
+          </div>
+          <div class="air-path-label">Account</div>
+          <div class="air-path-sub">Verified</div>
+        </div>
+        <div class="air-path-step done ace">
+          <div class="air-path-dot">
+            <svg viewBox="0 0 24 24"><use href="#ico-check"/></svg>
+          </div>
+          <div class="air-path-label">Plan</div>
+          <div class="air-path-sub">Pro selected</div>
+        </div>
+        <div class="air-path-step active ace">
+          <div class="air-path-dot">3</div>
+          <div class="air-path-label">Payment</div>
+          <div class="air-path-sub">In progress</div>
+        </div>
+        <div class="air-path-step">
+          <div class="air-path-dot">4</div>
+          <div class="air-path-label">Confirm</div>
+          <div class="air-path-sub">Upcoming</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── NUMBERED ───────────────────────────────────────────── -->
+  <div class="s">
+    <div class="s-title">Numbered — auto-counter from CSS, no markup needed in dots</div>
+    <div class="demo">
+      <div class="air-path numbered beta">
+        <div class="air-path-step done beta">
+          <div class="air-path-dot"></div>
+          <div class="air-path-label">Upload</div>
+        </div>
+        <div class="air-path-step done beta">
+          <div class="air-path-dot"></div>
+          <div class="air-path-label">Process</div>
+        </div>
+        <div class="air-path-step active beta">
+          <div class="air-path-dot"></div>
+          <div class="air-path-label">Review</div>
+        </div>
+        <div class="air-path-step">
+          <div class="air-path-dot"></div>
+          <div class="air-path-label">Publish</div>
+        </div>
+        <div class="air-path-step">
+          <div class="air-path-dot"></div>
+          <div class="air-path-label">Done</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── COMPACT ────────────────────────────────────────────── -->
+  <div class="s">
+    <div class="s-title">Compact — smaller dots, tighter connector</div>
+    <div class="demo">
+      <div class="air-path compact delta">
+        <div class="air-path-step done delta">
+          <div class="air-path-dot"><svg viewBox="0 0 24 24"><use href="#ico-check"/></svg></div>
+          <div class="air-path-label">Init</div>
+        </div>
+        <div class="air-path-step done delta">
+          <div class="air-path-dot"><svg viewBox="0 0 24 24"><use href="#ico-check"/></svg></div>
+          <div class="air-path-label">Build</div>
+        </div>
+        <div class="air-path-step done delta">
+          <div class="air-path-dot"><svg viewBox="0 0 24 24"><use href="#ico-check"/></svg></div>
+          <div class="air-path-label">Test</div>
+        </div>
+        <div class="air-path-step active delta">
+          <div class="air-path-dot"></div>
+          <div class="air-path-label">Deploy</div>
+        </div>
+        <div class="air-path-step">
+          <div class="air-path-dot"></div>
+          <div class="air-path-label">Monitor</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── VERTICAL ───────────────────────────────────────────── -->
+  <div class="s">
+    <div class="s-title">Vertical — with subtitles and body content</div>
+    <div style="max-width:400px;">
+      <div class="air-path vertical ace">
+
+        <div class="air-path-step done ace">
+          <div class="air-path-dot"><svg viewBox="0 0 24 24"><use href="#ico-check"/></svg></div>
+          <div>
+            <div class="air-path-label">Repository connected</div>
+            <div class="air-path-sub">github.com/jforce/framework</div>
+          </div>
+        </div>
+
+        <div class="air-path-step done ace">
+          <div class="air-path-dot"><svg viewBox="0 0 24 24"><use href="#ico-check"/></svg></div>
+          <div>
+            <div class="air-path-label">Build configuration set</div>
+            <div class="air-path-sub">Sass → dist/my-framework.css</div>
+          </div>
+        </div>
+
+        <div class="air-path-step active ace">
+          <div class="air-path-dot">3</div>
+          <div>
+            <div class="air-path-label">Deploying to production</div>
+            <div class="air-path-sub">Estimated 2 minutes remaining</div>
+            <div class="air-bar ace pulse sm" style="margin-top:.6rem;"><div class="air-bar-fill"></div></div>
+          </div>
+        </div>
+
+        <div class="air-path-step">
+          <div class="air-path-dot">4</div>
+          <div>
+            <div class="air-path-label">Domain verification</div>
+            <div class="air-path-sub">Waiting for deploy to complete</div>
+          </div>
+        </div>
+
+        <div class="air-path-step">
+          <div class="air-path-dot">5</div>
+          <div>
+            <div class="air-path-label">Live</div>
+            <div class="air-path-sub">All checks passed</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

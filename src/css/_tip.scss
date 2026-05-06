@@ -1,0 +1,186 @@
+// ============================================================
+// Air Framework — Tip  (Rich Popover)
+//
+// Vocabulary:
+//   air-tip            wrapper (position:relative, inline-block)
+//   air-tip-box        floating content panel  [.open]
+//   air-tip-head       optional header row with title + close
+//   air-tip-body       main content area
+//   air-tip-x          close button inside head
+//
+// Position (data-pos on .air-tip):
+//   top  bottom  left  right
+//   top-start  top-end  bottom-start  bottom-end
+//
+// Trigger (data-tip-trigger on .air-tip):
+//   hover (default)  click
+//
+// Variants (on .air-tip-box): dark  glass  compact
+// ============================================================
+
+.air-tip {
+  position: relative;
+  display: inline-block;
+}
+
+// ── Box ───────────────────────────────────────────────────────
+.air-tip-box {
+  position: absolute;
+  top: calc(100% + 0.6rem);
+  left: 50%;
+  transform: translateX(-50%) scale(0.92) translateY(4px);
+  transform-origin: center top;
+  z-index: var(--air-z-tooltip);
+  min-width: 200px;
+  max-width: 300px;
+  background: var(--air-white);
+  border: 1px solid var(--air-200);
+  border-radius: var(--air-r-xl);
+  box-shadow: var(--air-shadow-xl);
+
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity    var(--air-t-base),
+    visibility 0s var(--air-t-base),
+    transform  var(--air-t-spring);
+
+  &.open {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(-50%) scale(1) translateY(0);
+    transition-delay: 0s;
+  }
+}
+
+// ── Positions ─────────────────────────────────────────────────
+.air-tip[data-pos="top"] .air-tip-box,
+.air-tip[data-pos="top-start"] .air-tip-box,
+.air-tip[data-pos="top-end"] .air-tip-box {
+  top: auto;
+  bottom: calc(100% + 0.6rem);
+  transform-origin: center bottom;
+  transform: translateX(-50%) scale(0.92) translateY(-4px);
+
+  &.open { transform: translateX(-50%) scale(1) translateY(0); }
+}
+
+.air-tip[data-pos="top-start"] .air-tip-box,
+.air-tip[data-pos="bottom-start"] .air-tip-box {
+  left: 0;
+  transform: scale(0.92) translateY(4px);
+  &.open { transform: scale(1) translateY(0); }
+}
+
+.air-tip[data-pos="top-start"] .air-tip-box {
+  transform: scale(0.92) translateY(-4px);
+  &.open { transform: scale(1) translateY(0); }
+}
+
+.air-tip[data-pos="top-end"] .air-tip-box,
+.air-tip[data-pos="bottom-end"] .air-tip-box {
+  left: auto;
+  right: 0;
+  transform: scale(0.92) translateY(4px);
+  &.open { transform: scale(1) translateY(0); }
+}
+
+.air-tip[data-pos="top-end"] .air-tip-box {
+  transform: scale(0.92) translateY(-4px);
+  &.open { transform: scale(1) translateY(0); }
+}
+
+.air-tip[data-pos="left"] .air-tip-box {
+  top: 50%;
+  left: auto;
+  right: calc(100% + 0.6rem);
+  transform: translateY(-50%) scale(0.92) translateX(-4px);
+  transform-origin: right center;
+
+  &.open { transform: translateY(-50%) scale(1) translateX(0); }
+}
+
+.air-tip[data-pos="right"] .air-tip-box {
+  top: 50%;
+  left: calc(100% + 0.6rem);
+  transform: translateY(-50%) scale(0.92) translateX(4px);
+  transform-origin: left center;
+
+  &.open { transform: translateY(-50%) scale(1) translateX(0); }
+}
+
+// ── Head ──────────────────────────────────────────────────────
+.air-tip-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.75rem 0.875rem 0.45rem;
+  border-bottom: 1px solid var(--air-100);
+  font-family: var(--air-font);
+  font-size: var(--air-text-sm);
+  font-weight: 700;
+  color: var(--air-900);
+}
+
+// ── Body ──────────────────────────────────────────────────────
+.air-tip-body {
+  padding: 0.75rem 0.875rem;
+  font-family: var(--air-font);
+  font-size: var(--air-text-sm);
+  color: var(--air-600);
+  line-height: 1.6;
+}
+
+// ── Close X ───────────────────────────────────────────────────
+.air-tip-x {
+  width: 1.25rem;
+  height: 1.25rem;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: var(--air-400);
+  border-radius: var(--air-r-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8rem;
+  flex-shrink: 0;
+  transition: background var(--air-t-fast), color var(--air-t-fast);
+
+  &:hover { background: var(--air-100); color: var(--air-700); }
+}
+
+// ── Variant: dark ─────────────────────────────────────────────
+.air-tip-box.dark {
+  background: #{$epsilon};
+  border-color: rgba(255, 255, 255, 0.1);
+  box-shadow: var(--air-shadow-2xl);
+
+  .air-tip-head {
+    color: #fff;
+    border-bottom-color: rgba(255, 255, 255, 0.08);
+  }
+
+  .air-tip-body { color: rgba(255, 255, 255, 0.72); }
+
+  .air-tip-x { color: rgba(255, 255, 255, 0.45); &:hover { background: rgba(255,255,255,0.08); color: #fff; } }
+}
+
+// ── Variant: glass ────────────────────────────────────────────
+.air-tip-box.glass {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px) saturate(160%);
+  -webkit-backdrop-filter: blur(20px) saturate(160%);
+  border-color: rgba(255, 255, 255, 0.55);
+}
+
+// ── Compact (dense, no head needed) ──────────────────────────
+.air-tip-box.compact {
+  min-width: 140px;
+  max-width: 220px;
+
+  .air-tip-body { padding: 0.5rem 0.75rem; }
+}

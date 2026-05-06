@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Air — Log (Timeline)</title>
+  <link rel="stylesheet" href="../../dist/my-framework.css">
+  <style>
+    body { padding: 2.5rem; background: var(--air-50); font-family: var(--air-font); }
+    .s { margin-bottom: 3.5rem; }
+    .s-title { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--air-400); margin-bottom: 1.25rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--air-200); }
+    .demo { max-width: 480px; }
+  </style>
+</head>
+<body>
+
+  <div style="margin-bottom:3rem;">
+    <span class="air-kicker dotted">Air Framework</span>
+    <h1 class="air-display" style="margin-top:0.4rem; font-size:clamp(2rem,5vw,3rem);">Log</h1>
+    <p class="air-lead">Event timeline with a vertical spine, coloured dots per tone, optional card boxing, and a compact variant.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:.65rem;margin-top:.75rem;">
+      <span class="air-badge ace soft">air-log</span>
+      <span class="air-badge beta soft">air-log-dot</span>
+      <span class="air-badge gamma soft">card variant</span>
+      <span class="air-badge delta soft">compact</span>
+    </div>
+  </div>
+
+  <!-- Check icon -->
+  <svg style="display:none">
+    <symbol id="ico-check-sm" viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></symbol>
+  </svg>
+
+  <!-- ── DEFAULT ─────────────────────────────────────────────── -->
+  <div class="s">
+    <div class="s-title">Default — toned dots, time + title + text</div>
+    <div class="demo">
+      <div class="air-log">
+
+        <div class="air-log-item ace">
+          <div class="air-log-dot"><svg viewBox="0 0 24 24"><use href="#ico-check-sm"/></svg></div>
+          <span class="air-log-time">2 min ago</span>
+          <p class="air-log-title">Deploy succeeded</p>
+          <p class="air-log-text">Build #428 pushed to production. No errors detected in post-deploy health check.</p>
+        </div>
+
+        <div class="air-log-item gamma">
+          <div class="air-log-dot"></div>
+          <span class="air-log-time">14 min ago</span>
+          <p class="air-log-title">Build cache invalidated</p>
+          <p class="air-log-text">SCSS dependency tree changed. Full rebuild triggered.</p>
+        </div>
+
+        <div class="air-log-item beta">
+          <div class="air-log-dot"></div>
+          <span class="air-log-time">1 hour ago</span>
+          <p class="air-log-title">Rate limit warning</p>
+          <p class="air-log-text">API endpoint /v1/export exceeded 80% of daily quota. Consider upgrading your plan.</p>
+        </div>
+
+        <div class="air-log-item delta">
+          <div class="air-log-dot"><svg viewBox="0 0 24 24"><use href="#ico-check-sm"/></svg></div>
+          <span class="air-log-time">Yesterday</span>
+          <p class="air-log-title">v1.3.0 released</p>
+          <p class="air-log-text">New: Fold, Drop, Reel, Bar, Face, Tip, Path, Log, Stars, Void components added.</p>
+        </div>
+
+        <div class="air-log-item">
+          <div class="air-log-dot"></div>
+          <span class="air-log-time">3 days ago</span>
+          <p class="air-log-title">Repository created</p>
+          <p class="air-log-text">Initial commit pushed. Air Framework project initialised.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ── CARD VARIANT ──────────────────────────────────────── -->
+  <div class="s">
+    <div class="s-title">Card — boxed content with tone left border</div>
+    <div class="demo">
+      <div class="air-log card">
+
+        <div class="air-log-item ace">
+          <div class="air-log-dot"><svg viewBox="0 0 24 24"><use href="#ico-check-sm"/></svg></div>
+          <span class="air-log-time">Today, 09:12</span>
+          <div class="air-log-card">
+            <p class="air-log-title">Payment processed</p>
+            <p class="air-log-text">$49.00 charged to Visa ••4521. Receipt sent to jforce@example.com.</p>
+          </div>
+        </div>
+
+        <div class="air-log-item gamma">
+          <div class="air-log-dot"></div>
+          <span class="air-log-time">Today, 08:55</span>
+          <div class="air-log-card">
+            <p class="air-log-title">Invoice generated</p>
+            <p class="air-log-text">Invoice #INV-2026-0042 for Pro plan renewal.</p>
+          </div>
+        </div>
+
+        <div class="air-log-item delta">
+          <div class="air-log-dot"><svg viewBox="0 0 24 24"><use href="#ico-check-sm"/></svg></div>
+          <span class="air-log-time">Yesterday, 17:30</span>
+          <div class="air-log-card">
+            <p class="air-log-title">Subscription upgraded</p>
+            <p class="air-log-text">Moved from Starter to Pro. All features unlocked immediately.</p>
+          </div>
+        </div>
+
+        <div class="air-log-item">
+          <div class="air-log-dot"></div>
+          <span class="air-log-time">Apr 28</span>
+          <div class="air-log-card">
+            <p class="air-log-title">Account created</p>
+            <p class="air-log-text">Welcome to Air. Your free trial starts now.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ── COMPACT ────────────────────────────────────────────── -->
+  <div class="s">
+    <div class="s-title">Compact — tighter spacing, smaller dots</div>
+    <div class="demo">
+      <div class="air-log compact">
+        <div class="air-log-item ace">
+          <div class="air-log-dot"></div>
+          <span class="air-log-time">09:14</span>
+          <p class="air-log-title">Login from new device</p>
+        </div>
+        <div class="air-log-item delta">
+          <div class="air-log-dot"><svg viewBox="0 0 24 24"><use href="#ico-check-sm"/></svg></div>
+          <span class="air-log-time">09:12</span>
+          <p class="air-log-title">Password verified</p>
+        </div>
+        <div class="air-log-item gamma">
+          <div class="air-log-dot"></div>
+          <span class="air-log-time">09:11</span>
+          <p class="air-log-title">2FA code sent</p>
+        </div>
+        <div class="air-log-item">
+          <div class="air-log-dot"></div>
+          <span class="air-log-time">09:10</span>
+          <p class="air-log-title">Login attempt started</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

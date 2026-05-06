@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Air — Tip (Popover)</title>
+  <link rel="stylesheet" href="../../dist/my-framework.css">
+  <style>
+    body { padding: 2.5rem; background: var(--air-50); font-family: var(--air-font); }
+    .s { margin-bottom: 3.5rem; }
+    .s-title { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--air-400); margin-bottom: 1.25rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--air-200); }
+    .row { display: flex; flex-wrap: wrap; gap: 1.5rem; align-items: flex-start; padding: 2rem 0; }
+  </style>
+</head>
+<body>
+
+  <div style="margin-bottom:3rem;">
+    <span class="air-kicker dotted">Air Framework</span>
+    <h1 class="air-display" style="margin-top:0.4rem; font-size:clamp(2rem,5vw,3rem);">Tip</h1>
+    <p class="air-lead">Rich popovers with hover or click triggers, positional awareness, glass and dark variants, and an optional closable head.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:.65rem;margin-top:.75rem;">
+      <span class="air-badge ace soft">hover / click</span>
+      <span class="air-badge beta soft">data-pos</span>
+      <span class="air-badge gamma soft">glass &amp; dark</span>
+      <span class="air-badge delta soft">Escape closes</span>
+    </div>
+  </div>
+
+  <!-- ── HOVER TIPS ─────────────────────────────────────────── -->
+  <div class="s">
+    <div class="s-title">Hover tips — default position (bottom-center)</div>
+    <div class="row">
+
+      <div class="air-tip">
+        <button class="air-btn ace">Hover me</button>
+        <div class="air-tip-box">
+          <div class="air-tip-body">Default position is below the trigger, centred.</div>
+        </div>
+      </div>
+
+      <div class="air-tip">
+        <button class="air-btn beta ghost">With header</button>
+        <div class="air-tip-box">
+          <div class="air-tip-head">Deploy settings</div>
+          <div class="air-tip-body">Select the region and instance type before deploying. Changes take effect immediately.</div>
+        </div>
+      </div>
+
+      <div class="air-tip">
+        <button class="air-btn delta soft">Compact</button>
+        <div class="air-tip-box compact">
+          <div class="air-tip-body">Less padding, tighter feel.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── POSITIONS ─────────────────────────────────────────── -->
+  <div class="s">
+    <div class="s-title">Positions — top  bottom  left  right  corner variants</div>
+    <div class="row" style="padding:4rem 2rem;">
+
+      <div class="air-tip" data-pos="top">
+        <button class="air-btn ace soft">Top</button>
+        <div class="air-tip-box compact"><div class="air-tip-body">Opens above</div></div>
+      </div>
+
+      <div class="air-tip" data-pos="bottom">
+        <button class="air-btn ace soft">Bottom</button>
+        <div class="air-tip-box compact"><div class="air-tip-body">Opens below</div></div>
+      </div>
+
+      <div class="air-tip" data-pos="top-start">
+        <button class="air-btn beta soft">Top-start</button>
+        <div class="air-tip-box compact"><div class="air-tip-body">Aligns to left edge</div></div>
+      </div>
+
+      <div class="air-tip" data-pos="top-end">
+        <button class="air-btn beta soft">Top-end</button>
+        <div class="air-tip-box compact"><div class="air-tip-body">Aligns to right edge</div></div>
+      </div>
+
+      <div class="air-tip" data-pos="right" style="position:relative;">
+        <button class="air-btn gamma soft">Right</button>
+        <div class="air-tip-box compact"><div class="air-tip-body">Opens to the right</div></div>
+      </div>
+
+      <div class="air-tip" data-pos="left" style="position:relative;">
+        <button class="air-btn gamma soft">Left</button>
+        <div class="air-tip-box compact"><div class="air-tip-body">Opens to the left</div></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── CLICK TRIGGER ─────────────────────────────────────── -->
+  <div class="s">
+    <div class="s-title">Click trigger — stays open until closed or outside click</div>
+    <div class="row">
+
+      <div class="air-tip" data-tip-trigger="click">
+        <button class="air-btn ace">Click me</button>
+        <div class="air-tip-box">
+          <div class="air-tip-head">
+            Confirmation required
+            <button class="air-tip-x" data-tip-close>&#10005;</button>
+          </div>
+          <div class="air-tip-body">
+            This action will archive the selected items. They can be restored from the archive page.
+          </div>
+          <div style="padding:.5rem .875rem .875rem;display:flex;gap:.5rem;">
+            <button class="air-btn ace sm">Archive</button>
+            <button class="air-btn ace ghost sm" data-tip-close>Cancel</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="air-tip" data-tip-trigger="click" data-pos="top">
+        <button class="air-btn gamma soft">Info popover (top)</button>
+        <div class="air-tip-box" style="min-width:240px;">
+          <div class="air-tip-head">
+            API usage
+            <button class="air-tip-x" data-tip-close>&#10005;</button>
+          </div>
+          <div class="air-tip-body">
+            <div style="display:flex;flex-direction:column;gap:.4rem;">
+              <div style="display:flex;justify-content:space-between;font-size:.8rem;">
+                <span style="color:var(--air-500)">Requests today</span><strong>1,204</strong>
+              </div>
+              <div style="display:flex;justify-content:space-between;font-size:.8rem;">
+                <span style="color:var(--air-500)">Rate limit</span><strong>5,000 / day</strong>
+              </div>
+              <div class="air-bar ace sm" style="--pct:24%;margin-top:.25rem;"><div class="air-bar-fill"></div></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── VARIANTS ──────────────────────────────────────────── -->
+  <div class="s">
+    <div class="s-title">Variants — glass &amp; dark</div>
+    <div class="row" style="background:linear-gradient(135deg,#041301,#1c2e19);padding:2.5rem;border-radius:var(--air-r-2xl);">
+
+      <div class="air-tip">
+        <button class="air-btn ace glass">Glass tip</button>
+        <div class="air-tip-box glass">
+          <div class="air-tip-head">Frosted glass</div>
+          <div class="air-tip-body">Backdrop blur with 82% opacity white background.</div>
+        </div>
+      </div>
+
+      <div class="air-tip">
+        <button class="air-btn ace ghost" style="border-color:rgba(255,255,255,.3);color:#fff;">Dark tip</button>
+        <div class="air-tip-box dark">
+          <div class="air-tip-head">Dark variant</div>
+          <div class="air-tip-body">Uses the epsilon void colour with white opacity text.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="../../src/js/air-tip.js"></script>
+</body>
+</html>

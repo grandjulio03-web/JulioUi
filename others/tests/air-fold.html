@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Air — Fold (Accordion)</title>
+  <link rel="stylesheet" href="../../dist/my-framework.css">
+  <style>
+    body { padding: 2.5rem; background: var(--air-50); font-family: var(--air-font); }
+    .s { margin-bottom: 3.5rem; }
+    .s-title { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--air-400); margin-bottom: 1.25rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--air-200); }
+    .demo { max-width: 640px; }
+  </style>
+</head>
+<body>
+
+  <div style="margin-bottom:3rem;">
+    <span class="air-kicker dotted">Air Framework</span>
+    <h1 class="air-display" style="margin-top:0.4rem; font-size:clamp(2rem,5vw,3rem);">Fold</h1>
+    <p class="air-lead">Collapsible sections with smooth grid-row animation. Single-open mode, tones, and three style variants.</p>
+    <div class="row" style="display:flex;flex-wrap:wrap;gap:.65rem;margin-top:.75rem;">
+      <span class="air-badge ace soft">data-fold</span>
+      <span class="air-badge beta soft">data-single</span>
+      <span class="air-badge gamma soft">grid-row animation</span>
+      <span class="air-badge delta soft">ARIA expanded</span>
+    </div>
+  </div>
+
+  <!-- SVG chevron used by all triggers (inline template) -->
+  <template id="chevron">
+    <svg viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"/></svg>
+  </template>
+
+  <!-- ── DEFAULT ─────────────────────────────────────────────── -->
+  <div class="s">
+    <div class="s-title">Default — bordered, single-open</div>
+    <div class="demo">
+      <div class="air-fold" data-fold data-single>
+
+        <div class="air-fold-item open">
+          <button class="air-fold-trigger">
+            What is the Air Framework?
+            <span class="air-fold-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+          </button>
+          <div class="air-fold-panel">
+            <div class="air-fold-body">
+              Air is a modern CSS framework built around a clean design vocabulary. It ships tokens, components, and JS engines — all authored to feel cohesive, not bolted together.
+            </div>
+          </div>
+        </div>
+
+        <div class="air-fold-item">
+          <button class="air-fold-trigger">
+            Do I need a build step?
+            <span class="air-fold-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+          </button>
+          <div class="air-fold-panel">
+            <div class="air-fold-body">
+              No. Drop the compiled <code>my-framework.css</code> and the JS modules you need. Everything works from a CDN or a local dist folder.
+            </div>
+          </div>
+        </div>
+
+        <div class="air-fold-item">
+          <button class="air-fold-trigger">
+            Is dark mode supported?
+            <span class="air-fold-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+          </button>
+          <div class="air-fold-panel">
+            <div class="air-fold-body">
+              Yes. Add <code>data-theme="dark"</code> to any element and it inherits the dark token set. The <code>air-theme.js</code> engine handles OS preference and persistence automatically.
+            </div>
+          </div>
+        </div>
+
+        <div class="air-fold-item">
+          <button class="air-fold-trigger">
+            Can multiple items be open?
+            <span class="air-fold-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+          </button>
+          <div class="air-fold-panel">
+            <div class="air-fold-body">
+              Remove <code>data-single</code> from the wrapper and all items can be open simultaneously. The animation runs independently per panel.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ── TONES ───────────────────────────────────────────────── -->
+  <div class="s">
+    <div class="s-title">Tones — per-item accent colour</div>
+    <div class="demo">
+      <div class="air-fold" data-fold>
+
+        <div class="air-fold-item ace">
+          <button class="air-fold-trigger">
+            Ace (sky) — info tone
+            <span class="air-fold-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+          </button>
+          <div class="air-fold-panel">
+            <div class="air-fold-body">Trigger text and chevron take the ace (sky) colour when this item is expanded.</div>
+          </div>
+        </div>
+
+        <div class="air-fold-item beta open">
+          <button class="air-fold-trigger">
+            Beta (rose) — alert tone
+            <span class="air-fold-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+          </button>
+          <div class="air-fold-panel">
+            <div class="air-fold-body">The background tint behind the trigger uses the beta RGB value at 4% opacity — subtle but unmistakable.</div>
+          </div>
+        </div>
+
+        <div class="air-fold-item gamma">
+          <button class="air-fold-trigger">
+            Gamma (ember) — warning tone
+            <span class="air-fold-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+          </button>
+          <div class="air-fold-panel">
+            <div class="air-fold-body">Warm amber. Combine with a warning icon in the trigger for context-sensitive alerts.</div>
+          </div>
+        </div>
+
+        <div class="air-fold-item delta">
+          <button class="air-fold-trigger">
+            Delta (sage) — success tone
+            <span class="air-fold-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+          </button>
+          <div class="air-fold-panel">
+            <div class="air-fold-body">Use delta for completed or positive state panels.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ── FLUSH ───────────────────────────────────────────────── -->
+  <div class="s">
+    <div class="s-title">Flush — no outer border, edge-to-edge</div>
+    <div class="demo">
+      <div class="air-fold flush" data-fold data-single>
+
+        <div class="air-fold-item open">
+          <button class="air-fold-trigger">
+            Can I nest content inside?
+            <span class="air-fold-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+          </button>
+          <div class="air-fold-panel">
+            <div class="air-fold-body">
+              <div class="air-grid cols-2 gap-3" style="margin-top:.5rem;">
+                <div class="air-card surface sm"><div class="air-card-body"><p class="air-card-content">Any content works — grids, cards, forms, code blocks.</p></div></div>
+                <div class="air-card surface sm"><div class="air-card-body"><p class="air-card-content">The panel animates via grid-template-rows so height is always auto.</p></div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="air-fold-item">
+          <button class="air-fold-trigger">
+            How does keyboard navigation work?
+            <span class="air-fold-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+          </button>
+          <div class="air-fold-panel">
+            <div class="air-fold-body">Tab to focus a trigger, then press Enter or Space to toggle. aria-expanded is kept in sync automatically.</div>
+          </div>
+        </div>
+
+        <div class="air-fold-item">
+          <button class="air-fold-trigger">
+            Programmatic control?
+            <span class="air-fold-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+          </button>
+          <div class="air-fold-panel">
+            <div class="air-fold-body">Yes — <code>Air.fold.open(wrapper, 0)</code>, <code>Air.fold.close(wrapper, 0)</code>, <code>Air.fold.toggle(itemEl)</code>.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- ── GHOST ───────────────────────────────────────────────── -->
+  <div class="s">
+    <div class="s-title">Ghost — separated cards, elevated on open</div>
+    <div class="demo">
+      <div class="air-fold ghost" data-fold>
+
+        <div class="air-fold-item ace open">
+          <button class="air-fold-trigger">
+            Pricing plans
+            <span class="air-fold-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+          </button>
+          <div class="air-fold-panel">
+            <div class="air-fold-body">Starter is free forever. Pro is $9/mo. Enterprise is custom-priced. All plans include access to the component library.</div>
+          </div>
+        </div>
+
+        <div class="air-fold-item beta">
+          <button class="air-fold-trigger">
+            Refund policy
+            <span class="air-fold-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+          </button>
+          <div class="air-fold-panel">
+            <div class="air-fold-body">30-day no-questions-asked refund on annual plans. Monthly plans cancel at the end of the billing period.</div>
+          </div>
+        </div>
+
+        <div class="air-fold-item delta">
+          <button class="air-fold-trigger">
+            Uptime guarantee
+            <span class="air-fold-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></span>
+          </button>
+          <div class="air-fold-panel">
+            <div class="air-fold-body">99.9% SLA. Status page at status.example.com. Incidents are posted in real-time with root-cause analysis within 48 hours.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="../../src/js/air-fold.js"></script>
+</body>
+</html>

@@ -329,6 +329,53 @@
 .text-white    { color: #fff; }
 .text-dark     { color: var(--air-900); }
 
+// ── Italic ────────────────────────────────────────────────────
+.italic     { font-style: italic; }
+.not-italic { font-style: normal; }
+
+// ── Text decoration ───────────────────────────────────────────
+.underline     { text-decoration: underline; text-underline-offset: 3px; }
+.overline      { text-decoration: overline; }
+.strike        { text-decoration: line-through; }
+.no-underline  { text-decoration: none; }
+
+// ── Text transform ────────────────────────────────────────────
+.uppercase    { text-transform: uppercase; }
+.lowercase    { text-transform: lowercase; }
+.capitalize   { text-transform: capitalize; }
+.normal-case  { text-transform: none; }
+
+// ── Letter spacing ────────────────────────────────────────────
+.tracking-tighter { letter-spacing: -0.05em; }
+.tracking-tight   { letter-spacing: -0.025em; }
+.tracking-normal  { letter-spacing: 0em; }
+.tracking-wide    { letter-spacing: 0.05em; }
+.tracking-wider   { letter-spacing: 0.1em; }
+.tracking-widest  { letter-spacing: 0.2em; }
+
+// ── Line height ───────────────────────────────────────────────
+.leading-none    { line-height: 1; }
+.leading-tight   { line-height: 1.25; }
+.leading-snug    { line-height: 1.375; }
+.leading-normal  { line-height: 1.5; }
+.leading-relaxed { line-height: 1.75; }
+.leading-loose   { line-height: 2; }
+
+// ── Font family switcher ──────────────────────────────────────
+.font-sans  { font-family: var(--air-font); }
+.font-serif { font-family: var(--air-font-display); }
+.font-mono  { font-family: var(--air-font-mono); }
+
+// ── Additional text colors ────────────────────────────────────
+.text-black   { color: var(--air-black); }
+.text-surface { color: var(--air-800); }
+.text-body    { color: var(--air-700); }
+
+// ── List style ────────────────────────────────────────────────
+.list-none    { list-style: none; padding-left: 0; }
+.list-disc    { list-style: disc;    padding-left: 1.5em; }
+.list-decimal { list-style: decimal; padding-left: 1.5em; }
+
 // ── Note / callout block ──────────────────────────────────────
 .air-note {
   display: flex;

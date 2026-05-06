@@ -27,5 +27,21 @@
 @import 'tables';        // Air-table with tone variants
 @import 'loaders';       // Spinners, skeletons, page loaders
 
+// New components
+@import 'fold';          // Accordion / Collapse (air-fold)
+@import 'drop';          // Dropdown menu (air-drop)
+@import 'reel';          // Carousel / Slider (air-reel)
+@import 'bar';           // Progress bar + circular ring (air-bar, air-ring)
+@import 'face';          // Avatar + stack (air-face)
+@import 'tip';           // Rich popover (air-tip)
+@import 'path';          // Stepper / Wizard (air-path)
+@import 'log';           // Timeline (air-log)
+@import 'stars';         // Star rating (air-stars)
+@import 'void';          // Empty state (air-void)
+
+// Extras
+@import 'extras';        // Text control, filters, transforms, rings, semantic tokens, print
+@import 'icons';         // air-icon custom element + .air-ico static class + animations
+
 // Theme
 @import 'theme';         // Light / dark theme system (must be last)

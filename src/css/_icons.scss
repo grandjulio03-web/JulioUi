@@ -1,0 +1,209 @@
+// ============================================================
+// Air Framework — Icons  (air-icon custom element)
+//
+// Usage:
+//   <air-icon name="check"></air-icon>
+//   <air-icon name="bell"  anim="bounce" tone="ace" size="lg"></air-icon>
+//   <air-icon name="loader" anim="spin"></air-icon>
+//
+// Attributes:
+//   name       icon name (see air-icon.js for full list)
+//   anim       spin  pulse  bounce  shake  float  ping  glow  draw  wave
+//   tone       ace  beta  gamma  delta  epsilon  ok  warn  risk  info
+//   size       xs  sm  md (default)  lg  xl  2xl
+//   stroke     stroke width override (default: 2)
+//
+// CSS-only animation trigger (add class to any svg):
+//   .anim-spin  .anim-pulse  .anim-bounce  etc.
+// ============================================================
+
+air-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  --_size:   1.25rem;
+  --_stroke: 2;
+  --_c:      currentColor;
+  width:  var(--_size);
+  height: var(--_size);
+  color:  var(--_c);
+
+  svg {
+    width: 100%;
+    height: 100%;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: var(--_stroke);
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    display: block;
+    overflow: visible;
+  }
+}
+
+// ── Sizes ─────────────────────────────────────────────────────
+air-icon[size="xs"]  { --_size: 0.875rem; --_stroke: 2.5; }
+air-icon[size="sm"]  { --_size: 1rem;     --_stroke: 2;   }
+air-icon[size="md"]  { --_size: 1.25rem;  --_stroke: 2;   }
+air-icon[size="lg"]  { --_size: 1.75rem;  --_stroke: 1.75;}
+air-icon[size="xl"]  { --_size: 2.25rem;  --_stroke: 1.5; }
+air-icon[size="2xl"] { --_size: 3rem;     --_stroke: 1.5; }
+
+// ── Tones ─────────────────────────────────────────────────────
+air-icon[tone="ace"]     { color: #{$ace};     }
+air-icon[tone="beta"]    { color: #{$beta};    }
+air-icon[tone="gamma"]   { color: #{$gamma};   }
+air-icon[tone="delta"]   { color: #{$delta};   }
+air-icon[tone="epsilon"] { color: #{$epsilon}; }
+air-icon[tone="muted"]   { color: var(--air-400); }
+air-icon[tone="white"]   { color: #fff; }
+
+// Semantic tones
+air-icon[tone="ok"]   { color: #{$delta}; }
+air-icon[tone="warn"] { color: #{$gamma}; }
+air-icon[tone="risk"] { color: #{$beta};  }
+air-icon[tone="info"] { color: #{$ace};   }
+
+// ── Animation classes ─────────────────────────────────────────
+// Uses existing keyframes from _animations.scss
+
+air-icon[anim="spin"],
+.anim-spin { animation: air-spin-loop 1.1s linear infinite; }
+
+air-icon[anim="pulse"],
+.anim-pulse { animation: air-pulse-loop 1.4s ease-in-out infinite; }
+
+air-icon[anim="bounce"],
+.anim-bounce { animation: air-bounce-loop 0.75s ease-in-out infinite; }
+
+air-icon[anim="shake"],
+.anim-shake { animation: air-shake-loop 0.45s ease-in-out infinite; }
+
+air-icon[anim="float"],
+.anim-float { animation: air-float-loop 2.5s ease-in-out infinite; }
+
+air-icon[anim="ping"],
+.anim-ping { animation: air-ping-loop 1.3s ease-out infinite; }
+
+air-icon[anim="glow"],
+.anim-glow { animation: air-glow-loop 2s ease-in-out infinite; }
+
+// Wave — left-right rotation (like waving hand)
+air-icon[anim="wave"],
+.anim-wave { animation: air-icon-wave 1.2s ease-in-out infinite; transform-origin: bottom right; }
+
+@keyframes air-icon-wave {
+  0%, 100% { transform: rotate(0deg); }
+  20%       { transform: rotate(-18deg); }
+  40%       { transform: rotate(14deg); }
+  60%       { transform: rotate(-10deg); }
+  80%       { transform: rotate(8deg); }
+}
+
+// Draw — stroke draw-in (path must have stroke-dasharray set by JS)
+air-icon[anim="draw"] svg {
+  animation: air-icon-draw 1.2s ease forwards;
+}
+
+@keyframes air-icon-draw {
+  from { stroke-dashoffset: var(--_dash-len, 200); }
+  to   { stroke-dashoffset: 0; }
+}
+
+// Blink — alert blink
+air-icon[anim="blink"],
+.anim-blink { animation: air-icon-blink 1s step-start infinite; }
+
+@keyframes air-icon-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+// Swing — pendulum
+air-icon[anim="swing"],
+.anim-swing {
+  animation: air-icon-swing 1s ease-in-out infinite;
+  transform-origin: top center;
+}
+
+@keyframes air-icon-swing {
+  0%, 100% { transform: rotate(-12deg); }
+  50%       { transform: rotate(12deg); }
+}
+
+// Morph — tone-cycle color
+air-icon[anim="morph"],
+.anim-morph { animation: air-icon-morph 3s ease-in-out infinite; }
+
+@keyframes air-icon-morph {
+  0%   { color: #{$ace};   }
+  25%  { color: #{$beta};  }
+  50%  { color: #{$gamma}; }
+  75%  { color: #{$delta}; }
+  100% { color: #{$ace};   }
+}
+
+// ── Filled variant ────────────────────────────────────────────
+air-icon[fill] svg,
+air-icon.filled svg {
+  fill: currentColor;
+  stroke: none;
+}
+
+// ── Duo variant — outline body, filled accent dot ─────────────
+air-icon[duo] svg .ico-dot,
+air-icon.duo   svg .ico-dot {
+  fill: currentColor;
+  opacity: 0.35;
+  stroke: none;
+}
+
+// ── On-hover trigger (parent hover) ──────────────────────────
+.hover-spin:hover   air-icon { animation: air-spin-loop 0.5s linear; }
+.hover-bounce:hover air-icon { animation: air-bounce-loop 0.5s ease-in-out; }
+.hover-shake:hover  air-icon { animation: air-shake-loop 0.35s ease-in-out; }
+.hover-pulse:hover  air-icon { animation: air-pulse-loop 0.4s ease-in-out; }
+
+// ── Static icon class (pure CSS, no custom element) ──────────
+// For when you prefer raw SVG: <svg class="air-ico lg ace">...</svg>
+.air-ico {
+  display: inline-block;
+  width: 1.25rem;
+  height: 1.25rem;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  flex-shrink: 0;
+  vertical-align: -0.125em;
+
+  &.xs  { width: 0.875rem; height: 0.875rem; stroke-width: 2.5; }
+  &.sm  { width: 1rem;     height: 1rem;     }
+  &.lg  { width: 1.75rem;  height: 1.75rem;  stroke-width: 1.75; }
+  &.xl  { width: 2.25rem;  height: 2.25rem;  stroke-width: 1.5;  }
+  &.xxl { width: 3rem;     height: 3rem;     stroke-width: 1.5;  }
+
+  &.ace     { color: #{$ace};       }
+  &.beta    { color: #{$beta};      }
+  &.gamma   { color: #{$gamma};     }
+  &.delta   { color: #{$delta};     }
+  &.muted   { color: var(--air-400);}
+  &.white   { color: #fff;          }
+  &.ok      { color: #{$delta};     }
+  &.warn    { color: #{$gamma};     }
+  &.risk    { color: #{$beta};      }
+  &.info    { color: #{$ace};       }
+
+  &.spin    { animation: air-spin-loop 1.1s linear infinite; }
+  &.pulse   { animation: air-pulse-loop 1.4s ease-in-out infinite; }
+  &.bounce  { animation: air-bounce-loop 0.75s ease-in-out infinite; }
+  &.shake   { animation: air-shake-loop 0.45s ease-in-out infinite; }
+  &.float   { animation: air-float-loop 2.5s ease-in-out infinite; }
+  &.ping    { animation: air-ping-loop 1.3s ease-out infinite; }
+  &.wave    { animation: air-icon-wave 1.2s ease-in-out infinite; transform-origin: bottom right; }
+  &.swing   { animation: air-icon-swing 1s ease-in-out infinite; transform-origin: top center; }
+  &.morph   { animation: air-icon-morph 3s ease-in-out infinite; }
+  &.blink   { animation: air-icon-blink 1s step-start infinite; }
+}

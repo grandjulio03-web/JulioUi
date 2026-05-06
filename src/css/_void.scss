@@ -1,0 +1,136 @@
+// ============================================================
+// Air Framework — Void  (Empty State)
+//
+// Vocabulary:
+//   air-void           outer container (centered column)
+//   air-void-icon      large icon / illustration area
+//   air-void-title     primary heading
+//   air-void-sub       supporting copy
+//   air-void-act       action row (buttons)
+//
+// Sizes:    sm  (default)  lg
+// Variants: bordered  card
+// Tones (on air-void-icon): ace  beta  gamma  delta
+// ============================================================
+
+.air-void {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem 2rem;
+  font-family: var(--air-font);
+}
+
+// ── Icon ──────────────────────────────────────────────────────
+.air-void-icon {
+  --_c:     #{$ace};
+  --_c-rgb: var(--air-ace-rgb);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 5rem;
+  height: 5rem;
+  border-radius: var(--air-r-2xl);
+  background: rgb(var(--_c-rgb) / 0.08);
+  color: var(--_c);
+  margin-bottom: 1.5rem;
+  flex-shrink: 0;
+
+  svg {
+    width: 2.25rem;
+    height: 2.25rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+
+  // Emoji / text fallback
+  &.emoji {
+    background: var(--air-100);
+    font-size: 2rem;
+    line-height: 1;
+    color: inherit;
+  }
+}
+
+// Icon tones
+.air-void-icon.ace   { --_c: #{$ace};   --_c-rgb: var(--air-ace-rgb);   }
+.air-void-icon.beta  { --_c: #{$beta};  --_c-rgb: var(--air-beta-rgb);  }
+.air-void-icon.gamma { --_c: #{$gamma}; --_c-rgb: var(--air-gamma-rgb); }
+.air-void-icon.delta { --_c: #{$delta}; --_c-rgb: var(--air-delta-rgb); }
+
+// ── Text ──────────────────────────────────────────────────────
+.air-void-title {
+  font-size: var(--air-text-xl);
+  font-weight: 700;
+  color: var(--air-900);
+  letter-spacing: -0.02em;
+  margin: 0;
+  line-height: 1.3;
+}
+
+.air-void-sub {
+  margin-top: 0.5rem;
+  font-size: var(--air-text-sm);
+  color: var(--air-500);
+  line-height: 1.65;
+  max-width: 36ch;
+}
+
+// ── Actions ───────────────────────────────────────────────────
+.air-void-act {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.65rem;
+  flex-wrap: wrap;
+  margin-top: 1.5rem;
+}
+
+// ── Sizes ─────────────────────────────────────────────────────
+.air-void.sm {
+  padding: 2.5rem 1.5rem;
+
+  .air-void-icon {
+    width: 3.5rem;
+    height: 3.5rem;
+    margin-bottom: 1rem;
+
+    svg { width: 1.5rem; height: 1.5rem; }
+  }
+
+  .air-void-title { font-size: var(--air-text-lg); }
+}
+
+.air-void.lg {
+  padding: 6rem 2rem;
+
+  .air-void-icon {
+    width: 6.5rem;
+    height: 6.5rem;
+    border-radius: var(--air-r-3xl);
+    margin-bottom: 2rem;
+
+    svg { width: 3rem; height: 3rem; }
+  }
+
+  .air-void-title { font-size: var(--air-text-3xl); }
+}
+
+// ── Variants ──────────────────────────────────────────────────
+.air-void.bordered {
+  border: 2px dashed var(--air-200);
+  border-radius: var(--air-r-2xl);
+}
+
+.air-void.card {
+  background: var(--air-white);
+  border: 1px solid var(--air-200);
+  border-radius: var(--air-r-2xl);
+  box-shadow: var(--air-shadow-sm);
+}

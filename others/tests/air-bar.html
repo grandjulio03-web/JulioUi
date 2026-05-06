@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Air — Bar &amp; Ring (Progress)</title>
+  <link rel="stylesheet" href="../../dist/my-framework.css">
+  <style>
+    body { padding: 2.5rem; background: var(--air-50); font-family: var(--air-font); }
+    .s { margin-bottom: 3.5rem; }
+    .s-title { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--air-400); margin-bottom: 1.25rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--air-200); }
+    .demo { max-width: 560px; display:flex; flex-direction:column; gap:1.5rem; }
+    .rings { display:flex; flex-wrap:wrap; gap:2rem; align-items:center; }
+  </style>
+</head>
+<body>
+
+  <div style="margin-bottom:3rem;">
+    <span class="air-kicker dotted">Air Framework</span>
+    <h1 class="air-display" style="margin-top:0.4rem; font-size:clamp(2rem,5vw,3rem);">Bar &amp; Ring</h1>
+    <p class="air-lead">Linear progress bars with animated fills, striped and pulse variants, plus SVG circular rings with auto-calculated stroke.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:.65rem;margin-top:.75rem;">
+      <span class="air-badge ace soft">air-bar</span>
+      <span class="air-badge beta soft">air-ring</span>
+      <span class="air-badge gamma soft">--pct custom prop</span>
+      <span class="air-badge delta soft">stroke-dashoffset</span>
+    </div>
+  </div>
+
+  <!-- ── TONES ───────────────────────────────────────────────── -->
+  <div class="s">
+    <div class="s-title">Tones — ace  beta  gamma  delta</div>
+    <div class="demo">
+      <div class="air-bar-wrap">
+        <div class="air-bar-head"><span class="air-bar-label">Ace / Sky</span><span class="air-bar-value">72%</span></div>
+        <div class="air-bar ace" style="--pct:72%"><div class="air-bar-fill"></div></div>
+      </div>
+      <div class="air-bar-wrap">
+        <div class="air-bar-head"><span class="air-bar-label">Beta / Rose</span><span class="air-bar-value">48%</span></div>
+        <div class="air-bar beta" style="--pct:48%"><div class="air-bar-fill"></div></div>
+      </div>
+      <div class="air-bar-wrap">
+        <div class="air-bar-head"><span class="air-bar-label">Gamma / Ember</span><span class="air-bar-value">85%</span></div>
+        <div class="air-bar gamma" style="--pct:85%"><div class="air-bar-fill"></div></div>
+      </div>
+      <div class="air-bar-wrap">
+        <div class="air-bar-head"><span class="air-bar-label">Delta / Sage</span><span class="air-bar-value">61%</span></div>
+        <div class="air-bar delta" style="--pct:61%"><div class="air-bar-fill"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SIZES ───────────────────────────────────────────────── -->
+  <div class="s">
+    <div class="s-title">Sizes — xs  sm  default  lg  xl</div>
+    <div class="demo">
+      <div class="air-bar-wrap">
+        <div class="air-bar-head"><span class="air-bar-label">xs — 4px</span></div>
+        <div class="air-bar ace xs" style="--pct:60%"><div class="air-bar-fill"></div></div>
+      </div>
+      <div class="air-bar-wrap">
+        <div class="air-bar-head"><span class="air-bar-label">sm — 6px</span></div>
+        <div class="air-bar ace sm" style="--pct:75%"><div class="air-bar-fill"></div></div>
+      </div>
+      <div class="air-bar-wrap">
+        <div class="air-bar-head"><span class="air-bar-label">default — 8px</span></div>
+        <div class="air-bar ace" style="--pct:82%"><div class="air-bar-fill"></div></div>
+      </div>
+      <div class="air-bar-wrap">
+        <div class="air-bar-head"><span class="air-bar-label">lg — 14px</span></div>
+        <div class="air-bar ace lg" style="--pct:55%"><div class="air-bar-fill"></div></div>
+      </div>
+      <div class="air-bar-wrap">
+        <div class="air-bar-head"><span class="air-bar-label">xl — 20px</span></div>
+        <div class="air-bar delta xl" style="--pct:90%"><div class="air-bar-fill"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── MODIFIERS ──────────────────────────────────────────── -->
+  <div class="s">
+    <div class="s-title">Modifiers — gradient  striped  pulse (indeterminate)</div>
+    <div class="demo">
+      <div class="air-bar-wrap">
+        <div class="air-bar-head"><span class="air-bar-label">Gradient fill</span><span class="air-bar-value">67%</span></div>
+        <div class="air-bar beta gradient lg" style="--pct:67%"><div class="air-bar-fill"></div></div>
+      </div>
+      <div class="air-bar-wrap">
+        <div class="air-bar-head"><span class="air-bar-label">Striped</span><span class="air-bar-value">54%</span></div>
+        <div class="air-bar gamma striped lg" style="--pct:54%"><div class="air-bar-fill"></div></div>
+      </div>
+      <div class="air-bar-wrap">
+        <div class="air-bar-head"><span class="air-bar-label">Pulse — loading state</span></div>
+        <div class="air-bar ace pulse lg"><div class="air-bar-fill"></div></div>
+      </div>
+      <div class="air-bar-wrap">
+        <div class="air-bar-head"><span class="air-bar-label">Beta pulse</span></div>
+        <div class="air-bar beta pulse"><div class="air-bar-fill"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── RINGS ──────────────────────────────────────────────── -->
+  <div class="s">
+    <div class="s-title">Ring — circular progress (stroke-dashoffset auto-calculated)</div>
+    <div class="rings">
+
+      <div class="air-ring ace lg" data-ring-pct="72">
+        <svg><circle class="air-ring-track" cx="50%" cy="50%" r="46%"/><circle class="air-ring-fill" cx="50%" cy="50%" r="46%"/></svg>
+        <div class="air-ring-label"><span class="air-ring-pct">72%</span><span class="air-ring-sub">Storage</span></div>
+      </div>
+
+      <div class="air-ring beta" data-ring-pct="48">
+        <svg><circle class="air-ring-track" cx="50%" cy="50%" r="46%"/><circle class="air-ring-fill" cx="50%" cy="50%" r="46%"/></svg>
+        <div class="air-ring-label"><span class="air-ring-pct">48%</span><span class="air-ring-sub">Risk</span></div>
+      </div>
+
+      <div class="air-ring gamma sm" data-ring-pct="91">
+        <svg><circle class="air-ring-track" cx="50%" cy="50%" r="46%"/><circle class="air-ring-fill" cx="50%" cy="50%" r="46%"/></svg>
+        <div class="air-ring-label"><span class="air-ring-pct">91%</span></div>
+      </div>
+
+      <div class="air-ring delta xl" data-ring-pct="38">
+        <svg><circle class="air-ring-track" cx="50%" cy="50%" r="46%"/><circle class="air-ring-fill" cx="50%" cy="50%" r="46%"/></svg>
+        <div class="air-ring-label"><span class="air-ring-pct">38%</span><span class="air-ring-sub">Complete</span></div>
+      </div>
+
+      <div class="air-ring ace" data-ring-pct="100">
+        <svg><circle class="air-ring-track" cx="50%" cy="50%" r="46%"/><circle class="air-ring-fill" cx="50%" cy="50%" r="46%"/></svg>
+        <div class="air-ring-label"><span class="air-ring-pct">✓</span></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Ring init script — sets stroke-dashoffset from data-ring-pct -->
+  <script>
+    document.querySelectorAll('[data-ring-pct]').forEach(function(ring) {
+      var pct  = parseFloat(ring.dataset.ringPct) / 100;
+      var fill = ring.querySelector('.air-ring-fill');
+      var r    = fill.r ? fill.r.baseVal.value : parseFloat(fill.getAttribute('r'));
+      if (!r) {
+        // r is a percentage — compute from element size
+        r = ring.offsetWidth * 0.46;
+      }
+      var circ = 2 * Math.PI * r;
+      fill.style.strokeDasharray  = circ;
+      fill.style.strokeDashoffset = circ * (1 - pct);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+// ============================================================
+// Air Framework — Stars  (Rating)
+//
+// Vocabulary:
+//   air-stars          wrapper row
+//   air-star           individual star shape  [.lit]  [.half]
+//   air-stars-count    trailing review count text
+//
+// Read-only: add .lit to filled stars, .half for half-stars
+// Interactive: add data-stars on wrapper — JS handles hover/click
+//              Each star gets data-value="1"..."5"
+//
+// Tones: ace  beta  gamma  delta  (default: gamma — warm amber)
+// Sizes: xs  sm  (default)  lg  xl
+// ============================================================
+
+.air-stars {
+  --_c:    #{$gamma};
+  --_size: 1.375rem;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 0.15rem;
+  line-height: 1;
+}
+
+// ── Star ──────────────────────────────────────────────────────
+.air-star {
+  display: inline-flex;
+  width: var(--_size);
+  height: var(--_size);
+  color: var(--air-200);
+  cursor: default;
+  flex-shrink: 0;
+  transition:
+    color      var(--air-t-fast),
+    transform  var(--air-t-spring);
+
+  svg {
+    width: 100%;
+    height: 100%;
+    fill: currentColor;
+    stroke: none;
+  }
+
+  &.lit { color: var(--_c); }
+}
+
+// ── Half star (50% fill via clip) ─────────────────────────────
+.air-star.half {
+  position: relative;
+  color: var(--air-200);
+
+  svg:first-child {
+    position: absolute;
+    color: var(--_c);
+    clip-path: inset(0 50% 0 0);
+  }
+}
+
+// ── Interactive mode ──────────────────────────────────────────
+.air-stars[data-stars] .air-star {
+  cursor: pointer;
+
+  &:hover,
+  &.hover {
+    color: var(--_c);
+    transform: scale(1.18);
+  }
+
+  &:active { transform: scale(0.9); }
+}
+
+// ── Tones ─────────────────────────────────────────────────────
+.air-stars.ace   { --_c: #{$ace};   }
+.air-stars.beta  { --_c: #{$beta};  }
+.air-stars.gamma { --_c: #{$gamma}; }
+.air-stars.delta { --_c: #{$delta}; }
+
+// ── Sizes ─────────────────────────────────────────────────────
+.air-stars.xs { --_size: 0.875rem; gap: 0.08rem; }
+.air-stars.sm { --_size: 1.125rem; gap: 0.1rem;  }
+.air-stars.lg { --_size: 1.75rem;  gap: 0.2rem;  }
+.air-stars.xl { --_size: 2.25rem;  gap: 0.25rem; }
+
+// ── Count label ───────────────────────────────────────────────
+.air-stars-count {
+  font-family: var(--air-font);
+  font-size: var(--air-text-sm);
+  font-weight: 600;
+  color: var(--air-500);
+  margin-left: 0.4rem;
+  font-variant-numeric: tabular-nums;
+}

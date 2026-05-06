@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Air — Drop (Dropdown)</title>
+  <link rel="stylesheet" href="../../dist/my-framework.css">
+  <style>
+    body { padding: 2.5rem; background: var(--air-50); font-family: var(--air-font); }
+    .s { margin-bottom: 5rem; }
+    .s-title { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--air-400); margin-bottom: 1.25rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--air-200); }
+    .row { display: flex; flex-wrap: wrap; gap: 1rem; align-items: flex-start; }
+    /* Needs extra bottom space so menus don't get clipped */
+    .demo-pad { padding-bottom: 14rem; }
+  </style>
+</head>
+<body>
+
+  <div style="margin-bottom:3rem;">
+    <span class="air-kicker dotted">Air Framework</span>
+    <h1 class="air-display" style="margin-top:0.4rem; font-size:clamp(2rem,5vw,3rem);">Drop</h1>
+    <p class="air-lead">Context menus and select menus that appear on click. Arrow key navigation, section labels, and three variants.</p>
+    <div class="row" style="margin-top:.75rem;">
+      <span class="air-badge ace soft">data-drop</span>
+      <span class="air-badge beta soft">Arrow keys</span>
+      <span class="air-badge gamma soft">Escape to close</span>
+      <span class="air-badge delta soft">Click outside closes</span>
+    </div>
+  </div>
+
+  <!-- ── BASIC ───────────────────────────────────────────────── -->
+  <div class="s">
+    <div class="s-title">Basic dropdown</div>
+    <div class="row demo-pad">
+
+      <div class="air-drop" data-drop>
+        <button class="air-btn ace air-drop-trigger">
+          Options
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="air-drop-menu">
+          <button class="air-drop-item">View details</button>
+          <button class="air-drop-item">Edit</button>
+          <button class="air-drop-item">Duplicate</button>
+          <hr class="air-drop-sep">
+          <button class="air-drop-item beta">Delete</button>
+        </div>
+      </div>
+
+      <!-- End-aligned -->
+      <div class="air-drop end" data-drop>
+        <button class="air-btn ace ghost air-drop-trigger">
+          Account
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="air-drop-menu wide">
+          <div class="air-drop-label">Signed in as</div>
+          <button class="air-drop-item" style="font-weight:700;color:var(--air-900);">jforce034@gmail.com</button>
+          <hr class="air-drop-sep">
+          <button class="air-drop-item">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            Profile
+          </button>
+          <button class="air-drop-item">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.07 4.93l-1.42 1.42M4.93 4.93l1.42 1.42M4.93 19.07l1.42-1.42M19.07 19.07l-1.42-1.42M2 12h2M20 12h2M12 2v2M12 20v2"/></svg>
+            Settings
+            <span class="air-drop-badge" style="margin-left:auto;">New</span>
+          </button>
+          <hr class="air-drop-sep">
+          <button class="air-drop-item beta">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+            Sign out
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── WITH ICONS & SECTIONS ──────────────────────────────── -->
+  <div class="s">
+    <div class="s-title">Icons + section labels + badge count</div>
+    <div class="row demo-pad">
+
+      <div class="air-drop" data-drop>
+        <button class="air-btn ace soft air-drop-trigger">
+          Workspace
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="air-drop-menu wide">
+          <div class="air-drop-label">Switch to</div>
+          <button class="air-drop-item active">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            JforceX — Framework
+          </button>
+          <button class="air-drop-item">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            Personal Projects
+            <span class="air-drop-badge">3</span>
+          </button>
+          <button class="air-drop-item is-disabled">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            Archive (disabled)
+          </button>
+          <hr class="air-drop-sep">
+          <button class="air-drop-item ace">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            New workspace
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── VARIANTS ───────────────────────────────────────────── -->
+  <div class="s">
+    <div class="s-title">Variants — glass &amp; dark</div>
+    <div class="row demo-pad" style="background:linear-gradient(135deg,#041301,#1c2e19);padding:2rem;border-radius:var(--air-r-2xl);">
+
+      <div class="air-drop" data-drop>
+        <button class="air-btn ace glass air-drop-trigger">
+          Glass menu
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="air-drop-menu glass">
+          <button class="air-drop-item">Export as PDF</button>
+          <button class="air-drop-item">Export as CSV</button>
+          <button class="air-drop-item">Copy link</button>
+        </div>
+      </div>
+
+      <div class="air-drop end" data-drop>
+        <button class="air-btn ace ghost air-drop-trigger" style="border-color:rgba(255,255,255,.3);color:#fff;">
+          Dark menu
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="air-drop-menu dark wide">
+          <div class="air-drop-label">Actions</div>
+          <button class="air-drop-item">Launch deploy</button>
+          <button class="air-drop-item">Rollback</button>
+          <hr class="air-drop-sep">
+          <button class="air-drop-item beta">Force delete</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── POSITIONS ──────────────────────────────────────────── -->
+  <div class="s" style="margin-bottom:8rem;">
+    <div class="s-title">Positions — top, end, top-end</div>
+    <div class="row" style="padding-top:10rem;padding-bottom:2rem;">
+
+      <div class="air-drop top" data-drop>
+        <button class="air-btn ace soft air-drop-trigger">
+          Opens up
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 15 12 9 18 15"/></svg>
+        </button>
+        <div class="air-drop-menu">
+          <button class="air-drop-item">Item one</button>
+          <button class="air-drop-item">Item two</button>
+          <button class="air-drop-item">Item three</button>
+        </div>
+      </div>
+
+      <div class="air-drop top end" data-drop>
+        <button class="air-btn beta soft air-drop-trigger">
+          Top-end
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 15 12 9 18 15"/></svg>
+        </button>
+        <div class="air-drop-menu">
+          <button class="air-drop-item">Align right</button>
+          <button class="air-drop-item">Opens above</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="../../src/js/air-drop.js"></script>
+</body>
+</html>

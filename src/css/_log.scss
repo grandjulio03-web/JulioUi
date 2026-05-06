@@ -1,0 +1,152 @@
+// ============================================================
+// Air Framework — Log  (Timeline)
+//
+// Vocabulary:
+//   air-log            the timeline container (left-aligned spine)
+//   air-log-item       one event  [tones: ace beta gamma delta]
+//   air-log-dot        the circle on the spine
+//   air-log-time       timestamp / date label
+//   air-log-title      event heading
+//   air-log-text       event body copy
+//   air-log-card       boxed card variant for event content
+//
+// Variants (on air-log): compact  card
+// Tones (on air-log-item): ace  beta  gamma  delta
+// ============================================================
+
+.air-log {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  padding-left: 1.875rem;
+
+  // Vertical spine
+  &::before {
+    content: '';
+    position: absolute;
+    left: 0.625rem;
+    top: 0.5rem;
+    bottom: 0.5rem;
+    width: 2px;
+    background: var(--air-200);
+    border-radius: var(--air-r-pill);
+  }
+}
+
+// ── Item ──────────────────────────────────────────────────────
+.air-log-item {
+  --_c:     #{$ace};
+  --_c-rgb: var(--air-ace-rgb);
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  padding-bottom: 2rem;
+
+  &:last-child { padding-bottom: 0; }
+}
+
+// Tones
+.air-log-item.ace   { --_c: #{$ace};   --_c-rgb: var(--air-ace-rgb);   }
+.air-log-item.beta  { --_c: #{$beta};  --_c-rgb: var(--air-beta-rgb);  }
+.air-log-item.gamma { --_c: #{$gamma}; --_c-rgb: var(--air-gamma-rgb); }
+.air-log-item.delta { --_c: #{$delta}; --_c-rgb: var(--air-delta-rgb); }
+
+// ── Dot ───────────────────────────────────────────────────────
+.air-log-dot {
+  position: absolute;
+  left: -1.875rem;
+  top: 0.075rem;
+  width: 1.125rem;
+  height: 1.125rem;
+  border-radius: var(--air-r-pill);
+  border: 2.5px solid var(--air-white);
+  background: var(--air-300);
+  box-shadow: 0 0 0 2px var(--air-300);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition:
+    background  var(--air-t-base),
+    box-shadow  var(--air-t-base);
+
+  svg {
+    width: 0.6rem;
+    height: 0.6rem;
+    fill: none;
+    stroke: #fff;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+}
+
+// Toned dots
+.air-log-item.ace   .air-log-dot { background: var(--_c); box-shadow: 0 0 0 3px rgb(var(--_c-rgb) / 0.2); }
+.air-log-item.beta  .air-log-dot { background: var(--_c); box-shadow: 0 0 0 3px rgb(var(--_c-rgb) / 0.2); }
+.air-log-item.gamma .air-log-dot { background: var(--_c); box-shadow: 0 0 0 3px rgb(var(--_c-rgb) / 0.2); }
+.air-log-item.delta .air-log-dot { background: var(--_c); box-shadow: 0 0 0 3px rgb(var(--_c-rgb) / 0.2); }
+
+// ── Timestamp ─────────────────────────────────────────────────
+.air-log-time {
+  font-size: var(--air-text-xs);
+  font-weight: 600;
+  color: var(--air-400);
+  letter-spacing: 0.01em;
+  line-height: 1;
+}
+
+// ── Content ───────────────────────────────────────────────────
+.air-log-title {
+  font-family: var(--air-font);
+  font-size: var(--air-text-sm);
+  font-weight: 700;
+  color: var(--air-800);
+  line-height: 1.3;
+  margin: 0;
+}
+
+.air-log-text {
+  font-size: var(--air-text-sm);
+  color: var(--air-500);
+  line-height: 1.6;
+  margin: 0;
+}
+
+// ── Card variant ──────────────────────────────────────────────
+.air-log.card .air-log-item { gap: 0.5rem; }
+
+.air-log-card {
+  background: var(--air-white);
+  border: 1px solid var(--air-200);
+  border-radius: var(--air-r-xl);
+  padding: 0.875rem 1rem;
+  box-shadow: var(--air-shadow-xs);
+  transition: box-shadow var(--air-t-base);
+
+  &:hover { box-shadow: var(--air-shadow-md); }
+}
+
+// Tone accent on card (left border)
+.air-log-item.ace   .air-log-card { border-left: 3px solid var(--_c); }
+.air-log-item.beta  .air-log-card { border-left: 3px solid var(--_c); }
+.air-log-item.gamma .air-log-card { border-left: 3px solid var(--_c); }
+.air-log-item.delta .air-log-card { border-left: 3px solid var(--_c); }
+
+// ── Compact variant ───────────────────────────────────────────
+.air-log.compact {
+  padding-left: 1.25rem;
+
+  &::before { left: 0.4rem; }
+
+  .air-log-item { padding-bottom: 1rem; }
+
+  .air-log-dot {
+    left: -1.25rem;
+    width: 0.75rem;
+    height: 0.75rem;
+    border-width: 2px;
+  }
+}

@@ -1,0 +1,189 @@
+// ============================================================
+// Air Framework — Path  (Stepper / Wizard)
+//
+// Vocabulary:
+//   air-path           horizontal step track  [data-path]
+//   air-path-step      one step (contains dot + labels)  [.done] [.active]
+//   air-path-dot       the circle indicator
+//   air-path-label     step title
+//   air-path-sub       step subtitle
+//
+// The connector line between dots is drawn via ::after on air-path-step
+//
+// Modifiers (on air-path): vertical  numbered  compact
+// Tones (on air-path-step): ace  beta  gamma  delta
+// ============================================================
+
+.air-path {
+  display: flex;
+  align-items: flex-start;
+  counter-reset: path-step;
+}
+
+// ── Step ──────────────────────────────────────────────────────
+.air-path-step {
+  --_c:     #{$ace};
+  --_c-rgb: var(--air-ace-rgb);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  text-align: center;
+  counter-increment: path-step;
+  position: relative;
+
+  // Connector line (right half of current + left half of next)
+  &:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    top: calc(1.25rem - 1px);
+    left: calc(50% + 1.3rem);
+    right: calc(-50% + 1.3rem);
+    height: 2px;
+    background: var(--air-200);
+    border-radius: var(--air-r-pill);
+    transition: background 0.45s ease;
+  }
+
+  &.done::after { background: var(--_c); }
+}
+
+// Tones
+.air-path-step.ace   { --_c: #{$ace};   --_c-rgb: var(--air-ace-rgb);   }
+.air-path-step.beta  { --_c: #{$beta};  --_c-rgb: var(--air-beta-rgb);  }
+.air-path-step.gamma { --_c: #{$gamma}; --_c-rgb: var(--air-gamma-rgb); }
+.air-path-step.delta { --_c: #{$delta}; --_c-rgb: var(--air-delta-rgb); }
+
+// ── Dot ───────────────────────────────────────────────────────
+.air-path-dot {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: var(--air-r-pill);
+  border: 2px solid var(--air-200);
+  background: var(--air-white);
+  color: var(--air-400);
+  font-family: var(--air-font);
+  font-size: var(--air-text-sm);
+  font-weight: 700;
+  transition:
+    background    var(--air-t-spring),
+    border-color  var(--air-t-spring),
+    color         var(--air-t-base),
+    box-shadow    var(--air-t-spring);
+
+  svg {
+    width: 1rem;
+    height: 1rem;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+  }
+}
+
+// Auto-number dots when .numbered on parent
+.air-path.numbered .air-path-dot:not(:has(svg))::before {
+  content: counter(path-step);
+}
+
+// ── Step states ───────────────────────────────────────────────
+.air-path-step.done .air-path-dot {
+  background: var(--_c);
+  border-color: var(--_c);
+  color: #fff;
+  box-shadow: 0 2px 8px rgb(var(--_c-rgb) / 0.3);
+}
+
+.air-path-step.active .air-path-dot {
+  border-color: var(--_c);
+  color: var(--_c);
+  background: var(--air-white);
+  box-shadow:
+    0 0 0 4px rgb(var(--_c-rgb) / 0.12),
+    0 2px 8px rgb(var(--_c-rgb) / 0.2);
+}
+
+// ── Labels ────────────────────────────────────────────────────
+.air-path-label {
+  margin-top: 0.625rem;
+  font-family: var(--air-font);
+  font-size: var(--air-text-xs);
+  font-weight: 700;
+  color: var(--air-400);
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+  transition: color var(--air-t-base);
+}
+
+.air-path-sub {
+  margin-top: 0.2rem;
+  font-size: 0.7rem;
+  color: var(--air-300);
+  white-space: nowrap;
+}
+
+.air-path-step.active .air-path-label { color: var(--_c); }
+.air-path-step.done   .air-path-label { color: var(--air-700); }
+.air-path-step.active .air-path-sub   { color: var(--air-500); }
+.air-path-step.done   .air-path-sub   { color: var(--air-400); }
+
+// ── Vertical orientation ──────────────────────────────────────
+.air-path.vertical {
+  flex-direction: column;
+  gap: 0;
+
+  .air-path-step {
+    flex-direction: row;
+    text-align: left;
+    align-items: flex-start;
+    flex: none;
+    gap: 1rem;
+    padding-bottom: 2rem;
+
+    &:not(:last-child)::after {
+      top: 2.5rem;
+      bottom: 0;
+      left: 1.25rem;
+      right: auto;
+      width: 2px;
+      height: auto;
+    }
+
+    &:last-child { padding-bottom: 0; }
+  }
+
+  .air-path-dot   { flex-shrink: 0; }
+  .air-path-label { margin-top: 0.375rem; }
+  .air-path-sub   { white-space: normal; }
+}
+
+// ── Compact ───────────────────────────────────────────────────
+.air-path.compact {
+  .air-path-dot {
+    width: 1.75rem;
+    height: 1.75rem;
+    font-size: 0.7rem;
+  }
+
+  .air-path-step:not(:last-child)::after {
+    top: calc(0.875rem - 1px);
+    left: calc(50% + 0.925rem);
+    right: calc(-50% + 0.925rem);
+  }
+
+  .air-path-label { font-size: 0.65rem; }
+}
+
+.air-path.compact.vertical .air-path-step {
+  &:not(:last-child)::after {
+    top: 1.75rem;
+    left: 0.875rem;
+  }
+}

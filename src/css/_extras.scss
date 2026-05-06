@@ -1,0 +1,182 @@
+// ============================================================
+// Air Framework — Extras  (Utility Pack)
+//
+// Covers:
+//   Text control   — clip-text  clamp-N  no-wrap  break-word  text-balance
+//   CSS Filters    — blur  backdrop-blur  grayscale  brightness  etc.
+//   Transforms     — rotate  scale  skew  flip
+//   Ring/outline   — .ring  .ring-N  .ring-[tone]
+//   Semantic tones — ok  warn  risk  info  (mapped to delta/gamma/beta/ace)
+//   Print          — print-hidden  print-only  no-print-shadow
+// ============================================================
+
+// ── Text control ──────────────────────────────────────────────
+.clip-text {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.clamp-1 { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 1; overflow: hidden; }
+.clamp-2 { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; overflow: hidden; }
+.clamp-3 { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden; }
+.clamp-4 { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 4; overflow: hidden; }
+.clamp-5 { display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 5; overflow: hidden; }
+
+.no-wrap    { white-space: nowrap; }
+.pre-wrap   { white-space: pre-wrap; }
+.pre        { white-space: pre; }
+.break-all  { word-break: break-all; }
+.break-word { overflow-wrap: break-word; word-break: break-word; }
+
+.text-balance { text-wrap: balance; }
+.text-pretty  { text-wrap: pretty; }
+
+// ── CSS Filters ───────────────────────────────────────────────
+.blur-xs { filter: blur(2px); }
+.blur-sm { filter: blur(4px); }
+.blur-md { filter: blur(8px); }
+.blur-lg { filter: blur(16px); }
+
+.backdrop-blur-sm { backdrop-filter: blur(4px);  -webkit-backdrop-filter: blur(4px);  }
+.backdrop-blur    { backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); }
+.backdrop-blur-lg { backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); }
+.backdrop-blur-xl { backdrop-filter: blur(40px); -webkit-backdrop-filter: blur(40px); }
+
+.grayscale    { filter: grayscale(100%); }
+.grayscale-50 { filter: grayscale(50%);  }
+.bright-75    { filter: brightness(0.75); }
+.bright-90    { filter: brightness(0.9);  }
+.bright-110   { filter: brightness(1.1);  }
+.bright-125   { filter: brightness(1.25); }
+.contrast-75  { filter: contrast(0.75); }
+.contrast-110 { filter: contrast(1.1);  }
+.saturate-50  { filter: saturate(0.5);  }
+.saturate-150 { filter: saturate(1.5);  }
+.saturate-200 { filter: saturate(2);    }
+.invert       { filter: invert(1);  }
+.hue-90       { filter: hue-rotate(90deg); }
+.hue-180      { filter: hue-rotate(180deg); }
+.filter-none  { filter: none; backdrop-filter: none; }
+
+// ── Transforms ────────────────────────────────────────────────
+.rotate-1   { transform: rotate(1deg); }
+.rotate-2   { transform: rotate(2deg); }
+.rotate-3   { transform: rotate(3deg); }
+.rotate-6   { transform: rotate(6deg); }
+.rotate-12  { transform: rotate(12deg); }
+.rotate-45  { transform: rotate(45deg); }
+.rotate-90  { transform: rotate(90deg); }
+.rotate-180 { transform: rotate(180deg); }
+
+.-rotate-1   { transform: rotate(-1deg); }
+.-rotate-2   { transform: rotate(-2deg); }
+.-rotate-3   { transform: rotate(-3deg); }
+.-rotate-6   { transform: rotate(-6deg); }
+.-rotate-12  { transform: rotate(-12deg); }
+.-rotate-45  { transform: rotate(-45deg); }
+
+.scale-90  { transform: scale(0.9);  }
+.scale-95  { transform: scale(0.95); }
+.scale-100 { transform: scale(1);    }
+.scale-105 { transform: scale(1.05); }
+.scale-110 { transform: scale(1.1);  }
+.scale-125 { transform: scale(1.25); }
+.scale-150 { transform: scale(1.5);  }
+
+.skew-x-2 { transform: skewX(2deg); }
+.skew-x-3 { transform: skewX(3deg); }
+.skew-x-6 { transform: skewX(6deg); }
+.skew-y-2 { transform: skewY(2deg); }
+.skew-y-3 { transform: skewY(3deg); }
+
+.flip-x { transform: scaleX(-1); }
+.flip-y { transform: scaleY(-1); }
+
+// ── Ring / Outline utilities ──────────────────────────────────
+.ring {
+  --_ring-c: #{$ace};
+  --_ring-w: 2px;
+  outline: var(--_ring-w) solid var(--_ring-c);
+  outline-offset: 2px;
+}
+
+.ring-0 { outline: none; }
+.ring-1 { outline-width: 1px; }
+.ring-2 { outline-width: 2px; }
+.ring-4 { outline-width: 4px; }
+
+.ring-ace   { --_ring-c: #{$ace};   outline-color: #{$ace};   }
+.ring-beta  { --_ring-c: #{$beta};  outline-color: #{$beta};  }
+.ring-gamma { --_ring-c: #{$gamma}; outline-color: #{$gamma}; }
+.ring-delta { --_ring-c: #{$delta}; outline-color: #{$delta}; }
+
+.ring-inset {
+  outline: none;
+  box-shadow: inset 0 0 0 2px #{$ace};
+}
+
+.ring-inset.ring-ace   { box-shadow: inset 0 0 0 2px #{$ace};   }
+.ring-inset.ring-beta  { box-shadow: inset 0 0 0 2px #{$beta};  }
+.ring-inset.ring-gamma { box-shadow: inset 0 0 0 2px #{$gamma}; }
+.ring-inset.ring-delta { box-shadow: inset 0 0 0 2px #{$delta}; }
+
+// ── Semantic color tokens ─────────────────────────────────────
+// ok = success → delta (sage green)
+// warn = caution → gamma (ember orange)
+// risk = danger  → beta (rose)
+// info = neutral → ace (sky blue)
+:root {
+  --air-ok:       #{$delta};
+  --air-ok-rgb:   var(--air-delta-rgb);
+  --air-warn:     #{$gamma};
+  --air-warn-rgb: var(--air-gamma-rgb);
+  --air-risk:     #{$beta};
+  --air-risk-rgb: var(--air-beta-rgb);
+  --air-info:     #{$ace};
+  --air-info-rgb: var(--air-ace-rgb);
+}
+
+// Semantic text
+.text-ok   { color: var(--air-ok);   }
+.text-warn { color: var(--air-warn); }
+.text-risk { color: var(--air-risk); }
+.text-info { color: var(--air-info); }
+.text-mute { color: var(--air-400);  }
+.text-dim  { color: var(--air-300);  }
+
+// Semantic soft bg
+.bg-ok   { background: rgb(var(--air-ok-rgb)   / 0.1); }
+.bg-warn { background: rgb(var(--air-warn-rgb) / 0.1); }
+.bg-risk { background: rgb(var(--air-risk-rgb) / 0.1); }
+.bg-info { background: rgb(var(--air-info-rgb) / 0.1); }
+
+// Semantic solid bg
+.bg-ok-solid   { background: var(--air-ok);   color: #fff; }
+.bg-warn-solid { background: var(--air-warn); color: #fff; }
+.bg-risk-solid { background: var(--air-risk); color: #fff; }
+.bg-info-solid { background: var(--air-info); color: #fff; }
+
+// Semantic borders
+.border-ok   { border-color: var(--air-ok);   }
+.border-warn { border-color: var(--air-warn); }
+.border-risk { border-color: var(--air-risk); }
+.border-info { border-color: var(--air-info); }
+
+// ── Print utilities ───────────────────────────────────────────
+@media print {
+  .print-hidden    { display: none !important; }
+  .print-block     { display: block !important; }
+  .print-inline    { display: inline !important; }
+  .no-print-shadow { box-shadow: none !important; }
+  .no-print-bg     { background: transparent !important; }
+  .no-print-border { border: none !important; }
+
+  body { font-size: 11pt; line-height: 1.55; }
+
+  a[href]::after { content: " (" attr(href) ")"; font-size: 0.8em; color: #666; }
+}
+
+@media not print {
+  .print-only { display: none !important; }
+}

@@ -1,0 +1,159 @@
+// ============================================================
+// Air Framework — Face  (Avatar)
+//
+// Vocabulary:
+//   air-face           the avatar circle
+//   air-face-img       <img> tag inside (covers the circle)
+//   air-face-init      initials <span> fallback
+//   air-face-status    presence dot (absolute, bottom-right)
+//   air-face-stack     overlapping group of faces
+//   air-face-count     "+N more" overflow bubble in a stack
+//
+// Sizes:  xs  sm  (default)  lg  xl  2xl
+// Shapes: square  rounded
+// Tones  (on air-face or air-face-init bg): ace  beta  gamma  delta  epsilon
+// Status: online  away  busy  offline
+// data-tone="0-3" — auto-assigns tone from name hash (JS)
+// ============================================================
+
+.air-face {
+  --_size: 2.5rem;
+  --_r:    var(--air-r-pill);
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--_size);
+  height: var(--_size);
+  border-radius: var(--_r);
+  flex-shrink: 0;
+  overflow: hidden;
+  background: var(--air-100);
+  border: 2px solid var(--air-white);
+  box-shadow: var(--air-shadow-sm);
+  font-family: var(--air-font);
+  font-weight: 700;
+  font-size: calc(var(--_size) * 0.35);
+  color: var(--air-500);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+// ── Image ─────────────────────────────────────────────────────
+.air-face-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: inherit;
+}
+
+// ── Initials ──────────────────────────────────────────────────
+.air-face-init {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  letter-spacing: inherit;
+  color: #fff;
+  background: #{$ace};
+}
+
+// Tone initials backgrounds
+.air-face.ace   .air-face-init { background: #{$ace};   }
+.air-face.beta  .air-face-init { background: #{$beta};  }
+.air-face.gamma .air-face-init { background: #{$gamma}; }
+.air-face.delta .air-face-init { background: #{$delta}; }
+.air-face.epsilon .air-face-init {
+  background: #{$epsilon-lt};
+}
+
+// Auto-tone via data attribute (JS assigns 0–3 from name hash)
+.air-face[data-tone="0"] .air-face-init { background: #{$ace};   }
+.air-face[data-tone="1"] .air-face-init { background: #{$beta};  }
+.air-face[data-tone="2"] .air-face-init { background: #{$gamma}; }
+.air-face[data-tone="3"] .air-face-init { background: #{$delta}; }
+
+// ── Sizes ─────────────────────────────────────────────────────
+.air-face.xs   { --_size: 1.5rem; }
+.air-face.sm   { --_size: 2rem;   }
+.air-face.lg   { --_size: 3.5rem; }
+.air-face.xl   { --_size: 4.5rem; }
+.air-face.xxl  { --_size: 6rem;   }
+
+// ── Shapes ────────────────────────────────────────────────────
+.air-face.square  { --_r: var(--air-r-md); }
+.air-face.rounded { --_r: var(--air-r-xl); }
+
+// ── Status dot ────────────────────────────────────────────────
+.air-face-status {
+  position: absolute;
+  bottom: 1px;
+  right: 1px;
+  width: calc(var(--_size) * 0.28);
+  height: calc(var(--_size) * 0.28);
+  border-radius: var(--air-r-pill);
+  border: 2px solid var(--air-white);
+  background: var(--air-300);
+  flex-shrink: 0;
+  z-index: 1;
+
+  &.online  { background: #{$delta}; }
+  &.away    { background: #{$gamma}; }
+  &.busy    { background: #{$beta};  }
+  &.offline { background: var(--air-300); }
+}
+
+// ── Tone ring ─────────────────────────────────────────────────
+.air-face.ring-ace   { border-color: #{$ace};   border-width: 2.5px; }
+.air-face.ring-beta  { border-color: #{$beta};  border-width: 2.5px; }
+.air-face.ring-gamma { border-color: #{$gamma}; border-width: 2.5px; }
+.air-face.ring-delta { border-color: #{$delta}; border-width: 2.5px; }
+
+// ── Face Stack ────────────────────────────────────────────────
+.air-face-stack {
+  display: inline-flex;
+  align-items: center;
+  flex-direction: row-reverse;
+
+  .air-face {
+    margin-left: calc(var(--_size) * -0.3);
+    transition:
+      margin    var(--air-t-spring),
+      transform var(--air-t-spring);
+
+    &:last-child { margin-left: 0; }
+  }
+
+  &:hover .air-face {
+    margin-left: calc(var(--_size) * -0.12);
+  }
+}
+
+// Overflow count bubble
+.air-face-count {
+  --_size: 2.5rem;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--_size);
+  height: var(--_size);
+  border-radius: var(--air-r-pill);
+  border: 2px solid var(--air-white);
+  background: var(--air-100);
+  color: var(--air-600);
+  font-family: var(--air-font);
+  font-size: calc(var(--_size) * 0.3);
+  font-weight: 700;
+  flex-shrink: 0;
+  margin-left: calc(var(--_size) * -0.3);
+  box-shadow: var(--air-shadow-sm);
+}

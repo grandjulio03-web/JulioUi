@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Air — Stars (Rating)</title>
+  <link rel="stylesheet" href="../../dist/my-framework.css">
+  <style>
+    body { padding: 2.5rem; background: var(--air-50); font-family: var(--air-font); }
+    .s { margin-bottom: 3.5rem; }
+    .s-title { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--air-400); margin-bottom: 1.25rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--air-200); }
+    .row { display: flex; flex-wrap: wrap; gap: 1.5rem; align-items: center; }
+    .rating-output { font-size: .85rem; color: var(--air-500); margin-left:.5rem; font-variant-numeric: tabular-nums; }
+  </style>
+</head>
+<body>
+
+  <div style="margin-bottom:3rem;">
+    <span class="air-kicker dotted">Air Framework</span>
+    <h1 class="air-display" style="margin-top:0.4rem; font-size:clamp(2rem,5vw,3rem);">Stars</h1>
+    <p class="air-lead">Read-only and interactive star ratings. Hover to preview, click to set, click same star to clear. Keyboard accessible.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:.65rem;margin-top:.75rem;">
+      <span class="air-badge ace soft">data-stars</span>
+      <span class="air-badge beta soft">data-value</span>
+      <span class="air-badge gamma soft">data-readonly</span>
+      <span class="air-badge delta soft">air:stars:change</span>
+    </div>
+  </div>
+
+  <!-- ── READ-ONLY ───────────────────────────────────────────── -->
+  <div class="s">
+    <div class="s-title">Read-only — pre-set values, no hover</div>
+    <div style="display:flex;flex-direction:column;gap:1rem;">
+      <div style="display:flex;align-items:center;gap:1rem;">
+        <div class="air-stars" data-stars="5" data-value="5" data-readonly></div>
+        <span style="font-size:.85rem;color:var(--air-500);">5 / 5</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:1rem;">
+        <div class="air-stars" data-stars="5" data-value="4" data-readonly></div>
+        <span style="font-size:.85rem;color:var(--air-500);">4 / 5</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:1rem;">
+        <div class="air-stars" data-stars="5" data-value="3" data-readonly></div>
+        <span style="font-size:.85rem;color:var(--air-500);">3 / 5</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:1rem;">
+        <div class="air-stars" data-stars="5" data-value="1" data-readonly></div>
+        <span style="font-size:.85rem;color:var(--air-500);">1 / 5</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── INTERACTIVE ─────────────────────────────────────────── -->
+  <div class="s">
+    <div class="s-title">Interactive — click to rate, click same star to clear</div>
+    <div style="display:flex;flex-direction:column;gap:1.25rem;">
+
+      <div style="display:flex;align-items:center;gap:.75rem;">
+        <div class="air-stars" data-stars="5" data-value="0" id="rating-a"></div>
+        <span class="rating-output" id="output-a">No rating</span>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:.75rem;">
+        <div class="air-stars gamma lg" data-stars="5" data-value="4" id="rating-b"></div>
+        <span class="rating-output" id="output-b">4 / 5</span>
+      </div>
+
+      <div style="display:flex;align-items:center;gap:.75rem;">
+        <div class="air-stars ace" data-stars="10" data-value="7" id="rating-c"></div>
+        <span class="rating-output" id="output-c">7 / 10</span>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── TONES ───────────────────────────────────────────────── -->
+  <div class="s">
+    <div class="s-title">Tones — ace  beta  gamma  delta</div>
+    <div class="row">
+      <div>
+        <div class="air-stars ace" data-stars="5" data-value="4"></div>
+        <p style="font-size:.7rem;color:var(--air-400);margin-top:.4rem;">Ace / sky</p>
+      </div>
+      <div>
+        <div class="air-stars beta" data-stars="5" data-value="3"></div>
+        <p style="font-size:.7rem;color:var(--air-400);margin-top:.4rem;">Beta / rose</p>
+      </div>
+      <div>
+        <div class="air-stars gamma" data-stars="5" data-value="5"></div>
+        <p style="font-size:.7rem;color:var(--air-400);margin-top:.4rem;">Gamma / ember (default)</p>
+      </div>
+      <div>
+        <div class="air-stars delta" data-stars="5" data-value="2"></div>
+        <p style="font-size:.7rem;color:var(--air-400);margin-top:.4rem;">Delta / sage</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── SIZES ───────────────────────────────────────────────── -->
+  <div class="s">
+    <div class="s-title">Sizes — xs  sm  default  lg  xl</div>
+    <div style="display:flex;flex-direction:column;gap:1rem;">
+      <div style="display:flex;align-items:center;gap:1rem;">
+        <div class="air-stars xs" data-stars="5" data-value="4" data-readonly></div>
+        <span style="font-size:.7rem;color:var(--air-400);">xs</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:1rem;">
+        <div class="air-stars sm" data-stars="5" data-value="4" data-readonly></div>
+        <span style="font-size:.7rem;color:var(--air-400);">sm</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:1rem;">
+        <div class="air-stars" data-stars="5" data-value="4" data-readonly></div>
+        <span style="font-size:.7rem;color:var(--air-400);">default</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:1rem;">
+        <div class="air-stars lg" data-stars="5" data-value="4" data-readonly></div>
+        <span style="font-size:.7rem;color:var(--air-400);">lg</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:1rem;">
+        <div class="air-stars xl" data-stars="5" data-value="4" data-readonly></div>
+        <span style="font-size:.7rem;color:var(--air-400);">xl</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── IN CONTEXT ──────────────────────────────────────────── -->
+  <div class="s">
+    <div class="s-title">In context — product review card</div>
+    <div style="max-width:360px;">
+      <div class="air-card surface">
+        <div class="air-card-body">
+          <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:.75rem;">
+            <div style="display:flex;align-items:center;gap:.5rem;">
+              <div class="air-face sm ace"><div class="air-face-init">JF</div></div>
+              <div>
+                <p style="margin:0;font-size:.82rem;font-weight:700;color:var(--air-900);">JforceX</p>
+                <p style="margin:0;font-size:.7rem;color:var(--air-400);">May 5, 2026</p>
+              </div>
+            </div>
+            <span class="air-badge delta soft">Verified</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:.5rem;margin-bottom:.5rem;">
+            <div class="air-stars sm" data-stars="5" data-value="5" data-readonly></div>
+            <span style="font-size:.82rem;font-weight:700;color:var(--air-900);">5.0</span>
+          </div>
+          <p style="margin:0;font-size:.875rem;color:var(--air-600);line-height:1.65;">Incredible framework. The vocabulary is intuitive, the animations are buttery, and the JS engines are tiny. Replaced Bootstrap entirely.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../../src/js/air-stars.js"></script>
+  <script>
+    // Live output for interactive demos
+    ['a','b','c'].forEach(function(id) {
+      var wrapper = document.getElementById('rating-' + id);
+      var output  = document.getElementById('output-' + id);
+      if (!wrapper || !output) return;
+      wrapper.addEventListener('air:stars:change', function(e) {
+        var v = e.detail.value;
+        var max = wrapper.querySelectorAll('.air-star').length;
+        output.textContent = v ? v + ' / ' + max : 'No rating';
+      });
+    });
+  </script>
+</body>
+</html>

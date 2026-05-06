@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Air — Reel (Carousel)</title>
+  <link rel="stylesheet" href="../../dist/my-framework.css">
+  <style>
+    body { padding: 2.5rem; background: var(--air-50); font-family: var(--air-font); }
+    .s { margin-bottom: 3.5rem; }
+    .s-title { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--air-400); margin-bottom: 1.25rem; padding-bottom: 0.5rem; border-bottom: 1px solid var(--air-200); }
+    .demo { max-width: 720px; }
+    /* Slide colour fills for demo (no real images needed) */
+    .slide-1 { background: linear-gradient(135deg, #72b0d7 0%, #4a8fc0 100%); min-height:320px; display:flex; align-items:flex-end; }
+    .slide-2 { background: linear-gradient(135deg, #d94f8b 0%, #b83a72 100%); min-height:320px; display:flex; align-items:flex-end; }
+    .slide-3 { background: linear-gradient(135deg, #FF8F4B 0%, #d96e2a 100%); min-height:320px; display:flex; align-items:flex-end; }
+    .slide-4 { background: linear-gradient(135deg, #6DC9A7 0%, #44a880 100%); min-height:320px; display:flex; align-items:flex-end; }
+  </style>
+</head>
+<body>
+
+  <div style="margin-bottom:3rem;">
+    <span class="air-kicker dotted">Air Framework</span>
+    <h1 class="air-display" style="margin-top:0.4rem; font-size:clamp(2rem,5vw,3rem);">Reel</h1>
+    <p class="air-lead">Touch-draggable, keyboard-navigable carousel with autoplay, dot indicators, and a crossfade variant.</p>
+    <div style="display:flex;flex-wrap:wrap;gap:.65rem;margin-top:.75rem;">
+      <span class="air-badge ace soft">data-reel</span>
+      <span class="air-badge beta soft">data-autoplay</span>
+      <span class="air-badge gamma soft">Swipe / drag</span>
+      <span class="air-badge delta soft">Arrow keys</span>
+    </div>
+  </div>
+
+  <!-- ── DEFAULT + CAPTION ─────────────────────────────────── -->
+  <div class="s">
+    <div class="s-title">Default slide — captions, dots, arrows</div>
+    <div class="demo">
+      <div class="air-reel" data-reel data-loop>
+        <div class="air-reel-track">
+          <div class="air-reel-slide slide-1">
+            <div class="air-reel-caption">
+              <p class="air-reel-caption-title">Ace — Sky Blue</p>
+              <p class="air-reel-caption-sub">Slide 1 of 4 · Swipe or use arrows</p>
+            </div>
+          </div>
+          <div class="air-reel-slide slide-2">
+            <div class="air-reel-caption">
+              <p class="air-reel-caption-title">Beta — Rose</p>
+              <p class="air-reel-caption-sub">Slide 2 of 4</p>
+            </div>
+          </div>
+          <div class="air-reel-slide slide-3">
+            <div class="air-reel-caption">
+              <p class="air-reel-caption-title">Gamma — Ember</p>
+              <p class="air-reel-caption-sub">Slide 3 of 4</p>
+            </div>
+          </div>
+          <div class="air-reel-slide slide-4">
+            <div class="air-reel-caption">
+              <p class="air-reel-caption-title">Delta — Sage</p>
+              <p class="air-reel-caption-sub">Slide 4 of 4</p>
+            </div>
+          </div>
+        </div>
+
+        <button class="air-reel-prev" aria-label="Previous">
+          <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="air-reel-next" aria-label="Next">
+          <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+        <div class="air-reel-dots"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── AUTOPLAY ───────────────────────────────────────────── -->
+  <div class="s">
+    <div class="s-title">Autoplay — pauses on hover, loops endlessly</div>
+    <div class="demo">
+      <div class="air-reel" data-reel data-autoplay="2500" data-loop>
+        <div class="air-reel-track">
+          <div class="air-reel-slide slide-3" style="min-height:200px; display:flex;align-items:center;justify-content:center;">
+            <p style="color:#fff;font-size:2rem;font-weight:800;margin:0;">Step 1</p>
+          </div>
+          <div class="air-reel-slide slide-1" style="min-height:200px; display:flex;align-items:center;justify-content:center;">
+            <p style="color:#fff;font-size:2rem;font-weight:800;margin:0;">Step 2</p>
+          </div>
+          <div class="air-reel-slide slide-2" style="min-height:200px; display:flex;align-items:center;justify-content:center;">
+            <p style="color:#fff;font-size:2rem;font-weight:800;margin:0;">Step 3</p>
+          </div>
+          <div class="air-reel-slide slide-4" style="min-height:200px; display:flex;align-items:center;justify-content:center;">
+            <p style="color:#fff;font-size:2rem;font-weight:800;margin:0;">Step 4</p>
+          </div>
+        </div>
+        <button class="air-reel-prev" aria-label="Previous"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+        <button class="air-reel-next" aria-label="Next"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+        <div class="air-reel-dots"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── FADE VARIANT ──────────────────────────────────────── -->
+  <div class="s">
+    <div class="s-title">Fade — crossfade transition</div>
+    <div class="demo">
+      <div class="air-reel fade" data-reel>
+        <div class="air-reel-track">
+          <div class="air-reel-slide slide-1" style="min-height:260px;">
+            <div class="air-reel-caption"><p class="air-reel-caption-title">Crossfade — slide 1</p></div>
+          </div>
+          <div class="air-reel-slide slide-2" style="min-height:260px;">
+            <div class="air-reel-caption"><p class="air-reel-caption-title">Crossfade — slide 2</p></div>
+          </div>
+          <div class="air-reel-slide slide-4" style="min-height:260px;">
+            <div class="air-reel-caption"><p class="air-reel-caption-title">Crossfade — slide 3</p></div>
+          </div>
+        </div>
+        <button class="air-reel-prev" aria-label="Previous"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+        <button class="air-reel-next" aria-label="Next"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+        <div class="air-reel-dots"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── LIGHT CONTROLS ─────────────────────────────────────── -->
+  <div class="s">
+    <div class="s-title">Light controls — for light-coloured slides</div>
+    <div class="demo">
+      <div class="air-reel light" data-reel style="background:var(--air-white);border:1px solid var(--air-200);">
+        <div class="air-reel-track">
+          <div class="air-reel-slide" style="min-height:200px;background:var(--air-50);display:flex;align-items:center;justify-content:center;">
+            <span class="air-badge ace">Light slide 1</span>
+          </div>
+          <div class="air-reel-slide" style="min-height:200px;background:var(--air-50);display:flex;align-items:center;justify-content:center;">
+            <span class="air-badge beta">Light slide 2</span>
+          </div>
+          <div class="air-reel-slide" style="min-height:200px;background:var(--air-50);display:flex;align-items:center;justify-content:center;">
+            <span class="air-badge delta">Light slide 3</span>
+          </div>
+        </div>
+        <button class="air-reel-prev" aria-label="Previous"><svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg></button>
+        <button class="air-reel-next" aria-label="Next"><svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg></button>
+        <div class="air-reel-dots"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="../../src/js/air-reel.js"></script>
+</body>
+</html>

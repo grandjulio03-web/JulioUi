@@ -1,0 +1,214 @@
+// ============================================================
+// Air Framework — Bar  (Progress & Ring)
+//
+// LINEAR BAR:
+//   air-bar           track element
+//   air-bar-fill      animated fill  (width via --pct custom prop)
+//   air-bar-wrap      wrapper with label + value header
+//   air-bar-head      flex row for label/value
+//   air-bar-label     left label text
+//   air-bar-value     right value text
+//
+// CIRCULAR RING:
+//   air-ring          SVG circular progress
+//   air-ring-track    background SVG circle
+//   air-ring-fill     foreground arc SVG circle (dasharray set by JS)
+//   air-ring-label    center text overlay
+//   air-ring-pct      large percent number
+//   air-ring-sub      small subtitle
+//
+// Tones:    ace  beta  gamma  delta  epsilon
+// Sizes (bar):  xs  sm  (default)  lg  xl
+// Sizes (ring): sm  (default)  lg  xl
+// Modifiers:    striped  pulse (indeterminate)  gradient
+// ============================================================
+
+// ── Linear bar ───────────────────────────────────────────────
+.air-bar {
+  --_c:     #{$ace};
+  --_c-rgb: var(--air-ace-rgb);
+  --pct:    0%;
+
+  width: 100%;
+  height: 0.5rem;
+  background: var(--air-100);
+  border-radius: var(--air-r-pill);
+  overflow: hidden;
+  position: relative;
+}
+
+.air-bar-fill {
+  height: 100%;
+  width: var(--pct);
+  min-width: 0.125rem;
+  background: var(--_c);
+  border-radius: inherit;
+  transition: width 0.65s cubic-bezier(0.22, 0.61, 0.36, 1);
+  position: relative;
+  overflow: hidden;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.28) 50%,
+      transparent 100%
+    );
+  }
+}
+
+// ── Tones ─────────────────────────────────────────────────────
+.air-bar.ace     { --_c: #{$ace};     --_c-rgb: var(--air-ace-rgb);     }
+.air-bar.beta    { --_c: #{$beta};    --_c-rgb: var(--air-beta-rgb);    }
+.air-bar.gamma   { --_c: #{$gamma};   --_c-rgb: var(--air-gamma-rgb);   }
+.air-bar.delta   { --_c: #{$delta};   --_c-rgb: var(--air-delta-rgb);   }
+.air-bar.epsilon { --_c: #{$epsilon}; --_c-rgb: var(--air-epsilon-rgb); }
+
+// ── Gradient fill ─────────────────────────────────────────────
+.air-bar.gradient .air-bar-fill {
+  background: linear-gradient(
+    90deg,
+    var(--_c) 0%,
+    rgb(var(--_c-rgb) / 0.55) 100%
+  );
+}
+
+// ── Sizes ─────────────────────────────────────────────────────
+.air-bar.xs { height: 0.25rem; }
+.air-bar.sm { height: 0.375rem; }
+.air-bar.lg { height: 0.875rem; }
+.air-bar.xl {
+  height: 1.25rem;
+  border-radius: var(--air-r-lg);
+}
+
+// ── Striped ───────────────────────────────────────────────────
+.air-bar.striped .air-bar-fill {
+  background-color: var(--_c);
+  background-image: repeating-linear-gradient(
+    45deg,
+    transparent,
+    transparent 8px,
+    rgba(255, 255, 255, 0.18) 8px,
+    rgba(255, 255, 255, 0.18) 16px
+  );
+}
+
+// ── Pulse / indeterminate ─────────────────────────────────────
+.air-bar.pulse .air-bar-fill {
+  width: 42% !important;
+  animation: air-bar-pulse 1.7s ease-in-out infinite;
+}
+
+@keyframes air-bar-pulse {
+  0%   { transform: translateX(-120%); }
+  100% { transform: translateX(280%); }
+}
+
+// ── Label / value wrapper ─────────────────────────────────────
+.air-bar-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  width: 100%;
+}
+
+.air-bar-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+.air-bar-label {
+  font-size: var(--air-text-xs);
+  font-weight: 600;
+  color: var(--air-600);
+  letter-spacing: 0.01em;
+}
+
+.air-bar-value {
+  font-size: var(--air-text-xs);
+  font-weight: 700;
+  color: var(--air-800);
+  font-variant-numeric: tabular-nums;
+}
+
+// ── Circular ring ─────────────────────────────────────────────
+.air-ring {
+  --_c:     #{$ace};
+  --_c-rgb: var(--air-ace-rgb);
+  --size:   80px;
+  --stroke: 6px;
+
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--size);
+  height: var(--size);
+  flex-shrink: 0;
+
+  svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+    overflow: visible;
+  }
+}
+
+.air-ring-track {
+  fill: none;
+  stroke: var(--air-100);
+  stroke-width: var(--stroke);
+}
+
+.air-ring-fill {
+  fill: none;
+  stroke: var(--_c);
+  stroke-width: var(--stroke);
+  stroke-linecap: round;
+  transition: stroke-dashoffset 0.75s cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+.air-ring-label {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: var(--air-font);
+  pointer-events: none;
+}
+
+.air-ring-pct {
+  font-size: calc(var(--size) * 0.22);
+  font-weight: 800;
+  color: var(--air-900);
+  line-height: 1;
+  font-variant-numeric: tabular-nums;
+}
+
+.air-ring-sub {
+  font-size: calc(var(--size) * 0.14);
+  color: var(--air-400);
+  margin-top: 0.2em;
+  line-height: 1;
+}
+
+// Ring tones
+.air-ring.ace     { --_c: #{$ace};     --_c-rgb: var(--air-ace-rgb);     }
+.air-ring.beta    { --_c: #{$beta};    --_c-rgb: var(--air-beta-rgb);    }
+.air-ring.gamma   { --_c: #{$gamma};   --_c-rgb: var(--air-gamma-rgb);   }
+.air-ring.delta   { --_c: #{$delta};   --_c-rgb: var(--air-delta-rgb);   }
+.air-ring.epsilon { --_c: #{$epsilon}; --_c-rgb: var(--air-epsilon-rgb); }
+
+// Ring sizes
+.air-ring.sm { --size: 56px;  --stroke: 5px; }
+.air-ring.lg { --size: 120px; --stroke: 8px; }
+.air-ring.xl { --size: 160px; --stroke: 10px; }
